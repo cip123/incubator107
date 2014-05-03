@@ -1,4 +1,5 @@
 Incubator107::Application.routes.draw do
+  get "cities/new"
   get "static_pages/home"
   get "static_pages/help"
 
@@ -6,7 +7,7 @@ Incubator107::Application.routes.draw do
     match '/', to: 'static_pages#help', via: 'get'
   end
   
-  root 'static_pages#home'
+  root 'cities#index'
   
   #root :to =>get "home#index"
   

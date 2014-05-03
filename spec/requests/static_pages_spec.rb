@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
+  subject { page }
+
   describe "Home Page" do 
 
     it "should have the content 'Incubator107'" do
@@ -13,9 +15,10 @@ describe "StaticPages" do
 
   describe "Subdomain" do
 
-    it "should point to a specific page" do
-      visit url_for_subdomain 'bucuresti', '/'
-      expect(page).to have_content('although')
-    end 
+    before { visit url_for_subdomain 'bucuresti', '/' }
+
+    it { should have_content('although') }
+
   end
+
 end

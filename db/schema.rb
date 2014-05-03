@@ -11,6 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140502191949) do
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.string   "subdomain"
+    t.string   "country"
+    t.decimal  "donation",   precision: 8, scale: 2
+    t.string   "facebook"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
