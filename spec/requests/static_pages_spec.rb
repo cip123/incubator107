@@ -13,7 +13,7 @@ describe "StaticPages" do
   end
 
 
-  describe "Subdomain logiin ( this was added on rpi)" do
+  describe "Subdomain login ( this was added on rpi)" do
 
     before { visit url_for_subdomain 'bucuresti', '/' }
 
