@@ -1,6 +1,8 @@
 Incubator107::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_controller.asset_host = "http://assets.example.com"
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

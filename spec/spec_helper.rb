@@ -47,11 +47,9 @@ RSpec.configure do |config|
   config.formatter = :documentation # :progress, :html, :textmate
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
+
 end
 
-def url_for_subdomain subdomain="www", path="/"
-    "http://#{subdomain}.127.0.0.1.xip.io:#{Capybara.server_port}#{path}"
-end
 
 
 
