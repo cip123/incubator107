@@ -1,17 +1,24 @@
 Incubator107::Application.routes.draw do
+  get "home/index"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :articles
 
   get "cities/new"
   get "static_pages/home"
   get "static_pages/help"
+
+  namespace :subdomain do
+    
+  end
 
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/signup', to: 'users#new', via: 'get'
 
   constraints(Subdomain) do
-    match '/', to: 'static_pages#help', via: 'get'
+    match '/', to: 'subdomain/home#index', via: 'get'
+   
   end
   
   root 'cities#index'

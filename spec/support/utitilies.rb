@@ -1,5 +1,3 @@
-
-
 def sign_in(user, options={}) 
 
   if options[:no_capybara]

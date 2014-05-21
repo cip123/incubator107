@@ -1,0 +1,2 @@
+module Subdomain::HomeHelper
+end

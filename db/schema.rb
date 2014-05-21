@@ -11,21 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514181406) do
+ActiveRecord::Schema.define(version: 20140521160545) do
 
   create_table "articles", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  create_table "articles_cities", id: false, force: true do |t|
+    t.integer "article_id"
+    t.integer "city_id"
+    t.string  "name"
   end
 
   create_table "cities", force: true do |t|
     t.string   "name"
-    t.string   "subdomain"
+    t.string   "domain"
     t.string   "country"
     t.decimal  "donation",   precision: 8, scale: 2
     t.string   "facebook"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "city_article_aliases", force: true do |t|
+    t.string   "name"
+    t.string   "locale"
+    t.integer  "article_id"
+    t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
