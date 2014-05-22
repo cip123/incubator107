@@ -12,6 +12,11 @@ namespace :db do
                     user: user
                    )
 
+    Article.create!(name: "What is incubator 107?",
+                    content: Faker::Lorem.paragraph,
+                    user: user
+                   )
+
     about_cluj = Article.create!(name: "Cine suntem",
                     content: Faker::Lorem.paragraph,
                     user: user
@@ -19,12 +24,21 @@ namespace :db do
 
     City.create(name: 'Cluj',
                 domain: 'cluj',
-                articles: [about_cluj]
                )
 
     City.create(name: (I18n.t 'bucharest'),
                 domain: 'bucuresti'
                )
+
+    CityArticleAlias.create!( name: 'about',
+                             locale: 'ro',
+                             city_id: 1,
+                             article_id: 1)
+
+    CityArticleAlias.create!( name: 'about',
+                         locale: 'en',
+                         city_id: 1,
+                         article_id: 2)
 
 
     99.times do |n|

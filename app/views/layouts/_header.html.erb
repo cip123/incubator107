@@ -1,12 +1,12 @@
 <div class="container">
 
         <div class="masthead">
-          <h3 class="muted">Incubator10e</h3>
+          <h3 class="muted">Incubator10e<%=I18n.locale %></h3>
           <div class="navbar">
             <div class="navbar-inner">
               <div class="container">
                 <ul class="nav" >
-                  <li><a href="<%=yield(:about_link)%>">Cine suntem</a></li>
+                  <li><a href="<%=yield(:about_link)%>"><%=I18n.t(:who_are_we)%></a></li>
                   <li><a href="#">Ateliere</a></li>
                   <li><a href="#">Calendar</a></li>
                   <li><a href="#">Locul tau</a></li>

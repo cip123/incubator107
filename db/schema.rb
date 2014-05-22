@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521160545) do
+ActiveRecord::Schema.define(version: 20140521162133) do
 
   create_table "articles", force: true do |t|
     t.string   "content"
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(version: 20140521160545) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "city_article_aliases", ["city_id", "name", "locale"], name: "complex_index", unique: true
+  add_index "city_article_aliases", ["city_id"], name: "index_city_article_aliases_on_city_id"
+  add_index "city_article_aliases", ["locale"], name: "index_city_article_aliases_on_locale"
+  add_index "city_article_aliases", ["name"], name: "index_city_article_aliases_on_name"
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -4,28 +4,28 @@ Incubator107::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :articles
 
-  get "cities/new"
-  get "static_pages/home"
-  get "static_pages/help"
+  scope "(:locale)", :locale => /en|ro/ do
 
-  namespace :subdomain do
-    
+    get "cities/new"
+    get "static_pages/home"
+    get "static_pages/help"
+
+    namespace :subdomain do
+    end
+
+      match '/signin', to: 'sessions#new', via: 'get'
+      match '/signout', to: 'sessions#destroy', via: :delete
+      match '/signup', to: 'users#new', via: 'get'
+
+      constraints(Subdomain) do
+        match '/', to: 'subdomain/home#index', via: 'get'
+      
+      end
+      root 'cities#index'
   end
 
-  match '/signin', to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/signup', to: 'users#new', via: 'get'
-
-  constraints(Subdomain) do
-    match '/', to: 'subdomain/home#index', via: 'get'
-   
-  end
-  
-  root 'cities#index'
-
-  
   #root :to =>get "home#index"
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   #
   # See how all your routes lay out with "rake routes".

@@ -8,7 +8,8 @@ FactoryGirl.define do
     factory :city_with_articles do 
       after (:create) do |city, evaluator|
         create(:city_article_alias,  city_id: city.id, article_id: create(:article).id )
-        create(:city_article_alias, name: 'about', city_id: city.id, article_id: create(:article, name: 'Cine suntem').id )
+        create(:city_article_alias, name: 'about', city_id: city.id, article_id: create(:article, name: 'Ce e incubator107?').id )
+        create(:city_article_alias, name: 'about', city_id: city.id, article_id: create(:article, name: 'What is incubator107?').id, locale: 'en' )
         create(:city_article_alias,  city_id: city.id, article_id: create(:article).id )
       end
     end
@@ -27,7 +28,8 @@ FactoryGirl.define do
   end
 
   factory :city_article_alias do
-    name 'test'
+    sequence(:name)  { |n| "link_#{n}" }
+    locale 'ro'
   end
 
   factory  :article do
