@@ -1,5 +1,11 @@
 <div class="container">
 
+  <p>
+  <%= link_to_unless I18n.locale == :en, "romanian", locale: :ro %>
+  |
+  <%= link_to_unless I18n.locale == :en, "english", locale: :en %>
+  </p>
+
         <div class="masthead">
           <h3 class="muted">Incubator10e<%=I18n.locale %></h3>
           <div class="navbar">
@@ -7,10 +13,8 @@
               <div class="container">
                 <ul class="nav" >
                   <li><a href="<%=yield(:about_link)%>"><%=I18n.t(:who_are_we)%></a></li>
-                  <li><a href="#">Ateliere</a></li>
-                  <li><a href="#">Calendar</a></li>
-                  <li><a href="#">Locul tau</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="<%=articles_path%>"><%=I18n.t(:workshops)%></a></li>
+                  <li><a href="<%=yield(:contact_link)%>"><%=I18n.t(:contact)%></a></li>
                 </ul>
               </div>
             </div>

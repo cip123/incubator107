@@ -4,42 +4,31 @@ describe "Home pages" do
 
   subject { page }
 
-  describe "city page" do
+  I18n.available_locales.each do |locale| 
+    puts locale
+    describe "city page" do
 
-    let (:city) { FactoryGirl.create(:city_with_articles) }
-    before do
-      subdomain = city.domain[/city-\d+/]
-      visit url_for_subdomain subdomain, '/ro/' 
-    end
+      let (:city) { FactoryGirl.create(:city_with_articles) }
 
-    it { should have_title "incubator107 "+city.name }
-    it { should_not have_link "Sign in" }
-    it { should_not have_link "Home" }
-    it { should have_link "Cine suntem" }
-    it { should have_link "Ateliere" }
-    it { should have_link 'Contact' }
+      describe "with #{locale} locale" do
+        before do
+          subdomain = city.domain[/city-\d+/]
+          visit url_for_subdomain subdomain, '/'+locale.to_s+'/' 
+        end
 
-    describe "when visiting the about page" do
-      before  do
-        click_link 'Cine suntem' 
+        it { should have_title "incubator107 "+city.name }
+        it { should_not have_link "Sign in" }
+        it { should_not have_link "Home" }
+        it { should have_link I18n.t(:who_are_we) }
+        it { should have_link I18n.t(:workshops)}
+        it { should have_link I18n.t(:contact) }
+
+        describe "when visiting the about page" do
+          before { click_link I18n.t(:who_are_we) } 
+
+          it { should have_title I18n.t(:what_is_incubator107) }
+        end
       end
-
-      it { should have_title "Ce e incubator107?" }
-    end
-
-    describe "with english locale" do
-      before do 
-        subdomain = city.domain[/city-\d+/]
-        visit url_for_subdomain subdomain, '/en/'
-      end 
-
-      it { should have_link 'Who are we' }
-
-      describe "when visiting who are we page" do 
-        before { click_link 'Who are we' }
-        it { should have_title "What is incubator107?" } 
-      end
-    end
+    end  
   end
-  
-end  
+end

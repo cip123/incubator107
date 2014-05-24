@@ -64,6 +64,9 @@ GEM
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
     formatador (0.2.4)
+    globalize (4.0.1)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -203,6 +206,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.2.1)
   faker (= 1.1.2)
   foreigner
+  globalize (~> 4.0.1)
   guard-rspec (= 4.0)
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)

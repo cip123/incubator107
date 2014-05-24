@@ -1,4 +1,6 @@
 Incubator107::Application.routes.draw do
+  resources :locations
+
   get "home/index"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

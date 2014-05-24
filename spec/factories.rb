@@ -10,6 +10,8 @@ FactoryGirl.define do
         create(:city_article_alias,  city_id: city.id, article_id: create(:article).id )
         create(:city_article_alias, name: 'about', city_id: city.id, article_id: create(:article, name: 'Ce e incubator107?').id )
         create(:city_article_alias, name: 'about', city_id: city.id, article_id: create(:article, name: 'What is incubator107?').id, locale: 'en' )
+        create(:city_article_alias, name: 'workshops', city_id: city.id, article_id: create(:article, name: 'Ateliere').id, locale: 'ro' )
+        create(:city_article_alias, name: 'workshops', city_id: city.id, article_id: create(:article, name: 'Workshops').id, locale: 'en' )
         create(:city_article_alias,  city_id: city.id, article_id: create(:article).id )
       end
     end
@@ -36,6 +38,10 @@ FactoryGirl.define do
     sequence(:name)  { |n| "Lorem #{n}" }
     content "Pace pentru fratii mei iubire totdeauna"
     user
+  end
+
+  factory :location  do
+    sequence(:name)  { |n| "Location_#{n}" }
   end
 
 end
