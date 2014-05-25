@@ -9,6 +9,7 @@ FactoryGirl.define do
        after (:create) do |city, evaluator|
         create(:city_link, name: 'about', city_id: city.id )
         create(:city_link, name: 'workshops', city_id: city.id )
+        create(:workshop, name: 'test article', city_id: city.id )
         create(:city_link, name: 'contact', city_id: city.id)
       end
     end
@@ -18,6 +19,7 @@ FactoryGirl.define do
      factory :city_with_english_locale do
       after (:create) do |city, evaluator|
         create(:city_link,  city_id: city.id, article_id: create(:article).id )
+        create(:workshop,  city_id: city.id )
         about_article = create(:article, title: 'What is incubator107?')
         
         create(:city_link, name: 'about', city_id: city.id, article_id: about_article.id )
@@ -32,6 +34,7 @@ FactoryGirl.define do
         create(:city_link,  city_id: city.id, article_id: create(:article).id )
         about_article = create(:article, title: 'Ce e incubator107?')
         
+        create(:workshop,  city_id: city.id )
         create(:city_link, name: 'about', city_id: city.id, article_id: about_article.id )
 
         create(:city_link, name: 'workshops', city_id: city.id, article_id: create(:article, title: 'workshops').id)
@@ -43,6 +46,7 @@ FactoryGirl.define do
 
   factory :workshop do 
       sequence(:name) { |n| "atelier #{n} " }
+      enabled 1
   end
 
 

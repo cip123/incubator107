@@ -8,8 +8,6 @@ class SubdomainController < ApplicationController
   private 
 
   def retrieve_city
-    puts "retrievieng city for #{request.subdomain} "
-    @city = City.find_by_domain(request.subdomain)
-    puts @city.inspect
+    @city = City.includes(:workshops).where("workshops.enabled = 1").references(:workshops).find_by_domain(request.subdomain)
   end
 end

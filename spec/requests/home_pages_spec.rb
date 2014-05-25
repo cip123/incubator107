@@ -4,56 +4,40 @@ describe "Home pages" do
 
   subject { page }
 
-  describe " should have the articles links " do
+  describe " navigation bar " do
     I18n.available_locales.each do |locale| 
 
-      I18n.locale = locale
-
-      # TODO is should be only one factory method here
-      if locale.to_s == 'en'
-        let (:city) { FactoryGirl.create(:city_with_english_locale) }
-      else
-        let (:city) { FactoryGirl.create(:city_with_romanian_locale) }
-      end 
+      let (:city) { FactoryGirl.create(:city_with_links, name: 'cluj') }
 
       describe "with #{locale} locale" do
         before do
           subdomain = city.domain[/city-\d+/]
           visit url_for_subdomain subdomain, "/#{locale}/" 
+          @locale_prefix = (locale != I18n.default_locale ? "/#{locale}": "" ) 
+        puts city.about_article_id
         end
 
-        it { should have_title "incubator107 "+city.name }
+        it { should have_title "incubator107 #{city.name} " }
         it { should_not have_link "Sign in" }
         it { should_not have_link "Home" }
-        it { should have_link I18n.t(:who_are_we) }
+        #puts page.find_link(I18n.t(:who_are_we)).inspect
+        it { should have_link ( I18n.t(:who_are_we)), :href => @locale_prefix + article_path(:id => city.about_article_id) } 
         it { should have_link I18n.t(:workshops)}
         it { should have_link I18n.t(:contact) }
 
-        #        describe "when visiting the about page" do
-        #          before do
-        #            click_link I18n.t(:who_are_we) 
-        #          end
-
-        #          it { should have_title I18n.t(:what_is_incubator107) }
-        #        end
       end
     end  
   end
 
-  describe "it should have workshops links" do
+  describe "side bar" do
     let (:city) { FactoryGirl.create(:city_with_links) }
-    let (:workshop) { FactoryGirl.create(:workshop, city_id: city.id) }
 
     before do 
-      puts workshop.inspect
       subdomain = city.domain[/city-\d+/]
       visit url_for_subdomain subdomain, "/" 
     end
 
-    it { should have_link workshop.name }
+    it { should have_link city.workshops.first.name }
 
   end
-
-
-
 end

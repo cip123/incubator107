@@ -8,9 +8,11 @@ Incubator107::Application.routes.draw do
   scope "(:locale)", :locale => /en|ro/ do
 
     resources :articles
+    resources :workshops
     get "cities/new"
     get "static_pages/home"
     get "static_pages/help"
+
 
 
     match '/signin', to: 'sessions#new', via: 'get'

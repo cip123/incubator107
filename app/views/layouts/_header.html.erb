@@ -1,24 +1,26 @@
+<p>
+<%= link_to_unless I18n.locale == :en, "romanian", locale: :ro %>
+|
+<%= link_to_unless I18n.locale == :en, "english", locale: :en %>
+</p>
 <div class="container">
+  <div class="row">
+    <div class="span3">
+      <h3 class="muted">Incubator107</h3>
+    </div>
 
-  <p>
-  <%= link_to_unless I18n.locale == :en, "romanian", locale: :ro %>
-  |
-  <%= link_to_unless I18n.locale == :en, "english", locale: :en %>
-  </p>
+    <div class="span9">
+      <div class="navbar">
 
-        <div class="masthead">
-          <h3 class="muted">Incubator10e<%=I18n.locale %></h3>
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="container">
-                <ul class="nav" >
-                  <li><a href="<%=yield(:about_link)%>"><%=I18n.t(:who_are_we)%></a></li>
-                  <li><a href="<%=articles_path%>"><%=I18n.t(:workshops)%></a></li>
-                  <li><a href="<%=yield(:contact_link)%>"><%=I18n.t(:contact)%></a></li>
-                </ul>
-              </div>
-            </div>
-          </div><!-- /.navbar -->
+        <div class="navbar-inner">
+          <ul class="nav" >
+            <li><a href="<%=yield(:about_link)%>"><%=I18n.t(:who_are_we)%></a></li>
+            <li><a href="<%=articles_path%>"><%=I18n.t(:workshops)%></a></li>
+            <li><a href="<%=yield(:contact_link)%>"><%=I18n.t(:contact)%></a></li>
+          </ul>
         </div>
-      
       </div>
+    </div><!-- /.navbar -->
+  </div>
+</div>
+
