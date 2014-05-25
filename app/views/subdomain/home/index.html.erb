@@ -1,5 +1,4 @@
-<% provide(:title, "incubator107 " + @city.name) %>
-<%=@city.article_aliases.first.inspect %>
+<% provide(:title, "incubator107 " + @city.name ) %>
 <% provide(:about_link,  article_path( @city.about_article_id)) %>
 <% provide(:workshops_link,  articles_path) %>
 <% provide(:contact_link,  article_path( @city.contact_article_id)) %>

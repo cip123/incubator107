@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
   def city
     @city = City.find_by_domain(request.subdomain)
+    puts @city.inspect
   end
 end
 

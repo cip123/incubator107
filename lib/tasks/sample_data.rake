@@ -1,25 +1,22 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    user = User.create!(name: "Ciprian",
-                        email: "cip@trusca.net",
-                        password: "foobar",
-                        password_confirmation: "foobar",
-                        admin: true 
-                       )
-    Article.create!(name: "Ce e incubator107?",
-                    content: Faker::Lorem.paragraph,
-                    user: user
+#    user = User.create!(name: "Ciprian",
+#                        email: "cip@trusca.net",
+#                        password: "foobar",
+#                        password_confirmation: "foobar",
+#                        admin: true 
+#                       )
+    Article.create!(title: "Ce e incubator107?",
+                   text: Faker::Lorem.paragraph,
                    )
 
-    Article.create!(name: "What is incubator 107?",
-                    content: Faker::Lorem.paragraph,
-                    user: user
+    Article.create!(title: "What is incubator 107?",
+                    text: Faker::Lorem.paragraph,
                    )
 
-    about_cluj = Article.create!(name: "Cine suntem",
-                    content: Faker::Lorem.paragraph,
-                    user: user
+    about_cluj = Article.create!(title: "Cine suntem",
+                    text: Faker::Lorem.paragraph,
                    )
 
     City.create(name: 'Cluj',
@@ -30,27 +27,28 @@ namespace :db do
                 domain: 'bucuresti'
                )
 
-    CityArticleAlias.create!( name: 'about',
-                             locale: 'ro',
+    CityLink.create!( name: 'about',
                              city_id: 1,
                              article_id: 1)
 
-    CityArticleAlias.create!( name: 'about',
-                         locale: 'en',
+    CityLink.create!( name: 'contact',
                          city_id: 1,
                          article_id: 2)
 
+    Workshop.create( name: 'Vin sarbatorile',
+                      city_id: 1)
 
-    99.times do |n|
-      name  = Faker::Name.name
-      email = "example-#{n+1}@railstutorial.org"
-      password  = "password"
-      User.create!(name: name,
-                   email: email,
-                   password: password,
-                   password_confirmation: password)
 
-    end
+#    99.times do |n|
+#      name  = Faker::Name.name
+#      email = "example-#{n+1}@railstutorial.org"
+#      password  = "password"
+#      User.create!(name: name,
+#                   email: email,
+#                   password: password,
+#                   password_confirmation: password)
+
+#    end
 
   end
 end

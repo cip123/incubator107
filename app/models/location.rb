@@ -1,4 +1,4 @@
 class Location < ActiveRecord::Base
-  belongs_to :city
+  translates :name, :address, :description
 end
 

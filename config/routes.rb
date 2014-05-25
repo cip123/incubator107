@@ -4,26 +4,24 @@ Incubator107::Application.routes.draw do
   get "home/index"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :articles
 
   scope "(:locale)", :locale => /en|ro/ do
 
+    resources :articles
     get "cities/new"
     get "static_pages/home"
     get "static_pages/help"
 
-    namespace :subdomain do
+
+    match '/signin', to: 'sessions#new', via: 'get'
+    match '/signout', to: 'sessions#destroy', via: :delete
+    match '/signup', to: 'users#new', via: 'get'
+
+    constraints(Subdomain) do
+      match '/', to: 'subdomain/home#index', via: 'get'
+
     end
-
-      match '/signin', to: 'sessions#new', via: 'get'
-      match '/signout', to: 'sessions#destroy', via: :delete
-      match '/signup', to: 'users#new', via: 'get'
-
-      constraints(Subdomain) do
-        match '/', to: 'subdomain/home#index', via: 'get'
-      
-      end
-      root 'cities#index'
+    root 'cities#index'
   end
 
   #root :to =>get "home#index"

@@ -1,6 +1,8 @@
 class CreateArticles < ActiveRecord::Migration
   def up
     create_table :articles do |t|
+      t.boolean :display
+      t.timestamp :release_date
 
       t.timestamps
     end
