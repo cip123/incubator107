@@ -4,6 +4,10 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl'
+require 'capybara/rspec'
+require 'capybara/webkit/matchers'
+
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -27,7 +31,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -41,11 +45,43 @@ RSpec.configure do |config|
   config.order = "random"
   # Use color in STDOUT
   config.color_enabled = true
-
+  
   config.tty = true
 
   config.formatter = :documentation # :progress, :html, :textmate
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
 
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  Capybara.default_wait_time = 5
+
+  # config.before(:each) do
+  #   DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+  #   DatabaseCleaner.start
+  # end
+
+  config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
+
+
 end
+
+Capybara.default_wait_time = 5
+
+Capybara.configure do |config|
+
+  config.javascript_driver = :webkit
+  
+  config.server_port = 3001
+  config.app_host = "http://cluj.127.0.0.1.xip.io"
+end
+
+

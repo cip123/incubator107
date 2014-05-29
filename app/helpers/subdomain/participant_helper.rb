@@ -1,0 +1,2 @@
+module Subdomain::ParticipantHelper
+end

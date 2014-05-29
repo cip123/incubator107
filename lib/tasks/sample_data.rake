@@ -15,16 +15,23 @@ namespace :db do
                     text: Faker::Lorem.paragraph,
                    )
 
-    about_cluj = Article.create!(title: "Cine suntem",
+    Article.create!(title: "Cine suntem",
                     text: Faker::Lorem.paragraph,
                    )
 
-    City.create(name: 'Cluj',
+    City.create!(name: 'Cluj',
                 domain: 'cluj',
+                email: 'cluj@incubator107.com',
+                mailing_list_id: 1,
+                donation: 10
                )
 
-    City.create(name: (I18n.t 'bucharest'),
-                domain: 'bucuresti'
+    City.create!(name: (I18n.t 'bucharest'),
+                domain: 'bucuresti',
+                email: 'bucuresti@incubator107.com',
+                mailing_list_id: 2,
+                donation: 30
+
                )
 
     CityLink.create!( name: 'about',
@@ -36,7 +43,25 @@ namespace :db do
                          article_id: 2)
 
     Workshop.create( name: 'Vin sarbatorile',
-                      city_id: 1)
+                      city_id: 1,
+                      enabled: 1,
+                      release_date: DateTime.now)
+
+   Workshop.create( name: 'disabled workshop',
+                      city_id: 1,
+                      enabled: 0)
+
+   Workshop.create( name: 'old workshop',
+                      city_id: 1,
+                      enabled: 1,
+                      release_date: 1.month.ago
+                      )
+
+   Workshop.create( name: 'next month workshop',
+                      city_id: 1,
+                      enabled: 1,
+                      release_date: 1.month.from_now
+                      )
 
 
 #    99.times do |n|

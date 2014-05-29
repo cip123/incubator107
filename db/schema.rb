@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524142048) do
+ActiveRecord::Schema.define(version: 20140527181746) do
 
   create_table "article_translations", force: true do |t|
     t.integer  "article_id", null: false
@@ -35,11 +35,17 @@ ActiveRecord::Schema.define(version: 20140524142048) do
   create_table "cities", force: true do |t|
     t.string   "domain"
     t.string   "country"
-    t.decimal  "donation",   precision: 8, scale: 2
+    t.decimal  "donation",         precision: 8, scale: 2
+    t.decimal  "donation_student", precision: 8, scale: 2
     t.string   "facebook"
+    t.string   "email"
+    t.integer  "mailing_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cities", ["domain"], name: "index_cities_on_domain", unique: true
+  add_index "cities", ["email"], name: "index_cities_on_email", unique: true
 
   create_table "city_links", force: true do |t|
     t.string   "name"
@@ -118,6 +124,19 @@ ActiveRecord::Schema.define(version: 20140524142048) do
     t.datetime "updated_at"
   end
 
+  create_table "mailing_list_subscribers", force: true do |t|
+    t.integer  "subscriber_id"
+    t.integer  "mailing_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mailing_lists", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "participants", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -127,6 +146,13 @@ ActiveRecord::Schema.define(version: 20140524142048) do
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true
+
+  create_table "subscribers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "workshop_donation_translations", force: true do |t|
     t.integer  "workshop_donation_id", null: false

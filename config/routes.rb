@@ -21,6 +21,8 @@ Incubator107::Application.routes.draw do
 
     constraints(Subdomain) do
       match '/', to: 'subdomain/home#index', via: 'get'
+      match '/subscribe_newsletter', to: 'subdomain/participant#subscribe_newsletter', via: 'get'
+      match '/subscribe_newsletter', to: 'subdomain/participant#subscribe_newsletter', via: 'post'
 
     end
     root 'cities#index'

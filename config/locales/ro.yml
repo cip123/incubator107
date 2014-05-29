@@ -4,3 +4,19 @@ ro:
   workshops: Ateliere
   contact: Contact
   what_is_incubator107: Ce e incubator107?
+  this_month: Luna asta
+  next_month: Luna viitoare
+  thank_you_for_registering: Vă mulțumim pentru înscriere!
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: Invalid Record
+      models:
+        subscriber:
+          attributes:
+            email:
+              blank: Emailul nu este completat
+              invalid: Emailul este invalid
+            name:
+              blank: Numele nu este completat

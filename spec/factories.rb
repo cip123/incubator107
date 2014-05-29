@@ -2,51 +2,35 @@ FactoryGirl.define do
 
   factory :city do
     sequence(:name)  { |n| "City #{n}" }
-    # adding 127.0.0.1 because of the way we test subdomain visits
-    sequence(:domain) { |n| "city-#{n}.127.0.0.1" }
+    sequence(:email)  { |n| "email#{n}@incubator107.com" }
+    domain "cluj" 
+    mailing_list_id 1
+    donation 20.0
 
     factory (:city_with_links) do
        after (:create) do |city, evaluator|
+        
         create(:city_link, name: 'about', city_id: city.id )
         create(:city_link, name: 'workshops', city_id: city.id )
-        create(:workshop, name: 'test article', city_id: city.id )
         create(:city_link, name: 'contact', city_id: city.id)
+        create(:workshop, name: 'active workshop', city_id: city.id , enabled: 1)
+        create(:workshop, name: 'inactive workshop', city_id: city.id )
+        create(:workshop, name: 'old workshop', city_id: city.id, enabled: 1, release_date: 1.month.ago )
+        create(:workshop, name: 'next month workshop', city_id: city.id, enabled: 1, release_date: 1.month.from_now )
+
       end
     end
 
-
-      # TODO is should be only one factory method here
-     factory :city_with_english_locale do
-      after (:create) do |city, evaluator|
-        create(:city_link,  city_id: city.id, article_id: create(:article).id )
-        create(:workshop,  city_id: city.id )
-        about_article = create(:article, title: 'What is incubator107?')
-        
-        create(:city_link, name: 'about', city_id: city.id, article_id: about_article.id )
-
-        create(:city_link, name: 'workshops', city_id: city.id, article_id: create(:article, title: 'workshops').id)
-        create(:city_link, name: 'contact', city_id: city.id, article_id: create(:article, title: 'Contact').id)
-        create(:city_link,  city_id: city.id, article_id: create(:article).id )
-      end
-    end
-    factory :city_with_romanian_locale do
-      after (:create) do |city, evaluator|
-        create(:city_link,  city_id: city.id, article_id: create(:article).id )
-        about_article = create(:article, title: 'Ce e incubator107?')
-        
-        create(:workshop,  city_id: city.id )
-        create(:city_link, name: 'about', city_id: city.id, article_id: about_article.id )
-
-        create(:city_link, name: 'workshops', city_id: city.id, article_id: create(:article, title: 'workshops').id)
-        create(:city_link, name: 'contact', city_id: city.id, article_id: create(:article, title: 'Contact').id)
-        create(:city_link,  city_id: city.id, article_id: create(:article).id )
-      end
-    end
   end
 
   factory :workshop do 
       sequence(:name) { |n| "atelier #{n} " }
-      enabled 1
+      enabled 0
+      release_date DateTime.now
+  end
+
+  factory :mailing_list do 
+      sequence(:name) { |n| "Mailing List #{n} " }      
   end
 
 
