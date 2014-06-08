@@ -1,26 +1,21 @@
-<p>
-<%= link_to_unless I18n.locale == :en, "romanian", locale: :ro %>
-|
-<%= link_to_unless I18n.locale == :en, "english", locale: :en %>
-</p>
-<div class="container">
-  <div class="row">
-    <div class="span3">
-      <h3 class="muted">Incubator107</h3>
-    </div>
-
-    <div class="span9">
-      <div class="navbar">
-
-        <div class="navbar-inner">
-          <ul class="nav" >
-            <li><a href="<%=yield(:about_link)%>"><%=I18n.t(:who_are_we)%></a></li>
-            <li><a href="<%=articles_path%>"><%=I18n.t(:workshops)%></a></li>
-            <li><a href="<%=yield(:contact_link)%>"><%=I18n.t(:contact)%></a></li>
-          </ul>
-        </div>
+<div class="row">
+  <div class="col-sm-4">
+    <h3 class="muted">Incubator107</h3>
+  </div>
+  <div class="col-sm-8">
+    <div class="navbar-header">
+      <div class="navbar-inner">
+        <ul class="nav nav-pills" >
+          <li><a href="<%= article_path(@city.about_article_id)%>"><%=I18n.t(:who_are_we)%></a></li>
+          <li><a href="<%= workshops_path%>"><%=I18n.t(:workshops)%></a></li>
+          <li><a href="<%= calendar_path%>"><%=I18n.t(:calendar)%></a></li>
+          <li><a href="<%= article_path(@city.collaboration_article_id)%>"><%=I18n.t(:collaboration)%></a></li>
+          <li><a href="<%= article_path(@city.your_place_article_id)%>"><%=I18n.t(:your_place)%></a></li>
+          <li><a href="<%= article_path(@city.friends_article_id)%>"><%=I18n.t(:friends)%></a></li>
+          <li><a href="<%= article_path(@city.two_percent_article_id)%>"><%=I18n.t(:two_percent)%></a></li>
+          <li><a href="<%= article_path(@city.contact_article_id)%>"><%=I18n.t(:contact)%></a></li>
+        </ul>
       </div>
-    </div><!-- /.navbar -->
+    </div>
   </div>
 </div>
-

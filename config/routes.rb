@@ -5,10 +5,15 @@ Incubator107::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  scope "(:locale)", :locale => /en|ro/ do
+#  scope "(:locale)", :locale => /en|ro/ do
 
-    resources :articles
-    resources :workshops
+    scope module: :subdomain do
+      resources :articles
+      resources :workshops
+      match '/calendar', to: 'calendar#show', via: 'get'
+      match '/contact', to: 'home#contact', via: 'get'
+      match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
+    end
     get "cities/new"
     get "static_pages/home"
     get "static_pages/help"
@@ -21,12 +26,13 @@ Incubator107::Application.routes.draw do
 
     constraints(Subdomain) do
       match '/', to: 'subdomain/home#index', via: 'get'
+
       match '/subscribe_newsletter', to: 'subdomain/participant#subscribe_newsletter', via: 'get'
       match '/subscribe_newsletter', to: 'subdomain/participant#subscribe_newsletter', via: 'post'
 
     end
     root 'cities#index'
-  end
+ # end
 
   #root :to =>get "home#index"
 

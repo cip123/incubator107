@@ -8,6 +8,8 @@ describe City do
   it "should respond to attributes" do
     expect(city).to respond_to(:name)
     expect(city).to respond_to(:email)
+    expect(city).to respond_to(:city_links)
+    expect(city).to respond_to(:news)
 
   end
 
@@ -21,6 +23,11 @@ describe City do
 
   it "should not be valid without name" do
     city.name = " "
+    expect(city).not_to be_valid
+  end
+
+  it "should not be valid without facebook" do
+    city.facebook = " "
     expect(city).not_to be_valid
   end
 

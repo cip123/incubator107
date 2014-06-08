@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Subdomain::ArticlesController < SubdomainController
 
   def show
     @article = Article.find(params[:id])

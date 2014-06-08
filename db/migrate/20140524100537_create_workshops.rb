@@ -6,14 +6,13 @@ class CreateWorkshops < ActiveRecord::Migration
       t.string :album
       t.datetime :release_date
       t.boolean :enabled
-      t.boolean :requires_notification
+      t.boolean :requires_donation
       t.boolean :should_send_notification
       t.integer :master_id
-      t.integer :location_id
 
       t.timestamps
     end
-    Workshop.create_translation_table! :name => :string, :what => :text, :where => :text, :who => :text, :bring_along => :text
+    Workshop.create_translation_table! :name => :string, :description => :text, :with_whom => :text, :bring_along => :text, :whereabouts => :text, :donation => :text, :notification => :text
   end
 
   def down

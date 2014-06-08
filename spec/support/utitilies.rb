@@ -23,7 +23,8 @@ def full_title(page_title)
   end
 end
 
-def url_for_subdomain subdomain="www", path="/"
-  "http://#{subdomain}.127.0.0.1.xip.io:#{Capybara.server_port}#{path}"
+def url_for_subdomain subdomain="www", path="/", locale=''
+  port = Capybara.server_port
+  locale = "?locale=#{locale}" unless locale == '' 
+  url = "http://#{subdomain}.lvh.me:#{port}#{path}#{locale}"
 end
-

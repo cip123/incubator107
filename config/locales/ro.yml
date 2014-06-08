@@ -2,11 +2,54 @@ ro:
   bucharest: București
   who_are_we: Cine suntem  
   workshops: Ateliere
+  two_percent: 2 %
+  collaboration: Colaborări
+  calendar: Calendar
+  friends: Prieteni
+  your_place: Locul tău
   contact: Contact
   what_is_incubator107: Ce e incubator107?
+
   this_month: Luna asta
   next_month: Luna viitoare
   thank_you_for_registering: Vă mulțumim pentru înscriere!
+
+  signup_and_come_to: Înscrie-te şi vino la  
+  signup_is_online: Înscrierea la atelier se face online. 
+  click_bravely: Apasă cu curaj 
+  here: aici
+
+  signup_blah_blah: înscrie-te şi vino la atelier! Scrie-ne sincer de ce vrei să vii, zi-ne de unde ai auzit de noi și lasă-ne numărul tău de telefon.
+
+  from: de la
+  to: la
+  all_guilds: Toate breslele
+  all_groups: Toate breslele
+  name_and_surname: Nume şi prenume
+  email: Email
+  phone: Telefon
+  tell_us_why_you_want_to_come: Spune-ne sincer de ce vrei să vii 
+  public_signup: Vreau ca lumea să vadă că m-am înscris
+  subscribe_to_newsletter: Vreau să mă inscriu la newsletter
+
+  cancel: Renunță
+  ready: Gata   
+
+
+
+  datetime: &datetime
+    day_names: [Duminică, Luni, Marți, Miercuri, Joi, Vineri, Sâmbată]
+    month_names: [~, Ianuarie, Februarie, Martie, Aprilie, Mai, Iunie, Iulie, August, Septembrie, Octombrie, Noiembrie, Decembrie]
+    formats:
+    default: "%d/%m/%Y"
+    short: "%d/%m/%Y"
+
+  date:
+    <<: *datetime
+
+  time:
+    <<: *datetime
+
 
   activerecord:
     errors:
@@ -14,6 +57,13 @@ ro:
         record_invalid: Invalid Record
       models:
         subscriber:
+          attributes:
+            email:
+              blank: Emailul nu este completat
+              invalid: Emailul este invalid
+            name:
+              blank: Numele nu este completat
+        participant:
           attributes:
             email:
               blank: Emailul nu este completat

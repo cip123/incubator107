@@ -6,7 +6,7 @@ describe "Subscribe to mailing list" do
 
   let!(:city) { FactoryGirl.create(:city_with_links, name: "cluj") }
 
-  let(:subscribe)  {click_button :Follow; sleep 2 }
+  let(:subscribe)  {click_button 'Subscribe me!'; sleep 2 }
 
   describe "when new subscriber with valid data"  do
 

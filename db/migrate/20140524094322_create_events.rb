@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :start_date
       t.integer :workshop_id
       t.integer :duration
-
+      t.integer :location_id
       t.timestamps
     end
   end

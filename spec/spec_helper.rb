@@ -62,8 +62,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  Capybara.default_wait_time = 5
-
   # config.before(:each) do
   #   DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
   #   DatabaseCleaner.start
@@ -74,14 +72,13 @@ RSpec.configure do |config|
 
 end
 
-Capybara.default_wait_time = 5
+
+#Capybara.server_port = 3001
 
 Capybara.configure do |config|
-
   config.javascript_driver = :webkit
-  
   config.server_port = 3001
-  config.app_host = "http://cluj.127.0.0.1.xip.io"
+  config.app_host = "lvh.me"
 end
 
 

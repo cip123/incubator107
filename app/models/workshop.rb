@@ -1,8 +1,10 @@
 class Workshop < ActiveRecord::Base
-  translates :name, :what, :where, :who, :bring_along
+  translates :name, :description, :with_whom, :bring_along, :whereabouts, :notification, :donation
   #default_scope :conditions => {:enabled => true}
- scope :published, -> { where(enabled: true) }
- 
+  has_many :events
+  scope :published, -> { where(enabled: true) }
+  validates :city_id, presence: true 
+
 
   def self.this_month
       where("release_date > ? and release_date < ?", Date.today.at_beginning_of_month, Date.today.at_beginning_of_month.next_month)

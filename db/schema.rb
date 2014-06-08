@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527181746) do
+ActiveRecord::Schema.define(version: 20140601152736) do
 
   create_table "article_translations", force: true do |t|
     t.integer  "article_id", null: false
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20140527181746) do
 
   create_table "articles", force: true do |t|
     t.boolean  "display"
-    t.datetime "release_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +46,17 @@ ActiveRecord::Schema.define(version: 20140527181746) do
   add_index "cities", ["domain"], name: "index_cities_on_domain", unique: true
   add_index "cities", ["email"], name: "index_cities_on_email", unique: true
 
+  create_table "city_articles", force: true do |t|
+    t.integer  "city_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "city_articles", ["article_id"], name: "index_city_articles_on_article_id"
+  add_index "city_articles", ["city_id", "article_id"], name: "index_city_articles_on_city_id_and_article_id", unique: true
+  add_index "city_articles", ["city_id"], name: "index_city_articles_on_city_id"
+
   create_table "city_links", force: true do |t|
     t.string   "name"
     t.integer  "city_id"
@@ -59,12 +69,24 @@ ActiveRecord::Schema.define(version: 20140527181746) do
   add_index "city_links", ["city_id"], name: "index_city_links_on_city_id"
   add_index "city_links", ["name"], name: "index_city_links_on_name"
 
+  create_table "city_news", force: true do |t|
+    t.integer  "city_id"
+    t.integer  "news_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "city_news", ["city_id", "news_id"], name: "index_city_news_on_city_id_and_news_id", unique: true
+  add_index "city_news", ["city_id"], name: "index_city_news_on_city_id"
+  add_index "city_news", ["news_id"], name: "index_city_news_on_news_id"
+
   create_table "city_translations", force: true do |t|
-    t.integer  "city_id",    null: false
-    t.string   "locale",     null: false
+    t.integer  "city_id",              null: false
+    t.string   "locale",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.text     "donation_alternative"
   end
 
   add_index "city_translations", ["city_id"], name: "index_city_translations_on_city_id"
@@ -82,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140527181746) do
     t.datetime "start_date"
     t.integer  "workshop_id"
     t.integer  "duration"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,6 +160,25 @@ ActiveRecord::Schema.define(version: 20140527181746) do
     t.datetime "updated_at"
   end
 
+  create_table "news", force: true do |t|
+    t.boolean  "display"
+    t.datetime "release_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "news_translations", force: true do |t|
+    t.integer  "news_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "text"
+  end
+
+  add_index "news_translations", ["locale"], name: "index_news_translations_on_locale"
+  add_index "news_translations", ["news_id"], name: "index_news_translations_on_news_id"
+
   create_table "participants", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -154,38 +196,6 @@ ActiveRecord::Schema.define(version: 20140527181746) do
     t.datetime "updated_at"
   end
 
-  create_table "workshop_donation_translations", force: true do |t|
-    t.integer  "workshop_donation_id", null: false
-    t.string   "locale",               null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "text"
-  end
-
-  add_index "workshop_donation_translations", ["locale"], name: "index_workshop_donation_translations_on_locale"
-  add_index "workshop_donation_translations", ["workshop_donation_id"], name: "index_workshop_donation_translations_on_workshop_donation_id"
-
-  create_table "workshop_donations", force: true do |t|
-    t.integer  "workshop_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "workshop_notification_translations", force: true do |t|
-    t.integer  "workshop_notification_id", null: false
-    t.string   "locale",                   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "text"
-  end
-
-  add_index "workshop_notification_translations", ["locale"], name: "index_workshop_notification_translations_on_locale"
-  add_index "workshop_notification_translations", ["workshop_notification_id"], name: "index_3cadcce01f7d046de35704f7bf7f2eba6c548ab3"
-
-  create_table "workshop_notifications", force: true do |t|
-    t.integer "workshop_id"
-  end
-
   create_table "workshop_participants", force: true do |t|
     t.string   "workshop_id"
     t.string   "participant_id"
@@ -196,15 +206,17 @@ ActiveRecord::Schema.define(version: 20140527181746) do
   end
 
   create_table "workshop_translations", force: true do |t|
-    t.integer  "workshop_id", null: false
-    t.string   "locale",      null: false
+    t.integer  "workshop_id",  null: false
+    t.string   "locale",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.text     "what"
-    t.text     "where"
-    t.text     "who"
+    t.text     "description"
+    t.text     "with_whom"
     t.text     "bring_along"
+    t.text     "whereabouts"
+    t.text     "donation"
+    t.text     "notification"
   end
 
   add_index "workshop_translations", ["locale"], name: "index_workshop_translations_on_locale"
@@ -216,10 +228,9 @@ ActiveRecord::Schema.define(version: 20140527181746) do
     t.string   "album"
     t.datetime "release_date"
     t.boolean  "enabled"
-    t.boolean  "requires_notification"
+    t.boolean  "requires_donation"
     t.boolean  "should_send_notification"
     t.integer  "master_id"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

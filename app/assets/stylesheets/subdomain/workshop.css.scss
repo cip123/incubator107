@@ -1,0 +1,32 @@
+// Place all the styles related to the subdomain::workshop controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.modal-dialog{
+    width: 400px;
+}
+
+label {
+  width: 10em;
+  float: left;
+  text-align: right;
+  font-weight: normal;
+  margin-right: 1em;
+  margin-top: 0.2em;
+  display: block
+}
+p>a {
+  text-decoration: underline;
+  
+}
+
+input textarea {
+  margin-top: 0.2em;
+  width: 20em;
+  display: block;
+  float: right;
+}
+
+.modal span {
+
+  font-weight: bold;
+}

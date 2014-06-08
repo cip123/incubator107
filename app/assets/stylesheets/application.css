@@ -10,4 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require flags/basic
+ *= require flags/flags16
+ *= require flags/flags32
  */
