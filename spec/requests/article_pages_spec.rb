@@ -6,14 +6,15 @@ describe "Article pages" do
 
   describe "display" do
 
+    let!(:city) { FactoryGirl.create(:city_with_links) }
     let(:article) { FactoryGirl.create(:article) }
 
     before do
-      visit article_path(article)
+      visit url_for_subdomain "cluj", article_path(article)
     end
 
-    it { should have_title(article.name) }
-    it { should have_content(article.content) }
+    it { should have_title("Lorem") }
+    it { should have_content("Pace pentru fratii mei iubire totdeauna") }
 
   end
 end

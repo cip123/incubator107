@@ -1,0 +1,43 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content"> 
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= "#{t(:signup_and_come_to)} #{@workshop.name}" %> </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for( @workshop_participant, url: workshop_path(@workshop.id) +"/signup", remote: true) do |f| %>
+          <table >
+            <%= f.fields_for @workshop_participant.participant do |pf|%>
+              <tr>
+                <td> <%= pf.label t(:name_and_surname) %></td>
+                <td><%= pf.text_field :name, :name=> "participant[name]" %></td>
+              </tr>
+              <tr>
+                <td> <%= pf.label t :email %></td>
+                <td> <%= pf.text_field :email, :name=> "participant[email]" %></td>
+              </tr>
+              <tr>
+                <td> <%= pf.label t :phone %></td>
+                <td> <%= pf.text_field :phone, :name=> "participant[phone]" %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td> <%= f.label t :tell_us_why_you_want_to_come %> </td>
+              <td> <%= f.text_area :reason %> </td>
+            </tr>
+          </table>
+          <%= f.check_box :display %> 
+          <%=  t(:public_signup) %> 
+          <br/>
+          <%= f.check_box :subscribe_to_mailing_list %> 
+          <%= t(:subscribe_to_newsletter) %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t(:cancel) %></button>
+          <button type="submit" class="btn btn-primary"><%= t(:ready) %> </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

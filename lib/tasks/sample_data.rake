@@ -257,13 +257,14 @@ namespace :db do
     City.create!(name: 'Cluj',
                  domain: 'cluj',
                  email: 'cluj@incubator107.com',
+                 location_id: 1,
                  mailing_list_id: 1,
                  donation: 10,
                  facebook: 'incubator107Cluj',
                  donation: 10, 
                  donation_alternative: %{
                   Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor, să atragem sponsorizări
-                 }
+    }
                 )
 
     City.create!(name: (I18n.t 'bucharest'),
@@ -279,8 +280,18 @@ namespace :db do
                      city_id: 1,
                      news_id: 1
                     )
-
-
+      
+    5.times do |n| 
+      ContactPerson.create!(
+        name: Faker::Name.name, 
+        title: Faker::Name.title,
+        email: "example-#{n+1}@railstutorial.org",
+        phone: Faker::PhoneNumber.phone_number,
+        about: Faker::Company.bs,
+        city_id: 1,
+        index: n
+      )
+    end
     # GROUPS
 
 
@@ -312,7 +323,7 @@ namespace :db do
     Group.create(
       name: "Mentor în incubator"
     )
-     
+
     Group.create(
       name: "Breasla Copiilor"
     )
@@ -329,58 +340,42 @@ namespace :db do
       name: "Breasla Culinarilor"
     )
 
-
-
-
-
     ### LOCATIONS
     Location.create!(
       city_id: 1,
-      name: Faker::Company.name,
-      address: Faker::Address.street_address,
-      description: Faker::Lorem.sentence,
-
+      name: "CLUJ HUB",
+      address: "str.Pitesti, nr. 19, Cluj-Napoca", 
+      lat: 46.7739040,
+      lng: 23.5994550
     )
 
-
-
-
-
-
-    CityLink.create!( name: 'about',
+    ArticleLink.create!( alias: 'about',
                      city_id: 1,
                      article_id: 1)
 
-    CityLink.create!( name: 'collaboration',
+    ArticleLink.create!( alias: 'collaboration',
                      city_id: 1,
                      article_id: collaboration_article.id)
 
-    CityLink.create!( name: 'your_place',
+    ArticleLink.create!( alias: 'your_place',
                      city_id: 1,
                      article_id: your_place_article.id)
 
-    CityLink.create!( name: 'two_percent',
+    ArticleLink.create!( alias: 'two_percent',
                      city_id: 1,
                      article_id: two_percent_article.id)
 
 
-    CityLink.create!( name: 'friends',
+    ArticleLink.create!( alias: 'friends',
                      city_id: 1,
                      article_id: friends_article.id)
 
 
-    CityLink.create!( name: 'contact',
+    ArticleLink.create!( alias: 'contact',
                      city_id: 1,
                      article_id: 2)
 
 
-
-    #Workshop.create( 
-    #                name: 'Vin sarbatorile',
-    #                city_id: 1,
-    #                enabled: 1,
-    #                release_date: DateTime.now
-    #               )
     30.times do |n|
       Workshop.create!(
         name: Faker::Lorem.sentence,
@@ -388,7 +383,7 @@ namespace :db do
         city_id: 1,
         release_date: DateTime.now,
         album: Faker::Lorem.sentence,
-        enabled: true,
+        published: true,
         requires_donation: 1,
         should_send_notification: 1, 
         whereabouts: Faker::Lorem.paragraph,
@@ -409,36 +404,5 @@ namespace :db do
         location_id: 1
       )
     end
-    #    Workshop.create( 
-    #      name: 'disabled workshop',
-    #      city_id: 1,
-    #      enabled: 0
-    #                   )
-
-    #    Workshop.create( name: 'old workshop',
-    #                    city_id: 1,
-    #                    enabled: 1,
-    #                    release_date: 1.month.ago
-    #                   )
-    #
-    #    Workshop.create( name: 'next month workshop',
-    #                    city_id: 1,
-    #                    enabled: 1,
-    #                    release_date: 1.month.from_now
-    #                   )
-
-
-
-
-    #    99.times do |n|
-    #      name  = Faker::Name.name
-    #      email = "example-#{n+1}@railstutorial.org"
-    #      password  = "password"
-    #      User.create!(name: name,
-    #                   email: email,
-    #                   password: password,
-    #                   password_confirmation: password)
-
-    #    end
   end
 end

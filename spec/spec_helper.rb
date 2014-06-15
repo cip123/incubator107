@@ -45,7 +45,7 @@ RSpec.configure do |config|
   config.order = "random"
   # Use color in STDOUT
   config.color_enabled = true
-  
+
   config.tty = true
 
   config.formatter = :documentation # :progress, :html, :textmate
@@ -72,7 +72,9 @@ RSpec.configure do |config|
 
 end
 
-
+def default_url_options(options = {})
+  { :host => "lvh.me", :port => Capybara.server_port }.merge(options)
+end
 #Capybara.server_port = 3001
 
 Capybara.configure do |config|

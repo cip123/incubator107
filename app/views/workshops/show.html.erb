@@ -1,0 +1,40 @@
+<% provide :title, @workshop.name %>
+
+
+<h3> <%= @workshop.name %> </h3>
+
+<h4><%=t(:what?) %></h4>
+<p><%= raw(@workshop.description) %> </p>
+
+<h4><%=t(:with_who?) %></h4>
+<p><%= raw(@workshop.with_whom) %> </p>
+
+
+<h4><%=t(:bring_along?) %></h4>
+<p><%= raw(@workshop.bring_along) %> </p>
+
+<h4> <%= t(:when?) %> </h4>
+
+<% @workshop.events.each do |event| %>
+  <%= event %>
+  <br/>
+<% end %> 
+<h4><%=t(:where?) %></h4>
+<p><%= raw(@workshop.whereabouts) %> </p>
+
+<h4><%=t(:how?) %></h4>
+<p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
+<a href='' data-toggle="modal" data-target=".bs-example-modal-sm"><%=t(:here)%></a>
+
+<%= t(:signup_blah_blah) %></p>
+
+<% if @workshop.requires_donation? %>
+  <p><%= raw(@workshop.donation) %></p>
+  <br/>
+  <%= raw(@city.donation_alternative) %>
+<% end %>
+
+<h4><%=t(:who_comes?) %></h4>
+<%= t(:people_subscribed, :count=>@workshop.workshop_participants.count) %>
+
+<%=render 'signup' %>

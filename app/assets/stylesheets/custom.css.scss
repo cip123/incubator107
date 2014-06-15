@@ -1,15 +1,18 @@
 @import "bootstrap";
 .flag {
-display:inline-block;
-	
+  display:inline-block;
+
 
 }
 
+.gravatar {
+  margin-top: 15px;
+}
 
 img { 
   max-width: 100%;
 }
 
 .flags {
-    text-align: right;
+  text-align: right;
 }

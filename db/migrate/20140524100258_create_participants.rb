@@ -4,6 +4,7 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :phone
+      t.boolean :verified
 
       t.timestamps
     end

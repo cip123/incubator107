@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601152736) do
+ActiveRecord::Schema.define(version: 20140615085421) do
+
+  create_table "article_links", force: true do |t|
+    t.string   "alias"
+    t.integer  "city_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "article_links", ["alias"], name: "index_article_links_on_alias"
+  add_index "article_links", ["city_id", "alias"], name: "index_article_links_on_city_id_and_alias", unique: true
+  add_index "article_links", ["city_id"], name: "index_article_links_on_city_id"
 
   create_table "article_translations", force: true do |t|
     t.integer  "article_id", null: false
@@ -26,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140601152736) do
   add_index "article_translations", ["locale"], name: "index_article_translations_on_locale"
 
   create_table "articles", force: true do |t|
-    t.boolean  "display"
+    t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140601152736) do
     t.decimal  "donation_student", precision: 8, scale: 2
     t.string   "facebook"
     t.string   "email"
+    t.integer  "location_id"
     t.integer  "mailing_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,18 +69,6 @@ ActiveRecord::Schema.define(version: 20140601152736) do
   add_index "city_articles", ["article_id"], name: "index_city_articles_on_article_id"
   add_index "city_articles", ["city_id", "article_id"], name: "index_city_articles_on_city_id_and_article_id", unique: true
   add_index "city_articles", ["city_id"], name: "index_city_articles_on_city_id"
-
-  create_table "city_links", force: true do |t|
-    t.string   "name"
-    t.integer  "city_id"
-    t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "city_links", ["city_id", "name"], name: "index_city_links_on_city_id_and_name", unique: true
-  add_index "city_links", ["city_id"], name: "index_city_links_on_city_id"
-  add_index "city_links", ["name"], name: "index_city_links_on_name"
 
   create_table "city_news", force: true do |t|
     t.integer  "city_id"
@@ -91,6 +92,29 @@ ActiveRecord::Schema.define(version: 20140601152736) do
 
   add_index "city_translations", ["city_id"], name: "index_city_translations_on_city_id"
   add_index "city_translations", ["locale"], name: "index_city_translations_on_locale"
+
+  create_table "contact_people", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "city_id"
+    t.integer  "index"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contact_person_translations", force: true do |t|
+    t.integer  "contact_person_id", null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "about"
+    t.string   "team"
+  end
+
+  add_index "contact_person_translations", ["contact_person_id"], name: "index_contact_person_translations_on_contact_person_id"
+  add_index "contact_person_translations", ["locale"], name: "index_contact_person_translations_on_locale"
 
   create_table "event_participants", force: true do |t|
     t.integer  "event_id"
@@ -161,7 +185,7 @@ ActiveRecord::Schema.define(version: 20140601152736) do
   end
 
   create_table "news", force: true do |t|
-    t.boolean  "display"
+    t.boolean  "published"
     t.datetime "release_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -183,6 +207,7 @@ ActiveRecord::Schema.define(version: 20140601152736) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
+    t.boolean  "verified"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -190,7 +215,6 @@ ActiveRecord::Schema.define(version: 20140601152736) do
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true
 
   create_table "subscribers", force: true do |t|
-    t.string   "name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -227,7 +251,7 @@ ActiveRecord::Schema.define(version: 20140601152736) do
     t.integer  "group_id"
     t.string   "album"
     t.datetime "release_date"
-    t.boolean  "enabled"
+    t.boolean  "published"
     t.boolean  "requires_donation"
     t.boolean  "should_send_notification"
     t.integer  "master_id"

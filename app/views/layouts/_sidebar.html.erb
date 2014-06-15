@@ -1,15 +1,15 @@
-
+<h5><%=t(:this_month) %></h5>
 <ul class="nav nav-list">
- 	<li class="nav-header"><%=t(:workshops) +" " + t(:this_month) %></li>
- 		<% @city.workshops.published.this_month.each do |workshop| %>
- 			<%=render workshop %>
- 		<% end %>
+  <% @this_month_workshops.each do |id, name| %>
+    <li> <%= link_to name, workshop_path(id)%> </li>
+  <% end %>
 </ul>
-<% if @city.workshops.published.next_month %>
-<ul class="nav nav-list">	
-	<li class="nav-header"><%=t(:next_month) %></li>
- 		<% @city.workshops.published.next_month.each do |workshop| %>
-			<%=render workshop %>
-		<% end %>
-	</ul>
+<% if (@next_month_workshops.count > 0 ) %>
+  <h5><%=t(:next_month) %></h5>
+  <ul class="nav nav-list">
+    <% @next_month_workshops.each do |id, name| %>
+      <li> <%= link_to name, workshop_path(id)%> </li>
+    <% end %>
+  </ul>
 <% end %>
+

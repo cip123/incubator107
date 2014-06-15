@@ -1,27 +1,23 @@
 require 'spec_helper'
 
-describe "Home Page" do
+describe "root page" do
 
-  subject { page }
-
-  before (:all) do 
-    10.times { FactoryGirl.create(:city) }
+  before  do 
+    10.times do |n|
+      FactoryGirl.create(:city, domain: "domain#{n}") 
+    end 
+    visit "http://lvh.me:3000"
   end
 
-  before(:each) { visit root_path }
-  after(:all) { City.delete_all }
   describe "index" do
 
-    it { should have_title('Incubator107') }
-    it { should have_content('City 1') }
-    it { should have_content('City 2') }
-    it { should have_content('City 3') }
-    it { should have_content('City 4') }
-    it { should have_content('City 5') }
-    it { should have_content('City 6') }
-    it { should have_content('City 7') }
-    it { should have_content('City 8') }
-    it { should have_content('City 9') }
-    it { should have_content('City 10') }
-  end
+    it "should have all the cities" do
+
+      expect(page).to have_title("Incubator107")
+      
+      10.times.each do |n|
+        expect(page).to have_content("City #{n+1}") 
+      end 
+    end
+  end 
 end

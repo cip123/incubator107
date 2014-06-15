@@ -1,6 +1,6 @@
 ro:
   bucharest: București
-  who_are_we: Cine suntem  
+  who_are_we: Cine suntem?
   workshops: Ateliere
   two_percent: 2 %
   collaboration: Colaborări
@@ -9,8 +9,7 @@ ro:
   your_place: Locul tău
   contact: Contact
   what_is_incubator107: Ce e incubator107?
-
-  this_month: Luna asta
+  this_month: Luna aceasta
   next_month: Luna viitoare
   thank_you_for_registering: Vă mulțumim pentru înscriere!
 
@@ -19,12 +18,25 @@ ro:
   click_bravely: Apasă cu curaj 
   here: aici
 
+  home:
+    sign_me_up: Înregistrează-mă 
+  register_to_newsletter: Înscrie-te la newsletter
   signup_blah_blah: înscrie-te şi vino la atelier! Scrie-ne sincer de ce vrei să vii, zi-ne de unde ai auzit de noi și lasă-ne numărul tău de telefon.
 
   from: de la
   to: la
-  all_guilds: Toate breslele
+
+  workshops: Ateliere  
   all_groups: Toate breslele
+
+  what?: Ce ?
+  with_who?: Cu cine?
+  bring_along?: Cu ce?
+  when?: Când?
+  where?: Unde?
+  how?: Cum?
+  who_comes?: Cine vine?
+
   name_and_surname: Nume şi prenume
   email: Email
   phone: Telefon
@@ -34,8 +46,19 @@ ro:
 
   cancel: Renunță
   ready: Gata   
+  please_validate_your_mail_before_registering: Te rugăm sa-ți validezi mailul înainte să te înregistrezi 
+  no_one_subscribe_yet: Nimeni nu s-a înscris încă
+  online_registration: înscriere online
 
+  people_subscribed:
+    zero: Nimeni nu s-a înscris încă 
+    one: O persoană s-a înscris 
+    other: "%{count} persoane s-au înscris"
 
+  verification_email: Email de verificare
+
+  where_can_you_find_us: Unde ne găsești?
+  team: Echipa
 
   datetime: &datetime
     day_names: [Duminică, Luni, Marți, Miercuri, Joi, Vineri, Sâmbată]
@@ -70,3 +93,5 @@ ro:
               invalid: Emailul este invalid
             name:
               blank: Numele nu este completat
+            phone:
+              blank: Telefonul nu este completat

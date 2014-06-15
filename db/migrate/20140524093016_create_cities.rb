@@ -7,6 +7,7 @@ class CreateCities < ActiveRecord::Migration
       t.decimal :donation_student, precision: 8, scale: 2
       t.string :facebook
       t.string :email
+      t.integer :location_id
       t.integer :mailing_list_id
       t.timestamps
     end

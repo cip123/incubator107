@@ -1,0 +1,16 @@
+<h3> <%= t(:where_can_you_find_us) %> </h3>
+
+<div class="row">
+  <div class="col-sm-5">
+    <h4>  <%= @location.name %> </h4>
+    <p> <%= @location.address %> </p>
+  </div>
+  <div class="col-sm-7">
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.lat}%2C#{@location.lng}" %>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-2">  
+      <h3> <%= t(:team) %> </h3>
+    </div>
+  </div>
+  <%= render @contact_people %>

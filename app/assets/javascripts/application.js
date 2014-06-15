@@ -17,4 +17,4 @@
 //= require jquery.turbolinks
 //= require_tree .
 //= require world_flags/url_helper
-
+//= require fullcalendar

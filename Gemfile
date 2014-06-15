@@ -18,7 +18,7 @@ gem 'globalize', '~> 4.0.1 '
 gem 'foreigner'
 gem 'simple_form'
 gem 'launchy', '~> 2.4.2'
-
+gem 'fullcalendar-rails' 
 group :development, :test  do
   gem 'spork-rails', '4.0.0'
   gem 'sqlite3', '1.3.8'

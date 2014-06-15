@@ -2,7 +2,7 @@ class CreateNews < ActiveRecord::Migration
 
   def up
     create_table :news do |t|
-      t.boolean :display
+      t.boolean :published
       t.timestamp :release_date
       t.timestamps
     end

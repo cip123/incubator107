@@ -24,6 +24,11 @@ module Incubator107
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif) 
     #Rails.application.routes.default_url_options[:host] = '???'
 
-    #assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    #assets.precompile += %w(*.png *.jpg *.jpeg *.gif)   
+    config.hosts = {
+      "development" => "lvh.me:3000",
+      "test"        => "incubator107.com",
+      "production"  => "incubator107.com"
+    }
   end
 end

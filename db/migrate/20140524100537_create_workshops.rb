@@ -5,7 +5,7 @@ class CreateWorkshops < ActiveRecord::Migration
       t.integer :group_id
       t.string :album
       t.datetime :release_date
-      t.boolean :enabled
+      t.boolean :published
       t.boolean :requires_donation
       t.boolean :should_send_notification
       t.integer :master_id

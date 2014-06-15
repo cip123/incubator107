@@ -8,7 +8,7 @@ describe City do
   it "should respond to attributes" do
     expect(city).to respond_to(:name)
     expect(city).to respond_to(:email)
-    expect(city).to respond_to(:city_links)
+    expect(city).to respond_to(:article_links)
     expect(city).to respond_to(:news)
 
   end

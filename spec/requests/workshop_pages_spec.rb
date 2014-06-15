@@ -10,7 +10,7 @@ describe "Workshops pages" do
     describe "pagination" do
       before do
         30.times do |n|
-          FactoryGirl.create(:workshop) 
+          FactoryGirl.create(:workshop, city_id: city.id) 
         end
         visit url_for_subdomain :cluj, "/workshops" 
       end
@@ -32,7 +32,7 @@ describe "Workshops pages" do
       before  do
         Workshop.delete_all
         10.times do |n|
-          FactoryGirl.create(:workshop, group_id: 1 + n%5) 
+          FactoryGirl.create(:workshop, group_id: 1 + n%5, city_id: city.id) 
         end
         5.times { FactoryGirl.create(:group) }
         visit url_for_subdomain :cluj, "/workshops" 
@@ -106,6 +106,32 @@ describe "Workshops pages" do
         expect(page).not_to have_content('daca nu va')
       end
     end
+    
+    describe "without participants" do 
+
+      before do
+        visit url_for_subdomain :cluj, workshop_path(workshop.id)
+      end
+
+      it "should display proper message when zero participants" do
+        expect(page).to have_content("Nimeni nu s-a înscris încă")
+      end
+
+    end
+  
+    describe "with participants" do
+      let!(:workshop_participant) { FactoryGirl.create(:workshop_participant, workshop_id: workshop.id) }
+
+      before do 
+        visit url_for_subdomain :cluj, workshop_path(workshop.id)
+      end
+
+      it "should display one participant" do
+        expect(page).to have_content("O persoană s-a înscris")
+      end
+
+    end
+
   end
 end
 

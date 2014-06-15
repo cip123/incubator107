@@ -1,38 +1,35 @@
 Incubator107::Application.routes.draw do
   resources :locations
 
-  get "home/index"
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  #get "home/index"
+  #resources :users
+  #resources :sessions, only: [:new, :create, :destroy]
 
-#  scope "(:locale)", :locale => /en|ro/ do
+  resources :events
+  #  scope "(:locale)", :locale => /en|ro/ do
 
-    scope module: :subdomain do
-      resources :articles
-      resources :workshops
-      match '/calendar', to: 'calendar#show', via: 'get'
-      match '/contact', to: 'home#contact', via: 'get'
-      match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
-    end
-    get "cities/new"
-    get "static_pages/home"
-    get "static_pages/help"
+  scope module: :subdomain do
+  end
+  #get "cities/new"
+  #get "static_pages/home"
+  #get "static_pages/help"
 
+  #match '/signin', to: 'sessions#new', via: 'get'
+  #match '/signout', to: 'sessions#destroy', via: :delete
+  #match '/signup', to: 'users#new', via: 'get'
 
-
-    match '/signin', to: 'sessions#new', via: 'get'
-    match '/signout', to: 'sessions#destroy', via: :delete
-    match '/signup', to: 'users#new', via: 'get'
-
-    constraints(Subdomain) do
-      match '/', to: 'subdomain/home#index', via: 'get'
-
-      match '/subscribe_newsletter', to: 'subdomain/participant#subscribe_newsletter', via: 'get'
-      match '/subscribe_newsletter', to: 'subdomain/participant#subscribe_newsletter', via: 'post'
-
-    end
-    root 'cities#index'
- # end
+  constraints(Subdomain) do
+    resources :articles
+    resources :workshops
+    match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
+    match '/contact', to: "contact#show", via: 'get'
+    match '/', to: 'home#index', via: 'get'
+    match '/calendar', to: 'calendar#show', via: 'get'
+    match '/verify', to: "participant#verify", via: 'get'
+  end
+  match '/subscribe_newsletter', to: 'subscriber#register_newsletter', via: 'post'
+  root to: 'city#index'
+  # end
 
   #root :to =>get "home#index"
 
