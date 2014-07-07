@@ -1,34 +1,50 @@
 Incubator107::Application.routes.draw do
+  get 'password_resets/new'
+
   resources :locations
 
+  #root to: 'city#index'
   #get "home/index"
-  #resources :users
-  #resources :sessions, only: [:new, :create, :destroy]
 
   resources :events
   #  scope "(:locale)", :locale => /en|ro/ do
 
-  scope module: :subdomain do
-  end
+ 
   #get "cities/new"
   #get "static_pages/home"
   #get "static_pages/help"
 
-  #match '/signin', to: 'sessions#new', via: 'get'
-  #match '/signout', to: 'sessions#destroy', via: :delete
-  #match '/signup', to: 'users#new', via: 'get'
+  
 
   constraints(Subdomain) do
     resources :articles
     resources :workshops
+    resources :password_resets
+    resources :sessions, only: [:new, :create, :destroy]
+ 
+    match '/signin', to: 'sessions#new', via: 'get'
+    match '/signout', to: 'sessions#destroy', via: :delete
+    match '/signup', to: 'users#new', via: 'get'
+
+
+    match '/profile/:id', to: 'users#edit_profile', via: 'get', as: "profile"
+    match '/profile/:id', to: 'users#update_profile', via: 'patch'
+
+#    match 'users/:id/edit', to: 'admin/users#edit', via: 'get'
+
+    scope 'admin' do
+      resources :users
+    end
+
+    match '/admin', to: 'admin#home', via: 'get'
     match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
     match '/contact', to: "contact#show", via: 'get'
-    match '/', to: 'home#index', via: 'get'
+    root to: 'home#index'
     match '/calendar', to: 'calendar#show', via: 'get'
-    match '/verify', to: "participant#verify", via: 'get'
+    match '/verify', to: "participant#verify", via: 'get'    
   end
   match '/subscribe_newsletter', to: 'subscriber#register_newsletter', via: 'post'
-  root to: 'city#index'
+
   # end
 
   #root :to =>get "home#index"

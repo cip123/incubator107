@@ -49,7 +49,9 @@ class WorkshopsController < SubdomainController
 
   def index
 
+
     @current_group_name = params[:group_id]? Group.find(params[:group_id]).name : I18n.t(:all_groups)  
+    puts params[:group_id]
 
     if params[:group_id] 
       @workshops = Workshop.where(published: true, group_id: params[:group_id], city_id: @city.id).paginate( page: params[:page])

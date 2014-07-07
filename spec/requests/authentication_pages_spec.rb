@@ -1,97 +1,116 @@
 require 'spec_helper'
 
 describe "Authentication" do
-  subject { page }
+
+  let!(:city) { FactoryGirl.create(:city)}
 
   describe "signin page" do
-    before { visit signin_path }
-
-    it { should have_content('Sign in') }
-    it { should have_title('Sign in') }
-
-  end
-
-  describe "signin" do
-
-    before { visit signin_path }
-
-    describe " with invalid information" do
-      before { click_button "Sign in" }
-
-      it { should have_title('Sign in') }
-      it { should have_selector('div.alert.alert-error') }
+    before { visit url_for_subdomain "cluj", signin_path }
+    it "should have the correct elements" do
+      expect(page).to have_content('Sign in')
+      expect(page).to have_title('Sign in')
     end
   end
 
+  describe " with invalid information" do
+    before do
+      visit url_for_subdomain "cluj", signin_path
+      click_button "Sign in"
+    end
+
+    it "should redirect to the same page when error" do
+      expect(page).to have_title('Sign in')
+      expect(page).to have_selector('div.alert.alert-error')
+    end
+
+  end
+
   describe "with valid information" do
+
     let (:user) { FactoryGirl.create(:user) }
     before { sign_in user }
-    it { should have_title (user.name) }
 
-    it { should have_link('Users',       href: users_path) }
-    it { should have_link('Profile', href:  user_path(user)) }
-    it { should have_link('Settings',    href: edit_user_path(user)) }
-    it { should have_link('Sign out', href: signout_path) }
-    it { should_not have_link('Sign in', href: signin_path) }
+    it "should redirect to the home page" do
+      expect(page).to have_link('Users', href: users_path)
+      expect(page).to have_link('Profile', href:  user_path(user))
+      expect(page).to have_link('Settings', href: edit_user_path(user))
+      expect(page).to have_link('Sign out', href: signout_path)
+      expect(page).not_to have_link('Sign in', href: signin_path)
+    end
 
     describe "followed by signout" do
       before { click_link "Sign out" }
-      it { should have_link('Sign in') }
+      it "should redirect to the admin page" do
+        expect(page).to have_link('Sign in')
+      end
     end
   end
 
   describe "authorization" do
+
     describe "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+
+      let!(:user) { FactoryGirl.create(:user) }
 
       describe "when attempting to visit a protected page" do
+
         before do
-          visit edit_user_path(user)
+          visit url_for_subdomain "cluj", edit_user_path(user)          
           fill_in "Email",    with: user.email
           fill_in "Password", with: user.password
           click_button "Sign in"
         end
 
-        describe "after signing in" do
-          it "should render the desired protected page" do
-            expect(page).to have_title('Edit user')
-          end
+        it "should render the desired protected page" do
+          expect(page).to have_title('Admin')
         end
       end
 
-      describe "in the Users controller" do
-        describe "visiting the edit page" do
-          before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
+      describe "in the users controller" do
+
+        it "should redirect to root_path when visiting the edit page" do
+          visit url_for_subdomain "cluj", edit_user_path(user)
+          expect(page).to have_title('Sign in')
         end
 
-        describe "submitting to the update action" do
-          before { patch user_path(user) }
-          specify { expect(response).to redirect_to(signin_path) }
+        it "should redirect to admin home when submitting to the update action" do
+          patch url_for_subdomain "cluj", user_path(user)
+          expect(response).to redirect_to(signin_path)
         end
 
-        describe "visiting the user index" do
-          before { visit users_path }
-          it { should have_title('Sign in') }
+        it "should redirect to admin home visiting the user index" do
+          visit url_for_subdomain "cluj", users_path
+          expect(page).to have_title('Sign in')
         end
-
       end
     end
+  end
 
-    describe "as wrong user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-      before { sign_in user, no_capybara: true }
 
-      describe "submitting a GET request to the Users#edit action" do
-        before { get edit_user_path(wrong_user) }
-        specify { expect(response.body).not_to match(full_title('Edit user')) }
-        specify { expect(response).to redirect_to(root_path) }
+    describe "as an admin for a different city" do
+      
+      before do        
+        FactoryGirl.create(:city, domain: "brasov")
+        @cluj_user = FactoryGirl.create(:local_admin_user) 
+        sign_in @cluj_user, no_capybara: true
+     end
+
+      it "should redirect to sign in path when visiting another admin section" do
+
+        get url_for_subdomain "brasov", edit_user_path(@cluj_user)   
+        expect(response.body).not_to match(full_title('Edit user')) 
+        expect(response).to redirect_to signin_path
       end
 
       describe "submitting a PATCH request to the Users#update action" do
-        before { patch user_path(wrong_user) }
-        specify { expect(response).to redirect_to(root_path) }
+        before do 
+          wrong_user = FactoryGirl.create(:user)
+          patch user_path(wrong_user) 
+        end
+
+        it "should redirect to the signin path" do
+         expect(response).to redirect_to(signin_path) 
+        end
       end
     end
 
@@ -101,15 +120,15 @@ describe "Authentication" do
 
       before { sign_in non_admin, no_capybara: true }
 
-      describe "submitting a DELETE request to the Users#destroy action" do
-        before { delete user_path(user) }
-        specify { expect(response).to redirect_to(root_path) }
+      it "should redirect to the root path when submitting a DELETE request to the Users#destroy action" do
+        delete user_path(user)
+        expect(response).to redirect_to(root_path)
       end
     end
 
 
 
-  end
+  # end
 
 
 

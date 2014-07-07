@@ -6,7 +6,7 @@
     <p> <%= @location.address %> </p>
   </div>
   <div class="col-sm-7">
-    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.lat}%2C#{@location.lng}" %>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
   </div>
   <div class="row">
     <div class="col-sm-3 col-sm-offset-2">  

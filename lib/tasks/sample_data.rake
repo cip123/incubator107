@@ -254,7 +254,7 @@ namespace :db do
         release_date: DateTime.now
     )
 
-    City.create!(name: 'Cluj',
+    cluj = City.create!(name: 'Cluj',
                  domain: 'cluj',
                  email: 'cluj@incubator107.com',
                  location_id: 1,
@@ -345,8 +345,8 @@ namespace :db do
       city_id: 1,
       name: "CLUJ HUB",
       address: "str.Pitesti, nr. 19, Cluj-Napoca", 
-      lat: 46.7739040,
-      lng: 23.5994550
+      latitude: 46.7739040,
+      longitude: 23.5994550
     )
 
     ArticleLink.create!( alias: 'about',
@@ -396,7 +396,6 @@ namespace :db do
     end
 
     100.times do |n|
-
       Event.create!(
         start_date: DateTime.now.at_beginning_of_month + rand(40).days + rand(24).hours,
         workshop_id: 1+ n%30,
@@ -404,5 +403,24 @@ namespace :db do
         location_id: 1
       )
     end
+
+
+    User.create!(
+      name: "super",
+      email: "super@incubator107.com",
+      password: "abcd3f",
+      password_confirmation: "abcd3f",
+      role: User.roles[:super_admin]
+
+    )
+
+    cluj.users.create!(
+      name: "local",
+      email: "local@incubator107.com",
+      password: "abcd3f",
+      password_confirmation: "abcd3f",
+      role: User.roles[:local_admin]
+    )
+
   end
 end

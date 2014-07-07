@@ -2,9 +2,9 @@ WorldFlags.config do |c|
   c.auto_select!
 
 
-  c.flag_list_tag = :div
-  c.flag_tag = :span
-  c.flag_text = ''
+  # c.flag_list_tag = :div
+  # c.flag_tag = :span
+  # c.flag_text = ''
 
 
   #c.available_locales = [:ro, :en]

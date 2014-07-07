@@ -3,9 +3,7 @@ class HomeController < SubdomainController
 
     @subscriber = Subscriber.new
 
-    last_news = @city.news.last
-    @last_news_title = last_news.title
-    @last_news_text = last_news.text
+    @last_news = @city.news.last
 
     if (Time.now.mday.to_i <= 20 ) 
       time_range = Date.today.at_beginning_of_month..Date.today.end_of_month  

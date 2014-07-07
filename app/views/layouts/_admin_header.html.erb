@@ -1,0 +1,35 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Incubator 107 #{@city.name}", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+          <%= flag_list 24, style: "padding-top: 15px; padding-bottom: 15px; ", class: "glyphicon-align-center"  do %>          
+            <%= flag :ro, :title => 'romanian', :with_semi => true %>
+            <%= flag :gb, :title => 'english', :locale  => :en,  :with_semi => true %>
+          <% end %>
+</li>
+     
+          <% if signed_in? %>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Users", users_path %></li>
+                <li><%= link_to "Settings", profile_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="active"><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

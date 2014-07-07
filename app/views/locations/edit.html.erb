@@ -1,6 +1,45 @@
-<h1>Editing location</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+<% provide :title, @location.name %>
+<div class="row">
+  <div class="col-md-9 col-md-offset-1">
+    <fieldset>
+      <legend>Edit location</legend>
+      <%= simple_form_for @location,  html: { class: "form-horizontal" } do |f|  %>
+        <% if @location.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@location.errors.count, "error") %>
+              prohibited this location from being saved:</h2>
+            <ul>
+              <% @location.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-group ">
+          <%= f.label :name, class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <%= f.text_field :name, class: "form-control"  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :address, class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <%= f.text_field :address, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-3">
+            <%= f.submit "Save changes", class: "btn btn-sm" %>
+          </div>
+        </div>
+      <% end %>
+      <%= button_to "Delete location", @location, method: :delete, data: {:confirm => "Are you sure you want to delete #{@location.name}?"}, class: "btn btn-sm btn-danger pull-right" %>
+    </fieldset>
+  </div>
+</div>

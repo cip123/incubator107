@@ -17,7 +17,7 @@ class Workshop < ActiveRecord::Base
     next_month_workshops = ActiveSupport::OrderedHash.new 
 
     entries.each do |entry|
-      if ( Date.parse(entry[2]) < Date.today.end_of_month) 
+      if ( entry[2] <= Date.today.end_of_month ) 
         this_month_workshops[entry[0]] = entry[1] unless this_month_workshops[entry[0]].present?
       else
         next_month_workshops[entry[0]] = entry[1] unless next_month_workshops[entry[0]].present?
@@ -31,7 +31,7 @@ class Workshop < ActiveRecord::Base
   private
   def self.retrieve_records time_range, locale
 
-    entries = Workshop.joins(:events, :translations).where(published: true, workshop_translations: {locale: locale }, events: { start_date: time_range } ).order("events.start_date").pluck(:id, :name, :start_date)
+    Workshop.joins(:events, :translations).where(published: true, workshop_translations: {locale: locale }, events: { start_date: time_range } ).order("events.start_date").pluck(:id, :name, :start_date)
 
   end
 

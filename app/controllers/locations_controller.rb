@@ -1,10 +1,14 @@
-class LocationsController < ApplicationController
+class LocationsController < AdminController
+  
+   before_action :admin_user
+
+
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    @locations = Location.paginate( page: params[:page])
   end
 
   # GET /locations/1
@@ -14,7 +18,8 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
-    @location = Location.new
+    @location = @city.locations.new
+
   end
 
   # GET /locations/1/edit
@@ -25,30 +30,24 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-
-    respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @location }
+          flash[:success] = 'Location was successfully created.' 
+          redirect_to locations_url
       else
-        format.html { render action: 'new' }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        render action: 'new' 
       end
-    end
   end
 
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
-    respond_to do |format|
+      
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { head :no_content }
+        flash[:success] ='Location was successfully updated.' 
+        redirect_to locations_url         
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        render action: 'edit' 
       end
-    end
   end
 
   # DELETE /locations/1
@@ -69,6 +68,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params[:location]
+     params.require(:location).permit(:name, :address, :description, :lat, :lng)
     end
 end

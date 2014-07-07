@@ -1,25 +1,23 @@
-<h1>Listing locations</h1>
+<% provide(:title, 'Locations') %>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<h3 class="text-center">Listing locations</h3>
 
-  <tbody>
+  <a href="<%= new_location_path %>">
+  <button type="button" class="btn btn-link">
+    <span class="glyphicon glyphicon-plus-sign"></span> Add new location
+  </button>
+</a>
+
+
+
+<div class="list-group">
+  <%= will_paginate %>
     <% @locations.each do |location| %>
-      <tr>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <a href="<%= edit_location_path(location) %>" class="list-group-item">
+      <h4 class="list-group-item-heading"><%= location.name %></h4>
+      <p class="list-group-item-text"><%= location.address.blank? ? "  N/A  ": location.address %></p>
+    </a>
     <% end %>
-  </tbody>
-</table>
+    <%= will_paginate %>
+</div>
 
-<br>
-
-<%= link_to 'New Location', new_location_path %>

@@ -4,8 +4,8 @@ describe "contact page" do
 
 
   before  do
-    FactoryGirl.create(:location) 
-    city  = FactoryGirl.create(:city_with_links) 
+    location = FactoryGirl.create(:location) 
+    city  = FactoryGirl.create(:city_with_links, location_id: location.id) 
     5.times do |n|
       FactoryGirl.create(:contact_person, city_id: city.id)
     end

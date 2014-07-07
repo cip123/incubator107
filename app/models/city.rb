@@ -2,12 +2,15 @@ class City < ActiveRecord::Base
   translates :name, :donation_alternative
 
   has_many :article_links
+  has_many :city_admins
   has_many :city_news
   has_many :news, :through => :city_news, source: :news
   has_many :events, :through => :workshops
   has_one :mailing_list
   has_many :workshops
+  has_many :locations
   has_many :contact_persons
+  has_and_belongs_to_many :users
   
   before_save { self.email = email.downcase }
 

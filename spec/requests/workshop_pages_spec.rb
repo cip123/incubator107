@@ -31,15 +31,19 @@ describe "Workshops pages" do
     describe "group dropdown" do
       before  do
         Workshop.delete_all
-        10.times do |n|
-          FactoryGirl.create(:workshop, group_id: 1 + n%5, city_id: city.id) 
+        5.times do 
+          group = FactoryGirl.create(:group)
+
+          2.times do 
+            FactoryGirl.create(:workshop, group_id: group.id, city_id: city.id) 
+          end
         end
-        5.times { FactoryGirl.create(:group) }
+
         visit url_for_subdomain :cluj, "/workshops" 
       end
 
       it "should have default the correct values" do
-        expect(page).to have_content I18n.t(:all_guilds)
+        expect(page).to have_content I18n.t(:all_groups)
         Group.all.each do |group|
           expect(page).to have_content(group.name)
         end
@@ -47,16 +51,17 @@ describe "Workshops pages" do
 
       describe "when selecting a group" do
         before do
-          click_button I18n.t(:all_guilds)
+          click_button I18n.t(:all_groups)
+          puts Group.first.name
           click_link Group.first.name
         end
 
         it "should list only the workshops for that group" do
-          #save_and_open_pageUser.limit(1).offset(3).first
+
           within('div #workshops') do |ref|
             expect(page).to have_content(Workshop.first.name)
-            expect(page).to have_content(Workshop.limit(1).offset(5).first.name)
-            expect(page).not_to have_content(Workshop.limit(1).offset(1).first.name)
+            expect(page).to have_content(Workshop.limit(1).offset(1).first.name)
+            expect(page).not_to have_content(Workshop.limit(1).offset(2).first.name)
           end
         end
       end

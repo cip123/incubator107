@@ -3,8 +3,8 @@ class CreateLocations < ActiveRecord::Migration
     create_table :locations do |t|
       t.integer :city_id
       t.string :url
-      t.decimal :lat, precision: 15, scale: 10
-      t.decimal :lng, precision: 15, scale: 10
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

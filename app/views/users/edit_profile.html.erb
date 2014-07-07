@@ -1,0 +1,33 @@
+<% provide(:title, "Update your profile") %>
+<div class="row">
+  <div class="col-md-5 col-md-offset-2">
+    <h3>
+      Update your profile
+    </h3>
+    <%= simple_form_for @user, :url => profile_path(@user)  do |f| %>
+      <%= render 'shared/error_messages' %>
+      <div class="form-group ">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Save changes", class: "btn btn-sm btn-primary form-control" %>
+      </div>
+    
+    <% end %>
+ <%= button_to "Delete account", @user, method: :delete, data: {:confirm => "Are you sure you want to delete #{@user.name}?"}, class: "btn btn-sm btn-danger" %>
+  </div>
+
+</div>

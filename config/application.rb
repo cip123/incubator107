@@ -27,7 +27,7 @@ module Incubator107
     #assets.precompile += %w(*.png *.jpg *.jpeg *.gif)   
     config.hosts = {
       "development" => "lvh.me:3000",
-      "test"        => "incubator107.com",
+      "test"        => "lvh.me:3001",
       "production"  => "incubator107.com"
     }
   end

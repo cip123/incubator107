@@ -11,7 +11,6 @@ FactoryGirl.define do
     donation_alternative "<p>daca <b>nu</b> va</p>" 
     factory (:city_with_links) do
        after (:create) do |city, evaluator|
-        
         create(:city_news, news_id: create(:news, title: "Last news").id, city_id: city.id )        
         create(:article_link, alias: 'about', city_id: city.id )        
         create(:article_link, alias: 'collaboration', city_id: city.id )
@@ -23,7 +22,6 @@ FactoryGirl.define do
         create(:workshop, name: 'inactive workshop', city_id: city.id )
         create(:workshop, name: 'old workshop', city_id: city.id, published: 1, release_date: 1.month.ago )
         create(:workshop, name: 'next month workshop', city_id: city.id, published: 1, release_date: 1.month.from_now )
-
       end
     end
 
@@ -114,5 +112,36 @@ FactoryGirl.define do
     display 0
     reason "decembrie"
   end
+
+
+  factory :user do
+    sequence(:name) { |n| "user #{n}" }
+    sequence(:email) { |n| "email#{n}@example.com" }
+    password "foobar"
+    password_confirmation "foobar"
+    role 0
+  end
+
+  factory :super_admin_user, class: User do
+    name "Super User" 
+    email "super@example.com"
+    password "foobar"
+    password_confirmation "foobar"
+    role 1
+  end
+
+  factory :local_admin_user, class: User do
+    sequence(:name) { |n| "local #{n}" }
+    sequence(:email) { |n| "local#{n}@example.com" }
+    password "foobar"
+    password_confirmation "foobar"
+    role 2
+  end
+
+  factory :city_admin do
+    city_id 1
+    user_id 2
+  end
+
 
 end

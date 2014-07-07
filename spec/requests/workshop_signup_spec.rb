@@ -116,5 +116,5 @@ describe "sign up to workshop" do
     end
   end
 
-end
+end
 

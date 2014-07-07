@@ -12,6 +12,8 @@
  *= require_tree .
  *= require flags/basic
  *= require flags/flags16
+ *= require flags/flags24
  *= require flags/flags32
  *= require fullcalendar
+ *= require bootstrap-wysihtml5
  */

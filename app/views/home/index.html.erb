@@ -7,38 +7,36 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
-
 <% provide(:title, "incubator107 #{@city.name}" ) %>
 <div id="fb-root"></div>
-
 <div class="row">
   <div class="col-sm-12">
     <div id="small-calendar"></div>
     <br/>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-sm-8">
-    <h4><%= @last_news_title %></h4>
-    <% if @last_news_text.length > 1000 %>
-      <%= truncate(@last_news_text, length: 1000, :escape => false) %>
-      <%= link_to_function '...Read more', "$(this).parent().html('#{escape_javascript @last_news_text}')" %>
-    <% else %>
-      <%= @last_news_text.html_safe %>
-    <% end %>
+<% unless @last_news.nil? %>
+  <div class="row">
+    <div class="col-sm-8">
+      <h4><%= @last_news.title %></h4>
+      <% if @last_news.text.length > 1000 %>
+        <%= truncate(@last_news.text, length: 1000, :escape => false) %>
+        <%= link_to '...Read more', "$(this).parent().html('#{escape_javascript @last_news.text}')" %>
+      <% else %>
+        <%= @last_news.text.html_safe %>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <%= image_tag("nocturna_cluj.jpg") %>
+    </div>
   </div>
-  <div class="col-sm-4">
-    <%= image_tag("nocturna_cluj.jpg") %>  
-  </div>
-</div>
-
+<% end %>
 <div class="row">
   <div class="col-sm-8">
     <h5><%=t(:register_to_newsletter) %></h5>
     <%= form_for( @subscriber, url: {controller: "/subscriber", action: "register_newsletter"}, remote: true) do |f| %>
-      <p><%= f.text_field :email,  autofocus: true, placeholder: 'Email' %> 
-      <%= f.submit t("home.sign_me_up"), class: "btn btn-sm btn-primary" %></p>
+      <p><%= f.text_field :email,  autofocus: true, placeholder: 'Email' %>
+        <%= f.submit t("home.sign_me_up"), class: "btn btn-sm btn-primary" %></p>
     <% end %>
   </div>
   <div class="col-sm-4">
