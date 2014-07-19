@@ -8,15 +8,15 @@ gem "koala", "~> 1.10.0rc"
 gem 'world-flags', '0.6.5'
 gem 'active_link_to'
 gem 'geocoder'
-gem 'bootstrap-wysihtml5-rails'
+
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'just-datetime-picker'
 
 gem 'devise'
 
 gem 'capistrano', '~> 3.2.0'
-
-#gem 'jquery-ui-rails', '~> 4.2.1'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rvm'
 
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 
@@ -64,7 +64,7 @@ group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
-gem 'pg', '0.17.1'
+gem 'pg', '0.15.1'
 group :production do
   gem 'rails_12factor', '0.0.2'
 end

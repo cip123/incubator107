@@ -10,6 +10,8 @@ set :repo_url, 'https://github.com/cip123/incubator107.git'
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
 
+set :use_sudo, true
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -40,6 +42,8 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
+      execute "sudo service httpd restart"      
+      #puts checkmark.gsub(/\\u[\da-f]{4}/i) { |m| [m[-4..-1].to_i(16)].pack('U') }.green
       # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
