@@ -95,3 +95,6 @@ ro:
               blank: Numele nu este completat
             phone:
               blank: Telefonul nu este completat
+  time:
+    formats:
+      long: "%d %B %Y"

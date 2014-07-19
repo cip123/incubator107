@@ -5,4 +5,9 @@ class Participant < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :name, presence: true, length: { maximum: 50 }
   validates :phone, presence: true, length: { maximum: 50 }
+  has_many :workshop_participants
+  has_many :workshops, :through => :workshop_participants
+
+  accepts_nested_attributes_for :workshop_participants, :allow_destroy => true
+
 end

@@ -2,8 +2,18 @@ class Workshop < ActiveRecord::Base
   translates :name, :description, :with_whom, :bring_along, :whereabouts, :notification, :donation
   has_many :events
   has_many :workshop_participants
+  has_many :participants, :through => :workshop_participants
+
+  belongs_to :city
+  belongs_to :group
   validates :city_id, presence: true 
   default_scope -> {includes :translations}
+
+  just_define_datetime_picker :release_date
+
+
+  accepts_nested_attributes_for :events
+  accepts_nested_attributes_for :participants
 
   def self.published time_range 
     entries = retrieve_records(time_range, I18n.locale)

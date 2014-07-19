@@ -79,6 +79,7 @@ describe "Workshops pages" do
       end
 
       it "should display all the fields" do      
+        save_and_open_page
         expect(page).to have_content("descriptiontest")
         expect(page).to have_content("requisitetest")
         expect(page).to have_content("mastertest")
@@ -87,7 +88,6 @@ describe "Workshops pages" do
         expect(page).to have_content('donationtest')
         expect(page).to have_content(I18n.t(:signup_is_online))
         expect(page).to have_content(I18n.t(:signup_blah_blah))
-        expect(page).to have_content('daca nu va')
       end
     end
     

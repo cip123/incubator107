@@ -9,11 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require custom
+ *= require scaffolds
  *= require flags/basic
  *= require flags/flags16
  *= require flags/flags24
  *= require flags/flags32
  *= require fullcalendar
- *= require bootstrap-wysihtml5
+ *= require workshop
+
  */

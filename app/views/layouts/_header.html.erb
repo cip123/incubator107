@@ -7,13 +7,13 @@
     <div class="navbar-header">
       <div class="navbar-inner">
         <ul class="nav nav-pills" >
-          <li><a href="<%= article_path(@article_links["about"])%>"><%=I18n.t(:who_are_we)%></a></li>
+          <li><a href="<%= @about_path %>"><%=I18n.t(:who_are_we)%></a></li>
           <li><a href="<%= workshops_path%>"><%=I18n.t(:workshops)%></a></li>
           <li><a href="<%= calendar_path%>"><%=I18n.t(:calendar)%></a></li>
-          <li><a href="<%= article_path(@article_links["collaboration"])%>"><%=I18n.t(:collaboration)%></a></li>
-          <li><a href="<%= article_path(@article_links["your_place"])%>"><%=I18n.t(:your_place)%></a></li>
-          <li><a href="<%= article_path(@article_links["friends"])%>"><%=I18n.t(:friends)%></a></li>
-          <li><a href="<%= article_path(@article_links["two_percent"])%>"><%=I18n.t(:two_percent)%></a></li>
+          <li><a href="<%= @collaboration_path %>"><%=I18n.t(:collaboration)%></a></li>
+          <li><a href="<%= @your_place_path %>"><%=I18n.t(:your_place)%></a></li>
+          <li><a href="<%= @friends_path %>"><%=I18n.t(:friends)%></a></li>
+          <li><a href="<%= @two_percent_path %>"><%=I18n.t(:two_percent)%></a></li>
           <li><a href="<%= contact_path%>"><%=I18n.t(:contact)%></a></li>
         </ul>
       </div>

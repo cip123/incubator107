@@ -20,6 +20,9 @@ module Incubator107
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ro
     config.i18n.fallbacks = true
+    config.i18n.fallbacks = [:ro]
+    I18n.reload!
+    
     config.autoload_paths += %W(#{config.root}/lib)
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif) 
     #Rails.application.routes.default_url_options[:host] = '???'

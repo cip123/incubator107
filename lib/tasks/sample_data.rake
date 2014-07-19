@@ -9,7 +9,7 @@ namespace :db do
     #                       )
     about_article = Article.new(
       title: "Ce e incubator107?",
-      text: %{
+      content: %{
         <p><span>incubator107 este locul &icirc;n care oricine poate &icirc;nvăța pe oricine orice. Vrem să &icirc;i &icirc;ncurajăm pe oameni să descopere pasiunile și să &icirc;și urmeze vocația, fără să uite desigur să &icirc;mpărtășească cu ceilalți tot ce au descoperit! <span>incubator107 este un proiect al asociației culturale Macaz. Așteptăm propuneri de ateliere inedite, personale și cu suflet din orice domeniu al vieții de-după-birou. Meșterii noștri pot fi pasionați, inițiați sau experți. Funcționăm din donațiile &icirc;nvățăceilor pe care le &icirc;mpărțim &icirc;n trei - spre meșteri, facturi &amp; materialele pentru ateliere și echipa incubator107.&nbsp;</span><br /><br /><span>Fiecare lună &icirc;ncepe cu c&acirc;te o No</span><span class="text_exposed_show">cturnă unde experimentăm r&acirc;nd pe r&acirc;nd toate atelierele din luna ce urmează. Invitații noștri vin cu merinde făcute &icirc;n casă, trec din experiență &icirc;n experiență și se &icirc;nscriu la atelierele care i-au convins. La răsărit de soare avem c&acirc;ntare și cafea la oală.<br /><br />incubator107 a pornit &icirc;n mansarda unei case &icirc;n aprilie 2011 și pentru că noi credem că e nevoie de un incubator &icirc;n fiecare oraș, am pornit caravana prin Rom&acirc;nia. Am găsit &icirc;n Iași (din aprilie 2012), Cluj (din mai 2012), Timișoara (din iulie 2012), Brașov (din octombrie 2012), Oradea (aprilie 2013), Craiova (din ianuarie 2014) și Sibiu (din martie 2014) echipe descurcărețe care au pornit incubator107 la ei &icirc;n oraș. Dacă ești din alt oraș și crezi că poți coordona un incubator, cheamă-ne!</span></span></p>
         <p>&nbsp;</p>
         <p><iframe src="http://www.youtube.com/embed/LbeYQuxQw70" frameborder="0" width="560" height="315"></iframe></p>
@@ -24,7 +24,7 @@ namespace :db do
     about_article.translation_for(:en).title =
       Globalize.with_locale(:en) do
       about_article.title = "What is incubatod107?"
-      about_article.text = %{
+      about_article.content = %{
         <p>incubator107 is the place where anyone can learn and teach anybody anything. The main values of incubator107 are: non formal education, community and passion.</p>
         <p>As a project of Macaz Association, incubator107 encourages people from the local community to discover their passions and to follow their calling. Passionate people from the community take courage and decide to share their hobbies, skills and talents. Each month incubator107 launches a new set of 10-12 different workshops with meetings for each day. The new workshops are launched at the beginning of the month with an opening event, where we also throw concerts, performances or demonstrations.</p>
         <p>The project is self-sustainable through donations of the participants and the time donated by the volunteers. The donations are split in 3: one part goes to the trainer, one to the project (that covers materials and utility costs for the space) and one part for the organizing team.</p>
@@ -45,7 +45,7 @@ namespace :db do
 
     collaboration_article = Article.create!(
       title: "Colaborări",
-      text: %{
+      content: %{
         <p><span style="font-size: small;"><strong><span lang="RO">PROGRAMUL DE DESCOPERIRE A PASIUNILOR</span></strong></span></p>
         <p><span lang="RO">Programul este g&acirc;ndit pentru angajații companiilor cărora le pasă de angajații lor. Dacă echipa ta pare plictisită, nemulțumită și cam sedentară, echipa noastră de meșteri &icirc;i ajută să-și redescopere creativitatea, inventivitatea, spiritul de echipă, dorința de a primi provocări și de a se redescoperi.</span></p>
         <p><span lang="RO">&Icirc;n fiecare lună venim cu un maraton de ateliere din cele 6 bresle creative și vă punem la experimentat, căutat și macerat.</span></p>
@@ -61,7 +61,7 @@ namespace :db do
 
     your_place_article = Article.create!(
       title: "Locul tău",
-      text: %{
+      content: %{
         <h3 class="odd">POȚI FI MEȘTER</h3>
         <p>Ești un&nbsp;<span class="even">pasionat</span>&nbsp;<strong><span class="odd">priceput</span></strong>&nbsp;sau un<span class="even">&nbsp;priceput&nbsp;</span><strong><span class="odd">pasionat</span></strong>&nbsp;și vrei să devii<strong><span class="odd">&nbsp;și&nbsp;</span></strong>mai&nbsp;<span class="even"><strong>și&nbsp;</strong></span>&icirc;nvăț&acirc;ndu-i pe alții? Așteptăm propuneri de ateliere pentru: comunitatea noastră t&acirc;nără și frumoasă, copii și străini (ateliere &icirc;n limba engleză sau franceză).&nbsp;Atelierele pot avea o durată de cel mult o lună.&nbsp;Nu&nbsp;te da cotit&nbsp;şi trimite-ne propunerea ta de atelier la <a href="mailto:mesteri@incubator107.com">mesteri@incubator107.com</a>.</p>
         <h3 class="odd">POȚI FI ARTIST</h3>
@@ -80,7 +80,7 @@ namespace :db do
 
     friends_article = Article.create!(
       title: "Prieteni",
-      text: %{
+      content: %{
         <div id="accordion">
         <h2 class="odd">&#160;RFI</h2>
         <div>
@@ -214,7 +214,7 @@ namespace :db do
 
     two_percent_article = Article.create!(
       title: "2%",
-      text: %{
+      content: %{
         <div class="entry-content">
         <p><span class="even">incubator</span><strong><span class="odd">107</span></strong> este un proiect al Asociaţiei Culturale <span style="color: #82c639;"><strong>Macaz</strong></span>, asociaţie non-profit (ONG). Dacă doriţi să susţineţi atelierele noastre, mai jos aveţi coordonatele noastre.<br /> Mulţumim!</p>
         <p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
@@ -243,43 +243,40 @@ namespace :db do
       }
     )
 
-    News.create!(
-      title: 'Nocturna "Punguța cu 2 ani"',
-      text: %{
-            <p>&Icirc;nvățăcei, meșteri și ucenici haideți să sărbătorim 2 ani de Incubator107 &icirc;n Cluj. Ne vedem &icirc;n data de 17 mai, &icirc;ncep&acirc;nd cu ora 20:00, la Cluj Hub (Pitești nr. 19).</p>
-            <p>Năzdrăvanul ucenic<br />De meșter acum a fugit, <br />Ce nu era al lui, acum este<br />Asemenea pățaniei din poveste!</p>
-            <p>Ce se află &icirc;n punguță, vă-ntrebați? <br />- rememorăm 2 anișori de incubator clujean;<br />- ne arătați c&acirc;te un lucrușor incubatoricesc meșterit de voi la ateliere;<br />- trecem țanțoș prin atelierele lunii mai: <br />&bull; aflăm despre ce &icirc;nseamnă cu adevărat parkour (meșter Andrei Tompa), <br />&bull; confecționăm Puppets și ne jucăm in the mirror cu Elisa Sarchi, <br />&bull; &icirc;nvățăm să stăm corect la lucru și acasă (ergonomie) și aflăm despre tehnica masajului ( meșteri Daniel Scuturici și Daniela Urs),<br />&bull; brodăm cu Smaranda Chereches, <br />&bull; meșteșugim stickere cu Alex Lazăr și Rus Vlad,<br />&bull; aflăm cum să facem o campanie pentru o cauză cu Victor Miron.<br />- ne bucurăm de mini-spectacolul celor de la Teatru de improvizatie &ndash; ACTitudine<br />- c&acirc;ntare cu Andi (Toy Machines), Floppy &amp; Alex</p>
-            <p>Nu uita să ne aduci și tu z&acirc;mbete, povești incubatoricești, merinde pentru masa noastră de bucate și 20 de galbeni ca să ne ajuți Incubatorul să crească.</p>
-      },
-        release_date: DateTime.now
-    )
 
-    cluj = City.create!(name: 'Cluj',
-                 domain: 'cluj',
-                 email: 'cluj@incubator107.com',
-                 location_id: 1,
-                 mailing_list_id: 1,
-                 donation: 10,
-                 facebook: 'incubator107Cluj',
-                 donation: 10, 
-                 donation_alternative: %{
+
+    cluj = City.create!(
+                name: 'Cluj',
+                domain: 'cluj',
+                email: 'cluj@incubator107.com',
+                default_location_id: 1,
+                mailing_list_id: 1,
+                facebook: 'incubator107Cluj',
+                donation_text: %{
+                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
                   Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor, să atragem sponsorizări
-    }
+                }
                 )
 
     City.create!(name: (I18n.t 'bucharest'),
                  domain: 'bucuresti',
                  email: 'bucuresti@incubator107.com',
                  mailing_list_id: 2,
-                 donation: 30,
                  facebook: 'incubator107'
 
                 )
 
-    CityNews.create!( 
-                     city_id: 1,
-                     news_id: 1
-                    )
+        News.create!(
+      title: 'Nocturna "Punguța cu 2 ani"',
+      content: %{
+            <p>&Icirc;nvățăcei, meșteri și ucenici haideți să sărbătorim 2 ani de Incubator107 &icirc;n Cluj. Ne vedem &icirc;n data de 17 mai, &icirc;ncep&acirc;nd cu ora 20:00, la Cluj Hub (Pitești nr. 19).</p>
+            <p>Năzdrăvanul ucenic<br />De meșter acum a fugit, <br />Ce nu era al lui, acum este<br />Asemenea pățaniei din poveste!</p>
+            <p>Ce se află &icirc;n punguță, vă-ntrebați? <br />- rememorăm 2 anișori de incubator clujean;<br />- ne arătați c&acirc;te un lucrușor incubatoricesc meșterit de voi la ateliere;<br />- trecem țanțoș prin atelierele lunii mai: <br />&bull; aflăm despre ce &icirc;nseamnă cu adevărat parkour (meșter Andrei Tompa), <br />&bull; confecționăm Puppets și ne jucăm in the mirror cu Elisa Sarchi, <br />&bull; &icirc;nvățăm să stăm corect la lucru și acasă (ergonomie) și aflăm despre tehnica masajului ( meșteri Daniel Scuturici și Daniela Urs),<br />&bull; brodăm cu Smaranda Chereches, <br />&bull; meșteșugim stickere cu Alex Lazăr și Rus Vlad,<br />&bull; aflăm cum să facem o campanie pentru o cauză cu Victor Miron.<br />- ne bucurăm de mini-spectacolul celor de la Teatru de improvizatie &ndash; ACTitudine<br />- c&acirc;ntare cu Andi (Toy Machines), Floppy &amp; Alex</p>
+            <p>Nu uita să ne aduci și tu z&acirc;mbete, povești incubatoricești, merinde pentru masa noastră de bucate și 20 de galbeni ca să ne ajuți Incubatorul să crească.</p>
+      },
+        release_date: DateTime.now,
+        city_id: 1
+    )
       
     5.times do |n| 
       ContactPerson.create!(
@@ -403,6 +400,21 @@ namespace :db do
         location_id: 1
       )
     end
+
+    MailingList.create!(
+      name: "Newsletter Bucuresti",
+    )
+
+    MailingList.create!(
+      name: "Newsletter Cluj",
+    )
+
+
+    AdminUser.create!(
+        email: 'admin@example.com', 
+        password: 'password', 
+        password_confirmation: 'password'
+    )
 
 
     User.create!(

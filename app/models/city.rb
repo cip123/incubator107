@@ -1,13 +1,17 @@
 class City < ActiveRecord::Base
-  translates :name, :donation_alternative
+  translates :name, :donation_text
+
+  belongs_to :default_location, class_name: "Location"
 
   has_many :article_links
-  has_many :city_admins
-  has_many :city_news
-  has_many :news, :through => :city_news, source: :news
+  has_many :contact_people
+  has_many :news
   has_many :events, :through => :workshops
-  has_one :mailing_list
+  
+  belongs_to :mailing_list
+  
   has_many :workshops
+
   has_many :locations
   has_many :contact_persons
   has_and_belongs_to_many :users
@@ -18,13 +22,9 @@ class City < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true, length: { maximum: 50 }
-  validates :domain, presence: true, length: { maximum: 10 }
   validates :mailing_list_id, presence: true
   validates :facebook, presence: true
 
-  validates_numericality_of :donation, :greater_than_or_equal_to => 0 
+  default_scope -> {includes :translations}
   
-  def article_links
-    City.joins(:article_links).pluck(:alias, :article_id)
-  end
 end

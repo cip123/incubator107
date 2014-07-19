@@ -23,6 +23,7 @@ class WorkshopsController < SubdomainController
       @response = I18n.t(:please_validate_your_mail_before_registering)
       return 
     end
+
     if (participant.valid?)
       @response = I18n.t(:thank_you_for_registering)
       WorkshopParticipant.find_or_initialize_by(participant_id: participant.id, workshop_id: params[:id]) do |workshop_participant|
@@ -68,8 +69,7 @@ class WorkshopsController < SubdomainController
 
 
   def subscribe_to_mailing_list(participant)
-    subscriber = Subscriber.find_or_create_by(email: participant.email)
-    MailingListSubscriber.create( subscriber_id: subscriber.id, mailing_list_id: @city.mailing_list_id)
+    Subscriber.find_or_create_by(email: participant.email, mailing_list_id: @city.mailing_list_id)
   end
 end
 

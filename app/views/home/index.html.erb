@@ -19,11 +19,11 @@
   <div class="row">
     <div class="col-sm-8">
       <h4><%= @last_news.title %></h4>
-      <% if @last_news.text.length > 1000 %>
-        <%= truncate(@last_news.text, length: 1000, :escape => false) %>
-        <%= link_to '...Read more', "$(this).parent().html('#{escape_javascript @last_news.text}')" %>
+      <% if @last_news.content.length > 1000 %>
+        <%= truncate(@last_news.content, length: 1000, :escape => false) %>
+        <%= link_to '...Read more', '#',  :onclick => "$(this).parent().html('#{escape_javascript @last_news.content}')" %>
       <% else %>
-        <%= @last_news.text.html_safe %>
+        <%= @last_news.content.html_safe %>
       <% end %>
     </div>
     <div class="col-sm-4">

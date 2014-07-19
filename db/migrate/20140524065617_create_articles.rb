@@ -1,11 +1,13 @@
 class CreateArticles < ActiveRecord::Migration
   def up
-    create_table :articles do |t|
+    create_table :articles do |t|      
       t.boolean :published
+      t.integer :city_id
+
       t.timestamps
     end
 
-    Article.create_translation_table! :title => :string, :text => :text
+    Article.create_translation_table! :title => :string, :content => :text
 
 
   end

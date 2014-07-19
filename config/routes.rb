@@ -1,5 +1,8 @@
 Incubator107::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'password_resets/new'
+
 
   resources :locations
 
@@ -14,17 +17,17 @@ Incubator107::Application.routes.draw do
   #get "static_pages/home"
   #get "static_pages/help"
 
-  
+  post '/tinymce_assets' => 'tinymce_assets#create'  
 
   constraints(Subdomain) do
     resources :articles
     resources :workshops
-    resources :password_resets
-    resources :sessions, only: [:new, :create, :destroy]
+    # resources :password_resets
+    # resources :sessions, only: [:new, :create, :destroy]
  
-    match '/signin', to: 'sessions#new', via: 'get'
-    match '/signout', to: 'sessions#destroy', via: :delete
-    match '/signup', to: 'users#new', via: 'get'
+    # match '/signin', to: 'sessions#new', via: 'get'
+    # match '/signout', to: 'sessions#destroy', via: :delete
+    # match '/signup', to: 'users#new', via: 'get'
 
 
     match '/profile/:id', to: 'users#edit_profile', via: 'get', as: "profile"
@@ -32,11 +35,11 @@ Incubator107::Application.routes.draw do
 
 #    match 'users/:id/edit', to: 'admin/users#edit', via: 'get'
 
-    scope 'admin' do
-      resources :users
-    end
+    # scope 'admin' do
+    #   resources :users
+    # end
 
-    match '/admin', to: 'admin#home', via: 'get'
+#    match '/admin', to: 'admin#home', via: 'get'
     match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
     match '/contact', to: "contact#show", via: 'get'
     root to: 'home#index'

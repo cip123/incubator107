@@ -9,6 +9,17 @@ gem 'world-flags', '0.6.5'
 gem 'active_link_to'
 gem 'geocoder'
 gem 'bootstrap-wysihtml5-rails'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'just-datetime-picker'
+
+gem 'devise'
+
+gem 'capistrano', '~> 3.2.0'
+
+#gem 'jquery-ui-rails', '~> 4.2.1'
+
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -16,7 +27,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'sprockets', '2.11.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
-gem 'will_paginate', '3.0.4' 
+
 gem "paperclip", "~> 4.1"
 gem 'bootstrap-will_paginate'
 gem 'globalize', '~> 4.0.1 '
@@ -24,6 +35,8 @@ gem 'foreigner'
 gem 'simple_form'
 gem 'launchy', '~> 2.4.2'
 gem 'fullcalendar-rails' 
+gem 'tinymce-rails'
+
 group :development, :test  do
   gem 'spork-rails', '4.0.0'
   gem 'sqlite3', '1.3.8'

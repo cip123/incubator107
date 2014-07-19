@@ -16,7 +16,7 @@
 <h4> <%= t(:when?) %> </h4>
 
 <% @workshop.events.each do |event| %>
-  <%= event %>
+  <%= event.description %>
   <br/>
 <% end %> 
 <h4><%=t(:where?) %></h4>
@@ -26,12 +26,10 @@
 <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
 <a href='' data-toggle="modal" data-target=".bs-example-modal-sm"><%=t(:here)%></a>
 
-<%= t(:signup_blah_blah) %></p>
+<%= t(:signup_blah_blah) %></p>
 
 <% if @workshop.requires_donation? %>
-  <p><%= raw(@workshop.donation) %></p>
-  <br/>
-  <%= raw(@city.donation_alternative) %>
+  <p><%= raw(@workshop.donation) %></p> 
 <% end %>
 
 <h4><%=t(:who_comes?) %></h4>

@@ -58,17 +58,16 @@ describe "sign up to workshop" do
       verify_mail = ActionMailer::Base.deliveries.last
       assert_equal "Email de verificare", verify_mail.subject
       assert_equal "cip@incubator107.com", verify_mail.to[0]
-      assert_match( /cluj.incubator107.com/, verify_mail.body.to_s )
+      assert_match( /cluj.lvh.me/, verify_mail.body.to_s )
 
     end
 
     it "should increase subscribe to mailing list" do
       check "workshop_participant_subscribe_to_mailing_list"
-      expect {signup}.to change(MailingListSubscriber, :count).by(1)
-      expect (page.driver.alert_messages.first).should eq("Vă mulțumim pentru înscriere!")
-      subscriber = Subscriber.find_by_email("cip@incubator107.com")
-      mailing_list_subscriber = MailingListSubscriber.find_by(
-        :subscriber_id => subscriber.id,
+      expect {signup}.to change(Subscriber, :count).by(1)
+      expect (page.driver.alert_messages.first).should eq("Vă mulțumim pentru înscriere!")      
+      mailing_list_subscriber = Subscriber.find_by(
+        :email=> "cip@incubator107.com",
         :mailing_list_id => city.mailing_list_id
       )
       expect mailing_list_subscriber !=  nil

@@ -18,4 +18,4 @@
 //= require_tree .
 //= require world_flags/url_helper
 //= require fullcalendar
-//= require bootstrap-wysihtml5
+

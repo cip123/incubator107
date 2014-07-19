@@ -20,16 +20,8 @@ describe "Subscribe to mailing list" do
 
       it "should increase subscriber count" do
         expect {subscribe}.to  change(Subscriber, :count).by(1)
+        expect (page.driver.alert_messages.first).should eq(I18n.t(:thank_you_for_registering))     
       end
-
-      it "should increase newsletter subscriber count" do
-        expect {subscribe}.to  change(MailingListSubscriber, :count).by(1)
-        subscriber = Subscriber.find_by_email("cip@incubator107.com")
-        expect (page.driver.alert_messages.first).should eq(I18n.t(:thank_you_for_registering))
-        mailingListSubscriber = MailingListSubscriber.find_by_subscriber_id(subscriber.id);
-        expect ((mailingListSubscriber).mailing_list_id) ==  city.mailing_list_id
-      end
-
 
     end
   end
@@ -37,7 +29,7 @@ describe "Subscribe to mailing list" do
   describe "existing subscriber"  do
 
     before do
-      Subscriber.create(:email => 'cip@incubator107.com')
+      Subscriber.create(:email => 'cip@incubator107.com', :mailing_list_id => city.mailing_list_id)
       visit url_for_subdomain :cluj, "/"
       fill_in "subscriber_email", :with => 'cip@incubator107.com'
     end
@@ -47,16 +39,11 @@ describe "Subscribe to mailing list" do
 
       it "should not increase subscriber count" do
         expect {subscribe}.not_to change(Subscriber, :count).by(1)
+        expect (page.driver.alert_messages.first).should eq(I18n.t(:thank_you_for_registering))       
       end
 
-      it "should increase mailing list subscriber count" do
-        expect {subscribe}.to  change(MailingListSubscriber, :count).by(1)
-        subscriber = Subscriber.find_by_email("cip@incubator107.com")
-        expect (page.driver.alert_messages.first).should eq(I18n.t(:thank_you_for_registering))
-        mailingListSubscriber = MailingListSubscriber.find_by_subscriber_id(subscriber.id);
-        expect ((mailingListSubscriber).mailing_list_id) ==  city.mailing_list_id
-      end
     end
+
   end
 
   describe "when new subscriber with invalid email", :js => true do
@@ -68,7 +55,7 @@ describe "Subscribe to mailing list" do
 
     it "should not increase participant count" do
         expect {subscribe}.not_to change(Subscriber, :count).by(1)
-         expect (page.driver.alert_messages.first).should eq(I18n.t("activerecord.errors.models.subscriber.attributes.email.invalid"))
+        expect (page.driver.alert_messages.first).should eq(I18n.t("activerecord.errors.models.subscriber.attributes.email.invalid"))
      end
   end
 
