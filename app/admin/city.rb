@@ -1,4 +1,5 @@
 ActiveAdmin.register City do
+  menu parent: "Settings"
 
   index do
     selectable_column
@@ -8,15 +9,6 @@ ActiveAdmin.register City do
     column :domain
 
     actions
-  end
-
-  sidebar "Associations", only: [:show, :edit] do
-    ul do
-      li link_to "Pages", admin_city_article_links_path(city.id)
-      li link_to "Contact People", admin_city_contact_people_path(city.id)
-      li link_to "Locations", admin_city_locations_path(city.id)
-      li link_to "News", admin_city_news_index_path(city.id)
-    end
   end
 
   show do |city|

@@ -1,6 +1,6 @@
 ActiveAdmin.register ContactPerson do
-  belongs_to :city
-  
+  menu parent: "Settings"  
+
   show do
     attributes_table do
       row :name
@@ -10,6 +10,7 @@ ActiveAdmin.register ContactPerson do
       row :about
       row :team
       row :index
+      row :city
     end
   end
 
@@ -22,7 +23,7 @@ ActiveAdmin.register ContactPerson do
       f.input :about
       f.input :team
       f.input :index
-
+      f.input :city
     end
      
     f.actions
@@ -35,14 +36,14 @@ ActiveAdmin.register ContactPerson do
     column :email
     column :title
     column :index
-    column :created_at
-
+    column :city
     actions
   end
 
+  filter :city
   filter :name
   filter :created_at
 
-  permit_params :name, :phone, :email, :title, :about, :team, :index
+  permit_params :name, :phone, :email, :title, :about, :team, :index, :city_id
   
 end

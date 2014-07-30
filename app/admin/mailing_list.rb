@@ -1,5 +1,6 @@
 ActiveAdmin.register MailingList do
-
+  menu parent: "Settings"
+  
   sidebar "Associations", only: [:show, :edit] do
     ul do
       li link_to "Subscribers", admin_mailing_list_subscribers_path(mailing_list.id)

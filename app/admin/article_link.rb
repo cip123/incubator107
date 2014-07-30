@@ -1,10 +1,11 @@
 ActiveAdmin.register ArticleLink do
-  belongs_to :city
+  menu parent: "Settings"
 
   show :title => :alias do
     attributes_table do
       row :alias
       row :article
+      row :city
     end
   end
 
@@ -12,6 +13,7 @@ ActiveAdmin.register ArticleLink do
     f.inputs do
       f.input :alias
       f.input :article
+      f.input :city
     end
      
     f.actions
@@ -22,15 +24,17 @@ ActiveAdmin.register ArticleLink do
     id_column
     column :alias
     column :article
+    column :city
     column :created_at
 
     actions
   end
 
   filter :article
+  filter :city
   filter :created_at
 
-  permit_params :alias, :article
+  permit_params :alias, :article, :city_id
 
 end
 
