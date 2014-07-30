@@ -1,7 +1,7 @@
 Incubator107::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_controller.asset_host = "http://localhost"
+  config.action_controller.asset_host = "http://176.223.202.85.xip.io"
 
   # Code is not reloaded between requests.
   config.cache_classes = true

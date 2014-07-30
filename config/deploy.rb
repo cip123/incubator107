@@ -51,10 +51,13 @@ namespace :deploy do
 
   desc "task to create a symlink for the database files."
   task :copy_database_yml do
-    run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    on roles :all do
+      execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    end
   end
 
-  after :publishing, :copy_database_yml, :restart
+  after :publishing, :restart
+  before :compile_assets, :copy_database_yml
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
