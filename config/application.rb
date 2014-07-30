@@ -35,7 +35,7 @@ module Incubator107
     config.hosts = {
       "development" => "lvh.me:3000",
       "test"        => "lvh.me:3001",
-      "production"  => "incubator107.com"
+      "production"  => "176.223.202.85.xip.io"
     }
   end
 end

@@ -17,6 +17,7 @@ gem 'devise'
 gem 'capistrano', '~> 3.2.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rvm'
+gem 'capistrano-rails'
 
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 

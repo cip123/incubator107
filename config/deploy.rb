@@ -1,3 +1,4 @@
+
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
@@ -48,7 +49,12 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
+  desc "task to create a symlink for the database files."
+  task :copy_database_yml do
+    run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+
+  after :publishing, :copy_database_yml, :restart
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
