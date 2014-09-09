@@ -12,7 +12,7 @@ gem 'world-flags', '0.6.5'
 gem 'active_link_to'
 gem 'geocoder'
 gem 'judge-simple_form'
-
+gem 'daemons'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'just-datetime-picker'
