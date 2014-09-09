@@ -14,17 +14,16 @@ ActiveAdmin.register Workshop do
   end
 
 
-  sidebar "Workshop Details", only: [:show, :edit] do
+  sidebar "Meetings", only: [:show, :edit] do
     ul do
       li link_to "Events", admin_workshop_events_path( workshop)
-      li link_to "Participants", admin_workshop_workshop_participants_path( workshop)
     end
   end
 
   form do |f|
     f.inputs "Workshop Details" do
       f.input :name
-      f.input :album, :label => "Facebook album"
+      f.input :facebook_album_id, :label => "Facebook album"
       f.input :city
       f.input :group
       f.input :published, :as => :radio, :label => "Publish", :collection => [["Yes", true], ["No", false]]
@@ -61,7 +60,7 @@ ActiveAdmin.register Workshop do
     attributes_table do
       row :city
       row :group
-      row :album
+      row :facebook_album_id
       row :release_date
       row :published
       row :should_send_notification      
@@ -101,14 +100,17 @@ ActiveAdmin.register Workshop do
       @workshop = Workshop.new(:city => city, :donation => city.donation_text, :requires_donation => true, :should_send_notification => true)
       super
     end 
-  end
 
+    def scoped_collection
+      Workshop.joins(:translations)
+    end
+  end
 
 
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-   permit_params :name, :album, :group_id, :published, :release_date, :should_send_notification, 
+   permit_params :name, :facebook_album_id, :group_id, :published, :release_date, :should_send_notification, 
       :description, :with_whom, :bring_along, :whereabouts, :requires_donation, :donation
   #
   # or
@@ -121,7 +123,6 @@ ActiveAdmin.register Workshop do
 
   filter :city
   filter :group
-  filter :album
   filter :release_date
   filter :published
   filter :requires_donation

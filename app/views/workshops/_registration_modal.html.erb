@@ -1,0 +1,45 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="signup">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= "#{t(:signup_and_come_to)} #{@workshop.name}" %>
+        </h4>
+      </div>
+      <div class="modal-body">
+
+          <%= simple_form_for @registration, url: workshop_path(@workshop.id) +"/signup", :remote => true do |wr| %>
+
+         <h5> <%=t(:meetings) %> </h5>
+          <% @workshop.events.each do |event| %>
+                  <%= check_box_tag("event_ids[]", event.id, :checked => true) %>
+                  <%= event.description %>
+                  <br/>
+          <% end %>
+
+           <h5> <%=t(:about_you) %> </h5>
+
+          <%= wr.simple_fields_for @registration.person do |p| %>
+
+            <%= p.input :name, :validate => true %>
+            <%= p.input :email, :validate => true  %>
+            <%= p.input :phone, :validate => true  %>
+
+          <% end %>
+
+          <%= wr.input :reason, label: t(:tell_us_why_you_want_to_come), as: :text %>
+
+          <%= wr.input :subscribe_to_mailing_list, as: :boolean,  :label => false, :inline_label => t(:subscribe_to_newsletter) %>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t(:cancel) %></button>
+          <button type="submit" class="btn btn-primary"><%= t(:ready) %>
+
+          </button>
+        </div>
+
+              <% end %>    
+      </div>
+  </div>
+</div>

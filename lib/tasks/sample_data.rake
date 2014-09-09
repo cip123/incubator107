@@ -1,12 +1,9 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    #    user = User.create!(name: "Ciprian",
-    #                        email: "cip@trusca.net",
-    #                        password: "foobar",
-    #                        password_confirmation: "foobar",
-    #                        admin: true
-    #                       )
+
+    albums = %w(786828594670649 764694463550729 751619054858270 750882654931910 750881614932014 747886785231497 745644855455690 744298132257029 744295952257247 744269222259920 742006362486206 741760022510840 741754785844697 741752669178242 739340096086166 739339062752936 739268452759997 737790139574495 731559753530867 731559003530942 728832997136876 727931647227011 727415540611955 727415167278659 727412570612252 727404763946366 725682007451975 724187254268117 724184104268432 723517424335100 723071454379697 722921291061380 722920157728160 717881441565365 717328098287366 713642731989236 713632905323552 710985055588337 710966282256881 710959422257567 710953335591509 710951208925055 709052589114917)
+
     about_article = Article.new(
       title: "Ce e incubator107?",
       content: %{
@@ -243,30 +240,29 @@ namespace :db do
       }
     )
 
-
-
-    cluj = City.create!(
+    City.create!(
                 name: 'Cluj',
                 domain: 'cluj',
                 email: 'cluj@incubator107.com',
                 default_location_id: 1,
-                mailing_list_id: 1,
-                facebook: 'incubator107Cluj',
+                mailchimp_key: ENV["MAILCHIMP_KEY"],
+                newsletter_list_id: ENV["MAILCHIMP_NEWSLETTER_LIST_ID"],
+                workshop_list_id: ENV["MAILCHIMP_WORSKHOP_LIST_ID"],
+                facebook_page_id: 292528864155748,
                 donation_text: %{
                   Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
                   Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor, să atragem sponsorizări
                 }
-                )
+    )
 
     City.create!(name: (I18n.t 'bucharest'),
                  domain: 'bucuresti',
                  email: 'bucuresti@incubator107.com',
-                 mailing_list_id: 2,
-                 facebook: 'incubator107'
+                 facebook_page_id: 193875377299310
 
                 )
 
-        News.create!(
+    News.create!(
       title: 'Nocturna "Punguța cu 2 ani"',
       content: %{
             <p>&Icirc;nvățăcei, meșteri și ucenici haideți să sărbătorim 2 ani de Incubator107 &icirc;n Cluj. Ne vedem &icirc;n data de 17 mai, &icirc;ncep&acirc;nd cu ora 20:00, la Cluj Hub (Pitești nr. 19).</p>
@@ -379,7 +375,6 @@ namespace :db do
         group_id: 1 + rand(Group.count),
         city_id: 1,
         release_date: DateTime.now,
-        album: Faker::Lorem.sentence,
         published: true,
         requires_donation: 1,
         should_send_notification: 1, 
@@ -388,7 +383,8 @@ namespace :db do
         with_whom: Faker::Lorem.paragraph,
         bring_along: Faker::Lorem.paragraph,
         donation: Faker::Lorem.paragraph,
-        notification: Faker::Lorem.paragraph
+        notification: Faker::Lorem.paragraph,
+        facebook_album_id: albums[n]
       )
     end
 
@@ -401,38 +397,11 @@ namespace :db do
       )
     end
 
-    MailingList.create!(
-      name: "Newsletter Bucuresti",
-    )
-
-    MailingList.create!(
-      name: "Newsletter Cluj",
-    )
-
-
-    AdminUser.create!(
-        email: 'admin@example.com', 
-        password: 'password', 
-        password_confirmation: 'password'
-    )
-
-
-    User.create!(
-      name: "super",
-      email: "super@incubator107.com",
-      password: "abcd3f",
-      password_confirmation: "abcd3f",
-      role: User.roles[:super_admin]
-
-    )
-
-    cluj.users.create!(
-      name: "local",
-      email: "local@incubator107.com",
-      password: "abcd3f",
-      password_confirmation: "abcd3f",
-      role: User.roles[:local_admin]
-    )
+    # AdminUser.create!(
+    #     email: 'admin@example.com', 
+    #     password: 'password', 
+    #     password_confirmation: 'password'
+    # )
 
   end
 end

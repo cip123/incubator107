@@ -5,6 +5,7 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
+
   config.wrappers :default, class: :input,
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default
@@ -16,7 +17,7 @@ SimpleForm.setup do |config|
     # Determines whether to use HTML5 (:email, :url, ...)
     # and required attributes
     b.use :html5
-
+    
     # Calculates placeholders automatically from I18n
     # You can also pass a string as f.input placeholder: "Placeholder"
     b.use :placeholder
@@ -38,11 +39,15 @@ SimpleForm.setup do |config|
 
     # Calculates readonly automatically from readonly attributes
     b.optional :readonly
+    b.use :judge
 
     ## Inputs
     b.use :label_input
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: :error }
+
+
+    
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -142,4 +147,5 @@ SimpleForm.setup do |config|
 
   # Default class for inputs
   # config.input_class = nil
+
 end

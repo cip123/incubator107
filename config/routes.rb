@@ -1,8 +1,6 @@
 Incubator107::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'password_resets/new'
-
 
   resources :locations
 
@@ -22,6 +20,7 @@ Incubator107::Application.routes.draw do
   constraints(Subdomain) do
     resources :articles
     resources :workshops
+    resources :workshop_requests
     # resources :password_resets
     # resources :sessions, only: [:new, :create, :destroy]
  
@@ -33,21 +32,16 @@ Incubator107::Application.routes.draw do
     match '/profile/:id', to: 'users#edit_profile', via: 'get', as: "profile"
     match '/profile/:id', to: 'users#update_profile', via: 'patch'
 
-#    match 'users/:id/edit', to: 'admin/users#edit', via: 'get'
-
-    # scope 'admin' do
-    #   resources :users
-    # end
-
-#    match '/admin', to: 'admin#home', via: 'get'
     match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
     match '/contact', to: "contact#show", via: 'get'
     root to: 'home#index'
     match '/calendar', to: 'calendar#show', via: 'get'
-    match '/verify', to: "participant#verify", via: 'get'    
+    match '/verify', to: "person#verify", via: 'get'        
   end
-  match '/subscribe_newsletter', to: 'subscriber#register_newsletter', via: 'post'
 
+  match '/subscribe_newsletter', to: 'subscriber#register_newsletter', via: 'post'
+  get "/" => 'city#index'
+  
   # end
 
   #root :to =>get "home#index"

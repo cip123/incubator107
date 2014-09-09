@@ -9,7 +9,6 @@ class CreateArticles < ActiveRecord::Migration
 
     Article.create_translation_table! :title => :string, :content => :text
 
-
   end
 
   def down

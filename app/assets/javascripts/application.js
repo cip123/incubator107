@@ -15,7 +15,13 @@
 //= require bootstrap
 //= require turbolinks
 //= require jquery.turbolinks
-//= require_tree .
+//= require underscore
+//= require json2
+//= require judge
 //= require world_flags/url_helper
 //= require fullcalendar
+//= require workshop
+//= require workshop_request
+//= require fancybox
+
 

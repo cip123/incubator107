@@ -13,7 +13,6 @@ describe "Home pages" do
 
         after(:all) do
           City.delete_all
-          CityNews.delete_all
         end
 
         before do

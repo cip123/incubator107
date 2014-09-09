@@ -6,10 +6,10 @@ describe Article do
 
   subject { article }
 
-  it { should respond_to(:text) }
+  it { should respond_to(:content) }
   it { should respond_to(:title) }
   describe "with blank text" do
-    before { article.text = " " }
+    before { article.content = " " }
     it { should_not be_valid }
   end
 

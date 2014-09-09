@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+  <p>Bună incubatoristule, </p>
+ <p>Te-ai înscris și te așteptăm la <%=link_to @workshop.name, @workshop %>.
+    Dacă se întâmplă să nu mai poți ajunge, te rugăm anunță-ne printr-un reply la acest mail.</p>
+
+  <p>Când? <p>
+
+  Atelierul are <%= @workshop.future_events.count %> întâlniri: <br/>
+
+<% @workshop.future_events.each do |event| %>
+
+    <%= event.description %> <br/>
+
+  <% end %>
+
+
+  <% if @workshop.whereabouts %>  
+    <p>Unde? </p><p><%= @workshop.whereabouts %> </p>
+  <% end %> 
+
+    <% if @workshop.requires_donation? %>        
+        <p>Cum? </p>
+        <p> <%= @workshop.donation %> <br/>
+          Dacă nu vă puteți permite, nu stați deoparte; puteți contribui cu timpul sau priceperile voastre -          
+    <% end %>
+
+  <div style='width:100%;'>
+        <div style='width:50%; margin: 0 auto'>----------------------------------------------------------------<br/>
+        <%= link_to "înscrie-te și la alte ateliere", "#{@city_url}/calendar" %> | 
+        <%=link_to  "urmărește-ne pe FB",  "https://facebook.com/#{@workshop.city.facebook_page_id}" %>    
+      </div>
+  </div>
+  </body>
+</html>
+

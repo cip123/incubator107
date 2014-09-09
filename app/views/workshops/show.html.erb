@@ -14,25 +14,77 @@
 <p><%= raw(@workshop.bring_along) %> </p>
 
 <h4> <%= t(:when?) %> </h4>
-
-<% @workshop.events.each do |event| %>
-  <%= event.description %>
-  <br/>
-<% end %> 
+<% if @workshop.active? %>
+  <% @workshop.events.each do |event| %>
+    <%= event.description %>
+    <br/>
+  <% end %> 
+<% else %>
+  <%= t(:workshop_expired) %> </p>
+   <a href='' data-toggle="modal" data-target="#request_workshop"><%=t(:request_workshop)%></a>
+   <%=render 'request_modal' %>
+<% end  %>
 <h4><%=t(:where?) %></h4>
 <p><%= raw(@workshop.whereabouts) %> </p>
-
-<h4><%=t(:how?) %></h4>
-<p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
-<a href='' data-toggle="modal" data-target=".bs-example-modal-sm"><%=t(:here)%></a>
-
-<%= t(:signup_blah_blah) %></p>
+<% if @workshop.active? %>
+  <h4><%=t(:how?) %></h4>
+  <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
+  <a href='' data-toggle="modal" data-target="#signup"><%=t(:here)%></a>
+  <%= t(:signup_blah_blah) %></p>
+  <%=render 'registration_modal' %>
+<% end %>
 
 <% if @workshop.requires_donation? %>
   <p><%= raw(@workshop.donation) %></p> 
 <% end %>
 
-<h4><%=t(:who_comes?) %></h4>
-<%= t(:people_subscribed, :count=>@workshop.workshop_participants.count) %>
 
-<%=render 'signup' %>
+
+<% if @photos.present? %>
+       <h4><%=t(:photos) %></h4>
+
+
+<div class="container">
+    <div class="col-md-8">
+ 
+        <div class="well-none">
+            <div id="myCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                  <% @photos.each_with_index do |photo, n| %>
+
+                    <% if (n%9 == 0) %>
+                      <div class="item <%= (n==0) ? "active" : "" %>">
+                        <div class="row">
+                    <% end %>      
+                    
+                    <a class="fancybox" rel="gallery1" href="<%= photo["source"] %>">
+                     <div class="center-cropped thumbnail" alt="<%="#{n} out of #{@photos.count} "%>" style="background-image: url('<%= photo["picture"] %>');"></div>
+                    </a>
+
+
+                    <% if ( n%9 == 8 || n == (@photos.count-1) ) %>
+                        </div>
+                      </div>
+                    <% end %>  
+
+                  <% end %>    
+                </div>
+                <!--/carousel-inner--> 
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
+
+                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
+            </div>
+            <!--/myCarousel-->
+        </div>
+        <!--/well-->
+    </div>
+</div>
+
+
+<% end %>
+
+
+
+

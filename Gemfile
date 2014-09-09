@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-#ruby-gemset=railstutorial_rails_4_0
+gem 'gibbon'
+gem 'delayed_job_active_record'
+
+gem "font-awesome-rails"
 
 gem 'htmlbeautifier'
 gem "koala", "~> 1.10.0rc"
 gem 'world-flags', '0.6.5'
 gem 'active_link_to'
 gem 'geocoder'
+gem 'judge-simple_form'
+
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'just-datetime-picker'
@@ -41,14 +46,14 @@ gem 'tinymce-rails'
 group :development, :test  do
   gem 'spork-rails', '4.0.0'
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.14'
-  gem 'guard-rspec', '4.0'
+  gem 'rspec-rails', '3.0.2'
+  gem 'guard-rspec', '4.3.1'
 end
 
 
 group :test do 
   gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
+  gem 'capybara'
   gem 'factory_girl_rails', '4.2.1'
   gem 'capybara-webkit'
   gem 'database_cleaner'
@@ -58,6 +63,7 @@ gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
+gem 'fancybox2-rails', '~> 0.2.8'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'jquery-turbolinks', '2.0.2'

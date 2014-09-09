@@ -4,9 +4,13 @@ FactoryGirl.define do
     sequence(:name)  { |n| "City #{n}" }
     sequence(:email)  { |n| "email#{n}@incubator107.com" }
     domain "cluj" 
-    facebook "incubator107"
+    facebook_page_id "1232132132"
     default_location_id 1
-    mailing_list_id 1
+    mailchimp_key "test-key"
+    newsletter_list_id "tewrwrw"
+    workshop_list_id "ewew"
+    workshop_groups_id 123123
+
     donation_text "<p>daca <b>nu</b> va</p>" 
     factory (:city_with_links) do
        after (:create) do |city, evaluator|
@@ -29,8 +33,9 @@ FactoryGirl.define do
   factory :workshop do 
       sequence(:name) { |n| "atelier #{n}" }
       city_id 1 
-      group_id 1 
+      group
       published 1
+      sequence(:facebook_album_id) { |n| "1000#{n}" }
       description "<p>description<b>test<b></p>"
       bring_along "<p>requisite<span>test</span></p>" 
       with_whom "<p> master<b>test</b></p>"
@@ -45,10 +50,19 @@ FactoryGirl.define do
           create(:event, workshop_id: workshop.id, start_date: Date.today.at_beginning_of_month + 35.days)
         end
       end
+
+      factory (:workshop_with_events_in_the_past) do
+        after(:create) do | workshop, evaluator|
+          create(:event, workshop_id: workshop.id, start_date: Date.today.at_beginning_of_month - 10.days)
+          create(:event, workshop_id: workshop.id, start_date: Date.today.at_beginning_of_month - 20.days)
+          create(:event, workshop_id: workshop.id, start_date: Date.today.at_beginning_of_month - 35.days)
+        end
+      end
+
   end
 
 
-  factory :participant do
+  factory :person do
     name "ciprian"
     email "cip@incubator107.com"
     phone "0748452880"
@@ -71,11 +85,6 @@ FactoryGirl.define do
     start_date DateTime.now
     duration 120
     location
-  end
-
-
-  factory :mailing_list do 
-      sequence(:name) { |n| "Mailing List #{n}" }      
   end
 
   factory :article_link do
@@ -101,10 +110,9 @@ FactoryGirl.define do
     sequence(:name)  { |n| "Location_#{n}" }
   end
 
-  factory :workshop_participant do
-    workshop_id 1
-    participant_id 1
-    display 0
+  factory :registration do
+    event_id 1
+    person_id 1
     reason "decembrie"
   end
 
