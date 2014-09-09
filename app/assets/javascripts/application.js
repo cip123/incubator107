@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require calendar
 //= require bootstrap
 //= require turbolinks
 //= require jquery.turbolinks
