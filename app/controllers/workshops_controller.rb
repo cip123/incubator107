@@ -43,7 +43,9 @@ class WorkshopsController < SubdomainController
           registration.reason = registration_params[:reason]
           succesfull_registration = true
           registration.save!
-          RegistrationMailer.delay(run_at: registration.event.start_date.at_beginning_of_day - 16.hours).remind(registration)
+          # this scheduling is done here because the mailers do not support run_at: parameter at the moment
+          registration.delay(run_at: registration.event.start_date.at_midnight - 16.hours).send_reminder
+
         end
       
       end

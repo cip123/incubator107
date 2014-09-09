@@ -6,8 +6,10 @@ class Registration < ActiveRecord::Base
   has_one :workshop, :through => :event
   attr_accessor :subscribe_to_mailing_list
 
-  def schedule_reminder 
-    RegistrationMailer.delay(run_at: event.start_date.at_midnight - 16.hours).reminder(self)
+  def send_reminder 
+    if workshop.should_send_notification
+      RegistrationMailer.remind(self)
+    end
   end
 
 end
