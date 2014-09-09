@@ -59,7 +59,7 @@ namespace :deploy do
  desc "task to create a run the delayed job daemon."
   task :run_delayed_job_deamon do
     on roles :all do
-      execute "RAILS_ENV=production /var/www/incubator107/current/bin/delayed_job start"
+      execute "RAILS_ENV=production bin/delayed_job start"
     end
   end
 
