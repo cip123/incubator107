@@ -12,17 +12,19 @@ ro:
   this_month: Luna aceasta
   next_month: Luna viitoare
   thank_you_for_registering: Vă mulțumim pentru înscriere!
+  thank_you: Mulțumim!
 
   signup_and_come_to: Înscrie-te şi vino la  
   signup_is_online: Înscrierea la atelier se face online. 
   click_bravely: Apasă cu curaj 
   here: aici
+  request_workshop: Cer atelier
 
   home:
     sign_me_up: Înregistrează-mă 
   register_to_newsletter: Înscrie-te la newsletter
   signup_blah_blah: înscrie-te şi vino la atelier! Scrie-ne sincer de ce vrei să vii, zi-ne de unde ai auzit de noi și lasă-ne numărul tău de telefon.
-
+  workshop_expired: Te-ai dezmeticit prea târziu! Atelierul a trecut deja, dar dacă strângem o grupă de 10 doritori, ne dăm de 3 ori peste cap, pe sub curcubeu și dincolo de ponei și invităm meșterul să mai țină o dată atelierul.
   from: de la
   to: la
 
@@ -41,6 +43,7 @@ ro:
   email: Email
   phone: Telefon
   tell_us_why_you_want_to_come: Spune-ne sincer de ce vrei să vii 
+  tell_us_why_you_want_this_workshop: Spune-ne de ce vrei acest atelier
   public_signup: Vreau ca lumea să vadă că m-am înscris
   subscribe_to_newsletter: Vreau să mă inscriu la newsletter
 
@@ -86,7 +89,7 @@ ro:
               invalid: Emailul este invalid
             name:
               blank: Numele nu este completat
-        participant:
+        person:
           attributes:
             email:
               blank: Emailul nu este completat

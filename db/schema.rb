@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712193530) do
+ActiveRecord::Schema.define(version: 20140824143503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,11 +92,14 @@ ActiveRecord::Schema.define(version: 20140712193530) do
   create_table "cities", force: true do |t|
     t.string   "domain"
     t.string   "country"
-    t.string   "facebook"
+    t.string   "facebook_page_id"
     t.string   "email"
     t.integer  "default_location_id"
-    t.integer  "mailing_list_id"
     t.string   "google_analytics_code"
+    t.string   "mailchimp_key"
+    t.string   "newsletter_list_id"
+    t.string   "workshop_list_id"
+    t.integer  "workshop_groups_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,9 +107,12 @@ ActiveRecord::Schema.define(version: 20140712193530) do
   add_index "cities", ["domain"], name: "index_cities_on_domain", unique: true, using: :btree
   add_index "cities", ["email"], name: "index_cities_on_email", unique: true, using: :btree
 
-  create_table "cities_users", id: false, force: true do |t|
-    t.integer "city_id", null: false
-    t.integer "user_id", null: false
+  create_table "city_groups", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "city_id"
+    t.integer  "mailchimp_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "city_translations", force: true do |t|
@@ -144,13 +150,21 @@ ActiveRecord::Schema.define(version: 20140712193530) do
   add_index "contact_person_translations", ["contact_person_id"], name: "index_contact_person_translations_on_contact_person_id", using: :btree
   add_index "contact_person_translations", ["locale"], name: "index_contact_person_translations_on_locale", using: :btree
 
-  create_table "event_participants", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "participant_id"
-    t.boolean  "notification_sent"
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "events", force: true do |t|
     t.datetime "start_date"
@@ -199,12 +213,6 @@ ActiveRecord::Schema.define(version: 20140712193530) do
     t.datetime "updated_at"
   end
 
-  create_table "mailing_lists", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "news", force: true do |t|
     t.boolean  "published"
     t.integer  "city_id"
@@ -225,48 +233,42 @@ ActiveRecord::Schema.define(version: 20140712193530) do
   add_index "news_translations", ["locale"], name: "index_news_translations_on_locale", using: :btree
   add_index "news_translations", ["news_id"], name: "index_news_translations_on_news_id", using: :btree
 
-  create_table "participants", force: true do |t|
+  create_table "newsletter_subscribers", force: true do |t|
+    t.string   "email"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "newsletter_subscribers", ["city_id", "email"], name: "index_newsletter_subscribers_on_city_id_and_email", unique: true, using: :btree
+  add_index "newsletter_subscribers", ["city_id"], name: "index_newsletter_subscribers_on_city_id", using: :btree
+  add_index "newsletter_subscribers", ["email"], name: "index_subscribers_on_email", using: :btree
+
+  create_table "people", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phone"
+    t.integer  "city_id"
     t.boolean  "verified"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
 
-  create_table "subscribers", force: true do |t|
-    t.string   "email"
-    t.integer  "mailing_list_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "subscribers", ["email"], name: "index_subscribers_on_email", using: :btree
-  add_index "subscribers", ["mailing_list_id", "email"], name: "index_subscribers_on_mailing_list_id_and_email", unique: true, using: :btree
-  add_index "subscribers", ["mailing_list_id"], name: "index_subscribers_on_mailing_list_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "remember_token"
-    t.integer  "role",                   default: 0
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
-
-  create_table "workshop_participants", force: true do |t|
-    t.integer  "workshop_id"
-    t.integer  "participant_id"
+  create_table "registrations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "person_id"
+    t.boolean  "notification_sent"
     t.string   "reason"
-    t.boolean  "display"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workshop_requests", force: true do |t|
+    t.integer  "workshop_id"
+    t.integer  "person_id"
+    t.string   "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -291,7 +293,7 @@ ActiveRecord::Schema.define(version: 20140712193530) do
   create_table "workshops", force: true do |t|
     t.integer  "city_id"
     t.integer  "group_id"
-    t.string   "album"
+    t.string   "facebook_album_id"
     t.datetime "release_date"
     t.boolean  "published"
     t.boolean  "requires_donation"

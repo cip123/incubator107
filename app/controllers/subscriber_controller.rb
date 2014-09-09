@@ -3,8 +3,8 @@ class SubscriberController < SubdomainController
 
   def register_newsletter
 
-    email =  params[:subscriber][:email]
-    subscriber = Subscriber.find_or_create_by(mailing_list_id: @city.mailing_list_id, email: email)
+    email =  params[:newsletter_subscriber][:email]
+    subscriber = NewsletterSubscriber.find_or_create_by(city: @city, email: email)
 
     if (subscriber.valid?)
       @response = I18n.t(:thank_you_for_registering)

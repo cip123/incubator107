@@ -4,6 +4,9 @@ require 'spec_helper'
 
 describe "Subscribe to mailing list" do
 
+
+
+
   let!(:city) { FactoryGirl.create(:city_with_links, name: "cluj") }
 
   let(:subscribe)  {click_button I18n.t('home.sign_me_up'); sleep 2 }
@@ -15,12 +18,15 @@ describe "Subscribe to mailing list" do
 
       before do
         visit url_for_subdomain :cluj, "/"
-        fill_in "subscriber_email", :with => 'cip@incubator107.com'
+        fill_in "newsletter_subscriber_email", :with => 'cip@incubator107.com'
       end
 
       it "should increase subscriber count" do
-        expect {subscribe}.to  change(Subscriber, :count).by(1)
-        expect (page.driver.alert_messages.first).should eq(I18n.t(:thank_you_for_registering))     
+        expect {subscribe}.to  change(NewsletterSubscriber, :count).by(1)
+        page.accept_alert "e" do
+          puts accept a
+        end
+        expect(page.driver.alert_messages.first).to eq(I18n.t(:thank_you_for_registering))     
       end
 
     end
@@ -29,17 +35,17 @@ describe "Subscribe to mailing list" do
   describe "existing subscriber"  do
 
     before do
-      Subscriber.create(:email => 'cip@incubator107.com', :mailing_list_id => city.mailing_list_id)
+      NewsletterSubscriber.create(:email => 'cip@incubator107.com', :city => city)
       visit url_for_subdomain :cluj, "/"
-      fill_in "subscriber_email", :with => 'cip@incubator107.com'
+      fill_in "newsletter_subscriber_email", :with => 'cip@incubator107.com'
     end
 
 
     describe "it should not register it to newsletter", :js => true do
 
       it "should not increase subscriber count" do
-        expect {subscribe}.not_to change(Subscriber, :count).by(1)
-        expect (page.driver.alert_messages.first).should eq(I18n.t(:thank_you_for_registering))       
+        expect {subscribe}.not_to change(NewsletterSubscriber, :count)
+        expect(page.driver.alert_messages.first).to eq(I18n.t(:thank_you_for_registering))       
       end
 
     end
@@ -50,12 +56,12 @@ describe "Subscribe to mailing list" do
 
     before do
       visit url_for_subdomain :cluj, "/"
-      fill_in "subscriber_email", :with => 'cip,22@incubator107.com'
+      fill_in "newsletter_subscriber_email", :with => 'cip,22@incubator107.com'
     end
 
-    it "should not increase participant count" do
-        expect {subscribe}.not_to change(Subscriber, :count).by(1)
-        expect (page.driver.alert_messages.first).should eq(I18n.t("activerecord.errors.models.subscriber.attributes.email.invalid"))
+    it "should not increase person count" do
+        expect {subscribe}.not_to change(NewsletterSubscriber, :count)
+        expect(page.driver.alert_messages.first).to eq(I18n.t("activerecord.errors.models.subscriber.attributes.email.invalid"))
      end
   end
 

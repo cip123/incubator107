@@ -1,0 +1,41 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"  id="request_workshop">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= @workshop.name %>
+        </h4>
+      </div>
+      <div class="modal-body">
+
+        <%= simple_form_for @workshop_request,  :remote => true do |wr| %>
+
+          <%= wr.simple_fields_for @workshop_request.person do |p| %>
+
+            <%= p.input :name, :validate => true %>
+            <%= p.input :email, :validate => true  %>
+            <%= p.input :phone, :validate => true  %>
+
+          <% end %>
+
+          <%= wr.simple_fields_for @workshop_request.workshop do |w| %>
+            <%= w.input :id, :as => :hidden, :input_html => { :value => @workshop_request.workshop.id } %>
+          <% end %>
+
+          <%= wr.input :reason, as: :text, label: t(:tell_us_why_you_want_to_come) %>
+
+          <%= wr.input :subscribe_to_mailing_list, as: :boolean,  :label => false, :inline_label => t(:subscribe_to_newsletter) %>
+  
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t(:cancel) %></button>
+          <button type="submit" class="btn btn-primary"><%= t(:ready) %>
+        </div>
+
+        <% end %>    
+
+      </div>
+    
+  </div>
+</div>

@@ -36,12 +36,6 @@ describe City do
     expect(city).not_to be_valid
   end
 
-  it "should not be valid without donation" do
-    city.donation = -20
-    expect(city).not_to be_valid
-    city.donation = nil
-    expect(city).not_to be_valid
-  end
 
   it "should not be valid without mailing list" do
     city.mailing_list_id = nil

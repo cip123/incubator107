@@ -1,7 +1,7 @@
 class HomeController < SubdomainController
   def index
 
-    @subscriber = Subscriber.new
+    @subscriber = NewsletterSubscriber.new
 
     @last_news = @city.news.last
 
@@ -12,5 +12,6 @@ class HomeController < SubdomainController
     end
 
     @this_month_workshops, @next_month_workshops = @city.workshops.published(time_range)
+
   end
 end

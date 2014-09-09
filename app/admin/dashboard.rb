@@ -15,9 +15,9 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
 
       column do
-        panel "Last Registered Participants" do
-          WorkshopParticipant.last(5).map do |workshop_participant| 
-             li link_to("#{workshop_participant.participant.name} @ #{workshop_participant.workshop.name}", admin_workshop_workshop_participants_path(workshop_participant.workshop))
+        panel "Latest Registrations" do
+          Registration.last(5).map do |registration| 
+             li link_to("#{registration.person.name} @ #{registration.workshop.name}", admin_registration_path(registration))
           end
         end
       end

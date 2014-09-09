@@ -35,7 +35,14 @@ ActiveAdmin.register Event do
     f.actions
   end
 
+  # controller do
+  #   def scoped_collection
+  #     Event.includes(:workshop)
+  #   end
+  # end
+
   filter :start_date
+  #filter :workshop
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

@@ -4,6 +4,9 @@ class Event < ActiveRecord::Base
   belongs_to :workshop
   validates_numericality_of :duration, :greater_than_or_equal_to => 0 
   validates :start_date, presence: true
+  has_many :registrations
+
+  default_scope -> {includes :workshop}
 
   just_define_datetime_picker :start_date
 
@@ -37,6 +40,9 @@ class Event < ActiveRecord::Base
 
   private
   def self.retrieve_records time_range, locale
-    entries = Event.joins(:workshop => :translations).where(workshops: {published: true}, events: { start_date: time_range }, 'workshop_translations.locale' => locale ).order("start_date").pluck(:id, :name, :start_date)
+    return Event.joins(:workshop => :translations).where(workshops: {published: true}, events: { start_date: time_range }, 'workshop_translations.locale' => locale ).order("start_date").pluck(:id, :name, :start_date)
   end
+
+
+
 end

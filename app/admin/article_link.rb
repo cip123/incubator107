@@ -34,7 +34,7 @@ ActiveAdmin.register ArticleLink do
   filter :city
   filter :created_at
 
-  permit_params :alias, :article, :city_id
+  permit_params :alias, :article_id, :city_id
 
 end
 

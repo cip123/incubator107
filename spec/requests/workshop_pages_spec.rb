@@ -30,12 +30,12 @@ describe "Workshops pages" do
 
     describe "group dropdown" do
       before  do
+        Group.delete_all
         Workshop.delete_all
         5.times do 
           group = FactoryGirl.create(:group)
-
           2.times do 
-            FactoryGirl.create(:workshop, group_id: group.id, city_id: city.id) 
+            workshop = FactoryGirl.create(:workshop, group_id: group.id, city_id: city.id) 
           end
         end
 
@@ -52,7 +52,7 @@ describe "Workshops pages" do
       describe "when selecting a group" do
         before do
           click_button I18n.t(:all_groups)
-          puts Group.first.name
+          puts "group is #{Group.first.name}"
           click_link Group.first.name
         end
 
@@ -63,6 +63,7 @@ describe "Workshops pages" do
             expect(page).to have_content(Workshop.limit(1).offset(1).first.name)
             expect(page).not_to have_content(Workshop.limit(1).offset(2).first.name)
           end
+        
         end
       end
     end
@@ -75,11 +76,20 @@ describe "Workshops pages" do
     describe "with donation" do
 
       before do
+        @koala = object_double("Koala::Facebook::API").as_stubbed_const
+        @facebook_api = double("api");
+
+        allow(@koala).to receive(:new)  { @facebook_api}
+        allow(@facebook_api).to receive(:api) { { data: "test" } }
+        
         visit url_for_subdomain :cluj, workshop_path(workshop.id)
       end
 
       it "should display all the fields" do      
-        save_and_open_page
+
+        expect(@koala).to have_received(:new)
+        expect(@facebook_api).to have_received(:api).with("/#{workshop.facebook_album_id}/photos?fields=source,picture")
+
         expect(page).to have_content("descriptiontest")
         expect(page).to have_content("requisitetest")
         expect(page).to have_content("mastertest")
@@ -110,31 +120,6 @@ describe "Workshops pages" do
         expect(page).not_to have_content('donationtest')
         expect(page).not_to have_content('daca nu va')
       end
-    end
-    
-    describe "without participants" do 
-
-      before do
-        visit url_for_subdomain :cluj, workshop_path(workshop.id)
-      end
-
-      it "should display proper message when zero participants" do
-        expect(page).to have_content("Nimeni nu s-a înscris încă")
-      end
-
-    end
-  
-    describe "with participants" do
-      let!(:workshop_participant) { FactoryGirl.create(:workshop_participant, workshop_id: workshop.id) }
-
-      before do 
-        visit url_for_subdomain :cluj, workshop_path(workshop.id)
-      end
-
-      it "should display one participant" do
-        expect(page).to have_content("O persoană s-a înscris")
-      end
-
     end
 
   end

@@ -3,15 +3,17 @@ require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
+
+
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
-  require 'minitest/autorun'
+
   require 'rspec/rails'
-  require 'rspec/autorun'
+  
   require 'factory_girl'
   require 'capybara/rspec'
   require 'capybara/webkit/matchers'
@@ -46,7 +48,7 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
     # Use color in STDOUT
-    config.color_enabled = true
+    #config.color_enabled = true
 
     config.tty = true
 
@@ -55,7 +57,7 @@ Spork.prefork do
     config.include Rails.application.routes.url_helpers
 
 
-    config.before(:each) do
+    config.before(:each) do |example|
       DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
       DatabaseCleaner.start
     end
@@ -76,7 +78,6 @@ Spork.prefork do
       capybara_config.server_port = 3001
       capybara_config.app_host = "lvh.me"
     end
-
 
   end
 end

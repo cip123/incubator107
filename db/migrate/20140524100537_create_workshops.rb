@@ -3,7 +3,7 @@ class CreateWorkshops < ActiveRecord::Migration
     create_table :workshops do |t|
       t.integer :city_id
       t.integer :group_id
-      t.string :album
+      t.string  :facebook_album_id
       t.datetime :release_date
       t.boolean :published
       t.boolean :requires_donation
