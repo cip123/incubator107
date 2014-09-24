@@ -1,7 +1,7 @@
 class CreateArticleLinks < ActiveRecord::Migration
   def change
     create_table :article_links do |t|
-      t.string :alias
+      t.integer :alias
       t.integer :city_id
       t.integer :article_id
 

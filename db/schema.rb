@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140824143503) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "article_links", force: true do |t|
-    t.string   "alias"
+    t.integer  "alias"
     t.integer  "city_id"
     t.integer  "article_id"
     t.datetime "created_at"

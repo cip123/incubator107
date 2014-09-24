@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   translates :name, :address, :description
 
-  	belongs_to :city
+  belongs_to :city
 	geocoded_by :address
 	after_validation :geocode
 
