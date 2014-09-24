@@ -70,6 +70,7 @@ namespace :deploy do
   end
 
   after :publishing, :restart
+  
   before :compile_assets, :copy_database_yml
 
   after :restart, :clear_cache do

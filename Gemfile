@@ -48,6 +48,7 @@ group :development, :test  do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '3.0.2'
   gem 'guard-rspec', '4.3.1'
+
   gem 'mysql2' 
 end
 
