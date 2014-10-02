@@ -1,11 +1,11 @@
 class City < ActiveRecord::Base
-  translates :name, :donation_text
-
-  belongs_to :default_location, class_name: "Location"
+  
+  translates :name, :default_donation, :default_whereabouts
 
   has_many :article_links
   has_many :city_groups
   has_many :contact_people
+  has_many :newsletter_subscribers
   has_many :news
   has_many :events, :through => :workshops
   

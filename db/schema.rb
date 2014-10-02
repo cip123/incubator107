@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 20140824143503) do
     t.string   "country"
     t.string   "facebook_page_id"
     t.string   "email"
-    t.integer  "default_location_id"
     t.string   "google_analytics_code"
     t.string   "mailchimp_key"
     t.string   "newsletter_list_id"
@@ -116,12 +115,13 @@ ActiveRecord::Schema.define(version: 20140824143503) do
   end
 
   create_table "city_translations", force: true do |t|
-    t.integer  "city_id",       null: false
-    t.string   "locale",        null: false
+    t.integer  "city_id",             null: false
+    t.string   "locale",              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.text     "donation_text"
+    t.text     "default_donation"
+    t.text     "default_whereabouts"
   end
 
   add_index "city_translations", ["city_id"], name: "index_city_translations_on_city_id", using: :btree
@@ -217,6 +217,10 @@ ActiveRecord::Schema.define(version: 20140824143503) do
     t.boolean  "published"
     t.integer  "city_id"
     t.datetime "release_date"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -260,7 +264,7 @@ ActiveRecord::Schema.define(version: 20140824143503) do
     t.integer  "event_id"
     t.integer  "person_id"
     t.boolean  "notification_sent"
-    t.string   "reason"
+    t.text     "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -268,7 +272,7 @@ ActiveRecord::Schema.define(version: 20140824143503) do
   create_table "workshop_requests", force: true do |t|
     t.integer  "workshop_id"
     t.integer  "person_id"
-    t.string   "reason"
+    t.text     "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,7 +4,7 @@ class CreateRegistrations < ActiveRecord::Migration
       t.integer :event_id
       t.integer :person_id
       t.boolean :notification_sent
-      t.string :reason
+      t.text :reason
 
       t.timestamps
     end

@@ -37,8 +37,7 @@ describe 'mysql task' do
         Rake.application.invoke_task "mysql:migrate_articles"
       end
 
-      it "should migrate articles" do
-       
+      it "should migrate articles" do      
         expect { run_rake_task }.to change { Article.all.count }
         check_links_for_city :brasov 
         check_links_for_city :bucuresti
@@ -48,11 +47,9 @@ describe 'mysql task' do
         check_links_for_city :oradea
         check_links_for_city :sibiu
         check_links_for_city :timisoara
-
       end
 
       def check_links_for_city (domain) 
-
         city_id = City.find_by_domain(domain).id
         expect(ArticleLink.exists?(alias: ArticleLink.aliases[:about], city_id: city_id)).to eq true
         expect(ArticleLink.exists?(alias: ArticleLink.aliases[:your_place], city_id: city_id)).to eq true
@@ -79,12 +76,62 @@ describe 'mysql task' do
 
       it "should migrate workshops" do
         expect { run_rake_task }.to change { Workshop.all.count }
-        expect( Workshop.all.first).to satisfy { |value|  value.facebook_album_id.not_blank? }
+        workshop = Workshop.all.first
+        expect( workshop.facebook_album_id ).not_to be_empty
+        events_count = workshop.events.count
+        expect(events_count).to be > 0
       end
 
     end
   end
 
+  describe "people" do
+
+    let :run_rake_task do
+      Rake::Task["mysql:migrate_articles"].reenable
+      Rake.application.invoke_task "mysql:migrate_people[1]"
+    end
+
+    before do
+      Rake::Task["mysql:create_cities"].reenable
+      Rake.application.invoke_task "mysql:create_cities"
+      Rake::Task["mysql:migrate_workshops"].reenable
+      Rake.application.invoke_task "mysql:migrate_workshops[340]"
+    end
+
+
+    it "should migrate people" do
+        expect { run_rake_task }.to change { Person.all.count }
+        expect(Registration.all.count).to be > 0
+        expect(NewsletterSubscriber.all.count).to be > 0
+        expect(Person.all.take.registrations.last.reason).not_to be_nil
+    end
+
+    
+  end
+
+  describe "news" do
+
+    let :run_rake_task do
+      Rake::Task["mysql:migrate_news"].reenable
+      Rake.application.invoke_task "mysql:migrate_news"
+    end
+
+    before do
+      Rake::Task["mysql:create_cities"].reenable
+      Rake.application.invoke_task "mysql:create_cities"
+    end
+
+
+    it "should migrate news" do
+        expect { run_rake_task }.to change { News.all.count }
+        # expect(Registration.all.count).to be > 0
+        # expect(NewsletterSubscriber.all.count).to be > 0
+        # expect(Person.all.take.registrations.last.reason).not_to be_nil
+    end
+
+    
+  end
 
 
 end

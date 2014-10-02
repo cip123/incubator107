@@ -6,6 +6,8 @@ class Workshop < ActiveRecord::Base
 
   belongs_to :city
   belongs_to :group
+  
+  validates :name, presence: true 
   validates :city_id, presence: true 
   default_scope -> {includes :translations}
 

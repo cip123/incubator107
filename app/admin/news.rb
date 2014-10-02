@@ -25,6 +25,7 @@ ActiveAdmin.register News do
     f.inputs "Details" do
       f.input :title
       f.input :published, :as => :radio, :label => "Publish", :collection => [["Yes", true], ["No", false]]
+      f.input :image, :as => :file
       f.input :release_date, :as => :string, :input_html => { class: "datepicker", size: 12, max: 10, :value =>  news.release_date.nil? ? "" : news.release_date.strftime("%Y-%m-%d") }     
      end
      
@@ -45,10 +46,11 @@ ActiveAdmin.register News do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :title, :published, :release_date, :content, :city_id
+  permit_params :title, :published, :release_date, :content, :city_id, :image
   
   filter :published
   filter :release_date
+  filter :city
 
   #
   # or

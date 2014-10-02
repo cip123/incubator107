@@ -5,6 +5,7 @@ class CreateNews < ActiveRecord::Migration
       t.boolean :published
       t.integer :city_id
       t.timestamp :release_date
+      t.attachment :image
       
       t.timestamps
     end

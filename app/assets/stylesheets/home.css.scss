@@ -1,3 +1,70 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#main-page { 
+  background: url(background.gif) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.left-clouds { 
+  position:absolute;   
+  bottom:25%; 
+  width: 40%;
+  margin-left: 5%;
+  
+  a:nth-child(2n)>div {
+    background: url('/assets/cloud-white.gif') no-repeat center center;
+  }
+
+  a:nth-child(2n+1)>div {
+     background: url('/assets/cloud-grey.gif') no-repeat center center;
+  }
+}
+
+.cloud {
+  margin: 0;
+  float: left;
+  
+  width:120px;
+  height:80px;
+  line-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Aracne Condensed Regular";
+  font-weight: bold;
+  font-size: 20px;
+  color: #a3346c;
+
+  &:hover {
+    color: #109b97;
+  }
+  
+}
+
+
+.right-clouds { 
+  position:absolute;   
+  bottom:25%; 
+  width: 40%;
+  
+  a:nth-child(2n)>div {
+    background: url('/assets/cloud-white.gif') no-repeat center center;
+  }
+
+  a:nth-child(2n+1)>div {
+     background: url('/assets/cloud-grey.gif') no-repeat center center;
+  }
+
+
+
+  right: 0px;
+  
+}
+
+
+/*.row > div:nth-child(2n){
+  
+
+  width:120px;
+  height:80px;
+}*/

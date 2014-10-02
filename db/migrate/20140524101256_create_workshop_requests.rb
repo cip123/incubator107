@@ -3,7 +3,7 @@ class CreateWorkshopRequests < ActiveRecord::Migration
     create_table  :workshop_requests do |t|
       t.integer   :workshop_id
       t.integer   :person_id
-      t.string    :reason
+      t.text    :reason
 
       t.timestamps
     end

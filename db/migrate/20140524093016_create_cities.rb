@@ -5,7 +5,6 @@ class CreateCities < ActiveRecord::Migration
       t.string :country
       t.string :facebook_page_id
       t.string :email
-      t.integer :default_location_id
       t.string :google_analytics_code
       t.string :mailchimp_key
       t.string :newsletter_list_id
@@ -16,7 +15,7 @@ class CreateCities < ActiveRecord::Migration
     end
     add_index :cities, :email, unique: true
     add_index :cities, :domain, unique: true
-    City.create_translation_table! :name => :string, :donation_text => :text
+    City.create_translation_table! :name => :string, :default_donation => :text, :default_whereabouts => :text
   end
 
   def down

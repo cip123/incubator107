@@ -27,7 +27,7 @@
       <% end %>
     </div>
     <div class="col-sm-4">
-      <%= image_tag("nocturna_cluj.jpg") %>
+      <%= image_tag(@last_news.image) unless @last_news.image.nil? %>
     </div>
   </div>
 <% end %>
