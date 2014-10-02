@@ -17,6 +17,8 @@ Incubator107::Application.routes.draw do
 
   post '/tinymce_assets' => 'tinymce_assets#create'  
 
+  
+
   constraints(Subdomain) do
     resources :articles
     resources :workshops

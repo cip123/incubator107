@@ -1,6 +1,6 @@
 class Subdomain
   def self.matches?(request)
-    case request.subdomain
+    case request.subdomains.first
     when 'www', '', nil
       false
     else
