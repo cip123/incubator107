@@ -5,22 +5,21 @@ FactoryGirl.define do
     sequence(:email)  { |n| "email#{n}@incubator107.com" }
     domain "cluj" 
     facebook_page_id "1232132132"
-    default_location_id 1
+    default_event_location_id 1
     mailchimp_key "test-key"
     newsletter_list_id "tewrwrw"
     workshop_list_id "ewew"
     workshop_groups_id 123123
 
-    donation_text "<p>daca <b>nu</b> va</p>" 
+    default_donation "<p>daca <b>nu</b> va</p>" 
     factory (:city_with_links) do
        after (:create) do |city, evaluator|
         create(:news, title: "Last news", city_id: city.id )
-        create(:article_link, alias: 'about', city_id: city.id )        
-        create(:article_link, alias: 'collaboration', city_id: city.id )
-        create(:article_link, alias: 'your_place', city_id: city.id )
-        create(:article_link, alias: 'friends', city_id: city.id )
-        create(:article_link, alias: 'two_percent', city_id: city.id )
-        create(:article_link, alias: 'contact', city_id: city.id)
+        create(:article_link, alias: ArticleLink.aliases[:about], city_id: city.id )        
+        create(:article_link, alias: ArticleLink.aliases[:collaboration], city_id: city.id )
+        create(:article_link, alias: ArticleLink.aliases[:your_place], city_id: city.id )
+        create(:article_link, alias: ArticleLink.aliases[:friends], city_id: city.id )
+        create(:article_link, alias: ArticleLink.aliases[:two_percent], city_id: city.id )
         create(:workshop, name: 'active workshop', city_id: city.id , published: 1)
         create(:workshop, name: 'inactive workshop', city_id: city.id )
         create(:workshop, name: 'old workshop', city_id: city.id, published: 1, release_date: 1.month.ago )
@@ -41,6 +40,8 @@ FactoryGirl.define do
       with_whom "<p> master<b>test</b></p>"
       whereabouts "<p> where<b>test</b></p>"
       requires_donation true
+      should_send_notification true
+
       donation "<p> donation<b>test</b></p>"
       release_date DateTime.now
       factory (:workshop_with_events) do

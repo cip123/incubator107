@@ -11,6 +11,7 @@ class Registration < ActiveRecord::Base
   attr_accessor :subscribe_to_mailing_list
 
   def send_reminder 
+
     if workshop.should_send_notification
       RegistrationMailer.remind(self).deliver
       self.notification_sent = true

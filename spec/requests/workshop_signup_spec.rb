@@ -10,7 +10,7 @@ describe "Workshop Registration" do
   before do
     ActionMailer::Base.deliveries = []
     visit url_for_subdomain :cluj, "/workshops/" + workshop.id.to_s
-    click_link "aici"; sleep 2
+    click_link "aici"; sleep 3
 
     Delayed::Worker.delay_jobs = false
     @gibbon = object_double("Gibbon::API").as_stubbed_const
@@ -126,15 +126,15 @@ describe "Workshop Registration" do
       assert_equal "cip@incubator107.com", verify_mail.to[0]
       assert_match( /cluj.lvh.me/, verify_mail.body.to_s )
 
-      reminder_mail = ActionMailer::Base.deliveries[1]
-      assert_equal reminder_mail.subject, "Confirmă-ți prezența - #{workshop.name}"
-      puts reminder_mail.body.inspect
+      reminder_mail = ActionMailer::Base.deliveries[2]
+      assert_equal reminder_mail.subject, "Reminder - #{workshop.name} - #{registration.event.name}"
 
       welcome_mail = ActionMailer::Base.deliveries.last
       assert_equal "#{workshop.name} - înscriere online", welcome_mail.subject
       assert_equal "cip@incubator107.com", welcome_mail.to[0]
       assert_match( /atelier/, welcome_mail.body.to_s )
 
+   
     end
 
 
@@ -153,9 +153,19 @@ describe "Workshop Registration" do
     end
 
     it "should increase subscribe to mailing list" do
+     
       check "registration_subscribe_to_mailing_list"
-      expect {signup}.to change(NewsletterSubscriber, :count).by(1)
-      expect (page.driver.alert_messages.first).should eq("Vă mulțumim pentru înscriere!")      
+      
+      newsletter_subscribers_before = NewsletterSubscriber.all.count
+
+      alert_text = page.accept_alert do
+        signup  
+      end
+
+      expect (NewsletterSubscriber.all.count - newsletter_subscribers_before) == 1
+
+      
+      expect alert_text == "Vă mulțumim pentru înscriere!"
 
       newsletter_subscribe_params = {
         id: city.newsletter_list_id, 
@@ -183,12 +193,16 @@ describe "Workshop Registration" do
     describe "with existing not verified person " do
 
       before do 
-        Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880", city: city)
+        Person.create!(name: "cip", email: "cip@incubator107.com", phone: "0748452880", city: city)
       end
 
       it "should not increase person count" do
-        expect {signup}.not_to change(Person, :count)
-        expect (page.driver.alert_messages.first).should eq("Te rugăm sa-ți validezi mailul înainte să te înregistrezi")
+       
+        alert_text = page.accept_alert do
+          expect {signup}.not_to change(Person, :count)
+        end
+
+        expect alert_text == "Te rugăm sa-ți validezi mailul înainte să te înregistrezi"
       end
     end
 
@@ -199,8 +213,13 @@ describe "Workshop Registration" do
       end
 
       it "should not increase person count" do
-        expect {signup}.not_to change(Person, :count)
-        expect (page.driver.alert_messages.first).should eq("Vă mulțumim pentru înscriere!")
+
+        alert_text = page.accept_alert do
+          expect {signup}.not_to change(Person, :count)
+        end
+
+        expect alert_text == "Vă mulțumim pentru înscriere!"
+
         welcome_mail = ActionMailer::Base.deliveries.last
         assert_equal "#{workshop.name} - înscriere online", welcome_mail.subject
         assert_equal "cip@incubator107.com", welcome_mail.to[0]
@@ -219,9 +238,13 @@ describe "Workshop Registration" do
       end
 
       it "should not increase workshop people count" do
+        
+        alert_text = page.accept_alert do
+          expect {signup}.not_to change(Registration, :count)
+        end
 
-        expect {signup}.not_to change(Registration, :count)
-        expect (page.driver.alert_messages.first).should eq("Vă mulțumim pentru înscriere!")
+        
+        expect alert_text == "Vă mulțumim pentru înscriere!"
 
       end
     end

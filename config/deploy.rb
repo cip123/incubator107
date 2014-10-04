@@ -43,11 +43,11 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example
-      with RAILS_ENV: fetch(:environment) do
-        within "#{fetch(:deploy_to)}/current/" do
-          execute "bin/delayed_job restart 2>&1"
-        end
-      end
+      # with RAILS_ENV: fetch(:environment) do
+      #   within "#{fetch(:deploy_to)}/current/" do
+      #     execute "bin/delayed_job restart 2>&1"
+      #   end
+      # end
 
       execute "sudo service httpd restart"      
       #puts checkmark.gsub(/\\u[\da-f]{4}/i) { |m| [m[-4..-1].to_i(16)].pack('U') }.green

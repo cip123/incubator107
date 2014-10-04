@@ -45,9 +45,7 @@ class WorkshopsController < SubdomainController
           registration.save!
           # this scheduling is done here because the mailers do not support run_at: parameter at the moment
           registration.delay(run_at: registration.event.start_date.at_midnight - 16.hours).send_reminder
-
         end
-      
       end
     
       RegistrationMailer.delay.confirm(:person => person, :workshop => workshop) if succesfull_registration
