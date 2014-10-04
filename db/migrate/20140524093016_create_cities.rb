@@ -5,7 +5,10 @@ class CreateCities < ActiveRecord::Migration
       t.string :country
       t.string :facebook_page_id
       t.string :email
+      t.integer :default_event_location_id
       t.string :google_analytics_code
+      
+      # mailchimp 
       t.string :mailchimp_key
       t.string :newsletter_list_id
       t.string :workshop_list_id

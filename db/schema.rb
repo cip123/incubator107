@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140824143503) do
     t.string   "country"
     t.string   "facebook_page_id"
     t.string   "email"
+    t.integer  "default_event_location_id"
     t.string   "google_analytics_code"
     t.string   "mailchimp_key"
     t.string   "newsletter_list_id"

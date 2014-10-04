@@ -24,12 +24,13 @@ module Incubator107
     I18n.reload!
     
     config.autoload_paths += %W(#{config.root}/lib)
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif) 
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif, *.ttf) 
     #Rails.application.routes.default_url_options[:host] = '???'
 
     config.assets.precompile += %w[active_admin.css active_admin.js print.css]
     config.assets.precompile += %w[active_admin/print.css]
-    config.assets.precompile += %w[active_admin/print.css]
+    
 
     #assets.precompile += %w(*.png *.jpg *.jpeg *.gif)   
     config.hosts = {

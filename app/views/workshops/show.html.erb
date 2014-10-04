@@ -6,13 +6,17 @@
 <h4><%=t(:what?) %></h4>
 <p><%= raw(@workshop.description) %> </p>
 
+<div>
 <h4><%=t(:with_who?) %></h4>
-<p><%= raw(@workshop.with_whom) %> </p>
+<p><%= raw(@workshop.with_whom) %></p>
+</div>
 
-
+<% unless @workshop.bring_along.nil? || @workshop.bring_along.empty? %>
 <h4><%=t(:bring_along?) %></h4>
 <p><%= raw(@workshop.bring_along) %> </p>
-
+<% end  %>
+  
+<div> 
 <h4> <%= t(:when?) %> </h4>
 <% if @workshop.active? %>
   <% @workshop.events.each do |event| %>
@@ -24,8 +28,11 @@
    <a href='' data-toggle="modal" data-target="#request_workshop"><%=t(:request_workshop)%></a>
    <%=render 'request_modal' %>
 <% end  %>
+</div>
+
 <h4><%=t(:where?) %></h4>
 <p><%= raw(@workshop.whereabouts) %> </p>
+
 <% if @workshop.active? %>
   <h4><%=t(:how?) %></h4>
   <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>

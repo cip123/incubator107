@@ -27,12 +27,12 @@ class Event < ActiveRecord::Base
   # BUG in Active Admin
   def name 
     result = I18n.l(start_date, :format => '%A') 
-    result += "@#{location.name}" if location?
+    result += "@#{location.name}" unless location.nil? || location.empty?
   end
 
   def description
     result = I18n.l(start_date, :format => '%A') 
-    result += "@#{location.name}" if location !=nil
+    result += "@#{location.name}" unless location.nil? || location.empty?
     start_time = (start_date).strftime('%H:%M') 
     end_time = (start_date  + duration*60).strftime('%H:%M')
     result += ", #{I18n.l(start_date, :format => '%d %B')} #{I18n.t(:from)} #{start_time} #{I18n.t(:to)} #{end_time}"

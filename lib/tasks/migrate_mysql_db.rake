@@ -44,6 +44,7 @@ namespace :mysql do
       domain: "bucuresti", 
       email: "inscrieri@incubator107.com", 
       facebook_page_id: "193875377299310", 
+      default_event_location_id: 1,
       google_analytics_code: "UA-9862367-4",
       default_whereabouts: %{Atelierul se ţine în mansarda noastră din <b>str. Traian 107 (Zona Hala Traian)</b>, sector 2, Bucure&#537;ti. Dacă nu ştii deja, află cum să ajungi: <a href="http://bucuresti.incubator107.com/contact.html">http://bucuresti.incubator107.com/contact.html</a>.
                 },
@@ -214,7 +215,7 @@ namespace :mysql do
       city = City.find_by_domain(row["Oras"].downcase) unless row["Oras"].nil? 
       release_date = row["release date"].nil? ? DateTime.new(2010,1,1) : row["release date"]
       city_default_whereabouts = city.nil? ? "" : city.default_whereabouts
-      whereabouts = row["where"].nil? ? city_default_whereabouts : row["where"]
+      whereabouts = row["where"].nil? || row["where"].empty? ? city_default_whereabouts : row["where"]
 
       begin    
         workshop = Workshop.create!(

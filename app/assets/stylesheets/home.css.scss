@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Aracne Condensed Regular';
+    src: 
+
+    url(font-path('ARACNE-CONDENSED_regular.ttf')) format('truetype');
+}
+
 #main-page { 
   background: url(background.gif) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -13,11 +20,11 @@
   margin-left: 5%;
   
   a:nth-child(2n)>div {
-    background: url('/assets/cloud-white.gif') no-repeat center center;
+    background: url('cloud-white.gif') no-repeat center center;
   }
 
   a:nth-child(2n+1)>div {
-     background: url('/assets/cloud-grey.gif') no-repeat center center;
+     background: url('cloud-grey.gif') no-repeat center center;
   }
 }
 
@@ -48,23 +55,14 @@
   width: 40%;
   
   a:nth-child(2n)>div {
-    background: url('/assets/cloud-white.gif') no-repeat center center;
+    background: url('cloud-white.gif') no-repeat center center;
   }
 
   a:nth-child(2n+1)>div {
-     background: url('/assets/cloud-grey.gif') no-repeat center center;
+     background: url('cloud-grey.gif') no-repeat center center;
   }
-
-
 
   right: 0px;
   
 }
 
-
-/*.row > div:nth-child(2n){
-  
-
-  width:120px;
-  height:80px;
-}*/
