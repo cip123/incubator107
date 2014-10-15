@@ -82,7 +82,7 @@ ro:
       messages:
         record_invalid: Invalid Record
       models:
-        subscriber:
+        newsletter_subscriber:
           attributes:
             email:
               blank: Emailul nu este completat

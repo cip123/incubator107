@@ -25,7 +25,7 @@ class Workshop < ActiveRecord::Base
     next_month_workshops = ActiveSupport::OrderedHash.new 
 
     entries.each do |entry|
-      if ( entry[2] <= Date.today.end_of_month ) 
+      if ( Date.parse(entry[2].to_s) <= Date.today.end_of_month ) 
         this_month_workshops[entry[0]] = entry[1] unless this_month_workshops[entry[0]].present?
       else
         next_month_workshops[entry[0]] = entry[1] unless next_month_workshops[entry[0]].present?

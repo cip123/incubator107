@@ -2,11 +2,14 @@ require 'spec_helper'
 
 describe "root page" do
 
+
+
   before  do 
+    
     10.times do |n|
       FactoryGirl.create(:city, domain: "domain#{n}") 
     end 
-    visit "http://lvh.me:3000"
+    visit "http://lvh.me:3001"
   end
 
   describe "index" do
@@ -15,8 +18,8 @@ describe "root page" do
 
       expect(page).to have_title("Incubator107")
       
-      10.times.each do |n|
-        expect(page).to have_content("City #{n+1}") 
+      City.all.each do |city|
+        expect(page).to have_content(city.name.upcase) 
       end 
     end
   end 

@@ -2,7 +2,6 @@ class HomeController < SubdomainController
   def index
 
     @subscriber = NewsletterSubscriber.new
-
     @last_news = @city.news.last
 
     if (Time.now.mday.to_i <= 20 ) 

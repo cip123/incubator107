@@ -67,6 +67,7 @@ FactoryGirl.define do
     name "ciprian"
     email "cip@incubator107.com"
     phone "0748452880"
+    city_id 1
   end
 
   factory :group do

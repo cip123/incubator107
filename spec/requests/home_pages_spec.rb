@@ -2,17 +2,12 @@ require "spec_helper"
 
 describe "Home pages" do
 
-
   describe " navigation bar " do
     I18n.available_locales.each do |locale|
 
       describe "with #{locale} locale" do
         if (locale == I18n.default_locale)
           locale = ""
-        end
-
-        after(:all) do
-          City.delete_all
         end
 
         before do
@@ -35,7 +30,12 @@ describe "Home pages" do
           expect(page).to have_link I18n.t(:contact)
         end
       end
+
+
     end
+    
+    I18n.locale = I18n.default_locale
+
   end
 
   describe "side bar" do
@@ -44,18 +44,16 @@ describe "Home pages" do
 
       before do
 
-
-
         I18n.locale = I18n.default_locale
-        city = FactoryGirl.create(:city_with_links, name: 'cluj')
+        @city = FactoryGirl.create(:city_with_links)
 
+        FactoryGirl.create(:workshop_with_events, name: "spanning_workshop", city_id: @city.id)
+        FactoryGirl.create(:workshop_with_events, name: "inactive workshop", city_id: @city.id, published: false)
 
+        allow(Time).to receive(:now).and_return( Time.now.change(:day => 15) )
+        
+        visit url_for_subdomain :cluj, "/"
 
-        FactoryGirl.create(:workshop_with_events, name: "spanning_workshop", city_id: city.id)
-        FactoryGirl.create(:workshop_with_events, name: "inactive workshop", city_id: city.id, published: false)
-        Time.stub :now,  Time.now.change(:day => 15) do
-          visit url_for_subdomain :cluj, "/"
-        end
       end
 
       it "should have this month workshops" do
@@ -69,17 +67,20 @@ describe "Home pages" do
 
     describe "when at end of the month" do
 
-
       before do
         I18n.locale = I18n.default_locale
-        city = FactoryGirl.create(:city_with_links, name: 'cluj')
-        FactoryGirl.create(:workshop_with_events, name: "spanning_workshop", city_id: city.id)
-        Time.stub :now,  Time.now.change(:day => 25) do
-          visit url_for_subdomain :cluj, "/"
-        end
+        @city = FactoryGirl.create(:city_with_links)
+        
+        FactoryGirl.create(:workshop_with_events, name: "spanning_workshop", city_id: @city.id)
+
+        allow(Time).to receive(:now).and_return( Time.now.change(:day => 25) )
+
+        visit url_for_subdomain :cluj, "/"
+
       end
 
       it "should have next month workshops" do
+        
         expect(page).to have_content("Luna aceasta")
         expect(page).to have_content("Luna viitoare")
         expect(page).to have_link "spanning_workshop"

@@ -13,7 +13,6 @@ class PersonController < SubdomainController
 
   end
 
-
   private
   def send_pending_mail (person)
 

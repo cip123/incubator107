@@ -2,15 +2,17 @@ require 'spec_helper'
 
 describe "request a workshop" do
 
-  let!(:city) { FactoryGirl.create(:city_with_links, name: 'cluj') }
-  let (:signup) { click_button 'Gata'; sleep 2 }
-  let (:workshop) { FactoryGirl.create(:workshop_with_events_in_the_past) }
-  let (:person) { FactoryGirl.create(:person) }
+  let (:signup) { click_button 'Gata' }
 
   before do
-    Delayed::Worker.delay_jobs = false
+
+    Delayed::Worker.delay_jobs = false        
+    @city =  FactoryGirl.create(:city_with_links, name: "cluj") 
+    @workshop = FactoryGirl.create(:workshop_with_events_in_the_past)
+    
     ActionMailer::Base.deliveries = []
-    visit url_for_subdomain :cluj, "/workshops/" + workshop.id.to_s
+    visit url_for_subdomain :cluj, "/workshops/" + @workshop.id.to_s
+    
     click_link "Cer atelier"; sleep 2
     @gibbon = object_double("Gibbon::API").as_stubbed_const
     @api = double("api")
@@ -25,21 +27,33 @@ describe "request a workshop" do
     it "should not allow users without phone number" do
       fill_in "workshop_request_person_name" , :with => 'cip'
       fill_in "workshop_request_person_email", :with => 'cip@incubator107.com'
-      expect {signup}.not_to change(Person, :count)
+      person_count_before = Person.all.count  
+      
+      signup
+      
+      expect(Person.all.count - person_count_before).to eq(0)
       expect(page).to have_content("Telefonul nu este completat")
     end
 
     it "should not allow persons without name" do
       fill_in "workshop_request_person_phone" , :with => '0754999999'
       fill_in "workshop_request_person_email", :with => 'cip@incubator107.com'
-      expect {signup}.not_to change(Person, :count)
+      person_count_before = Person.all.count  
+
+      signup
+
+      expect(Person.all.count - person_count_before).to eq(0)
       expect(page).to have_content("Numele nu este completat")
     end
 
     it "should not allow persons without email" do
       fill_in "workshop_request_person_phone" , :with => '0754999999'
       fill_in "workshop_request_person_name", :with => 'cip'
-      expect {signup}.not_to change(Person, :count)
+      person_count_before = Person.all.count  
+      
+      signup
+
+      expect(Person.all.count - person_count_before).to eq(0)
       expect(page).to have_content("Emailul nu este completat")
     end
 
@@ -47,7 +61,11 @@ describe "request a workshop" do
       fill_in "workshop_request_person_phone" , :with => '0754999999'
       fill_in "workshop_request_person_email", :with => 'cip@dsada,ro'
       fill_in "workshop_request_person_name", :with => 'cip'
-      expect {signup}.not_to change(Person, :count)
+      person_count_before = Person.all.count  
+      
+      signup
+
+      expect(Person.all.count - person_count_before).to eq(0)
       expect(page).to have_content("Emailul este invalid")
     end
   end
@@ -63,20 +81,25 @@ describe "request a workshop" do
 
     it "should increase workshop request count" do
 
-      expect {signup}.to change(WorkshopRequest, :count).by(1)
+      requests_count_before = WorkshopRequest.count 
 
-      expect (page.driver.alert_messages.first)  == "Mulțumim!"  
+      alert_text = page.accept_alert do
+        signup  
+      end
+
+      expect(WorkshopRequest.count - requests_count_before).to eq(1)
+      expect(alert_text).to eq("Mulțumim!")  
 
       workshop_request_params = {
-        id: city.workshop_list_id, 
+        id: @city.workshop_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
         merge_vars: {
           groupings: [
             {
-            id: city.workshop_groups_id,
-            groups: [ workshop.group.name ]
+            id: @city.workshop_groups_id,
+            groups: [ @workshop.group.name ]
             }
 
           ]
@@ -94,7 +117,7 @@ describe "request a workshop" do
 
       workshop_request = WorkshopRequest.find_by(
         :person_id => person.id,
-        :workshop_id => workshop.id
+        :workshop_id => @workshop.id
       )
 
       expect workshop_request !=  nil
@@ -102,7 +125,7 @@ describe "request a workshop" do
 
       subscriber = NewsletterSubscriber.find_by(
         :email => person.email,
-        :city_id => city.id
+        :city_id => @city.id
       )
 
       expect subscriber !=  nil
@@ -116,17 +139,25 @@ describe "request a workshop" do
 
     it "should increase subscribe to mailing list" do
       check "workshop_request_subscribe_to_mailing_list"
-      expect {signup}.to change(NewsletterSubscriber, :count).by(1)
-      expect (page.driver.alert_messages.first).should eq("Mulțumim!")
+      
+      subscribers_count_before = NewsletterSubscriber.count
+
+      alert_text = page.accept_alert do
+        signup  
+      end
+
+      expect(NewsletterSubscriber.count - subscribers_count_before).to eq(1)
+      expect(alert_text).to eq("Mulțumim!")      
+
       newsletter_list_subscriber = NewsletterSubscriber.find_by(
         :email=> "cip@incubator107.com",
-        :city_id => city.id
+        :city_id => @city.id
       )
 
       expect newsletter_list_subscriber !=  nil
 
       newsletter_subscribe_params = {
-        id: city.newsletter_list_id, 
+        id: @city.newsletter_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
@@ -145,62 +176,87 @@ describe "request a workshop" do
     describe "with existing not verified person " do
 
       before do
-        Person.create!(name: "cip", email: "cip@incubator107.com", phone: "0748452880", city: city)
+        Person.create!(name: "cip", email: "cip@incubator107.com", phone: "0748452880", city: @city)
       end
 
       it "should not increase person count" do
-        expect {signup}.not_to change(Person, :count)
-        expect (page.driver.alert_messages.first).should eq("Te rugăm sa-ți validezi mailul înainte să te înregistrezi")
+        person_count_before = Person.count
+
+        alert_text = page.accept_alert do
+          signup  
+        end
+        
+        expect(Person.count - person_count_before).to eq(0)
+        expect(alert_text).to eq("Te rugăm sa-ți validezi mailul înainte să te înregistrezi")  
       end
     end
 
     describe "with existing verified person" do
 
       before do
-        Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880", verified: 1, city: city)
+        Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880", verified: 1, city: @city)
       end
 
       it "should not increase person count" do
-        expect {signup}.not_to change(Person, :count)
-        expect (page.driver.alert_messages.first).should eq("Mulțumim!")
+        person_count_before = Person.count
+
+        alert_text = page.accept_alert do
+          signup  
+        end
+
+        expect(Person.count - person_count_before).to eq(0)
+        expect(alert_text).to eq("Mulțumim!")  
       end
     end
 
     describe "when already requested by the same person" do
 
       before do
-        person = Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880",verified: 1, city: city)
-        WorkshopRequest.create( workshop_id: workshop.id, person_id: person.id )
+        person = Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880",verified: 1, city: @city)
+        WorkshopRequest.create( workshop_id: @workshop.id, person_id: person.id )
       end
 
       it "should not increase workshop people count" do
-        expect {signup}.not_to change(WorkshopRequest, :count)
-        expect (page.driver.alert_messages.first).should eq("Mulțumim!")
+        
+        requests_count_before = WorkshopRequest.count 
+
+        alert_text = page.accept_alert do
+          signup  
+        end
+
+        expect(WorkshopRequest.count - requests_count_before).to eq(0)
+        expect(alert_text).to eq("Mulțumim!")  
       end
     end
 
     describe "when it is the tenth requester" do
 
       before do
-        person = Person.create!(name: "cip", email: "cip@otheraddress.com", phone: "0748452880",verified: 1, city: city)
+        person = Person.create!(name: "cip", email: "cip@otheraddress.com", phone: "0748452880",verified: 1, city: @city)
         9.times do |n| 
-          WorkshopRequest.create( workshop_id: workshop.id, person_id: person.id )
+          WorkshopRequest.create( workshop_id: @workshop.id, person_id: person.id )
         end
       end
 
       it "should increase workshop request count" do
-        expect {signup}.to change(WorkshopRequest, :count).by(1)
-        expect (page.driver.alert_messages.first).should eq("Mulțumim!")
+        
+        requests_count_before = WorkshopRequest.count 
+
+        alert_text = page.accept_alert do
+          signup  
+        end
+
+        expect(WorkshopRequest.count - requests_count_before).to eq(1)
+
         notification_mail = ActionMailer::Base.deliveries.last
         
-        assert_equal "#{workshop.name} requested", notification_mail.subject
+        assert_equal "#{@workshop.name} requested", notification_mail.subject
         assert_equal "noi@incubator107.com", notification_mail.to[0]
         assert_match( /10/, notification_mail.body.to_s )
 
       end
     end
-
-
+  
   end
 
 end

@@ -26,13 +26,10 @@ class City < ActiveRecord::Base
   default_scope -> {includes :translations}
   
   def add_to_mailchimp_newsletter person
-    
     return if mailchimp_key.blank?
     
     gibbon = Gibbon::API.new(mailchimp_key)    
     puts gibbon.lists.subscribe({id: newsletter_list_id, email: { email: person.email }, merge_vars: {}, double_optin: false, replace_interests: false, update_existing: true })
-
-
   end
 
 

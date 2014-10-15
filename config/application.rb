@@ -25,6 +25,8 @@ module Incubator107
     
     config.autoload_paths += %W(#{config.root}/lib)
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    
+
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif, *.ttf) 
     #Rails.application.routes.default_url_options[:host] = '???'
 

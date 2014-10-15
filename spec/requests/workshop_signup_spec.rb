@@ -2,17 +2,23 @@ require 'spec_helper'
 
 describe "Workshop Registration" do
 
-  let!(:city) { FactoryGirl.create(:city_with_links, name: 'cluj') }
-  let (:signup) { click_button 'Gata'}
-  let (:workshop) { FactoryGirl.create(:workshop_with_events) }
-  let (:person) { FactoryGirl.create(:person) }
+  let(:signup) { click_button 'Gata'}
+  
+  before(:all) do
+    Delayed::Worker.delay_jobs = false
+  end
 
   before do
     ActionMailer::Base.deliveries = []
-    visit url_for_subdomain :cluj, "/workshops/" + workshop.id.to_s
-    click_link "aici"; sleep 3
+    @city = FactoryGirl.create(:city_with_links, name: 'cluj')
+    @workshop = FactoryGirl.create(:workshop_with_events) 
 
-    Delayed::Worker.delay_jobs = false
+    visit url_for_subdomain :cluj, "/workshops/" + @workshop.id.to_s
+
+    click_link "aici"
+    sleep 1
+
+    
     @gibbon = object_double("Gibbon::API").as_stubbed_const
     @api = double("api")
     allow(@gibbon).to receive(:new).twice  { @api}
@@ -64,7 +70,7 @@ describe "Workshop Registration" do
       fill_in "registration_reason" , :with => 'Decembrie'
       fill_in "registration_person_email", :with => 'cip@incubator107.com'
 
-      find(:css, "#event_ids_[value='#{workshop.events[0].id}']").set(false)
+      find(:css, "#event_ids_[value='#{@workshop.events[0].id}']").set(false)
     end
 
     it "should increase registrations count" do
@@ -77,17 +83,17 @@ describe "Workshop Registration" do
 
       expect (Registration.all.count - registrations_before) == 2
 
-      expect (alert_text) == "Vă mulțumim pentru înscriere!"
+      expect(alert_text) == "Vă mulțumim pentru înscriere!"
       registration_params = {
-        id: city.workshop_list_id, 
+        id: @city.workshop_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
         merge_vars: {
           groupings: [
             {
-            id: city.workshop_groups_id,
-            groups: [ workshop.group.name ]
+            id: @city.workshop_groups_id,
+            groups: [ @workshop.group.name ]
             }
 
           ]
@@ -106,7 +112,7 @@ describe "Workshop Registration" do
      
       registration = Registration.find_by(
         :person_id => person.id,
-        :event_id => workshop.events[1].id
+        :event_id => @workshop.events[1].id
       )
       expect registration !=  nil
 
@@ -114,7 +120,7 @@ describe "Workshop Registration" do
 
       registration = Registration.find_by(
         :person_id => person.id,
-        :event_id => workshop.events[2].id
+        :event_id => @workshop.events[2].id
       )
       
       expect registration !=  nil
@@ -127,26 +133,26 @@ describe "Workshop Registration" do
       assert_match( /cluj.lvh.me/, verify_mail.body.to_s )
 
       reminder_mail = ActionMailer::Base.deliveries[2]
-      assert_equal reminder_mail.subject, "Reminder - #{workshop.name} - #{registration.event.name}"
+      assert_equal reminder_mail.subject, "Reminder - #{@workshop.name} - #{registration.event.name}"
 
       welcome_mail = ActionMailer::Base.deliveries.last
-      assert_equal "#{workshop.name} - înscriere online", welcome_mail.subject
+      assert_equal "#{@workshop.name} - înscriere online", welcome_mail.subject
       assert_equal "cip@incubator107.com", welcome_mail.to[0]
       assert_match( /atelier/, welcome_mail.body.to_s )
 
-   
     end
 
 
     it "should schedule the job correctly" do 
+
       Delayed::Worker.delay_jobs = true
       alert_text = page.accept_alert do
         signup  
       end
 
 
-      expect(Delayed::Job.where(run_at: (workshop.events[1].start_date.midnight - 16.hours))).to be_present
-      expect(Delayed::Job.where(run_at: (workshop.events[2].start_date.midnight - 16.hours))).to be_present
+      expect(Delayed::Job.where(run_at: (@workshop.events[1].start_date.midnight - 16.hours))).to be_present
+      expect(Delayed::Job.where(run_at: (@workshop.events[2].start_date.midnight - 16.hours))).to be_present
 
       Delayed::Worker.delay_jobs = false
 
@@ -168,7 +174,7 @@ describe "Workshop Registration" do
       expect alert_text == "Vă mulțumim pentru înscriere!"
 
       newsletter_subscribe_params = {
-        id: city.newsletter_list_id, 
+        id: @city.newsletter_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
@@ -185,7 +191,7 @@ describe "Workshop Registration" do
 
       newsletter_subscriber = NewsletterSubscriber.find_by(
         :email=> "cip@incubator107.com",
-        :city_id => city.id
+        :city_id => @city.id
       )
       expect newsletter_subscriber !=  nil
     end
@@ -193,7 +199,7 @@ describe "Workshop Registration" do
     describe "with existing not verified person " do
 
       before do 
-        Person.create!(name: "cip", email: "cip@incubator107.com", phone: "0748452880", city: city)
+        Person.create!(name: "cip", email: "cip@incubator107.com", phone: "0748452880", city: @city)
       end
 
       it "should not increase person count" do
@@ -209,7 +215,7 @@ describe "Workshop Registration" do
     describe "with existing verified person" do
 
       before do 
-        Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880", verified: 1, city: city)
+        Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880", verified: 1, city: @city)
       end
 
       it "should not increase person count" do
@@ -221,7 +227,7 @@ describe "Workshop Registration" do
         expect alert_text == "Vă mulțumim pentru înscriere!"
 
         welcome_mail = ActionMailer::Base.deliveries.last
-        assert_equal "#{workshop.name} - înscriere online", welcome_mail.subject
+        assert_equal "#{@workshop.name} - înscriere online", welcome_mail.subject
         assert_equal "cip@incubator107.com", welcome_mail.to[0]
         assert_match( /atelier/, welcome_mail.body.to_s )
       end
@@ -230,11 +236,11 @@ describe "Workshop Registration" do
     describe "when already registered" do
 
       before do 
-        person = Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880",verified: 1, city: city)
-        Registration.create(event_id: workshop.events[0].id, person_id: person.id, reason: "Original reason")
-        find(:css, "#event_ids_[value='#{workshop.events[0].id}']").set(true)       
-        find(:css, "#event_ids_[value='#{workshop.events[1].id}']").set(false)
-        find(:css, "#event_ids_[value='#{workshop.events[2].id}']").set(false)
+        person = Person.create(name: "cip", email: "cip@incubator107.com", phone: "0748452880",verified: 1, city: @city)
+        Registration.create(event_id: @workshop.events[0].id, person_id: person.id, reason: "Original reason")
+        find(:css, "#event_ids_[value='#{@workshop.events[0].id}']").set(true)       
+        find(:css, "#event_ids_[value='#{@workshop.events[1].id}']").set(false)
+        find(:css, "#event_ids_[value='#{@workshop.events[2].id}']").set(false)
       end
 
       it "should not increase workshop people count" do

@@ -59,11 +59,14 @@ Spork.prefork do
 
     config.before(:each) do |example|
       DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
-      DatabaseCleaner.start
+    end
+    
+    config.after(:each) do
+      DatabaseCleaner.clean_with(:truncation)
     end
 
-    config.after(:each) do
-      DatabaseCleaner.clean
+    config.after(:all) do
+      DatabaseCleaner.clean_with(:truncation)
     end
 
     # config.before(:each) do

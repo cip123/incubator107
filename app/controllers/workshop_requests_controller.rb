@@ -1,5 +1,5 @@
 
-class WorkshopRequestsController < SubdomainController
+class WorkshopRequestsController < ApplicationController
 
   def show
 
@@ -8,12 +8,16 @@ class WorkshopRequestsController < SubdomainController
 
   def create
 
+    @city = City.find_by_domain(request.subdomains.first.to_s)
+
     person_params = request_params[:person]
     person_params[:city] = @city
 
-    workshop_id = request_params[:workshop][:id]
-    workshop = Workshop.find(workshop_id);
 
+    workshop_id = request_params[:workshop][:id]
+    workshop = Workshop.find_by(id:  workshop_id)
+    puts 
+    #logger.debug "Workshop name is #{workshop.name}"
 
     (person, first_request) = Person.create_if_missing(person_params)
 
@@ -32,8 +36,11 @@ class WorkshopRequestsController < SubdomainController
       workshop_request_count = WorkshopRequest.count(:conditions => "workshop_id = #{workshop_id}")
 
       if (workshop_request_count % 10) == 0
+        
         WorkshopRequestMailer.delay.notify(:count => workshop_request_count, :workshop => workshop)
       end
+      #puts workshop.group.name
+
 
       workshop.group.delay.add_to_mailchimp person
 

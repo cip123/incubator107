@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe "Workshops pages" do
 
-
-  let!(:city) { FactoryGirl.create(:city_with_links) }
-
+  before do 
+    @city = FactoryGirl.create(:city_with_links)
+  end
 
   describe "index" do
     describe "pagination" do
       before do
         30.times do |n|
-          FactoryGirl.create(:workshop, city_id: city.id) 
+          FactoryGirl.create(:workshop, city_id: @city.id) 
         end
         visit url_for_subdomain :cluj, "/workshops" 
       end
@@ -18,11 +18,10 @@ describe "Workshops pages" do
         expect(page).to have_title(I18n.t(:workshops))
       end
 
-
       it "should list each workshop" do
         expect(page).to have_selector('div.pagination') 
         Workshop.paginate(page: 1).each do |workshop|
-          #todo expect a href to have content
+          # TODO expect a href to have content
           expect(page).to have_content(workshop.name)
         end
       end
@@ -35,7 +34,7 @@ describe "Workshops pages" do
         5.times do 
           group = FactoryGirl.create(:group)
           2.times do 
-            workshop = FactoryGirl.create(:workshop, group_id: group.id, city_id: city.id) 
+            workshop = FactoryGirl.create(:workshop, group_id: group.id, city_id: @city.id) 
           end
         end
 
@@ -52,7 +51,6 @@ describe "Workshops pages" do
       describe "when selecting a group" do
         before do
           click_button I18n.t(:all_groups)
-          puts "group is #{Group.first.name}"
           click_link Group.first.name
         end
 
@@ -71,7 +69,9 @@ describe "Workshops pages" do
 
   describe "show" do
 
-    let!(:workshop) { FactoryGirl.create(:workshop_with_events) }
+    before do
+      @workshop = FactoryGirl.create(:workshop_with_events)
+    end
 
     describe "with donation" do
 
@@ -82,18 +82,18 @@ describe "Workshops pages" do
         allow(@koala).to receive(:new)  { @facebook_api}
         allow(@facebook_api).to receive(:api) { { data: "test" } }
         
-        visit url_for_subdomain :cluj, workshop_path(workshop.id)
+        visit url_for_subdomain :cluj, workshop_path(@workshop.id)
       end
 
       it "should display all the fields" do      
 
         expect(@koala).to have_received(:new)
-        expect(@facebook_api).to have_received(:api).with("/#{workshop.facebook_album_id}/photos?fields=source,picture")
+        expect(@facebook_api).to have_received(:api).with("/#{@workshop.facebook_album_id}/photos?fields=source,picture")
 
         expect(page).to have_content("descriptiontest")
         expect(page).to have_content("requisitetest")
         expect(page).to have_content("mastertest")
-        expect(page).to have_content( I18n.l(workshop.events.first.start_date, :format => '%A'))
+        expect(page).to have_content( I18n.l(@workshop.events.first.start_date, :format => '%A'))
         expect(page).to have_content('wheretest')
         expect(page).to have_content('donationtest')
         expect(page).to have_content(I18n.t(:signup_is_online))
@@ -104,16 +104,16 @@ describe "Workshops pages" do
     describe "without donation" do
 
       before do
-        workshop.requires_donation = false
-        workshop.save
-        visit url_for_subdomain :cluj, workshop_path(workshop.id)
+        @workshop.requires_donation = false
+        @workshop.save
+        visit url_for_subdomain :cluj, workshop_path(@workshop.id)
       end
 
       it "should display all the fields" do      
         expect(page).to have_content("descriptiontest")
         expect(page).to have_content("requisitetest")
         expect(page).to have_content("mastertest")
-        expect(page).to have_content( I18n.l(workshop.events.first.start_date, :format => '%A'))
+        expect(page).to have_content( I18n.l(@workshop.events.first.start_date, :format => '%A'))
         expect(page).to have_content('wheretest')
         expect(page).to have_content(I18n.t(:signup_is_online))
         expect(page).to have_content(I18n.t(:signup_blah_blah))
@@ -121,9 +121,6 @@ describe "Workshops pages" do
         expect(page).not_to have_content('daca nu va')
       end
     end
-
   end
+
 end
-
-
-
