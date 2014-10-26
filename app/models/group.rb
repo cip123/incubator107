@@ -1,7 +1,5 @@
 class Group < ActiveRecord::Base
   translates :name
-  has_many :group_mailing_lists
-  has_many :mailing_lists, through: :group_mailing_lists
 
   default_scope -> { includes :translations }
 

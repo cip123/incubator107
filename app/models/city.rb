@@ -8,7 +8,7 @@ class City < ActiveRecord::Base
   has_many :newsletter_subscribers
   has_many :news
   has_many :events, :through => :workshops
-  
+  belongs_to :default_event_location, class_name: "Location"
   has_many :workshops
 
   has_many :locations

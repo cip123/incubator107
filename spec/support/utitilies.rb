@@ -19,6 +19,13 @@ def sign_in(user, options={})
   end
 end
 
+def fill_in_tinymce id, params={}
+  within_frame("#{id}_ifr") do  
+    editor = page.find_by_id("tinymce")
+    editor.base.set params[:with] 
+  end
+
+end
 
 def full_title(page_title)
   base_title = "Incubator107"

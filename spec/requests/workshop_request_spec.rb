@@ -5,7 +5,7 @@ describe "request a workshop" do
   let (:signup) { click_button 'Gata' }
 
   before do
-
+    I18n.locale = I18n.default_locale
     Delayed::Worker.delay_jobs = false        
     @city =  FactoryGirl.create(:city_with_links, name: "cluj") 
     @workshop = FactoryGirl.create(:workshop_with_events_in_the_past)

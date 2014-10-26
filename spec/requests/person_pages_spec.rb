@@ -45,7 +45,7 @@ describe "Person pages" do
       assert_equal true, @person.verified
       welcome_mail = ActionMailer::Base.deliveries.last
       assert_equal "#{@workshop.name} - înscriere online", welcome_mail.subject
-      assert_equal "cip@incubator107.com", welcome_mail.to[0]
+      assert_equal @person.email, welcome_mail.to[0]
       assert_match( /atelier/, welcome_mail.body.to_s )
     end
 

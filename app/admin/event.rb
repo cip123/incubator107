@@ -2,13 +2,15 @@ ActiveAdmin.register Event do
   
   belongs_to :workshop
   
+  filter :start_date
+  
   index do
     selectable_column
     id_column
     column :start_date, :sortable => :start_date do |event|
       event.start_date.strftime('%F %R')  
     end
-    column :location
+    column :location, sortable: "location_translations.name"
     column :duration
     actions
   end
@@ -41,7 +43,6 @@ ActiveAdmin.register Event do
   #   end
   # end
 
-  filter :start_date
   #filter :workshop
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -55,5 +56,11 @@ ActiveAdmin.register Event do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  
+ 
+  controller do
+    def scoped_collection
+      end_of_association_chain.includes(location: [translations: []])
+    end
+  end
+
 end

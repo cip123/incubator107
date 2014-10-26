@@ -1,13 +1,17 @@
 ActiveAdmin.register Article do
 
- 
-  
+  filter :translations_title, as: :string, label: "Title"
+  filter :city
+  filter :published
+
   index do
     selectable_column
     id_column
-    column :title
-    column :city
+    column :title, sortable: 'article_translations.title'
     column :published
+    # sortable by city is not possible at the moment
+    # because we should do a double nested association with city_translation
+    column :city
     column :created_at
 
     actions
@@ -25,6 +29,7 @@ ActiveAdmin.register Article do
       end
   end
 
+  permit_params :title, :text, :content, :published, :city_id
 
   form do |f|
     f.inputs "Article Details" do
@@ -42,12 +47,17 @@ ActiveAdmin.register Article do
 
   # currently there is a Chrome / Safari bug 
   controller do
+
+    def scoped_collection 
+      end_of_association_chain.includes(:translations => [])
+    end
+    
     def create
       super do |format|
         redirect_to admin_articles_path and return if resource.valid?
       end
     end
- 
+    
     def update
       super do |format|
         redirect_to admin_articles_path and return if resource.valid?
@@ -56,18 +66,6 @@ ActiveAdmin.register Article do
   end
 
 
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  permit_params :title, :text, :published, :city_id
   
-  #TODO ransacker does not know globalize3
-  filter "translations.title"
-  filter :city
-  filter :published
 
 end

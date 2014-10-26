@@ -1,14 +1,18 @@
 ActiveAdmin.register Workshop do
 
+  filter :translations_name, as: :string, label: "Name"
+  filter :group
+  filter :city
+  filter :release_date
+  filter :published
+
   index do
     selectable_column
     id_column
 
-    column :name 
+    column :name, :sortable => "workshop_translations.name"
     column :city   
     column :published    
-    column :release_date
-
 
     actions
   end
@@ -97,12 +101,12 @@ ActiveAdmin.register Workshop do
   controller do
     def new
       city = City.find_by_domain(request.subdomains.first.to_s)
-      @workshop = Workshop.new(:city => city, :donation => city.donation_text, :requires_donation => true, :should_send_notification => true)
+      @workshop = Workshop.new(:city => city, :donation => city.default_donation, :requires_donation => true, :should_send_notification => true, whereabouts: city.default_whereabouts)
       super
     end 
 
     def scoped_collection
-      Workshop.joins(:translations)
+      end_of_association_chain.includes(:translations => [])
     end
   end
 
@@ -110,7 +114,7 @@ ActiveAdmin.register Workshop do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-   permit_params :name, :facebook_album_id, :group_id, :published, :release_date, :should_send_notification, 
+   permit_params :name, :facebook_album_id, :city_id, :group_id, :published, :release_date, :should_send_notification,
       :description, :with_whom, :bring_along, :whereabouts, :requires_donation, :donation
   #
   # or
@@ -120,12 +124,6 @@ ActiveAdmin.register Workshop do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-
-  filter :city
-  filter :group
-  filter :release_date
-  filter :published
-  filter :requires_donation
 
 
 end

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "Workshops pages" do
 
   before do 
+    I18n.locale = I18n.default_locale
     @city = FactoryGirl.create(:city_with_links)
   end
 

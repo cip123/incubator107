@@ -3,15 +3,15 @@ ActiveAdmin.register Location do
   index do
     selectable_column
     id_column
-    column :name
-    column :address
+    column :name, sortable: 'location_translations.name'
+    column :address, sortable: 'location_translations.address'
     column :city
 
     actions
   end  
 
 
-  show do |article|
+  show do |location|
       attributes_table do
         row :name
         row :address
@@ -38,6 +38,11 @@ ActiveAdmin.register Location do
     f.actions
   end
 
+  controller do
+    def scoped_collection 
+      end_of_association_chain.includes(:translations => [])
+    end
+  end
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -51,9 +56,10 @@ ActiveAdmin.register Location do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  filter :city
-  filter :name
-  filter :name
+  filter :city 
+  filter :translations_name, as: :string, label: "Name"
+ 
+  filter :description
   filter :created_at
 
 

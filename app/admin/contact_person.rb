@@ -34,7 +34,7 @@ ActiveAdmin.register ContactPerson do
     id_column
     column :name
     column :email
-    column :title
+    column :title, sortable: "contact_person_translations.title"
     column :index
     column :city
     actions
@@ -42,8 +42,15 @@ ActiveAdmin.register ContactPerson do
 
   filter :city
   filter :name
-  filter :created_at
 
   permit_params :name, :phone, :email, :title, :about, :team, :index, :city_id
   
+  controller do
+
+    def scoped_collection
+      end_of_association_chain.includes( translations: [])
+    end
+
+  end
+
 end

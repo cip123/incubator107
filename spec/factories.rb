@@ -1,17 +1,20 @@
+
+
 FactoryGirl.define do
 
   factory :city do
     sequence(:name)  { |n| "City #{n}" }
     sequence(:email)  { |n| "email#{n}@incubator107.com" }
     domain "cluj" 
-    facebook_page_id "1232132132"
-    default_event_location_id 1
-    mailchimp_key "test-key"
-    newsletter_list_id "tewrwrw"
-    workshop_list_id "ewew"
-    workshop_groups_id 123123
+    sequence(:facebook_page_id ) { |n| "100000000#{n}" }
+    sequence(:default_event_location_id ) { |n| "#{n}" }
+    sequence(:mailchimp_key ) { |n| "mailchimp key#{n}" }
+    sequence(:newsletter_list_id ) { |n| "newsletter list #{n}" }
+    sequence(:workshop_list_id ) { |n| "workshop list #{n}" }
+    sequence(:workshop_groups_id ) { |n| "workshop groups #{n}" }
+    sequence(:default_donation ) { |n| "donation for <strong>#{n}</strong>" }
+    sequence(:default_whereabouts ) { |n| "whereabouts for <strong>#{n}</strong>" }
 
-    default_donation "<p>daca <b>nu</b> va</p>" 
     factory (:city_with_links) do
        after (:create) do |city, evaluator|
         create(:news, title: "Last news", city_id: city.id )
@@ -62,11 +65,16 @@ FactoryGirl.define do
 
   end
 
+  factory :workshop_request do
+    person
+    workshop
+    sequence(:reason) { |n| "reason no. #{n}" }
+  end
 
   factory :person do
-    name "ciprian"
-    email "cip@incubator107.com"
-    phone "0748452880"
+    sequence(:name) { |n| "contact #{n}" }
+    sequence(:email) { |n| "email#{n}@test.ro" }
+    sequence(:phone) { |n| "07000010#{n}" }
     city_id 1
   end
 
@@ -79,6 +87,9 @@ FactoryGirl.define do
     sequence(:email) { |n| "email#{n}@test.ro" }
     sequence(:title) { |n| "title #{n}" }
     sequence(:about) { |n| "about #{n}" }
+    sequence(:phone) { |n| "phone #{n}" }
+    sequence(:team) { |n| "team #{n}" }
+    sequence(:index) { |n| n }
     city_id 1
   end
 
@@ -105,7 +116,6 @@ FactoryGirl.define do
   factory  :article do
     sequence(:title)  { |n| "Lorem #{n}" }
     content "Pace pentru fratii mei iubire totdeauna"
-  #  user
   end
 
   factory :location  do
@@ -116,6 +126,7 @@ FactoryGirl.define do
     event_id 1
     person_id 1
     reason "decembrie"
+
   end
 
   factory :user do
