@@ -1,0 +1,1097 @@
+
+== 20140524065617 CreateArticles: migrating ===================================
+-- create_table(:articles)
+   -> 0.0155s
+== 20140524065617 CreateArticles: migrated (0.0679s) ==========================
+
+== 20140524093016 CreateCities: migrating =====================================
+-- create_table(:cities)
+   -> 0.0093s
+-- add_index(:cities, :email, {:unique=>true})
+   -> 0.0041s
+-- add_index(:cities, :domain, {:unique=>true})
+   -> 0.0041s
+== 20140524093016 CreateCities: migrated (0.0400s) ============================
+
+== 20140524094322 CreateEvents: migrating =====================================
+-- create_table(:events)
+   -> 0.0037s
+== 20140524094322 CreateEvents: migrated (0.0037s) ============================
+
+== 20140524094518 CreateGroups: migrating =====================================
+-- create_table(:groups)
+   -> 0.0038s
+== 20140524094518 CreateGroups: migrated (0.0252s) ============================
+
+== 20140524095835 CreateLocations: migrating ==================================
+-- create_table(:locations)
+   -> 0.0055s
+== 20140524095835 CreateLocations: migrated (0.0289s) =========================
+
+== 20140524100258 CreatePeople: migrating =====================================
+-- create_table(:people)
+   -> 0.0060s
+-- add_index(:people, :email, {:unique=>true})
+   -> 0.0028s
+== 20140524100258 CreatePeople: migrated (0.0089s) ============================
+
+== 20140524100537 CreateWorkshops: migrating ==================================
+-- create_table(:workshops)
+   -> 0.0041s
+== 20140524100537 CreateWorkshops: migrated (0.0240s) =========================
+
+== 20140524101256 CreateWorkshopRequests: migrating ===========================
+-- create_table(:workshop_requests)
+   -> 0.0053s
+== 20140524101256 CreateWorkshopRequests: migrated (0.0053s) ==================
+
+== 20140524105322 CreateRegistrations: migrating ==============================
+-- create_table(:registrations)
+   -> 0.0064s
+== 20140524105322 CreateRegistrations: migrated (0.0064s) =====================
+
+== 20140525150854 CreateNewsletterSubscribers: migrating ======================
+-- create_table(:newsletter_subscribers)
+   -> 0.0038s
+-- add_index(:newsletter_subscribers, :email, {:name=>"index_subscribers_on_email"})
+   -> 0.0030s
+-- add_index(:newsletter_subscribers, :city_id)
+   -> 0.0028s
+-- add_index(:newsletter_subscribers, [:city_id, :email], {:unique=>true})
+   -> 0.0032s
+== 20140525150854 CreateNewsletterSubscribers: migrated (0.0132s) =============
+
+== 20140601152736 CreateNews: migrating =======================================
+-- create_table(:news)
+   -> 0.0050s
+== 20140601152736 CreateNews: migrated (0.0207s) ==============================
+
+== 20140612165930 CreateContactPeople: migrating ==============================
+-- create_table(:contact_people)
+   -> 0.0047s
+== 20140612165930 CreateContactPeople: migrated (0.0208s) =====================
+
+== 20140615085421 CreateArticleLinks: migrating ===============================
+-- create_table(:article_links)
+   -> 0.0036s
+-- add_index(:article_links, :alias)
+   -> 0.0027s
+-- add_index(:article_links, :city_id)
+   -> 0.0025s
+-- add_index(:article_links, [:city_id, :alias], {:unique=>true})
+   -> 0.0027s
+== 20140615085421 CreateArticleLinks: migrated (0.0117s) ======================
+
+== 20140709172708 DeviseCreateAdminUsers: migrating ===========================
+-- create_table(:admin_users)
+   -> 0.0077s
+-- add_index(:admin_users, :email, {:unique=>true})
+   -> 0.0030s
+-- add_index(:admin_users, :reset_password_token, {:unique=>true})
+   -> 0.0029s
+== 20140709172708 DeviseCreateAdminUsers: migrated (0.0138s) ==================
+
+== 20140709172713 CreateActiveAdminComments: migrating ========================
+-- create_table(:active_admin_comments)
+   -> 0.0051s
+-- add_index(:active_admin_comments, [:namespace])
+   -> 0.0030s
+-- add_index(:active_admin_comments, [:author_type, :author_id])
+   -> 0.0026s
+-- add_index(:active_admin_comments, [:resource_type, :resource_id])
+   -> 0.0025s
+== 20140709172713 CreateActiveAdminComments: migrated (0.0134s) ===============
+
+== 20140712193530 CreateAssets: migrating =====================================
+-- create_table(:assets)
+   -> 0.0051s
+== 20140712193530 CreateAssets: migrated (0.0052s) ============================
+
+== 20140820163350 CreateCityGroups: migrating =================================
+-- create_table(:city_groups)
+   -> 0.0043s
+== 20140820163350 CreateCityGroups: migrated (0.0044s) ========================
+
+== 20140824143503 CreateDelayedJobs: migrating ================================
+-- create_table(:delayed_jobs, {:force=>true})
+   -> 0.0065s
+-- add_index(:delayed_jobs, [:priority, :run_at], {:name=>"delayed_jobs_priority"})
+   -> 0.0029s
+== 20140824143503 CreateDelayedJobs: migrated (0.0096s) =======================
+
+
+{"id"=>687, "list_id"=>295, "value"=>"Linux"}
+could not resolve List: {"id"=>687, "list_id"=>295, "value"=>"Linux"}
+{"id"=>688, "list_id"=>295, "value"=>"newsletter_Bucuresti"}
+{"id"=>4128, "list_id"=>295, "value"=>"Începe schimbarea în bine pentru anul care vine"}
+could not resolve List: {"id"=>4128, "list_id"=>295, "value"=>"Începe schimbarea în bine pentru anul care vine"}
+{"id"=>11806, "list_id"=>295, "value"=>"Fresh year, Fresh YOU. Planul tău pentru 2014!"}
+could not resolve List: {"id"=>11806, "list_id"=>295, "value"=>"Fresh year, Fresh YOU. Planul tău pentru 2014!"}
+{"id"=>689, "list_id"=>296, "value"=>"Taraba de jocuri"}
+could not resolve List: {"id"=>689, "list_id"=>296, "value"=>"Taraba de jocuri"}
+{"id"=>690, "list_id"=>296, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>690, "list_id"=>296, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>691, "list_id"=>296, "value"=>"1330334430"}
+could not resolve List: {"id"=>691, "list_id"=>296, "value"=>"1330334430"}
+{"id"=>692, "list_id"=>296, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>692, "list_id"=>296, "value"=>"Tai Chi"}
+{"id"=>693, "list_id"=>296, "value"=>"1330334578"}
+could not resolve List: {"id"=>693, "list_id"=>296, "value"=>"1330334578"}
+{"id"=>694, "list_id"=>296, "value"=>"newsletter_Bucuresti"}
+{"id"=>695, "list_id"=>296, "value"=>"Tehnici de Relaxare și Autosugestie"}
+could not resolve List: {"id"=>695, "list_id"=>296, "value"=>"Tehnici de Relaxare și Autosugestie"}
+{"id"=>696, "list_id"=>296, "value"=>"Ghidul autostopistului (ne)priceput"}
+could not resolve List: {"id"=>696, "list_id"=>296, "value"=>"Ghidul autostopistului (ne)priceput"}
+{"id"=>3174, "list_id"=>296, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3174, "list_id"=>296, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>4138, "list_id"=>296, "value"=>"Vine Apocalipsa. Să bem şampanie!"}
+could not resolve List: {"id"=>4138, "list_id"=>296, "value"=>"Vine Apocalipsa. Să bem şampanie!"}
+{"id"=>8088, "list_id"=>296, "value"=>"The Money Class - atelier de educatie financiară"}
+could not resolve List: {"id"=>8088, "list_id"=>296, "value"=>"The Money Class - atelier de educatie financiară"}
+{"id"=>10044, "list_id"=>296, "value"=>"Antrenarea Atuurilor – de la Complimente la Competențe"}
+could not resolve List: {"id"=>10044, "list_id"=>296, "value"=>"Antrenarea Atuurilor – de la Complimente la Competențe"}
+{"id"=>11331, "list_id"=>296, "value"=>"Contact Improvisation"}
+could not resolve List: {"id"=>11331, "list_id"=>296, "value"=>"Contact Improvisation"}
+{"id"=>15358, "list_id"=>296, "value"=>"Atelier culinar: Alterare versus Preparare"}
+could not resolve List: {"id"=>15358, "list_id"=>296, "value"=>"Atelier culinar: Alterare versus Preparare"}
+{"id"=>697, "list_id"=>297, "value"=>"Iubește iubindu-te"}
+could not resolve List: {"id"=>697, "list_id"=>297, "value"=>"Iubește iubindu-te"}
+{"id"=>698, "list_id"=>297, "value"=>"newsletter_Bucuresti"}
+{"id"=>699, "list_id"=>298, "value"=>"Cai verzi pe pereți"}
+could not resolve List: {"id"=>699, "list_id"=>298, "value"=>"Cai verzi pe pereți"}
+{"id"=>700, "list_id"=>299, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>700, "list_id"=>299, "value"=>"Mărțișor la cuptor"}
+{"id"=>701, "list_id"=>300, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>701, "list_id"=>300, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>702, "list_id"=>301, "value"=>"TALMEȘ -BALMEȘ -CULINAR"}
+could not resolve List: {"id"=>702, "list_id"=>301, "value"=>"TALMEȘ -BALMEȘ -CULINAR"}
+{"id"=>703, "list_id"=>301, "value"=>"Tigaia cu inspirație"}
+could not resolve List: {"id"=>703, "list_id"=>301, "value"=>"Tigaia cu inspirație"}
+{"id"=>704, "list_id"=>302, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>704, "list_id"=>302, "value"=>"Mărțișor la cuptor"}
+{"id"=>705, "list_id"=>302, "value"=>"Dessert Frenzy"}
+could not resolve List: {"id"=>705, "list_id"=>302, "value"=>"Dessert Frenzy"}
+{"id"=>706, "list_id"=>302, "value"=>"Cultură aromână"}
+could not resolve List: {"id"=>706, "list_id"=>302, "value"=>"Cultură aromână"}
+{"id"=>707, "list_id"=>302, "value"=>"Patchwork"}
+could not resolve List: {"id"=>707, "list_id"=>302, "value"=>"Patchwork"}
+{"id"=>708, "list_id"=>303, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>708, "list_id"=>303, "value"=>"Mărțișor la cuptor"}
+{"id"=>709, "list_id"=>304, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>709, "list_id"=>304, "value"=>"Mărțișor la cuptor"}
+{"id"=>710, "list_id"=>304, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>710, "list_id"=>304, "value"=>"Portret hiperrealist"}
+{"id"=>711, "list_id"=>304, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>711, "list_id"=>304, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>712, "list_id"=>304, "value"=>"Dessert Frenzy"}
+could not resolve List: {"id"=>712, "list_id"=>304, "value"=>"Dessert Frenzy"}
+{"id"=>713, "list_id"=>304, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>713, "list_id"=>304, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>714, "list_id"=>304, "value"=>"Săpunuri artizanale"}
+could not resolve List: {"id"=>714, "list_id"=>304, "value"=>"Săpunuri artizanale"}
+{"id"=>715, "list_id"=>304, "value"=>"Improvizație"}
+could not resolve List: {"id"=>715, "list_id"=>304, "value"=>"Improvizație"}
+{"id"=>716, "list_id"=>304, "value"=>"Parfumuri Artizanale"}
+could not resolve List: {"id"=>716, "list_id"=>304, "value"=>"Parfumuri Artizanale"}
+{"id"=>717, "list_id"=>304, "value"=>"Șamanism"}
+could not resolve List: {"id"=>717, "list_id"=>304, "value"=>"Șamanism"}
+{"id"=>718, "list_id"=>304, "value"=>"Teatru Labirint"}
+could not resolve List: {"id"=>718, "list_id"=>304, "value"=>"Teatru Labirint"}
+{"id"=>719, "list_id"=>304, "value"=>"Speed Reading"}
+could not resolve List: {"id"=>719, "list_id"=>304, "value"=>"Speed Reading"}
+{"id"=>720, "list_id"=>304, "value"=>"Creativ Silva - Alternativa antistres"}
+could not resolve List: {"id"=>720, "list_id"=>304, "value"=>"Creativ Silva - Alternativa antistres"}
+{"id"=>721, "list_id"=>304, "value"=>"Chitară"}
+could not resolve List: {"id"=>721, "list_id"=>304, "value"=>"Chitară"}
+{"id"=>10910, "list_id"=>304, "value"=>"creatie Bucuresti"}
+could not resolve List: {"id"=>10910, "list_id"=>304, "value"=>"creatie Bucuresti"}
+{"id"=>722, "list_id"=>305, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>722, "list_id"=>305, "value"=>"Games for trainers and other adults"}
+{"id"=>723, "list_id"=>305, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>723, "list_id"=>305, "value"=>"Tai Chi"}
+{"id"=>724, "list_id"=>305, "value"=>"1330327542"}
+could not resolve List: {"id"=>724, "list_id"=>305, "value"=>"1330327542"}
+{"id"=>725, "list_id"=>305, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>725, "list_id"=>305, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>726, "list_id"=>305, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>726, "list_id"=>305, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>727, "list_id"=>305, "value"=>"Body Art made in India: mehndi sau arta picturii cu henna"}
+could not resolve List: {"id"=>727, "list_id"=>305, "value"=>"Body Art made in India: mehndi sau arta picturii cu henna"}
+{"id"=>7818, "list_id"=>305, "value"=>"Montessori – educație centrată pe individualitatea copilului"}
+could not resolve List: {"id"=>7818, "list_id"=>305, "value"=>"Montessori – educație centrată pe individualitatea copilului"}
+{"id"=>728, "list_id"=>306, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>728, "list_id"=>306, "value"=>"Mărțișor la cuptor"}
+{"id"=>729, "list_id"=>306, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>729, "list_id"=>306, "value"=>"Games for trainers and other adults"}
+{"id"=>730, "list_id"=>306, "value"=>"1330338055"}
+could not resolve List: {"id"=>730, "list_id"=>306, "value"=>"1330338055"}
+{"id"=>731, "list_id"=>306, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>731, "list_id"=>306, "value"=>"Games for trainers and other adults"}
+{"id"=>732, "list_id"=>306, "value"=>"1330338059"}
+could not resolve List: {"id"=>732, "list_id"=>306, "value"=>"1330338059"}
+{"id"=>733, "list_id"=>306, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+could not resolve List: {"id"=>733, "list_id"=>306, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+{"id"=>734, "list_id"=>306, "value"=>"1330338613"}
+could not resolve List: {"id"=>734, "list_id"=>306, "value"=>"1330338613"}
+{"id"=>735, "list_id"=>306, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>735, "list_id"=>306, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>736, "list_id"=>306, "value"=>"newsletter_Bucuresti"}
+{"id"=>737, "list_id"=>306, "value"=>"Taraba de jocuri"}
+could not resolve List: {"id"=>737, "list_id"=>306, "value"=>"Taraba de jocuri"}
+{"id"=>738, "list_id"=>306, "value"=>"Dance the Scottish Spirit"}
+could not resolve List: {"id"=>738, "list_id"=>306, "value"=>"Dance the Scottish Spirit"}
+{"id"=>739, "list_id"=>306, "value"=>"Pian"}
+could not resolve List: {"id"=>739, "list_id"=>306, "value"=>"Pian"}
+{"id"=>740, "list_id"=>306, "value"=>"Mers pe bicicletă"}
+could not resolve List: {"id"=>740, "list_id"=>306, "value"=>"Mers pe bicicletă"}
+{"id"=>741, "list_id"=>306, "value"=>"Creativ Silva - Alternativa antistres"}
+could not resolve List: {"id"=>741, "list_id"=>306, "value"=>"Creativ Silva - Alternativa antistres"}
+{"id"=>742, "list_id"=>306, "value"=>"Latte Art: Povești în Cappuccino"}
+could not resolve List: {"id"=>742, "list_id"=>306, "value"=>"Latte Art: Povești în Cappuccino"}
+{"id"=>743, "list_id"=>306, "value"=>"Upcycled Jewelry"}
+could not resolve List: {"id"=>743, "list_id"=>306, "value"=>"Upcycled Jewelry"}
+{"id"=>744, "list_id"=>306, "value"=>"Yachting"}
+could not resolve List: {"id"=>744, "list_id"=>306, "value"=>"Yachting"}
+{"id"=>745, "list_id"=>306, "value"=>"Masaj pe scaun"}
+could not resolve List: {"id"=>745, "list_id"=>306, "value"=>"Masaj pe scaun"}
+{"id"=>3292, "list_id"=>306, "value"=>"Branding personal"}
+could not resolve List: {"id"=>3292, "list_id"=>306, "value"=>"Branding personal"}
+{"id"=>4537, "list_id"=>306, "value"=>"Dăruiește-te... pe Tine!"}
+could not resolve List: {"id"=>4537, "list_id"=>306, "value"=>"Dăruiește-te... pe Tine!"}
+{"id"=>4538, "list_id"=>306, "value"=>"Introducere în meditație - budistă"}
+could not resolve List: {"id"=>4538, "list_id"=>306, "value"=>"Introducere în meditație - budistă"}
+{"id"=>4539, "list_id"=>306, "value"=>"Mandale"}
+could not resolve List: {"id"=>4539, "list_id"=>306, "value"=>"Mandale"}
+{"id"=>6177, "list_id"=>306, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+could not resolve List: {"id"=>6177, "list_id"=>306, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+{"id"=>6178, "list_id"=>306, "value"=>"Delicios și sănătos - meniu complet pentru o siluetă perfectă"}
+could not resolve List: {"id"=>6178, "list_id"=>306, "value"=>"Delicios și sănătos - meniu complet pentru o siluetă perfectă"}
+{"id"=>7162, "list_id"=>306, "value"=>"Gătim vegetarian"}
+could not resolve List: {"id"=>7162, "list_id"=>306, "value"=>"Gătim vegetarian"}
+{"id"=>7163, "list_id"=>306, "value"=>"Tango Argentinian"}
+could not resolve List: {"id"=>7163, "list_id"=>306, "value"=>"Tango Argentinian"}
+{"id"=>7164, "list_id"=>306, "value"=>"Trac &amp; Charismă"}
+could not resolve List: {"id"=>7164, "list_id"=>306, "value"=>"Trac &amp; Charismă"}
+{"id"=>7867, "list_id"=>306, "value"=>"Facilitare grafică"}
+could not resolve List: {"id"=>7867, "list_id"=>306, "value"=>"Facilitare grafică"}
+{"id"=>8554, "list_id"=>306, "value"=>"Tir cu pistolul. Mentalitate pentru performanță înaltă"}
+could not resolve List: {"id"=>8554, "list_id"=>306, "value"=>"Tir cu pistolul. Mentalitate pentru performanță înaltă"}
+{"id"=>9450, "list_id"=>306, "value"=>"Cum să închiriezi un apartament?"}
+could not resolve List: {"id"=>9450, "list_id"=>306, "value"=>"Cum să închiriezi un apartament?"}
+{"id"=>9451, "list_id"=>306, "value"=>"Vindecarea trecutului"}
+could not resolve List: {"id"=>9451, "list_id"=>306, "value"=>"Vindecarea trecutului"}
+{"id"=>9543, "list_id"=>306, "value"=>"Participative Theatre and Arts: Explore your creative potential with Pia Brodtrager"}
+could not resolve List: {"id"=>9543, "list_id"=>306, "value"=>"Participative Theatre and Arts: Explore your creative potential with Pia Brodtrager"}
+{"id"=>11531, "list_id"=>306, "value"=>"Terapie cu îngeri sau prietenia dintre două lumi"}
+could not resolve List: {"id"=>11531, "list_id"=>306, "value"=>"Terapie cu îngeri sau prietenia dintre două lumi"}
+{"id"=>12115, "list_id"=>306, "value"=>"Terapia prin scris: Traume din trecut"}
+could not resolve List: {"id"=>12115, "list_id"=>306, "value"=>"Terapia prin scris: Traume din trecut"}
+{"id"=>15231, "list_id"=>306, "value"=>"Viață echilibrată și performanță maximă!"}
+could not resolve List: {"id"=>15231, "list_id"=>306, "value"=>"Viață echilibrată și performanță maximă!"}
+{"id"=>15232, "list_id"=>306, "value"=>"Televiziune în desfășurare"}
+could not resolve List: {"id"=>15232, "list_id"=>306, "value"=>"Televiziune în desfășurare"}
+{"id"=>746, "list_id"=>307, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>746, "list_id"=>307, "value"=>"Mărțișor la cuptor"}
+{"id"=>747, "list_id"=>308, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>747, "list_id"=>308, "value"=>"Mărțișor la cuptor"}
+{"id"=>748, "list_id"=>309, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>748, "list_id"=>309, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>749, "list_id"=>309, "value"=>"Paramongols - the undercover paramedics for Mongolia"}
+could not resolve List: {"id"=>749, "list_id"=>309, "value"=>"Paramongols - the undercover paramedics for Mongolia"}
+{"id"=>750, "list_id"=>309, "value"=>"Miruna - Backpacking în jurul lumii"}
+could not resolve List: {"id"=>750, "list_id"=>309, "value"=>"Miruna - Backpacking în jurul lumii"}
+{"id"=>751, "list_id"=>309, "value"=>"Tehnici de Relaxare și Autosugestie"}
+could not resolve List: {"id"=>751, "list_id"=>309, "value"=>"Tehnici de Relaxare și Autosugestie"}
+{"id"=>752, "list_id"=>309, "value"=>"Aconcagua 2011 [Expeditie medicala romaneasca]"}
+could not resolve List: {"id"=>752, "list_id"=>309, "value"=>"Aconcagua 2011 [Expeditie medicala romaneasca]"}
+{"id"=>753, "list_id"=>310, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>753, "list_id"=>310, "value"=>"Tai Chi"}
+{"id"=>754, "list_id"=>310, "value"=>"Cu tine, împreună"}
+could not resolve List: {"id"=>754, "list_id"=>310, "value"=>"Cu tine, împreună"}
+{"id"=>755, "list_id"=>310, "value"=>"Atelier de Optimism"}
+could not resolve List: {"id"=>755, "list_id"=>310, "value"=>"Atelier de Optimism"}
+{"id"=>756, "list_id"=>310, "value"=>"newsletter_Bucuresti"}
+{"id"=>757, "list_id"=>310, "value"=>"Vlad Turturica și Lari Giorgescu - Norvegia în lung și-n lat"}
+could not resolve List: {"id"=>757, "list_id"=>310, "value"=>"Vlad Turturica și Lari Giorgescu - Norvegia în lung și-n lat"}
+{"id"=>3340, "list_id"=>310, "value"=>"Branding personal"}
+could not resolve List: {"id"=>3340, "list_id"=>310, "value"=>"Branding personal"}
+{"id"=>3341, "list_id"=>310, "value"=>"mentor în incubator: Alina Kasprovschi"}
+could not resolve List: {"id"=>3341, "list_id"=>310, "value"=>"mentor în incubator: Alina Kasprovschi"}
+{"id"=>3342, "list_id"=>310, "value"=>"Muncește fără efort. Se poate."}
+could not resolve List: {"id"=>3342, "list_id"=>310, "value"=>"Muncește fără efort. Se poate."}
+{"id"=>3689, "list_id"=>310, "value"=>"Identitatea profesională"}
+could not resolve List: {"id"=>3689, "list_id"=>310, "value"=>"Identitatea profesională"}
+{"id"=>5274, "list_id"=>310, "value"=>"Uca Marinescu, cea mai cunoscută femeie explorator la 72 de ani"}
+could not resolve List: {"id"=>5274, "list_id"=>310, "value"=>"Uca Marinescu, cea mai cunoscută femeie explorator la 72 de ani"}
+{"id"=>6471, "list_id"=>310, "value"=>"Despre freelancing şi munca online"}
+could not resolve List: {"id"=>6471, "list_id"=>310, "value"=>"Despre freelancing şi munca online"}
+{"id"=>758, "list_id"=>311, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>758, "list_id"=>311, "value"=>"Mărțișor la cuptor"}
+{"id"=>759, "list_id"=>312, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>759, "list_id"=>312, "value"=>"Mărțișor la cuptor"}
+{"id"=>760, "list_id"=>313, "value"=>"Mărțișor la cuptor"}
+could not resolve List: {"id"=>760, "list_id"=>313, "value"=>"Mărțișor la cuptor"}
+{"id"=>761, "list_id"=>314, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>761, "list_id"=>314, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>762, "list_id"=>315, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>762, "list_id"=>315, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>763, "list_id"=>316, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>763, "list_id"=>316, "value"=>"Portret hiperrealist"}
+{"id"=>764, "list_id"=>316, "value"=>"Dessert Frenzy"}
+could not resolve List: {"id"=>764, "list_id"=>316, "value"=>"Dessert Frenzy"}
+{"id"=>765, "list_id"=>316, "value"=>"Origami simplu"}
+could not resolve List: {"id"=>765, "list_id"=>316, "value"=>"Origami simplu"}
+{"id"=>766, "list_id"=>316, "value"=>"Origami modular"}
+could not resolve List: {"id"=>766, "list_id"=>316, "value"=>"Origami modular"}
+{"id"=>767, "list_id"=>316, "value"=>"Pictură pe ceramică"}
+could not resolve List: {"id"=>767, "list_id"=>316, "value"=>"Pictură pe ceramică"}
+{"id"=>768, "list_id"=>317, "value"=>"Cu tine, împreună"}
+could not resolve List: {"id"=>768, "list_id"=>317, "value"=>"Cu tine, împreună"}
+{"id"=>769, "list_id"=>317, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>769, "list_id"=>317, "value"=>"Portret hiperrealist"}
+{"id"=>770, "list_id"=>317, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>770, "list_id"=>317, "value"=>"Tai Chi"}
+{"id"=>771, "list_id"=>317, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>771, "list_id"=>317, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>11538, "list_id"=>317, "value"=>"Contact Improvisation"}
+could not resolve List: {"id"=>11538, "list_id"=>317, "value"=>"Contact Improvisation"}
+{"id"=>11539, "list_id"=>317, "value"=>"newsletter_Bucuresti"}
+{"id"=>772, "list_id"=>318, "value"=>"Cu tine, împreună"}
+could not resolve List: {"id"=>772, "list_id"=>318, "value"=>"Cu tine, împreună"}
+{"id"=>5628, "list_id"=>318, "value"=>"Ariel Constantinof - Tribul, curierat pe bicicletă"}
+could not resolve List: {"id"=>5628, "list_id"=>318, "value"=>"Ariel Constantinof - Tribul, curierat pe bicicletă"}
+{"id"=>7531, "list_id"=>318, "value"=>"Trac &amp; Charismă"}
+could not resolve List: {"id"=>7531, "list_id"=>318, "value"=>"Trac &amp; Charismă"}
+{"id"=>17433, "list_id"=>318, "value"=>"Storytelling 1.0"}
+could not resolve List: {"id"=>17433, "list_id"=>318, "value"=>"Storytelling 1.0"}
+{"id"=>17434, "list_id"=>318, "value"=>"newsletter_Bucuresti"}
+{"id"=>9673, "list_id"=>0, "value"=>""}
+could not resolve List: {"id"=>9673, "list_id"=>0, "value"=>""}
+{"id"=>14003, "list_id"=>0, "value"=>""}
+could not resolve List: {"id"=>14003, "list_id"=>0, "value"=>""}
+{"id"=>773, "list_id"=>319, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+could not resolve List: {"id"=>773, "list_id"=>319, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+{"id"=>774, "list_id"=>319, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>774, "list_id"=>319, "value"=>"Portret hiperrealist"}
+{"id"=>775, "list_id"=>319, "value"=>"Ciocolată"}
+could not resolve List: {"id"=>775, "list_id"=>319, "value"=>"Ciocolată"}
+{"id"=>776, "list_id"=>319, "value"=>"Tobe africane"}
+could not resolve List: {"id"=>776, "list_id"=>319, "value"=>"Tobe africane"}
+{"id"=>777, "list_id"=>319, "value"=>"Șamanism"}
+could not resolve List: {"id"=>777, "list_id"=>319, "value"=>"Șamanism"}
+{"id"=>778, "list_id"=>319, "value"=>"Speed Reading"}
+could not resolve List: {"id"=>778, "list_id"=>319, "value"=>"Speed Reading"}
+{"id"=>779, "list_id"=>319, "value"=>"Interviul de angajare"}
+could not resolve List: {"id"=>779, "list_id"=>319, "value"=>"Interviul de angajare"}
+{"id"=>780, "list_id"=>319, "value"=>"Creativ Silva - Alternativa antistres"}
+could not resolve List: {"id"=>780, "list_id"=>319, "value"=>"Creativ Silva - Alternativa antistres"}
+{"id"=>781, "list_id"=>319, "value"=>"Latte Art: Povești în Cappuccino"}
+could not resolve List: {"id"=>781, "list_id"=>319, "value"=>"Latte Art: Povești în Cappuccino"}
+{"id"=>782, "list_id"=>320, "value"=>"mentor în incubator - Octavian Segărceanu"}
+could not resolve List: {"id"=>782, "list_id"=>320, "value"=>"mentor în incubator - Octavian Segărceanu"}
+{"id"=>3989, "list_id"=>320, "value"=>"DOINA, nocturna românească"}
+could not resolve List: {"id"=>3989, "list_id"=>320, "value"=>"DOINA, nocturna românească"}
+{"id"=>5647, "list_id"=>320, "value"=>"Bogdan Zebega, jucător profesionist de rugby"}
+could not resolve List: {"id"=>5647, "list_id"=>320, "value"=>"Bogdan Zebega, jucător profesionist de rugby"}
+{"id"=>783, "list_id"=>321, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>783, "list_id"=>321, "value"=>"Tai Chi"}
+{"id"=>784, "list_id"=>322, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>784, "list_id"=>322, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>785, "list_id"=>323, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>785, "list_id"=>323, "value"=>"Games for trainers and other adults"}
+{"id"=>786, "list_id"=>323, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+could not resolve List: {"id"=>786, "list_id"=>323, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+{"id"=>787, "list_id"=>323, "value"=>"La capătul Pământului: Tasmania"}
+could not resolve List: {"id"=>787, "list_id"=>323, "value"=>"La capătul Pământului: Tasmania"}
+{"id"=>788, "list_id"=>323, "value"=>"Turul Mării Negre pe mobre"}
+could not resolve List: {"id"=>788, "list_id"=>323, "value"=>"Turul Mării Negre pe mobre"}
+{"id"=>789, "list_id"=>323, "value"=>"Mihai Barbu - vânzătorul de kilometri"}
+could not resolve List: {"id"=>789, "list_id"=>323, "value"=>"Mihai Barbu - vânzătorul de kilometri"}
+{"id"=>2842, "list_id"=>323, "value"=>"newsletter_Bucuresti"}
+{"id"=>790, "list_id"=>324, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>790, "list_id"=>324, "value"=>"Portret hiperrealist"}
+{"id"=>791, "list_id"=>325, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>791, "list_id"=>325, "value"=>"Games for trainers and other adults"}
+{"id"=>792, "list_id"=>326, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>792, "list_id"=>326, "value"=>"Games for trainers and other adults"}
+{"id"=>793, "list_id"=>327, "value"=>"Dessert Frenzy"}
+could not resolve List: {"id"=>793, "list_id"=>327, "value"=>"Dessert Frenzy"}
+{"id"=>794, "list_id"=>327, "value"=>"newsletter_Bucuresti"}
+{"id"=>795, "list_id"=>328, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>795, "list_id"=>328, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>796, "list_id"=>328, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>796, "list_id"=>328, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>10839, "list_id"=>328, "value"=>"Cum să comunici eficient și low-cost pentru startup-ul tău"}
+could not resolve List: {"id"=>10839, "list_id"=>328, "value"=>"Cum să comunici eficient și low-cost pentru startup-ul tău"}
+{"id"=>797, "list_id"=>329, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>797, "list_id"=>329, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>798, "list_id"=>330, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>798, "list_id"=>330, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>799, "list_id"=>331, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>799, "list_id"=>331, "value"=>"Tai Chi"}
+{"id"=>800, "list_id"=>332, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>800, "list_id"=>332, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>801, "list_id"=>332, "value"=>"Latte Art: Povești în Cappuccino"}
+could not resolve List: {"id"=>801, "list_id"=>332, "value"=>"Latte Art: Povești în Cappuccino"}
+{"id"=>802, "list_id"=>332, "value"=>"Aikido"}
+could not resolve List: {"id"=>802, "list_id"=>332, "value"=>"Aikido"}
+{"id"=>803, "list_id"=>333, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>803, "list_id"=>333, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>804, "list_id"=>334, "value"=>"Cu tine, împreună"}
+could not resolve List: {"id"=>804, "list_id"=>334, "value"=>"Cu tine, împreună"}
+{"id"=>805, "list_id"=>335, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>805, "list_id"=>335, "value"=>"Portret hiperrealist"}
+{"id"=>806, "list_id"=>336, "value"=>"Jonglerie cu JAZZ"}
+could not resolve List: {"id"=>806, "list_id"=>336, "value"=>"Jonglerie cu JAZZ"}
+{"id"=>807, "list_id"=>337, "value"=>"Games for trainers and other adults"}
+could not resolve List: {"id"=>807, "list_id"=>337, "value"=>"Games for trainers and other adults"}
+{"id"=>808, "list_id"=>338, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>808, "list_id"=>338, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>3608, "list_id"=>338, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3608, "list_id"=>338, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>809, "list_id"=>339, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>809, "list_id"=>339, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>810, "list_id"=>340, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>810, "list_id"=>340, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>811, "list_id"=>341, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>811, "list_id"=>341, "value"=>"Portret hiperrealist"}
+{"id"=>812, "list_id"=>341, "value"=>"Teatru labirint: „ACASĂ”"}
+could not resolve List: {"id"=>812, "list_id"=>341, "value"=>"Teatru labirint: „ACASĂ”"}
+{"id"=>813, "list_id"=>342, "value"=>"Jonglerie cu TRICTRUC107"}
+could not resolve List: {"id"=>813, "list_id"=>342, "value"=>"Jonglerie cu TRICTRUC107"}
+{"id"=>814, "list_id"=>343, "value"=>"Jonglerie cu TRICTRUC107"}
+could not resolve List: {"id"=>814, "list_id"=>343, "value"=>"Jonglerie cu TRICTRUC107"}
+{"id"=>815, "list_id"=>344, "value"=>"Jonglerie cu TRICTRUC107"}
+could not resolve List: {"id"=>815, "list_id"=>344, "value"=>"Jonglerie cu TRICTRUC107"}
+{"id"=>816, "list_id"=>344, "value"=>"Portret hiperrealist"}
+could not resolve List: {"id"=>816, "list_id"=>344, "value"=>"Portret hiperrealist"}
+{"id"=>817, "list_id"=>345, "value"=>"Tango Argentinian direct din Buenos Aires"}
+could not resolve List: {"id"=>817, "list_id"=>345, "value"=>"Tango Argentinian direct din Buenos Aires"}
+{"id"=>818, "list_id"=>346, "value"=>"Tai Chi"}
+could not resolve List: {"id"=>818, "list_id"=>346, "value"=>"Tai Chi"}
+{"id"=>819, "list_id"=>347, "value"=>"Auto-apărare KRAV MAGA"}
+could not resolve List: {"id"=>819, "list_id"=>347, "value"=>"Auto-apărare KRAV MAGA"}
+{"id"=>820, "list_id"=>348, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+could not resolve List: {"id"=>820, "list_id"=>348, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+{"id"=>821, "list_id"=>348, "value"=>"newsletter_Bucuresti"}
+{"id"=>822, "list_id"=>348, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>822, "list_id"=>348, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>823, "list_id"=>348, "value"=>"Scriere creativă!"}
+could not resolve List: {"id"=>823, "list_id"=>348, "value"=>"Scriere creativă!"}
+{"id"=>824, "list_id"=>348, "value"=>"Săpunuri artizanale"}
+could not resolve List: {"id"=>824, "list_id"=>348, "value"=>"Săpunuri artizanale"}
+{"id"=>825, "list_id"=>348, "value"=>"Ciocolată"}
+could not resolve List: {"id"=>825, "list_id"=>348, "value"=>"Ciocolată"}
+{"id"=>826, "list_id"=>348, "value"=>"Origami simplu"}
+could not resolve List: {"id"=>826, "list_id"=>348, "value"=>"Origami simplu"}
+{"id"=>827, "list_id"=>348, "value"=>"Origami modular"}
+could not resolve List: {"id"=>827, "list_id"=>348, "value"=>"Origami modular"}
+{"id"=>828, "list_id"=>348, "value"=>"Pian"}
+could not resolve List: {"id"=>828, "list_id"=>348, "value"=>"Pian"}
+{"id"=>829, "list_id"=>348, "value"=>"Mers pe bicicletă"}
+could not resolve List: {"id"=>829, "list_id"=>348, "value"=>"Mers pe bicicletă"}
+{"id"=>830, "list_id"=>348, "value"=>"Interviul de angajare"}
+could not resolve List: {"id"=>830, "list_id"=>348, "value"=>"Interviul de angajare"}
+{"id"=>831, "list_id"=>348, "value"=>"Aromaterapie"}
+could not resolve List: {"id"=>831, "list_id"=>348, "value"=>"Aromaterapie"}
+{"id"=>832, "list_id"=>348, "value"=>"Fizioterapie"}
+could not resolve List: {"id"=>832, "list_id"=>348, "value"=>"Fizioterapie"}
+{"id"=>833, "list_id"=>348, "value"=>"Tehnici de Relaxare și Autosugestie"}
+could not resolve List: {"id"=>833, "list_id"=>348, "value"=>"Tehnici de Relaxare și Autosugestie"}
+{"id"=>3087, "list_id"=>348, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3087, "list_id"=>348, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>3235, "list_id"=>348, "value"=>"Branding personal"}
+could not resolve List: {"id"=>3235, "list_id"=>348, "value"=>"Branding personal"}
+{"id"=>3236, "list_id"=>348, "value"=>"mentor în incubator: Răzvan Mătășel"}
+could not resolve List: {"id"=>3236, "list_id"=>348, "value"=>"mentor în incubator: Răzvan Mătășel"}
+{"id"=>3572, "list_id"=>348, "value"=>"Îți place să citești? Poți face bani din pasiunea ta începând de azi"}
+could not resolve List: {"id"=>3572, "list_id"=>348, "value"=>"Îți place să citești? Poți face bani din pasiunea ta începând de azi"}
+{"id"=>4626, "list_id"=>348, "value"=>"Cosmetice home-made pentru frumusețe naturală"}
+could not resolve List: {"id"=>4626, "list_id"=>348, "value"=>"Cosmetice home-made pentru frumusețe naturală"}
+{"id"=>4628, "list_id"=>348, "value"=>"Social Persona: educă-ți avatarul online"}
+could not resolve List: {"id"=>4628, "list_id"=>348, "value"=>"Social Persona: educă-ți avatarul online"}
+{"id"=>5928, "list_id"=>348, "value"=>"Walking sau Pașaport pentru capitalele lumii"}
+could not resolve List: {"id"=>5928, "list_id"=>348, "value"=>"Walking sau Pașaport pentru capitalele lumii"}
+{"id"=>6057, "list_id"=>348, "value"=>"Făuritor-de-mărțișor"}
+could not resolve List: {"id"=>6057, "list_id"=>348, "value"=>"Făuritor-de-mărțișor"}
+{"id"=>6398, "list_id"=>348, "value"=>"Dezvoltarea inteligenței emoționale"}
+could not resolve List: {"id"=>6398, "list_id"=>348, "value"=>"Dezvoltarea inteligenței emoționale"}
+{"id"=>834, "list_id"=>349, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+could not resolve List: {"id"=>834, "list_id"=>349, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+{"id"=>835, "list_id"=>350, "value"=>"Cu tine, împreună"}
+could not resolve List: {"id"=>835, "list_id"=>350, "value"=>"Cu tine, împreună"}
+{"id"=>836, "list_id"=>351, "value"=>"Jonglerie cu TRICTRUC107"}
+could not resolve List: {"id"=>836, "list_id"=>351, "value"=>"Jonglerie cu TRICTRUC107"}
+{"id"=>837, "list_id"=>351, "value"=>"Atelier cu nasturi"}
+could not resolve List: {"id"=>837, "list_id"=>351, "value"=>"Atelier cu nasturi"}
+{"id"=>838, "list_id"=>352, "value"=>"Jocul de GO"}
+could not resolve List: {"id"=>838, "list_id"=>352, "value"=>"Jocul de GO"}
+{"id"=>839, "list_id"=>352, "value"=>"Numerologie"}
+could not resolve List: {"id"=>839, "list_id"=>352, "value"=>"Numerologie"}
+{"id"=>10587, "list_id"=>352, "value"=>"Mihail Mușat: mentor în incubator"}
+could not resolve List: {"id"=>10587, "list_id"=>352, "value"=>"Mihail Mușat: mentor în incubator"}
+{"id"=>10966, "list_id"=>352, "value"=>"Mandale de lumină"}
+could not resolve List: {"id"=>10966, "list_id"=>352, "value"=>"Mandale de lumină"}
+{"id"=>840, "list_id"=>353, "value"=>"Cu tine, împreună"}
+could not resolve List: {"id"=>840, "list_id"=>353, "value"=>"Cu tine, împreună"}
+{"id"=>12984, "list_id"=>353, "value"=>"Schimbarea carierei, concediul sabatic &amp; viața în străinătate"}
+could not resolve List: {"id"=>12984, "list_id"=>353, "value"=>"Schimbarea carierei, concediul sabatic &amp; viața în străinătate"}
+{"id"=>12985, "list_id"=>353, "value"=>"newsletter_Bucuresti"}
+{"id"=>13651, "list_id"=>353, "value"=>"Îmblânzește-ți șeful prin tehnici NLP"}
+could not resolve List: {"id"=>13651, "list_id"=>353, "value"=>"Îmblânzește-ți șeful prin tehnici NLP"}
+{"id"=>841, "list_id"=>354, "value"=>"newsletter_Bucuresti"}
+{"id"=>842, "list_id"=>355, "value"=>"newsletter_Bucuresti"}
+{"id"=>843, "list_id"=>356, "value"=>"newsletter_Bucuresti"}
+{"id"=>844, "list_id"=>357, "value"=>"newsletter_Bucuresti"}
+{"id"=>845, "list_id"=>358, "value"=>"newsletter_Bucuresti"}
+{"id"=>847, "list_id"=>359, "value"=>"De la Vis la Realizare"}
+could not resolve List: {"id"=>847, "list_id"=>359, "value"=>"De la Vis la Realizare"}
+{"id"=>848, "list_id"=>360, "value"=>"newsletter_Bucuresti"}
+{"id"=>849, "list_id"=>361, "value"=>"newsletter_Bucuresti"}
+{"id"=>850, "list_id"=>362, "value"=>"newsletter_Bucuresti"}
+{"id"=>851, "list_id"=>363, "value"=>"newsletter_Bucuresti"}
+{"id"=>852, "list_id"=>364, "value"=>"newsletter_Bucuresti"}
+{"id"=>853, "list_id"=>365, "value"=>"newsletter_Bucuresti"}
+{"id"=>3136, "list_id"=>365, "value"=>"Muncește fără efort. Se poate."}
+could not resolve List: {"id"=>3136, "list_id"=>365, "value"=>"Muncește fără efort. Se poate."}
+{"id"=>3137, "list_id"=>365, "value"=>"Identitatea profesională"}
+could not resolve List: {"id"=>3137, "list_id"=>365, "value"=>"Identitatea profesională"}
+{"id"=>3138, "list_id"=>365, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3138, "list_id"=>365, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>854, "list_id"=>366, "value"=>"newsletter_Bucuresti"}
+{"id"=>855, "list_id"=>367, "value"=>"newsletter_Bucuresti"}
+{"id"=>856, "list_id"=>368, "value"=>"newsletter_Bucuresti"}
+{"id"=>6453, "list_id"=>369, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+could not resolve List: {"id"=>6453, "list_id"=>369, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+{"id"=>858, "list_id"=>370, "value"=>"newsletter_Bucuresti"}
+{"id"=>5773, "list_id"=>370, "value"=>"Conștientizare corporală prin Yoga și Pilates"}
+could not resolve List: {"id"=>5773, "list_id"=>370, "value"=>"Conștientizare corporală prin Yoga și Pilates"}
+{"id"=>859, "list_id"=>371, "value"=>"newsletter_Bucuresti"}
+{"id"=>860, "list_id"=>372, "value"=>"newsletter_Bucuresti"}
+{"id"=>861, "list_id"=>373, "value"=>"newsletter_Bucuresti"}
+{"id"=>862, "list_id"=>374, "value"=>"newsletter_Bucuresti"}
+{"id"=>863, "list_id"=>375, "value"=>"newsletter_Bucuresti"}
+{"id"=>864, "list_id"=>376, "value"=>"newsletter_Bucuresti"}
+{"id"=>865, "list_id"=>377, "value"=>"newsletter_Bucuresti"}
+{"id"=>866, "list_id"=>377, "value"=>"Jazz Dance"}
+could not resolve List: {"id"=>866, "list_id"=>377, "value"=>"Jazz Dance"}
+{"id"=>867, "list_id"=>377, "value"=>"Teatru Labirint"}
+could not resolve List: {"id"=>867, "list_id"=>377, "value"=>"Teatru Labirint"}
+{"id"=>868, "list_id"=>377, "value"=>"Speed Reading"}
+could not resolve List: {"id"=>868, "list_id"=>377, "value"=>"Speed Reading"}
+{"id"=>869, "list_id"=>377, "value"=>"Dance the Scottish Spirit"}
+could not resolve List: {"id"=>869, "list_id"=>377, "value"=>"Dance the Scottish Spirit"}
+{"id"=>870, "list_id"=>377, "value"=>"De la Vis la Realizare"}
+could not resolve List: {"id"=>870, "list_id"=>377, "value"=>"De la Vis la Realizare"}
+{"id"=>871, "list_id"=>377, "value"=>"Biciclete teatrale, scenografie urbană și street-performance"}
+could not resolve List: {"id"=>871, "list_id"=>377, "value"=>"Biciclete teatrale, scenografie urbană și street-performance"}
+{"id"=>872, "list_id"=>377, "value"=>"Aromaterapie"}
+could not resolve List: {"id"=>872, "list_id"=>377, "value"=>"Aromaterapie"}
+{"id"=>873, "list_id"=>377, "value"=>"Fizioterapie"}
+could not resolve List: {"id"=>873, "list_id"=>377, "value"=>"Fizioterapie"}
+{"id"=>874, "list_id"=>377, "value"=>"Cap sau pajură? Cum luăm deciziile"}
+could not resolve List: {"id"=>874, "list_id"=>377, "value"=>"Cap sau pajură? Cum luăm deciziile"}
+{"id"=>875, "list_id"=>377, "value"=>"Transformăm tricouri"}
+could not resolve List: {"id"=>875, "list_id"=>377, "value"=>"Transformăm tricouri"}
+{"id"=>876, "list_id"=>377, "value"=>"Qi Gong"}
+could not resolve List: {"id"=>876, "list_id"=>377, "value"=>"Qi Gong"}
+{"id"=>3530, "list_id"=>377, "value"=>"Muncește fără efort. Se poate."}
+could not resolve List: {"id"=>3530, "list_id"=>377, "value"=>"Muncește fără efort. Se poate."}
+{"id"=>3805, "list_id"=>377, "value"=>"Vindecare emoțională"}
+could not resolve List: {"id"=>3805, "list_id"=>377, "value"=>"Vindecare emoțională"}
+{"id"=>9909, "list_id"=>377, "value"=>"Cum să îți găsești vocația și să câștigi bani din ea?"}
+could not resolve List: {"id"=>9909, "list_id"=>377, "value"=>"Cum să îți găsești vocația și să câștigi bani din ea?"}
+{"id"=>9959, "list_id"=>377, "value"=>"Mihail Mușat: mentor în incubator"}
+could not resolve List: {"id"=>9959, "list_id"=>377, "value"=>"Mihail Mușat: mentor în incubator"}
+{"id"=>10265, "list_id"=>377, "value"=>"Pitch yourself in 60 seconds"}
+could not resolve List: {"id"=>10265, "list_id"=>377, "value"=>"Pitch yourself in 60 seconds"}
+{"id"=>877, "list_id"=>378, "value"=>"newsletter_Bucuresti"}
+{"id"=>878, "list_id"=>378, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+could not resolve List: {"id"=>878, "list_id"=>378, "value"=>"Cum să-ți găsești un loc de muncă folosind LinkedIn"}
+{"id"=>3658, "list_id"=>378, "value"=>"newsletter_Brasov"}
+{"id"=>3662, "list_id"=>378, "value"=>"newsletter_Timisoara"}
+{"id"=>3663, "list_id"=>378, "value"=>"newsletter_Iasi"}
+{"id"=>3664, "list_id"=>378, "value"=>"newsletter_Cluj"}
+{"id"=>4607, "list_id"=>378, "value"=>"Citim în cafea și ceai"}
+could not resolve List: {"id"=>4607, "list_id"=>378, "value"=>"Citim în cafea și ceai"}
+{"id"=>4608, "list_id"=>378, "value"=>"Cosmetice home-made pentru frumusețe naturală"}
+could not resolve List: {"id"=>4608, "list_id"=>378, "value"=>"Cosmetice home-made pentru frumusețe naturală"}
+{"id"=>4609, "list_id"=>378, "value"=>"Declinul consumerismului și noua abundență"}
+could not resolve List: {"id"=>4609, "list_id"=>378, "value"=>"Declinul consumerismului și noua abundență"}
+{"id"=>4610, "list_id"=>378, "value"=>"Antreuri de party"}
+could not resolve List: {"id"=>4610, "list_id"=>378, "value"=>"Antreuri de party"}
+{"id"=>4611, "list_id"=>378, "value"=>"Limbajul semnelor"}
+could not resolve List: {"id"=>4611, "list_id"=>378, "value"=>"Limbajul semnelor"}
+{"id"=>8472, "list_id"=>378, "value"=>"Cosiţe de Cosânzeană"}
+could not resolve List: {"id"=>8472, "list_id"=>378, "value"=>"Cosiţe de Cosânzeană"}
+{"id"=>9517, "list_id"=>378, "value"=>"Ashtanga Yoga and finding your inner awareness"}
+could not resolve List: {"id"=>9517, "list_id"=>378, "value"=>"Ashtanga Yoga and finding your inner awareness"}
+{"id"=>9518, "list_id"=>378, "value"=>"Cum să închiriezi un apartament?"}
+could not resolve List: {"id"=>9518, "list_id"=>378, "value"=>"Cum să închiriezi un apartament?"}
+{"id"=>9519, "list_id"=>378, "value"=>"Vindecarea trecutului"}
+could not resolve List: {"id"=>9519, "list_id"=>378, "value"=>"Vindecarea trecutului"}
+{"id"=>9520, "list_id"=>378, "value"=>"Bun îi vinul ghiurghiuliu"}
+could not resolve List: {"id"=>9520, "list_id"=>378, "value"=>"Bun îi vinul ghiurghiuliu"}
+{"id"=>10530, "list_id"=>378, "value"=>"Vrei la sat? Hai să facem proiectul!"}
+could not resolve List: {"id"=>10530, "list_id"=>378, "value"=>"Vrei la sat? Hai să facem proiectul!"}
+{"id"=>15317, "list_id"=>378, "value"=>"Înțelege-te pe tine"}
+could not resolve List: {"id"=>15317, "list_id"=>378, "value"=>"Înțelege-te pe tine"}
+{"id"=>17135, "list_id"=>378, "value"=>"Advertising your Creativity"}
+could not resolve List: {"id"=>17135, "list_id"=>378, "value"=>"Advertising your Creativity"}
+{"id"=>879, "list_id"=>379, "value"=>"newsletter_Bucuresti"}
+{"id"=>880, "list_id"=>380, "value"=>"newsletter_Bucuresti"}
+{"id"=>881, "list_id"=>381, "value"=>"newsletter_Bucuresti"}
+{"id"=>882, "list_id"=>382, "value"=>"newsletter_Bucuresti"}
+{"id"=>884, "list_id"=>384, "value"=>"newsletter_Bucuresti"}
+{"id"=>885, "list_id"=>385, "value"=>"newsletter_Bucuresti"}
+{"id"=>886, "list_id"=>386, "value"=>"newsletter_Bucuresti"}
+{"id"=>887, "list_id"=>386, "value"=>"Teatru labirint: „ACASĂ”"}
+could not resolve List: {"id"=>887, "list_id"=>386, "value"=>"Teatru labirint: „ACASĂ”"}
+{"id"=>888, "list_id"=>387, "value"=>"newsletter_Bucuresti"}
+{"id"=>889, "list_id"=>388, "value"=>"newsletter_Bucuresti"}
+{"id"=>890, "list_id"=>389, "value"=>"newsletter_Bucuresti"}
+{"id"=>891, "list_id"=>390, "value"=>"newsletter_Bucuresti"}
+{"id"=>894, "list_id"=>393, "value"=>"newsletter_Bucuresti"}
+{"id"=>14213, "list_id"=>393, "value"=>"Găsește-ti pasiunea și începe să faci bani cu ea"}
+could not resolve List: {"id"=>14213, "list_id"=>393, "value"=>"Găsește-ti pasiunea și începe să faci bani cu ea"}
+{"id"=>895, "list_id"=>394, "value"=>"newsletter_Bucuresti"}
+{"id"=>896, "list_id"=>395, "value"=>"newsletter_Bucuresti"}
+{"id"=>897, "list_id"=>396, "value"=>"newsletter_Bucuresti"}
+{"id"=>898, "list_id"=>396, "value"=>"Cărți Pop-up"}
+could not resolve List: {"id"=>898, "list_id"=>396, "value"=>"Cărți Pop-up"}
+{"id"=>899, "list_id"=>397, "value"=>"newsletter_Bucuresti"}
+{"id"=>900, "list_id"=>398, "value"=>"newsletter_Bucuresti"}
+{"id"=>902, "list_id"=>400, "value"=>"newsletter_Bucuresti"}
+{"id"=>903, "list_id"=>401, "value"=>"newsletter_Bucuresti"}
+{"id"=>4654, "list_id"=>401, "value"=>"Citim în cafea și ceai"}
+could not resolve List: {"id"=>4654, "list_id"=>401, "value"=>"Citim în cafea și ceai"}
+{"id"=>5044, "list_id"=>401, "value"=>"necunoscut, neobișnuit, invizibil"}
+could not resolve List: {"id"=>5044, "list_id"=>401, "value"=>"necunoscut, neobișnuit, invizibil"}
+{"id"=>5045, "list_id"=>401, "value"=>"Ada Milea - mentor în incubator"}
+could not resolve List: {"id"=>5045, "list_id"=>401, "value"=>"Ada Milea - mentor în incubator"}
+{"id"=>5699, "list_id"=>401, "value"=>"Prindem aripi cu parapanta"}
+could not resolve List: {"id"=>5699, "list_id"=>401, "value"=>"Prindem aripi cu parapanta"}
+{"id"=>904, "list_id"=>402, "value"=>"newsletter_Bucuresti"}
+{"id"=>4193, "list_id"=>402, "value"=>"Ștefan Câlția - mentor în incubator"}
+could not resolve List: {"id"=>4193, "list_id"=>402, "value"=>"Ștefan Câlția - mentor în incubator"}
+{"id"=>4194, "list_id"=>402, "value"=>"Comunicare prin telepatie și intuiție"}
+could not resolve List: {"id"=>4194, "list_id"=>402, "value"=>"Comunicare prin telepatie și intuiție"}
+{"id"=>4676, "list_id"=>402, "value"=>"Citim în cafea și ceai"}
+could not resolve List: {"id"=>4676, "list_id"=>402, "value"=>"Citim în cafea și ceai"}
+{"id"=>5345, "list_id"=>402, "value"=>"Limbajul semnelor"}
+could not resolve List: {"id"=>5345, "list_id"=>402, "value"=>"Limbajul semnelor"}
+{"id"=>6454, "list_id"=>402, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+could not resolve List: {"id"=>6454, "list_id"=>402, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+{"id"=>6460, "list_id"=>402, "value"=>"Descoperă Sundao - practica respiraţiei conştiente"}
+could not resolve List: {"id"=>6460, "list_id"=>402, "value"=>"Descoperă Sundao - practica respiraţiei conştiente"}
+{"id"=>11691, "list_id"=>402, "value"=>"O postură corectă - o viaţă fericită"}
+could not resolve List: {"id"=>11691, "list_id"=>402, "value"=>"O postură corectă - o viaţă fericită"}
+{"id"=>11692, "list_id"=>402, "value"=>"Contact Improvisation"}
+could not resolve List: {"id"=>11692, "list_id"=>402, "value"=>"Contact Improvisation"}
+{"id"=>905, "list_id"=>403, "value"=>"newsletter_Bucuresti"}
+{"id"=>906, "list_id"=>404, "value"=>"newsletter_Bucuresti"}
+{"id"=>907, "list_id"=>405, "value"=>"newsletter_Bucuresti"}
+{"id"=>16600, "list_id"=>405, "value"=>"Do it yourself – cosmetice naturale"}
+could not resolve List: {"id"=>16600, "list_id"=>405, "value"=>"Do it yourself – cosmetice naturale"}
+{"id"=>908, "list_id"=>406, "value"=>"newsletter_Bucuresti"}
+{"id"=>909, "list_id"=>407, "value"=>"newsletter_Bucuresti"}
+{"id"=>910, "list_id"=>408, "value"=>"newsletter_Bucuresti"}
+{"id"=>912, "list_id"=>410, "value"=>"newsletter_Bucuresti"}
+{"id"=>913, "list_id"=>411, "value"=>"newsletter_Bucuresti"}
+{"id"=>914, "list_id"=>412, "value"=>"newsletter_Bucuresti"}
+{"id"=>915, "list_id"=>413, "value"=>"newsletter_Bucuresti"}
+{"id"=>916, "list_id"=>414, "value"=>"newsletter_Bucuresti"}
+{"id"=>917, "list_id"=>415, "value"=>"newsletter_Bucuresti"}
+{"id"=>918, "list_id"=>416, "value"=>"newsletter_Bucuresti"}
+{"id"=>919, "list_id"=>417, "value"=>"newsletter_Bucuresti"}
+{"id"=>13751, "list_id"=>418, "value"=>"newsletter_Bucuresti"}
+{"id"=>921, "list_id"=>419, "value"=>"newsletter_Bucuresti"}
+{"id"=>923, "list_id"=>421, "value"=>"newsletter_Bucuresti"}
+{"id"=>924, "list_id"=>422, "value"=>"newsletter_Bucuresti"}
+{"id"=>925, "list_id"=>423, "value"=>"newsletter_Bucuresti"}
+{"id"=>926, "list_id"=>424, "value"=>"newsletter_Bucuresti"}
+{"id"=>17215, "list_id"=>424, "value"=>"Storytelling 1.0"}
+could not resolve List: {"id"=>17215, "list_id"=>424, "value"=>"Storytelling 1.0"}
+{"id"=>927, "list_id"=>425, "value"=>"newsletter_Bucuresti"}
+{"id"=>928, "list_id"=>426, "value"=>"newsletter_Bucuresti"}
+{"id"=>929, "list_id"=>427, "value"=>"newsletter_Bucuresti"}
+{"id"=>930, "list_id"=>428, "value"=>"newsletter_Bucuresti"}
+{"id"=>931, "list_id"=>429, "value"=>"newsletter_Bucuresti"}
+{"id"=>932, "list_id"=>430, "value"=>"newsletter_Bucuresti"}
+{"id"=>933, "list_id"=>431, "value"=>"newsletter_Bucuresti"}
+{"id"=>934, "list_id"=>432, "value"=>"newsletter_Bucuresti"}
+{"id"=>935, "list_id"=>433, "value"=>"newsletter_Bucuresti"}
+{"id"=>936, "list_id"=>434, "value"=>"newsletter_Bucuresti"}
+{"id"=>937, "list_id"=>435, "value"=>"newsletter_Bucuresti"}
+{"id"=>939, "list_id"=>437, "value"=>"newsletter_Bucuresti"}
+{"id"=>940, "list_id"=>438, "value"=>"newsletter_Bucuresti"}
+{"id"=>941, "list_id"=>439, "value"=>"newsletter_Bucuresti"}
+{"id"=>942, "list_id"=>440, "value"=>"newsletter_Bucuresti"}
+{"id"=>943, "list_id"=>441, "value"=>"newsletter_Bucuresti"}
+{"id"=>944, "list_id"=>442, "value"=>"newsletter_Bucuresti"}
+{"id"=>945, "list_id"=>443, "value"=>"newsletter_Bucuresti"}
+{"id"=>947, "list_id"=>445, "value"=>"newsletter_Bucuresti"}
+{"id"=>948, "list_id"=>445, "value"=>"Baloane uriașe de pseudo-săpun"}
+could not resolve List: {"id"=>948, "list_id"=>445, "value"=>"Baloane uriașe de pseudo-săpun"}
+{"id"=>3262, "list_id"=>445, "value"=>"mentor în incubator: Răzvan Mătășel"}
+could not resolve List: {"id"=>3262, "list_id"=>445, "value"=>"mentor în incubator: Răzvan Mătășel"}
+{"id"=>3263, "list_id"=>445, "value"=>"mentor în incubator: Florin Ghindă"}
+could not resolve List: {"id"=>3263, "list_id"=>445, "value"=>"mentor în incubator: Florin Ghindă"}
+{"id"=>3264, "list_id"=>445, "value"=>"mentor în incubator: Dragoș Nicolaescu"}
+could not resolve List: {"id"=>3264, "list_id"=>445, "value"=>"mentor în incubator: Dragoș Nicolaescu"}
+{"id"=>5500, "list_id"=>445, "value"=>"Uca Marinescu, cea mai cunoscută femeie explorator la 72 de ani"}
+could not resolve List: {"id"=>5500, "list_id"=>445, "value"=>"Uca Marinescu, cea mai cunoscută femeie explorator la 72 de ani"}
+{"id"=>5501, "list_id"=>445, "value"=>"Gabriel Solomon – maratonist, biciclist și-n “timpul liber” butonist"}
+could not resolve List: {"id"=>5501, "list_id"=>445, "value"=>"Gabriel Solomon – maratonist, biciclist și-n “timpul liber” butonist"}
+{"id"=>7008, "list_id"=>445, "value"=>"PHOTOSFERA II - discuție despre fotografie cu Răzvan Voiculescu"}
+could not resolve List: {"id"=>7008, "list_id"=>445, "value"=>"PHOTOSFERA II - discuție despre fotografie cu Răzvan Voiculescu"}
+{"id"=>10244, "list_id"=>445, "value"=>"Cum să îți găsești vocația și să câștigi bani din ea?"}
+could not resolve List: {"id"=>10244, "list_id"=>445, "value"=>"Cum să îți găsești vocația și să câștigi bani din ea?"}
+{"id"=>949, "list_id"=>446, "value"=>"newsletter_Bucuresti"}
+{"id"=>950, "list_id"=>447, "value"=>"newsletter_Bucuresti"}
+{"id"=>951, "list_id"=>448, "value"=>"newsletter_Bucuresti"}
+{"id"=>952, "list_id"=>449, "value"=>"Teatru labirint: „ACASĂ”"}
+could not resolve List: {"id"=>952, "list_id"=>449, "value"=>"Teatru labirint: „ACASĂ”"}
+{"id"=>953, "list_id"=>449, "value"=>"LINIȘTE, nocturna (se) mută"}
+could not resolve List: {"id"=>953, "list_id"=>449, "value"=>"LINIȘTE, nocturna (se) mută"}
+{"id"=>954, "list_id"=>449, "value"=>"The Romanian Dream - Cum învățăm să visăm ghidați de filme"}
+could not resolve List: {"id"=>954, "list_id"=>449, "value"=>"The Romanian Dream - Cum învățăm să visăm ghidați de filme"}
+{"id"=>2770, "list_id"=>449, "value"=>"mentor în incubator: Pavel Varvari"}
+could not resolve List: {"id"=>2770, "list_id"=>449, "value"=>"mentor în incubator: Pavel Varvari"}
+{"id"=>3092, "list_id"=>449, "value"=>"La un pas de demisie și la doi pași de freelancing"}
+could not resolve List: {"id"=>3092, "list_id"=>449, "value"=>"La un pas de demisie și la doi pași de freelancing"}
+{"id"=>3093, "list_id"=>449, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3093, "list_id"=>449, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>955, "list_id"=>450, "value"=>"newsletter_Bucuresti"}
+{"id"=>956, "list_id"=>451, "value"=>"newsletter_Bucuresti"}
+{"id"=>4999, "list_id"=>451, "value"=>"Introducere în meditație - budistă"}
+could not resolve List: {"id"=>4999, "list_id"=>451, "value"=>"Introducere în meditație - budistă"}
+{"id"=>5059, "list_id"=>451, "value"=>"necunoscut, neobișnuit, invizibil"}
+could not resolve List: {"id"=>5059, "list_id"=>451, "value"=>"necunoscut, neobișnuit, invizibil"}
+{"id"=>6447, "list_id"=>451, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+could not resolve List: {"id"=>6447, "list_id"=>451, "value"=>"Corpul surprinzător - atelier de dans contemporan"}
+{"id"=>7314, "list_id"=>451, "value"=>"Tango Argentinian"}
+could not resolve List: {"id"=>7314, "list_id"=>451, "value"=>"Tango Argentinian"}
+{"id"=>957, "list_id"=>452, "value"=>"newsletter_Bucuresti"}
+{"id"=>958, "list_id"=>453, "value"=>"newsletter_Bucuresti"}
+{"id"=>959, "list_id"=>454, "value"=>"newsletter_Bucuresti"}
+{"id"=>960, "list_id"=>455, "value"=>"newsletter_Bucuresti"}
+{"id"=>2800, "list_id"=>455, "value"=>"Dă-ți demisia! - nocturna vocațională"}
+could not resolve List: {"id"=>2800, "list_id"=>455, "value"=>"Dă-ți demisia! - nocturna vocațională"}
+{"id"=>961, "list_id"=>456, "value"=>"newsletter_Bucuresti"}
+{"id"=>962, "list_id"=>457, "value"=>"newsletter_Bucuresti"}
+{"id"=>964, "list_id"=>459, "value"=>"newsletter_Bucuresti"}
+{"id"=>965, "list_id"=>460, "value"=>"newsletter_Bucuresti"}
+{"id"=>966, "list_id"=>461, "value"=>"newsletter_Bucuresti"}
+{"id"=>967, "list_id"=>462, "value"=>"newsletter_Bucuresti"}
+{"id"=>969, "list_id"=>464, "value"=>"newsletter_Bucuresti"}
+{"id"=>970, "list_id"=>465, "value"=>"newsletter_Bucuresti"}
+{"id"=>971, "list_id"=>466, "value"=>"newsletter_Bucuresti"}
+{"id"=>972, "list_id"=>467, "value"=>"newsletter_Bucuresti"}
+{"id"=>973, "list_id"=>468, "value"=>"newsletter_Bucuresti"}
+{"id"=>974, "list_id"=>469, "value"=>"newsletter_Bucuresti"}
+{"id"=>975, "list_id"=>470, "value"=>"newsletter_Bucuresti"}
+{"id"=>976, "list_id"=>470, "value"=>"Șamanism"}
+could not resolve List: {"id"=>976, "list_id"=>470, "value"=>"Șamanism"}
+{"id"=>4666, "list_id"=>470, "value"=>"Introducere în meditație - budistă"}
+could not resolve List: {"id"=>4666, "list_id"=>470, "value"=>"Introducere în meditație - budistă"}
+{"id"=>4792, "list_id"=>470, "value"=>"Teoria iubirii"}
+could not resolve List: {"id"=>4792, "list_id"=>470, "value"=>"Teoria iubirii"}
+{"id"=>5311, "list_id"=>470, "value"=>"Conștientizare corporală prin Yoga și Pilates"}
+could not resolve List: {"id"=>5311, "list_id"=>470, "value"=>"Conștientizare corporală prin Yoga și Pilates"}
+{"id"=>12283, "list_id"=>470, "value"=>"On the Road"}
+could not resolve List: {"id"=>12283, "list_id"=>470, "value"=>"On the Road"}
+{"id"=>13347, "list_id"=>470, "value"=>"Traveling with Serendipity"}
+could not resolve List: {"id"=>13347, "list_id"=>470, "value"=>"Traveling with Serendipity"}
+{"id"=>977, "list_id"=>471, "value"=>"newsletter_Bucuresti"}
+{"id"=>978, "list_id"=>471, "value"=>"Amigurumi – jucărioare croşetate"}
+could not resolve List: {"id"=>978, "list_id"=>471, "value"=>"Amigurumi – jucărioare croşetate"}
+{"id"=>979, "list_id"=>472, "value"=>"newsletter_Bucuresti"}
+{"id"=>980, "list_id"=>473, "value"=>"newsletter_Bucuresti"}
+{"id"=>981, "list_id"=>474, "value"=>"newsletter_Bucuresti"}
+{"id"=>4112, "list_id"=>474, "value"=>"Ștefan Câlția - mentor în incubator"}
+could not resolve List: {"id"=>4112, "list_id"=>474, "value"=>"Ștefan Câlția - mentor în incubator"}
+{"id"=>982, "list_id"=>475, "value"=>"newsletter_Bucuresti"}
+{"id"=>983, "list_id"=>476, "value"=>"newsletter_Bucuresti"}
+{"id"=>984, "list_id"=>477, "value"=>"newsletter_Bucuresti"}
+{"id"=>985, "list_id"=>478, "value"=>"newsletter_Bucuresti"}
+{"id"=>986, "list_id"=>479, "value"=>"newsletter_Bucuresti"}
+{"id"=>987, "list_id"=>480, "value"=>"newsletter_Bucuresti"}
+{"id"=>989, "list_id"=>482, "value"=>"newsletter_Bucuresti"}
+{"id"=>990, "list_id"=>483, "value"=>"newsletter_Bucuresti"}
+{"id"=>991, "list_id"=>484, "value"=>"newsletter_Bucuresti"}
+{"id"=>5023, "list_id"=>484, "value"=>"Ada Milea - mentor în incubator"}
+could not resolve List: {"id"=>5023, "list_id"=>484, "value"=>"Ada Milea - mentor în incubator"}
+{"id"=>992, "list_id"=>485, "value"=>"newsletter_Bucuresti"}
+{"id"=>993, "list_id"=>485, "value"=>"Speed Reading"}
+could not resolve List: {"id"=>993, "list_id"=>485, "value"=>"Speed Reading"}
+{"id"=>994, "list_id"=>485, "value"=>"De la Vis la Realizare - coaching creativ de grup"}
+could not resolve List: {"id"=>994, "list_id"=>485, "value"=>"De la Vis la Realizare - coaching creativ de grup"}
+{"id"=>995, "list_id"=>486, "value"=>"newsletter_Bucuresti"}
+{"id"=>996, "list_id"=>487, "value"=>"newsletter_Bucuresti"}
+{"id"=>997, "list_id"=>488, "value"=>"newsletter_Bucuresti"}
+{"id"=>998, "list_id"=>489, "value"=>"newsletter_Bucuresti"}
+{"id"=>999, "list_id"=>490, "value"=>"newsletter_Bucuresti"}
+{"id"=>1000, "list_id"=>491, "value"=>"newsletter_Bucuresti"}
+{"id"=>1001, "list_id"=>492, "value"=>"newsletter_Bucuresti"}
+{"id"=>1002, "list_id"=>493, "value"=>"newsletter_Bucuresti"}
+{"id"=>1003, "list_id"=>494, "value"=>"newsletter_Bucuresti"}
+{"id"=>1004, "list_id"=>495, "value"=>"newsletter_Bucuresti"}
+{"id"=>1005, "list_id"=>496, "value"=>"newsletter_Bucuresti"}
+{"id"=>1006, "list_id"=>497, "value"=>"newsletter_Bucuresti"}
+{"id"=>1007, "list_id"=>498, "value"=>"newsletter_Bucuresti"}
+{"id"=>1008, "list_id"=>499, "value"=>"newsletter_Bucuresti"}
+{"id"=>1009, "list_id"=>500, "value"=>"newsletter_Bucuresti"}
+{"id"=>3816, "list_id"=>500, "value"=>"mentor în incubator: Florin Ghindă"}
+could not resolve List: {"id"=>3816, "list_id"=>500, "value"=>"mentor în incubator: Florin Ghindă"}
+{"id"=>1011, "list_id"=>502, "value"=>"newsletter_Bucuresti"}
+{"id"=>1012, "list_id"=>503, "value"=>"newsletter_Bucuresti"}
+{"id"=>4693, "list_id"=>503, "value"=>"Teoria iubirii"}
+could not resolve List: {"id"=>4693, "list_id"=>503, "value"=>"Teoria iubirii"}
+{"id"=>1013, "list_id"=>504, "value"=>"newsletter_Bucuresti"}
+{"id"=>1015, "list_id"=>506, "value"=>"newsletter_Bucuresti"}
+{"id"=>1016, "list_id"=>507, "value"=>"newsletter_Bucuresti"}
+{"id"=>1017, "list_id"=>508, "value"=>"newsletter_Bucuresti"}
+{"id"=>1018, "list_id"=>509, "value"=>"newsletter_Bucuresti"}
+{"id"=>1020, "list_id"=>511, "value"=>"newsletter_Bucuresti"}
+{"id"=>1021, "list_id"=>512, "value"=>"newsletter_Bucuresti"}
+{"id"=>1022, "list_id"=>513, "value"=>"newsletter_Bucuresti"}
+{"id"=>1023, "list_id"=>514, "value"=>"newsletter_Bucuresti"}
+{"id"=>1024, "list_id"=>515, "value"=>"newsletter_Bucuresti"}
+{"id"=>1025, "list_id"=>516, "value"=>"newsletter_Bucuresti"}
+{"id"=>1026, "list_id"=>517, "value"=>"newsletter_Bucuresti"}
+{"id"=>5632, "list_id"=>517, "value"=>"Aikido"}
+could not resolve List: {"id"=>5632, "list_id"=>517, "value"=>"Aikido"}
+{"id"=>6942, "list_id"=>517, "value"=>"Dacă este marți, sunt filme. CinePluton"}
+could not resolve List: {"id"=>6942, "list_id"=>517, "value"=>"Dacă este marți, sunt filme. CinePluton"}
+{"id"=>9584, "list_id"=>517, "value"=>"ENDORFINA, nocturna zâmbăreață"}
+could not resolve List: {"id"=>9584, "list_id"=>517, "value"=>"ENDORFINA, nocturna zâmbăreață"}
+{"id"=>11887, "list_id"=>517, "value"=>"Dacă-i joc, joi să fie! Board Games Night."}
+could not resolve List: {"id"=>11887, "list_id"=>517, "value"=>"Dacă-i joc, joi să fie! Board Games Night."}
+{"id"=>1027, "list_id"=>518, "value"=>"newsletter_Bucuresti"}
+{"id"=>1028, "list_id"=>519, "value"=>"newsletter_Bucuresti"}
+{"id"=>1029, "list_id"=>520, "value"=>"newsletter_Bucuresti"}
+{"id"=>1030, "list_id"=>521, "value"=>"newsletter_Bucuresti"}
+{"id"=>1031, "list_id"=>522, "value"=>"newsletter_Bucuresti"}
+{"id"=>1032, "list_id"=>523, "value"=>"newsletter_Bucuresti"}
+{"id"=>1033, "list_id"=>524, "value"=>"newsletter_Bucuresti"}
+{"id"=>1034, "list_id"=>525, "value"=>"newsletter_Bucuresti"}
+{"id"=>16012, "list_id"=>525, "value"=>"Introducere în Dragon Dreaming"}
+could not resolve List: {"id"=>16012, "list_id"=>525, "value"=>"Introducere în Dragon Dreaming"}
+{"id"=>1035, "list_id"=>526, "value"=>"newsletter_Bucuresti"}
+{"id"=>1036, "list_id"=>527, "value"=>"newsletter_Bucuresti"}
+{"id"=>1038, "list_id"=>529, "value"=>"newsletter_Bucuresti"}
+{"id"=>3294, "list_id"=>529, "value"=>"BIBLIOTECA VIE „Dă-ți demisia”"}
+could not resolve List: {"id"=>3294, "list_id"=>529, "value"=>"BIBLIOTECA VIE „Dă-ți demisia”"}
+{"id"=>3295, "list_id"=>529, "value"=>"La un pas de demisie și la doi pași de freelancing"}
+could not resolve List: {"id"=>3295, "list_id"=>529, "value"=>"La un pas de demisie și la doi pași de freelancing"}
+{"id"=>1039, "list_id"=>530, "value"=>"newsletter_Bucuresti"}
+{"id"=>1040, "list_id"=>530, "value"=>"Aconcagua 2011 [Expeditie medicala romaneasca]"}
+could not resolve List: {"id"=>1040, "list_id"=>530, "value"=>"Aconcagua 2011 [Expeditie medicala romaneasca]"}
+{"id"=>1041, "list_id"=>530, "value"=>"Fizioterapie"}
+could not resolve List: {"id"=>1041, "list_id"=>530, "value"=>"Fizioterapie"}
+{"id"=>1042, "list_id"=>530, "value"=>"Pictură pe ceramică"}
+could not resolve List: {"id"=>1042, "list_id"=>530, "value"=>"Pictură pe ceramică"}
+{"id"=>1043, "list_id"=>530, "value"=>"Teatru labirint: „ACASĂ”"}
+could not resolve List: {"id"=>1043, "list_id"=>530, "value"=>"Teatru labirint: „ACASĂ”"}
+{"id"=>4555, "list_id"=>530, "value"=>"Dacioți până-n Mongolia"}
+could not resolve List: {"id"=>4555, "list_id"=>530, "value"=>"Dacioți până-n Mongolia"}
+{"id"=>5137, "list_id"=>530, "value"=>"Antreuri de party"}
+could not resolve List: {"id"=>5137, "list_id"=>530, "value"=>"Antreuri de party"}
+{"id"=>6811, "list_id"=>530, "value"=>"PHOTOSFERA - discuție despre fotografie cu Răzvan Voiculescu"}
+could not resolve List: {"id"=>6811, "list_id"=>530, "value"=>"PHOTOSFERA - discuție despre fotografie cu Răzvan Voiculescu"}
+{"id"=>1044, "list_id"=>531, "value"=>"newsletter_Bucuresti"}
+{"id"=>1045, "list_id"=>532, "value"=>"newsletter_Bucuresti"}
+{"id"=>1047, "list_id"=>534, "value"=>"newsletter_Bucuresti"}
+{"id"=>1048, "list_id"=>535, "value"=>"newsletter_Bucuresti"}
+{"id"=>1049, "list_id"=>536, "value"=>"newsletter_Bucuresti"}
+{"id"=>1050, "list_id"=>537, "value"=>"newsletter_Bucuresti"}
+{"id"=>1051, "list_id"=>538, "value"=>"newsletter_Bucuresti"}
+{"id"=>1052, "list_id"=>539, "value"=>"newsletter_Bucuresti"}
+{"id"=>1054, "list_id"=>540, "value"=>"De la Vis la Realizare - coaching creativ de grup"}
+could not resolve List: {"id"=>1054, "list_id"=>540, "value"=>"De la Vis la Realizare - coaching creativ de grup"}
+{"id"=>3115, "list_id"=>540, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3115, "list_id"=>540, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>4011, "list_id"=>540, "value"=>"Crăciun făcut cu mâna ta"}
+could not resolve List: {"id"=>4011, "list_id"=>540, "value"=>"Crăciun făcut cu mâna ta"}
+{"id"=>1056, "list_id"=>542, "value"=>"newsletter_Bucuresti"}
+{"id"=>1058, "list_id"=>544, "value"=>"newsletter_Bucuresti"}
+{"id"=>1059, "list_id"=>545, "value"=>"newsletter_Bucuresti"}
+{"id"=>1060, "list_id"=>546, "value"=>"newsletter_Bucuresti"}
+{"id"=>1061, "list_id"=>547, "value"=>"newsletter_Bucuresti"}
+{"id"=>1062, "list_id"=>548, "value"=>"newsletter_Bucuresti"}
+{"id"=>1063, "list_id"=>549, "value"=>"newsletter_Bucuresti"}
+{"id"=>1064, "list_id"=>550, "value"=>"newsletter_Bucuresti"}
+{"id"=>1065, "list_id"=>551, "value"=>"newsletter_Bucuresti"}
+{"id"=>1066, "list_id"=>552, "value"=>"newsletter_Bucuresti"}
+{"id"=>1067, "list_id"=>553, "value"=>"newsletter_Bucuresti"}
+{"id"=>1068, "list_id"=>554, "value"=>"newsletter_Bucuresti"}
+{"id"=>1069, "list_id"=>555, "value"=>"newsletter_Bucuresti"}
+{"id"=>1070, "list_id"=>556, "value"=>"newsletter_Bucuresti"}
+{"id"=>1071, "list_id"=>557, "value"=>"newsletter_Bucuresti"}
+{"id"=>1072, "list_id"=>558, "value"=>"newsletter_Bucuresti"}
+{"id"=>1073, "list_id"=>559, "value"=>"newsletter_Bucuresti"}
+{"id"=>1074, "list_id"=>560, "value"=>"newsletter_Bucuresti"}
+{"id"=>1075, "list_id"=>561, "value"=>"newsletter_Bucuresti"}
+{"id"=>1076, "list_id"=>562, "value"=>"newsletter_Bucuresti"}
+{"id"=>1077, "list_id"=>563, "value"=>"newsletter_Bucuresti"}
+{"id"=>1078, "list_id"=>564, "value"=>"newsletter_Bucuresti"}
+{"id"=>1079, "list_id"=>565, "value"=>"newsletter_Bucuresti"}
+{"id"=>1080, "list_id"=>566, "value"=>"newsletter_Bucuresti"}
+{"id"=>1081, "list_id"=>567, "value"=>"newsletter_Bucuresti"}
+{"id"=>1082, "list_id"=>568, "value"=>"newsletter_Bucuresti"}
+{"id"=>1083, "list_id"=>569, "value"=>"newsletter_Bucuresti"}
+{"id"=>1084, "list_id"=>569, "value"=>"S.O.S. Viața pe șosea"}
+could not resolve List: {"id"=>1084, "list_id"=>569, "value"=>"S.O.S. Viața pe șosea"}
+{"id"=>1085, "list_id"=>570, "value"=>"newsletter_Bucuresti"}
+{"id"=>1086, "list_id"=>571, "value"=>"newsletter_Bucuresti"}
+{"id"=>1087, "list_id"=>572, "value"=>"newsletter_Bucuresti"}
+{"id"=>1088, "list_id"=>573, "value"=>"newsletter_Bucuresti"}
+{"id"=>12596, "list_id"=>573, "value"=>"Demistificarea relației de cuplu prin metoda ESPERE®"}
+could not resolve List: {"id"=>12596, "list_id"=>573, "value"=>"Demistificarea relației de cuplu prin metoda ESPERE®"}
+{"id"=>1089, "list_id"=>574, "value"=>"newsletter_Bucuresti"}
+{"id"=>1090, "list_id"=>575, "value"=>"newsletter_Bucuresti"}
+{"id"=>6888, "list_id"=>575, "value"=>"Descoperă Sundao - practica respiraţiei conştiente"}
+could not resolve List: {"id"=>6888, "list_id"=>575, "value"=>"Descoperă Sundao - practica respiraţiei conştiente"}
+{"id"=>1091, "list_id"=>576, "value"=>"newsletter_Bucuresti"}
+{"id"=>1092, "list_id"=>577, "value"=>"newsletter_Bucuresti"}
+{"id"=>1093, "list_id"=>578, "value"=>"newsletter_Bucuresti"}
+{"id"=>1094, "list_id"=>579, "value"=>"newsletter_Bucuresti"}
+{"id"=>1095, "list_id"=>580, "value"=>"newsletter_Bucuresti"}
+{"id"=>1096, "list_id"=>581, "value"=>"newsletter_Bucuresti"}
+{"id"=>1097, "list_id"=>582, "value"=>"newsletter_Bucuresti"}
+{"id"=>1098, "list_id"=>583, "value"=>"newsletter_Bucuresti"}
+{"id"=>1099, "list_id"=>584, "value"=>"newsletter_Bucuresti"}
+{"id"=>1100, "list_id"=>585, "value"=>"newsletter_Bucuresti"}
+{"id"=>1101, "list_id"=>586, "value"=>"newsletter_Bucuresti"}
+{"id"=>1102, "list_id"=>587, "value"=>"newsletter_Bucuresti"}
+{"id"=>1103, "list_id"=>588, "value"=>"newsletter_Bucuresti"}
+{"id"=>1104, "list_id"=>589, "value"=>"newsletter_Bucuresti"}
+{"id"=>1105, "list_id"=>590, "value"=>"newsletter_Bucuresti"}
+{"id"=>1107, "list_id"=>592, "value"=>"newsletter_Bucuresti"}
+{"id"=>1108, "list_id"=>593, "value"=>"newsletter_Bucuresti"}
+{"id"=>1109, "list_id"=>594, "value"=>"newsletter_Bucuresti"}
+{"id"=>1110, "list_id"=>594, "value"=>"Cap sau pajură? Cum luăm deciziile"}
+could not resolve List: {"id"=>1110, "list_id"=>594, "value"=>"Cap sau pajură? Cum luăm deciziile"}
+{"id"=>5035, "list_id"=>594, "value"=>"Dăruiește-te... pe Tine!"}
+could not resolve List: {"id"=>5035, "list_id"=>594, "value"=>"Dăruiește-te... pe Tine!"}
+{"id"=>1111, "list_id"=>595, "value"=>"newsletter_Bucuresti"}
+{"id"=>1112, "list_id"=>596, "value"=>"newsletter_Bucuresti"}
+{"id"=>1113, "list_id"=>597, "value"=>"newsletter_Bucuresti"}
+{"id"=>1114, "list_id"=>598, "value"=>"newsletter_Bucuresti"}
+{"id"=>1115, "list_id"=>599, "value"=>"newsletter_Bucuresti"}
+{"id"=>1116, "list_id"=>600, "value"=>"newsletter_Bucuresti"}
+{"id"=>1118, "list_id"=>602, "value"=>"newsletter_Bucuresti"}
+{"id"=>1119, "list_id"=>603, "value"=>"newsletter_Bucuresti"}
+{"id"=>1120, "list_id"=>603, "value"=>"Tehnici de Relaxare și Autosugestie"}
+could not resolve List: {"id"=>1120, "list_id"=>603, "value"=>"Tehnici de Relaxare și Autosugestie"}
+{"id"=>1121, "list_id"=>604, "value"=>"newsletter_Bucuresti"}
+{"id"=>1122, "list_id"=>605, "value"=>"newsletter_Bucuresti"}
+{"id"=>4790, "list_id"=>605, "value"=>"Teoria iubirii"}
+could not resolve List: {"id"=>4790, "list_id"=>605, "value"=>"Teoria iubirii"}
+{"id"=>1123, "list_id"=>606, "value"=>"newsletter_Bucuresti"}
+{"id"=>14672, "list_id"=>606, "value"=>"contact Sibiu"}
+could not resolve List: {"id"=>14672, "list_id"=>606, "value"=>"contact Sibiu"}
+{"id"=>1124, "list_id"=>607, "value"=>"newsletter_Bucuresti"}
+{"id"=>1125, "list_id"=>608, "value"=>"newsletter_Bucuresti"}
+{"id"=>1127, "list_id"=>610, "value"=>"newsletter_Bucuresti"}
+{"id"=>1128, "list_id"=>611, "value"=>"newsletter_Bucuresti"}
+{"id"=>1129, "list_id"=>612, "value"=>"newsletter_Bucuresti"}
+{"id"=>1130, "list_id"=>613, "value"=>"newsletter_Bucuresti"}
+{"id"=>1131, "list_id"=>614, "value"=>"newsletter_Bucuresti"}
+{"id"=>1133, "list_id"=>616, "value"=>"newsletter_Bucuresti"}
+{"id"=>1134, "list_id"=>617, "value"=>"newsletter_Bucuresti"}
+{"id"=>1135, "list_id"=>618, "value"=>"newsletter_Bucuresti"}
+{"id"=>1136, "list_id"=>619, "value"=>"newsletter_Bucuresti"}
+{"id"=>1137, "list_id"=>620, "value"=>"newsletter_Bucuresti"}
+{"id"=>1138, "list_id"=>621, "value"=>"newsletter_Bucuresti"}
+{"id"=>1139, "list_id"=>622, "value"=>"newsletter_Bucuresti"}
+{"id"=>1142, "list_id"=>625, "value"=>"newsletter_Bucuresti"}
+{"id"=>1144, "list_id"=>627, "value"=>"newsletter_Bucuresti"}
+{"id"=>14655, "list_id"=>627, "value"=>"Olărit: Lut, formă, culoare."}
+could not resolve List: {"id"=>14655, "list_id"=>627, "value"=>"Olărit: Lut, formă, culoare."}
+{"id"=>1145, "list_id"=>628, "value"=>"newsletter_Bucuresti"}
+{"id"=>1146, "list_id"=>629, "value"=>"newsletter_Bucuresti"}
+{"id"=>1147, "list_id"=>630, "value"=>"newsletter_Bucuresti"}
+{"id"=>1148, "list_id"=>631, "value"=>"newsletter_Bucuresti"}
+{"id"=>1150, "list_id"=>633, "value"=>"newsletter_Bucuresti"}
+{"id"=>1151, "list_id"=>634, "value"=>"newsletter_Bucuresti"}
+{"id"=>1152, "list_id"=>635, "value"=>"newsletter_Bucuresti"}
+{"id"=>1153, "list_id"=>636, "value"=>"newsletter_Bucuresti"}
+{"id"=>3054, "list_id"=>636, "value"=>"Dă-ți demisia! - nocturna vocațională"}
+could not resolve List: {"id"=>3054, "list_id"=>636, "value"=>"Dă-ți demisia! - nocturna vocațională"}
+{"id"=>1154, "list_id"=>637, "value"=>"newsletter_Bucuresti"}
+{"id"=>1155, "list_id"=>637, "value"=>"Teatru labirint: „ACASĂ”"}
+could not resolve List: {"id"=>1155, "list_id"=>637, "value"=>"Teatru labirint: „ACASĂ”"}
+{"id"=>1156, "list_id"=>637, "value"=>"Tigaia cu inspirație"}
+could not resolve List: {"id"=>1156, "list_id"=>637, "value"=>"Tigaia cu inspirație"}
+{"id"=>3599, "list_id"=>637, "value"=>"La un pas de demisie și la doi pași de freelancing"}
+could not resolve List: {"id"=>3599, "list_id"=>637, "value"=>"La un pas de demisie și la doi pași de freelancing"}
+{"id"=>1157, "list_id"=>638, "value"=>"newsletter_Bucuresti"}
+{"id"=>1159, "list_id"=>640, "value"=>"newsletter_Bucuresti"}
+{"id"=>1160, "list_id"=>641, "value"=>"newsletter_Bucuresti"}
+{"id"=>1161, "list_id"=>642, "value"=>"newsletter_Bucuresti"}
+{"id"=>1164, "list_id"=>645, "value"=>"newsletter_Bucuresti"}
+{"id"=>1165, "list_id"=>646, "value"=>"newsletter_Bucuresti"}
+{"id"=>1166, "list_id"=>647, "value"=>"newsletter_Bucuresti"}
+{"id"=>1167, "list_id"=>647, "value"=>"Space Painting - Pictează-ți galaxia cu spray-uri de graffiti"}
+could not resolve List: {"id"=>1167, "list_id"=>647, "value"=>"Space Painting - Pictează-ți galaxia cu spray-uri de graffiti"}
+{"id"=>8597, "list_id"=>647, "value"=>"Cosiţe de Cosânzeană"}
+could not resolve List: {"id"=>8597, "list_id"=>647, "value"=>"Cosiţe de Cosânzeană"}
+{"id"=>1168, "list_id"=>648, "value"=>"newsletter_Bucuresti"}
+{"id"=>1169, "list_id"=>649, "value"=>"newsletter_Bucuresti"}
+{"id"=>1170, "list_id"=>650, "value"=>"newsletter_Bucuresti"}
+{"id"=>14627, "list_id"=>650, "value"=>"Olărit: Lut, formă, culoare."}
+could not resolve List: {"id"=>14627, "list_id"=>650, "value"=>"Olărit: Lut, formă, culoare."}
+{"id"=>1171, "list_id"=>651, "value"=>"newsletter_Bucuresti"}
+{"id"=>1172, "list_id"=>652, "value"=>"newsletter_Bucuresti"}
+{"id"=>1174, "list_id"=>654, "value"=>"newsletter_Bucuresti"}
+{"id"=>1175, "list_id"=>655, "value"=>"newsletter_Bucuresti"}
+{"id"=>1176, "list_id"=>656, "value"=>"newsletter_Bucuresti"}
+{"id"=>3870, "list_id"=>656, "value"=>"mentor în incubator: Dragoș Nicolaescu"}
+could not resolve List: {"id"=>3870, "list_id"=>656, "value"=>"mentor în incubator: Dragoș Nicolaescu"}
+{"id"=>1177, "list_id"=>657, "value"=>"newsletter_Bucuresti"}
+{"id"=>5086, "list_id"=>658, "value"=>"ReCreerea unei idei: construcția spoturilor"}
+could not resolve List: {"id"=>5086, "list_id"=>658, "value"=>"ReCreerea unei idei: construcția spoturilor"}
+{"id"=>1179, "list_id"=>659, "value"=>"newsletter_Bucuresti"}
+{"id"=>1180, "list_id"=>660, "value"=>"newsletter_Bucuresti"}
+{"id"=>1181, "list_id"=>661, "value"=>"newsletter_Bucuresti"}
+{"id"=>1182, "list_id"=>662, "value"=>"newsletter_Bucuresti"}
+{"id"=>1183, "list_id"=>663, "value"=>"newsletter_Bucuresti"}
+{"id"=>1184, "list_id"=>664, "value"=>"newsletter_Bucuresti"}
+{"id"=>1185, "list_id"=>665, "value"=>"newsletter_Bucuresti"}
+{"id"=>1187, "list_id"=>667, "value"=>"newsletter_Bucuresti"}
+{"id"=>1188, "list_id"=>668, "value"=>"newsletter_Bucuresti"}
+{"id"=>1189, "list_id"=>669, "value"=>"newsletter_Bucuresti"}
+{"id"=>1191, "list_id"=>671, "value"=>"newsletter_Bucuresti"}
+{"id"=>1192, "list_id"=>672, "value"=>"newsletter_Bucuresti"}
+{"id"=>1193, "list_id"=>673, "value"=>"newsletter_Bucuresti"}
+{"id"=>1194, "list_id"=>674, "value"=>"newsletter_Bucuresti"}
+{"id"=>7679, "list_id"=>674, "value"=>"Gătim vegetarian"}
+could not resolve List: {"id"=>7679, "list_id"=>674, "value"=>"Gătim vegetarian"}
+{"id"=>1195, "list_id"=>675, "value"=>"newsletter_Bucuresti"}
+{"id"=>1196, "list_id"=>676, "value"=>"newsletter_Bucuresti"}
+{"id"=>1197, "list_id"=>676, "value"=>"Tehnici de Relaxare și Autosugestie"}
+could not resolve List: {"id"=>1197, "list_id"=>676, "value"=>"Tehnici de Relaxare și Autosugestie"}
+{"id"=>3050, "list_id"=>676, "value"=>"7 popasuri pe un nou drum"}
+could not resolve List: {"id"=>3050, "list_id"=>676, "value"=>"7 popasuri pe un nou drum"}
+{"id"=>3253, "list_id"=>676, "value"=>"Branding personal"}
+could not resolve List: {"id"=>3253, "list_id"=>676, "value"=>"Branding personal"}
+{"id"=>1198, "list_id"=>677, "value"=>"newsletter_Bucuresti"}
+{"id"=>6770, "list_id"=>677, "value"=>"PHOTOSFERA - discuție despre fotografie cu Răzvan Voiculescu"}
+could not resolve List: {"id"=>6770, "list_id"=>677, "value"=>"PHOTOSFERA - discuție despre fotografie cu Răzvan Voiculescu"}
+{"id"=>10878, "list_id"=>677, "value"=>"Terapie prin râs / Laughter Yoga"}
+could not resolve List: {"id"=>10878, "list_id"=>677, "value"=>"Terapie prin râs / Laughter Yoga"}
+{"id"=>1200, "list_id"=>679, "value"=>"newsletter_Bucuresti"}
+{"id"=>1201, "list_id"=>680, "value"=>"newsletter_Bucuresti"}
+{"id"=>1202, "list_id"=>681, "value"=>"newsletter_Bucuresti"}
+{"id"=>15307, "list_id"=>681, "value"=>"Creativitatea ca mod de viață"}
+could not resolve List: {"id"=>15307, "list_id"=>681, "value"=>"Creativitatea ca mod de viață"}
+{"id"=>1203, "list_id"=>682, "value"=>"newsletter_Bucuresti"}
+{"id"=>1204, "list_id"=>683, "value"=>"newsletter_Bucuresti"}
+{"id"=>1205, "list_id"=>684, "value"=>"newsletter_Bucuresti"}
+{"id"=>1206, "list_id"=>685, "value"=>"newsletter_Bucuresti"}
+{"id"=>1207, "list_id"=>686, "value"=>"newsletter_Bucuresti"}
+{"id"=>1208, "list_id"=>687, "value"=>"newsletter_Bucuresti"}
+{"id"=>1209, "list_id"=>688, "value"=>"newsletter_Bucuresti"}
+{"id"=>1211, "list_id"=>690, "value"=>"newsletter_Bucuresti"}
