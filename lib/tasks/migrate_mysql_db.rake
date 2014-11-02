@@ -34,6 +34,7 @@ namespace :mysql do
 
     City.create!(
       name: "Braşov", 
+      active: true, 
       domain: "brasov", 
       email: "brasov@incubator107.com", 
       facebook_page_id: "402491703139412", 
@@ -46,6 +47,7 @@ namespace :mysql do
 
     City.create!(
       name: "Bucureşti", 
+      active: true, 
       domain: "bucuresti", 
       email: "inscrieri@incubator107.com", 
       facebook_page_id: "193875377299310", 
@@ -62,6 +64,7 @@ namespace :mysql do
     
     City.create!(
       name: "Cluj", 
+      active: true, 
       domain: "cluj", 
       email: "cluj@incubator107.com", 
       facebook_page_id: "292528864155748", 
@@ -74,6 +77,7 @@ namespace :mysql do
     
     City.create!(
       name: "Craiova", 
+      active: true, 
       domain: "craiova", 
       email: "craiova@incubator107.com", 
       facebook_page_id: "179957508880461", 
@@ -86,6 +90,7 @@ namespace :mysql do
     )
     
     City.create!(
+      active: true, 
       name: "Iaşi", 
       domain: "iasi", 
       email: "iasi@incubator107.com", 
@@ -99,6 +104,7 @@ namespace :mysql do
     )
     
     City.create!(
+      active: true, 
       name: "Oradea", 
       domain: "oradea", 
       email: "oradea@incubator107.com", 
@@ -111,6 +117,7 @@ namespace :mysql do
     )
     
     City.create!(
+      active: true, 
       name: "Sibiu", 
       domain: "sibiu", 
       email: "sibiu@incubator107.com", 
@@ -123,6 +130,7 @@ namespace :mysql do
     )
     
     City.create!(
+      active: true, 
       name: "Timişoara", 
       domain: "timisoara", 
       email: "timisoara@incubator107.com", 

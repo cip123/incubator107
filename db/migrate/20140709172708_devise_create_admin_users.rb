@@ -1,5 +1,13 @@
 class DeviseCreateAdminUsers < ActiveRecord::Migration
 
+  def migrate(direction)
+    super
+    # Create a default user
+    unless Rails.env.test?
+      AdminUser.create!(email: 'admin@incubator107.com', password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD']) if direction == :up 
+    end
+  end
+
   def change
     create_table(:admin_users) do |t|
       ## Database authenticatable

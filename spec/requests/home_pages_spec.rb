@@ -57,7 +57,7 @@ describe "Home pages" do
       end
 
       it "should have this month workshops" do
-        expect(page).to have_content("Luna aceasta")
+        expect(page).to have_content("Luna asta")
         expect(page).to have_link "spanning_workshop"
         expect(page).not_to have_content "Luna viitoare"
       end
@@ -80,7 +80,7 @@ describe "Home pages" do
 
       it "should have next month workshops" do
         
-        expect(page).to have_content("Luna aceasta")
+        expect(page).to have_content("Luna asta")
         expect(page).to have_content("Luna viitoare")
         expect(page).to have_link "spanning_workshop"
       end

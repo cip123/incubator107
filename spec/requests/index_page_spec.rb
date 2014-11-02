@@ -7,7 +7,7 @@ describe "root page" do
   before  do 
     
     10.times do |n|
-      FactoryGirl.create(:city, domain: "domain#{n}") 
+      FactoryGirl.create(:city, domain: "domain#{n}", active: true) 
     end 
     visit "http://lvh.me:3001"
   end
