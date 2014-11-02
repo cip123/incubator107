@@ -10,9 +10,10 @@ class CreateCities < ActiveRecord::Migration
       
       # mailchimp 
       t.string :mailchimp_key
-      t.string :newsletter_list_id
-      t.string :workshop_list_id
-      t.integer :workshop_groups_id
+      t.string :mailchimp_newsletter_list_id
+      t.string :mailchimp_workshop_list_id
+      t.integer :mailchimp_workshop_groups_id
+      t.boolean :active
 
       t.timestamps
     end

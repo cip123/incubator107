@@ -15,6 +15,7 @@ class Registration < ActiveRecord::Base
     if workshop.should_send_notification
       RegistrationMailer.remind(self).deliver
       self.notification_sent = true
+      self.save!
     end
   end
 

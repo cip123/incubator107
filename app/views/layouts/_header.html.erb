@@ -1,22 +1,49 @@
 <div class="row">
-  <div class="col-sm-4">
-    <h3 class="muted"><%= link_to image_tag("logo.png"), "http://#{@city.domain}.#{Rails.configuration.hosts[Rails.env]}"%>
-    <%= @city.name %></h3>
-  </div>
-  <div class="col-sm-8">
-    <div class="navbar-header">
-      <div class="navbar-inner">
-        <ul class="nav nav-pills" >
-          <li><a href="<%= @about_path %>"><%=I18n.t(:who_are_we)%></a></li>
-          <li><a href="<%= workshops_path%>"><%=I18n.t(:workshops)%></a></li>
-          <li><a href="<%= calendar_path%>"><%=I18n.t(:calendar)%></a></li>
-          <li><a href="<%= @collaboration_path %>"><%=I18n.t(:collaboration)%></a></li>
-          <li><a href="<%= @your_place_path %>"><%=I18n.t(:your_place)%></a></li>
-          <li><a href="<%= @friends_path %>"><%=I18n.t(:friends)%></a></li>
-          <li><a href="<%= @two_percent_path %>"><%=I18n.t(:two_percent)%></a></li>
-          <li><a href="<%= contact_path%>"><%=I18n.t(:contact)%></a></li>
-        </ul>
-      </div>
+
+  <div class="col-md-8 col-md-offset-2" >
+  <div class="navbar-header">
+    <div class="navbar-inner">
+      <ul class="nav nav-pills" >
+        <li><a href="<%= @about_path %>"><%=image_tag("menu-icons/about.png", class: "menu-icon")  %> <%=I18n.t(:who_are_we)%></a></li>
+        <li><a href="<%= workshops_path%>"><%=image_tag("menu-icons/workshops.png", class: "menu-icon")  %> <%=I18n.t(:workshops)%></a></li>
+        <li>
+          <a href="<%= calendar_path%>">
+            <%=image_tag("menu-icons/calendar.png", class: "menu-icon")  %> 
+            <%=I18n.t(:calendar)%>
+          </a>
+        </li>
+        <li>
+          <a href="<%= @collaboration_path %>">
+            <%=image_tag("menu-icons/collaboration.png", class: "menu-icon")  %> 
+            <%=I18n.t(:collaboration)%>
+          </a>
+        </li>
+        <li>
+          <a href="<%= @your_place_path %>">
+            <%=image_tag("menu-icons/your-place.png", class: "menu-icon")  %> 
+            <%=I18n.t(:your_place)%>
+          </a>
+        </li>
+        <li>
+          <a href="<%= @friends_path %>">
+            <%=image_tag("menu-icons/friends.png", class: "menu-icon")  %> 
+            <%=I18n.t(:friends)%>
+          </a>
+        </li>
+        <li>
+          <a href="<%= @two_percent_path %>">
+            <%=image_tag("menu-icons/two-percent.png", class: "menu-icon")  %> 
+            <%=" " + I18n.t(:two_percent)%>
+          </a>
+        </li>
+        <li>
+          <a href="<%= contact_path%>">
+            <%=image_tag("menu-icons/contact.png", class: "menu-icon")  %> 
+            <%=I18n.t(:contact)%>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
+</div>
 </div>

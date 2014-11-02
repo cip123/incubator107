@@ -43,7 +43,8 @@ describe "Reminders" do
       Delayed::Worker.new.work_off 
       reminder_mail = ActionMailer::Base.deliveries[0]
       assert_equal reminder_mail.subject, "Reminder - #{workshop.name} - #{event.name}"
-
+      registration = Registration.first
+      expect(registration.notification_sent).to eq(true)
     end
 
   end

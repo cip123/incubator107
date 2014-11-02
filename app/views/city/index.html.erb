@@ -2,30 +2,37 @@
 <html>
   <head>
     <title><%=full_title(yield(:title)) %>
-    </title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body id="main-page">
-    <div class="left-clouds">
-      <% (0..@cities.count/2-1).each do |i| %>      
-      <a href='<%= "http://#{@cities[i].domain}.#{Rails.configuration.hosts[Rails.env]}" %>'>   
-        <div class="cloud">
-          <%= @cities[i].name.upcase %>
-        </div>
-      </a>
-      <% end %>
-    </div>
+  </title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="main-page">
 
-    <div class="right-clouds" >
-      <% (@cities.count/2..@cities.count-1).each do |i| %>   
-      <a href='<%= "http://#{@cities[i].domain}.#{Rails.configuration.hosts[Rails.env]}" %>'>   
-        <div class="cloud">
-          <%= @cities[i].name.upcase %>
-        </div>
-      </a>
-      <% end %>
-    </div>
-  </body>
+
+  <div class="baloon">
+
+
+
+  </div>
+  <div class="left-clouds">
+    <% (0..(@cities.count/2).ceil-1).each do |i| %>      
+        <a href='<%= "http://#{@cities[i].domain}.#{Rails.configuration.hosts[Rails.env]}" %>'>   
+          <div class="cloud">
+            <%= @cities[i].name.upcase %>
+          </div>
+        </a>
+    <% end %>
+  </div>
+
+  <div class="right-clouds" >
+    <% ((@cities.count/2).ceil..@cities.count-1).each do |i| %>   
+        <a href='<%= "http://#{@cities[i].domain}.#{Rails.configuration.hosts[Rails.env]}" %>'>   
+          <div class="cloud">
+            <%= @cities[i].name.upcase %>
+          </div>
+        </a>
+    <% end %>
+  </div>
+</body>
 </html>

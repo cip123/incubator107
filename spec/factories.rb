@@ -4,14 +4,17 @@ FactoryGirl.define do
 
   factory :city do
     sequence(:name)  { |n| "City #{n}" }
-    sequence(:email)  { |n| "email#{n}@incubator107.com" }
+    sequence(:email)  do |n| 
+      index= '%02i' % n
+      "email#{index}@incubator107.com" 
+    end 
     domain "cluj" 
     sequence(:facebook_page_id ) { |n| "100000000#{n}" }
     sequence(:default_event_location_id ) { |n| "#{n}" }
     sequence(:mailchimp_key ) { |n| "mailchimp key#{n}" }
-    sequence(:newsletter_list_id ) { |n| "newsletter list #{n}" }
-    sequence(:workshop_list_id ) { |n| "workshop list #{n}" }
-    sequence(:workshop_groups_id ) { |n| "workshop groups #{n}" }
+    sequence(:mailchimp_newsletter_list_id ) { |n| "newsletter list #{n}" }
+    sequence(:mailchimp_workshop_list_id ) { |n| "workshop list #{n}" }
+    sequence(:mailchimp_workshop_groups_id ) { |n| "workshop groups #{n}" }
     sequence(:default_donation ) { |n| "donation for <strong>#{n}</strong>" }
     sequence(:default_whereabouts ) { |n| "whereabouts for <strong>#{n}</strong>" }
 
@@ -73,7 +76,10 @@ FactoryGirl.define do
 
   factory :person do
     sequence(:name) { |n| "contact #{n}" }
-    sequence(:email) { |n| "email#{n}@test.ro" }
+    sequence(:email) do |n| 
+      index= '%02i' % n
+      "email#{index}@test.ro" 
+    end 
     sequence(:phone) { |n| "07000010#{n}" }
     city_id 1
   end
@@ -84,7 +90,10 @@ FactoryGirl.define do
 
   factory :contact_person do
     sequence(:name) { |n| "contact #{n}" }
-    sequence(:email) { |n| "email#{n}@test.ro" }
+    sequence(:email) do |n| 
+      index= '%02i' % n
+      "email#{index}@test.ro" 
+    end 
     sequence(:title) { |n| "title #{n}" }
     sequence(:about) { |n| "about #{n}" }
     sequence(:phone) { |n| "phone #{n}" }

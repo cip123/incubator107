@@ -1,12 +1,138 @@
 @font-face {
     font-family: 'Aracne Condensed Regular';
-    src: 
-
-    url(font-path('ARACNE-CONDENSED_regular.ttf')) format('truetype');
+    src: url(font-path('ARACNE-CONDENSED_regular.ttf')) format('truetype');
 }
 
-#main-page { 
+@font-face {
+    font-family: 'Architects Daughter';
+    src: url(font-path('ArchitectsDaughter.ttf')) format('truetype');
+}
+
+p {
+  font-family: "Architects Daughter";
+  font-size: 12px;
+}
+
+html, body, .container-fluid, .row {
+    height: 100%;
+}
+
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
+
+body {
   background: url(background.gif) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+  font-family: "Architects Daughter";
+
+  color: rgb(163, 52, 108) !important;
+} 
+
+.icon-about {
+    background-image: url("menu-icons/about.png");
+    background-position: center center;
+}
+
+.nav-pills > li > a {
+  font-family: "Aracne Condensed Regular";
+  color: rgb(163, 52, 108) !important;
+  text-align: center;
+}
+
+img.menu-icon {
+  display: block;
+  margin: 0 auto;
+
+}
+h4.list-group-item-heading {
+  font-family: "Aracne Condensed Regular";
+  font-size: 30px;
+  font-weight: bold;
+  color: white !important;
+} 
+
+input[type="image"] {
+    width: 26px !important; 
+    height: 26px !important; 
+    padding: 5px !important;
+}
+
+/* input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus { */
+div.gsc-control-cse.gsc-control-cse-en {
+  background: transparent !important;
+  border: transparent !important;
+}
+
+
+li.list-group-item {
+  border-top: 0px;
+  font-size: 16px;
+  font-family: "Aracne Condensed Regular";
+  line-height: 1.25;
+  text-align: left;
+  overflow:hidden;  
+  position: relative;
+  display: block;
+  padding: 1px 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #fff;
+  border: 0px;
+  &:last-child {
+
+    border-bottom: 2px solid #109b97;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  &>a{
+    color: rgb(163, 52, 108) !important;
+  }
+}
+
+.monthly-workshops>ul.list-group {
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px !important;
+  background: white;
+  box-shadow: 0 1px 3px #109b97, inset 0 -3px 3px rgba(0,0,0,0.1);
+  border-left: 2px solid #109b97;
+  border-right: 1px solid #109b97;
+  -webkit-border-filter: blur(5px);
+  -moz-border-filter: blur(5px); 
+  border-filt-webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff), color-stop(0.5, #fff), color-stop(0.5, #66cc00)) 21 30 30 21 repeat repeat;er: blur(5px);
+
+  box-shadow: 1px 1px 5px #109b97;
+ }
+
+a.list-group-item {
+  background: url(month-borders.png) #109b97 center center no-repeat;  
+  text-align: center; 
+  font-color: white;
+  box-shadow: 0 1px 3px #109b97, inset 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #109b97;
+  border-radius: 10px !important;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+
+.flowery-logo { 
+  background: url(patterned-logo.gif) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+#main-page { 
+  background: url(intro-baloon.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -15,24 +141,47 @@
 
 .left-clouds { 
   position:absolute;   
-  bottom:25%; 
-  width: 40%;
-  margin-left: 5%;
-  
+  bottom:10%; 
+  width: 45%;
+  height: 200px;
+
+  margin-left: 2%;
+
   a:nth-child(2n)>div {
     background: url('cloud-white.gif') no-repeat center center;
   }
 
   a:nth-child(2n+1)>div {
-     background: url('cloud-grey.gif') no-repeat center center;
+    background: url('cloud-grey.gif') no-repeat center center;
+  }
+}
+
+img.center {
+ display: block;
+ margin: 10% auto;
+}
+
+.sidebar {
+  background-color : rgba(242, 196, 17, .7);
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+  background-color : rgba(242, 196, 17, .7);
   }
 }
 
 .cloud {
   margin: 0;
   float: left;
-  
-  width:120px;
+
+  width:115px;
   height:80px;
   line-height: 100px;
   text-align: center;
@@ -45,24 +194,25 @@
   &:hover {
     color: #109b97;
   }
-  
+
 }
 
 
 .right-clouds { 
   position:absolute;   
-  bottom:25%; 
+  bottom:10%; 
   width: 40%;
-  
+  height: 200px; 
+
   a:nth-child(2n)>div {
     background: url('cloud-white.gif') no-repeat center center;
   }
 
   a:nth-child(2n+1)>div {
-     background: url('cloud-grey.gif') no-repeat center center;
+    background: url('cloud-grey.gif') no-repeat center center;
   }
 
   right: 0px;
-  
+
 }
 

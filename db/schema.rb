@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140824143503) do
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.integer  "city_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -94,9 +95,10 @@ ActiveRecord::Schema.define(version: 20140824143503) do
     t.integer  "default_event_location_id"
     t.string   "google_analytics_code"
     t.string   "mailchimp_key"
-    t.string   "newsletter_list_id"
-    t.string   "workshop_list_id"
-    t.integer  "workshop_groups_id"
+    t.string   "mailchimp_newsletter_list_id"
+    t.string   "mailchimp_workshop_list_id"
+    t.integer  "mailchimp_workshop_groups_id"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

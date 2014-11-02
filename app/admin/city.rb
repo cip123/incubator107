@@ -3,6 +3,7 @@ ActiveAdmin.register City do
 
   filter :translations_name, as: :string, label: "Name"
   filter :domain
+  filter :active
 
 
   index do
@@ -11,6 +12,7 @@ ActiveAdmin.register City do
     column :name, sortable: "city_translations.name"
     column :email
     column :domain
+    column :active
 
     actions
   end
@@ -23,6 +25,7 @@ ActiveAdmin.register City do
         row :email
         row :google_analytics_code        
         row :default_event_location
+        row :active
       end
     end
 
@@ -51,16 +54,16 @@ ActiveAdmin.register City do
     panel 'mailchimp' do
       attributes_table_for city do
         row :mailchimp_key
-        row :newsletter_list_id
-        row :workshop_list_id
-        row :workshop_groups_id
+        row :mailchimp_newsletter_list_id
+        row :mailchimp_workshop_list_id
+        row :mailchimp_workshop_groups_id
       end
     end
 
   end
 
   permit_params :name, :domain, :default_donation, :default_whereabouts, :facebook_page_id, :email, :default_event_location_id, 
-    :google_analytics_code, :mailchimp_key, :newsletter_list_id, :workshop_list_id, :workshop_groups_id    
+    :google_analytics_code, :mailchimp_key, :mailchimp_newsletter_list_id, :mailchimp_workshop_list_id, :mailchimp_workshop_groups_id, :active
 
 
   form do |f|
@@ -70,6 +73,7 @@ ActiveAdmin.register City do
       f.input :email
       f.input :google_analytics_code
       f.input :default_event_location
+      f.input :active, :as => :radio, :label => "Active", :collection => [["Yes", true], ["No", false]]
     end
      
     f.inputs "Default Donation" do
@@ -87,9 +91,9 @@ ActiveAdmin.register City do
 
     f.inputs "Mailchimp" do
       f.input :mailchimp_key
-      f.input :newsletter_list_id
-      f.input :workshop_list_id
-      f.input :workshop_groups_id
+      f.input :mailchimp_newsletter_list_id
+      f.input :mailchimp_workshop_list_id
+      f.input :mailchimp_workshop_groups_id
     end
 
     f.actions

@@ -31,7 +31,7 @@ ActiveAdmin.register News do
     end
   end
 
-  form do |f|
+  form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do
       f.input :title
       f.input :published, :as => :radio, :label => "Publish", :collection => [["Yes", true], ["No", false]]

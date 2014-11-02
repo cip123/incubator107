@@ -7,6 +7,11 @@
 
 namespace :mysql do
 
+  task :create_admin_users => :environment do | t, args| 
+    AdminUser.destroy_all
+    AdminUser.create!(email: 'admin@incubator107.com', password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD']) if direction == :up
+  end
+
   task :migrate_workshops => :environment do | t, args| 
 
     client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')

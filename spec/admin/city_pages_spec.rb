@@ -121,11 +121,12 @@ describe "City" do
         select cluj_location.name, from: :city_default_event_location_id
         fill_in :city_google_analytics_code, with: "ga"
         fill_in :city_mailchimp_key, with: "mc"
-        fill_in :city_newsletter_list_id, with: "nlid"
-        fill_in :city_workshop_list_id, with: "wlid"
-        fill_in :city_workshop_groups_id, with: 1000 
+        fill_in :city_mailchimp_newsletter_list_id, with: "nlid"
+        fill_in :city_mailchimp_workshop_list_id, with: "wlid"
+        fill_in :city_mailchimp_workshop_groups_id, with: 1000 
         fill_in_tinymce :city_default_donation, with: "test donation"
         fill_in_tinymce :city_default_whereabouts, with: "test whereabouts"
+        choose "city_active_true"
 
         click_button "Create City" 
 
@@ -134,14 +135,15 @@ describe "City" do
         city = City.find(3)
         expect(city.name).to eq("test name")
         expect(city.email).to eq("test@email.ro")
+        expect(city.active).to eq(true)
         expect(city.domain).to eq("test")
         expect(city.facebook_page_id).to eq("facebook")
         expect(city.default_event_location).to eq(cluj_location)
         expect(city.google_analytics_code).to eq("ga")
         expect(city.mailchimp_key).to eq("mc")
-        expect(city.newsletter_list_id).to eq("nlid")
-        expect(city.workshop_list_id).to eq("wlid")
-        expect(city.workshop_groups_id).to eq(1000)
+        expect(city.mailchimp_newsletter_list_id).to eq("nlid")
+        expect(city.mailchimp_workshop_list_id).to eq("wlid")
+        expect(city.mailchimp_workshop_groups_id).to eq(1000)
         expect(city.default_donation).to eq("<p>test donation</p>")
         expect(city.default_whereabouts).to eq("<p>test whereabouts</p>")
       end
@@ -166,9 +168,9 @@ describe "City" do
         expect(page).to have_content(cluj_city.default_event_location.name)
         expect(page).to have_content("donation")
         expect(page).to have_content("whereabouts")
-        expect(page).to have_content(cluj_city.newsletter_list_id)
-        expect(page).to have_content(cluj_city.workshop_list_id)
-        expect(page).to have_content(cluj_city.workshop_groups_id)
+        expect(page).to have_content(cluj_city.mailchimp_newsletter_list_id)
+        expect(page).to have_content(cluj_city.mailchimp_workshop_list_id)
+        expect(page).to have_content(cluj_city.mailchimp_workshop_groups_id)
       end
 
       it "should update the city", js: true do      
@@ -179,28 +181,29 @@ describe "City" do
         fill_in :city_facebook_page_id, with: "facebook"
         select cluj_location.name, from: :city_default_event_location_id
         fill_in :city_google_analytics_code, with: "ga"
+        choose "city_active_true"
         fill_in :city_mailchimp_key, with: "mc"
-        fill_in :city_newsletter_list_id, with: "nlid"
-        fill_in :city_workshop_list_id, with: "wlid"
-        fill_in :city_workshop_groups_id, with: 1000 
+        fill_in :city_mailchimp_newsletter_list_id, with: "nlid"
+        fill_in :city_mailchimp_workshop_list_id, with: "wlid"
+        fill_in :city_mailchimp_workshop_groups_id, with: 1000 
         fill_in_tinymce :city_default_donation, with: "test donation"
         fill_in_tinymce :city_default_whereabouts, with: "test whereabouts"
 
         click_button "Update City" 
-
         # we make sure the page is loaded
         expect(page).to have_content("City Details")
         city = City.find(1)
         expect(city.name).to eq("test name")
+        expect(city.active).to eq(true)
         expect(city.email).to eq("test@email.ro")
         expect(city.domain).to eq("test")
         expect(city.facebook_page_id).to eq("facebook")
         expect(city.default_event_location).to eq(cluj_location)
         expect(city.google_analytics_code).to eq("ga")
         expect(city.mailchimp_key).to eq("mc")
-        expect(city.newsletter_list_id).to eq("nlid")
-        expect(city.workshop_list_id).to eq("wlid")
-        expect(city.workshop_groups_id).to eq(1000)
+        expect(city.mailchimp_newsletter_list_id).to eq("nlid")
+        expect(city.mailchimp_workshop_list_id).to eq("wlid")
+        expect(city.mailchimp_workshop_groups_id).to eq(1000)
         expect(city.default_donation).to eq("<p>test donation</p>")
         expect(city.default_whereabouts).to eq("<p>test whereabouts</p>")
      end

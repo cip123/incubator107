@@ -9,13 +9,13 @@ class Group < ActiveRecord::Base
     
     merge_vars = {
       groupings: [ 
-        id: person.city.workshop_groups_id, 
+        id: person.city.mailchimp_workshop_groups_id, 
         groups: [ name ] 
         ] 
     }
     
     gibbon = Gibbon::API.new(person.city.mailchimp_key)    
-    gibbon.lists.subscribe({id: person.city.workshop_list_id, email: { email: person.email }, merge_vars: merge_vars, double_optin: false, replace_interests: false, update_existing: true  })
+    gibbon.lists.subscribe({id: person.city.mailchimp_workshop_list_id, email: { email: person.email }, merge_vars: merge_vars, double_optin: false, replace_interests: false, update_existing: true  })
 
 
   end

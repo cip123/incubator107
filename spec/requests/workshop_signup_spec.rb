@@ -85,14 +85,14 @@ describe "Workshop Registration" do
 
       expect(alert_text) == "Vă mulțumim pentru înscriere!"
       registration_params = {
-        id: @city.workshop_list_id, 
+        id: @city.mailchimp_workshop_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
         merge_vars: {
           groupings: [
             {
-            id: @city.workshop_groups_id,
+            id: @city.mailchimp_workshop_groups_id,
             groups: [ @workshop.group.name ]
             }
 
@@ -146,6 +146,7 @@ describe "Workshop Registration" do
     it "should schedule the job correctly" do 
 
       Delayed::Worker.delay_jobs = true
+
       alert_text = page.accept_alert do
         signup  
       end
@@ -164,6 +165,7 @@ describe "Workshop Registration" do
       
       newsletter_subscribers_before = NewsletterSubscriber.all.count
 
+        
       alert_text = page.accept_alert do
         signup  
       end
@@ -174,7 +176,7 @@ describe "Workshop Registration" do
       expect alert_text == "Vă mulțumim pentru înscriere!"
 
       newsletter_subscribe_params = {
-        id: @city.newsletter_list_id, 
+        id: @city.mailchimp_newsletter_list_id, 
         email: {
           email: "cip@incubator107.com"
         },

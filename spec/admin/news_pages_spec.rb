@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rack/test'
 
 describe "News" do
 
@@ -13,7 +14,7 @@ describe "News" do
     let(:resource)       { all_resources[resource_class] }
 
     it "resource should be configured" do
-      expect(ActiveAdmin.application.namespaces[:admin].resources["AdminUser"]).not_to be_nil
+      expect(ActiveAdmin.application.namespaces[:admin].resources["News"]).not_to be_nil
       expect(resource.defined_actions).to  include(:create, :new, :update, :edit, :index, :show, :destroy)
     end
 
@@ -106,7 +107,6 @@ describe "News" do
         fill_in_tinymce :news_content, with: "test <b>important!</b>"
         attach_file :news_image, Rails.root.join('spec', 'photos', 'test.jpg')
         click_button "Create News" 
-
         # we make sure the page is loaded
         expect(page).to have_content("News Details")
         news = News.find(3)
@@ -145,7 +145,7 @@ describe "News" do
         fill_in "news_title", with: "test"
         select "Bucuresti", :from => "news_city_id"
         choose "news_published_false"
-        attach_file :news_image, Rails.root.join('spec', 'photos', 'test2.jpg') 
+        attach_file :news_image, Rails.root.join('spec', 'photos', 'test2.jpg')
         fill_in_tinymce :news_content, with: "test <b>important!</b>"
 
         click_button "Update News" 

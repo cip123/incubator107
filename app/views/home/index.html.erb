@@ -31,15 +31,3 @@
     </div>
   </div>
 <% end %>
-<div class="row">
-  <div class="col-sm-8">
-    <h5><%=t(:register_to_newsletter) %></h5>
-    <%= form_for( @subscriber, url: {controller: "/subscriber", action: "register_newsletter"}, remote: true) do |f| %>
-      <p><%= f.text_field :email,  autofocus: true, placeholder: 'Email' %>
-        <%= f.submit t("home.sign_me_up"), class: "btn btn-sm btn-primary" %></p>
-    <% end %>
-  </div>
-  <div class="col-sm-4">
-    <div class="fb-like-box" data-href="https://www.facebook.com/<%=@city.facebook_page_id%>" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-  </div>
-</div>

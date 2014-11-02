@@ -246,8 +246,8 @@ namespace :db do
                 email: 'cluj@incubator107.com',
                 default_location_id: 1,
                 mailchimp_key: ENV["MAILCHIMP_KEY"],
-                newsletter_list_id: ENV["MAILCHIMP_NEWSLETTER_LIST_ID"],
-                workshop_list_id: ENV["MAILCHIMP_WORSKHOP_LIST_ID"],
+                mailchimp_newsletter_list_id: ENV["MAILCHIMP_NEWSLETTER_LIST_ID"],
+                mailchimp_workshop_list_id: ENV["MAILCHIMP_WORSKHOP_LIST_ID"],
                 facebook_page_id: 292528864155748,
                 donation_text: %{
                   Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>

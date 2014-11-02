@@ -91,14 +91,14 @@ describe "request a workshop" do
       expect(alert_text).to eq("Mulțumim!")  
 
       workshop_request_params = {
-        id: @city.workshop_list_id, 
+        id: @city.mailchimp_workshop_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
         merge_vars: {
           groupings: [
             {
-            id: @city.workshop_groups_id,
+            id: @city.mailchimp_workshop_groups_id,
             groups: [ @workshop.group.name ]
             }
 
@@ -157,7 +157,7 @@ describe "request a workshop" do
       expect newsletter_list_subscriber !=  nil
 
       newsletter_subscribe_params = {
-        id: @city.newsletter_list_id, 
+        id: @city.mailchimp_newsletter_list_id, 
         email: {
           email: "cip@incubator107.com"
         },
