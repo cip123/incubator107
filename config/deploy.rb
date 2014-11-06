@@ -71,6 +71,8 @@ namespace :deploy do
   end
 
   after :publishing, :restart
+  j
+  after :restart, :run_delayed_job_deamon
   
   before :compile_assets, :copy_database_yml
 

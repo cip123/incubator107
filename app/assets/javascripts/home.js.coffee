@@ -14,8 +14,10 @@ $(document).ready ->
       allDay: false
     }]
 
-$ ->
+ready = ->
   $('.flag').click ->
     country = $(this).data('locale');    
     WorldFlagsUrlHelper.reloadWithLocaleParam(country);
  
+$(document).ready(ready)
+$(document).on('page:load', ready)
