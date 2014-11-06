@@ -1,4 +1,5 @@
-(($, window) ->
+
+(ready = ->
 
   class FormValidator
     ERROR_CLASS = 'error'
@@ -64,6 +65,7 @@
       else
         null
 
+  
   $.fn.extend addFormValidation: (option, args...) ->
 
    
@@ -79,7 +81,6 @@
 ) window.jQuery, window
 
 ready = ->
-
   $('form').addFormValidation()
 
 $(document).ready(ready);

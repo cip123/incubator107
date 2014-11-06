@@ -63,22 +63,17 @@ namespace :deploy do
     end
   end
 
- desc "task to create a run the delayed job daemon."
-  task :run_delayed_job_deamon do
-    on roles :all do
-      execute "RAILS_ENV=production /var/www/incubator107/current/bin/delayed_job start 2>&1"
-    end
-  end
 
   after :publishing, :restart
-  j
-  after :restart, :run_delayed_job_deamon
   
   before :compile_assets, :copy_database_yml
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
+     within release_path do
+      execute :bundle, :exec, :'bin/delayed_job', :restart
+     end
+      #  endthing such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
