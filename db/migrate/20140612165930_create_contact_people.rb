@@ -6,6 +6,8 @@ class CreateContactPeople < ActiveRecord::Migration
       t.string :email
       t.integer :city_id
       t.integer :index
+      t.attachment :picture
+
       t.timestamps
     end
     ContactPerson.create_translation_table! :title => :string, :about => :text, :team => :string
@@ -13,6 +15,6 @@ class CreateContactPeople < ActiveRecord::Migration
   
   def down
     drop_table :contact_people
-    ContactPeople.drop_translation_table!
+    ContactPerson.drop_translation_table!
   end 
 end

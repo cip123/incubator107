@@ -36,7 +36,7 @@ ActiveAdmin.register News do
       f.input :title
       f.input :published, :as => :radio, :label => "Publish", :collection => [["Yes", true], ["No", false]]
       f.input :image, :as => :file
-      f.input :release_date, :as => :string, :input_html => { class: "datepicker", size: 12, max: 10, :value =>  news.release_date.nil? ? "" : news.release_date.strftime("%Y-%m-%d") }     
+      f.input :release_date, :as => :datepicker, :input_html => { class: "custom-datepicker", size: 12, max: 10, :value =>  news.release_date.nil? ? "" : news.release_date.strftime("%Y-%m-%d") }     
       f.input :city
     end
     f.inputs "Content" do  

@@ -136,6 +136,10 @@ ActiveRecord::Schema.define(version: 20140824143503) do
     t.string   "email"
     t.integer  "city_id"
     t.integer  "index"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

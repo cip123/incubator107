@@ -47,7 +47,7 @@ namespace :deploy do
       #   within "#{fetch(:deploy_to)}/current/" do
       #     execute "bin/delayed_job restart 2>&1"
       #   end
-      # end
+      ## end
 
       execute "sudo service httpd restart"      
       #puts checkmark.gsub(/\\u[\da-f]{4}/i) { |m| [m[-4..-1].to_i(16)].pack('U') }.green
@@ -59,13 +59,14 @@ namespace :deploy do
   task :copy_database_yml do
     on roles :all do
       execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+      execute "ln -s #{shared_path}/.secret #{release_path}/.secret"
     end
   end
 
  desc "task to create a run the delayed job daemon."
   task :run_delayed_job_deamon do
     on roles :all do
-      execute "RAILS_ENV=production bin/delayed_job start"
+      execute "RAILS_ENV=production /var/www/incubator107/current/bin/delayed_job start 2>&1"
     end
   end
 
