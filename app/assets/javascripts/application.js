@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require calendar
 //= require bootstrap
 //= require turbolinks
 //= require jquery.turbolinks
@@ -23,6 +22,7 @@
 //= require fullcalendar
 //= require workshop
 //= require workshop_request
+//= require calendar
 //= require fancybox
 
 
