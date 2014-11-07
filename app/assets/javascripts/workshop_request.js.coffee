@@ -1,5 +1,5 @@
 
-(ready = ->
+(($,windows) ->
 
   class FormValidator
     ERROR_CLASS = 'error'
@@ -80,8 +80,5 @@
 
 ) window.jQuery, window
 
-ready = ->
+$ ->
   $('form').addFormValidation()
-
-$(document).ready(ready);
-$(document).on('page:load', ready);

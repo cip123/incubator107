@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
+$ ->
     $('input[type="checkbox"]').click ->
       checkedAtLeastOne = false
 
@@ -23,7 +23,3 @@ ready = ->
     $('.carousel-inner').each ->
       if ($(this).children('div').length == 1) 
         $(this).siblings('.carousel-control').hide()
-
-
-$(document).ready(ready);
-$(document).on('page:load', ready);
