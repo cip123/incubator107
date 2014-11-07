@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery.turbolinks
-//= require turbolinks
 //= require underscore
 //= require json2
 //= require judge
