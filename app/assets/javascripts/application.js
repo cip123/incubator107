@@ -22,7 +22,6 @@
 //= require fullcalendar
 //= require workshop
 //= require workshop_request
-//= require calendar
 //= require fancybox
 
 
