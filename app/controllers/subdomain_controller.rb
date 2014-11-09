@@ -10,14 +10,10 @@ class SubdomainController < ApplicationController
 
     @city = City.find_by_domain(request.subdomains.first.to_s)
 
-    about_alias = ArticleLink.aliases[:about]
-    article_links = @city.article_links
-
-    @about_path  = article_path(article_links.find_by_alias(about_alias).article_id)
-    @collaboration_path  = article_path(article_links.find_by_alias(ArticleLink.aliases[:collaboration]).article_id)
-    @your_place_path  = article_path(article_links.find_by_alias(ArticleLink.aliases[:your_place]).article_id)
-    @friends_path  = article_path(article_links.find_by_alias(ArticleLink.aliases[:friends]).article_id)
-    @two_percent_path  = article_path(article_links.find_by_alias(ArticleLink.aliases[:two_percent]).article_id)
+    @about_path  = article_path(Article.find_with_alias(:about, @city).id)
+    @collaboration_path  = article_path(Article.find_with_alias(:collaboration, @city).id)
+    @your_place_path  = article_path(Article.find_with_alias(:your_place, @city).id)
+    @two_percent_path  = article_path(Article.find_with_alias(:two_percent, @city).id)
 
     if (Time.now.mday.to_i <= 20 ) 
       time_range = Date.today.at_beginning_of_month..Date.today.end_of_month  
@@ -26,4 +22,6 @@ class SubdomainController < ApplicationController
     end
     @this_month_workshops, @next_month_workshops = @city.workshops.published(time_range)
   end
+
+
 end

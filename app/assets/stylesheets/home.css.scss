@@ -22,9 +22,39 @@ html, body, .container-fluid, .row {
         display: table-cell;
     }
 }
+.youtube-wrapper{
+    background: url("video-background.png");
+    height: 246px;
+    width: 420px;
+    margin-top: 5%;
+    padding: 0px;
+}
+
+.carousel-control {
+  opacity: 1
+}
+
+.carousel-right
+{
+  height: 35px;
+  width: 35px;
+  margin-top: 100px;
+  background: url("carousel-right.png");
+}
+
+.carousel-left
+{
+  height: 35px;
+  width: 35px;
+  margin-top: 100px;
+  background: url("carousel-left.png");
+}
+iframe.youtube-player{
+  margin: 15px;
+}
 
 body {
-  background: url(background.gif) no-repeat center center fixed; 
+  background: url(background.gif) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,22 +64,65 @@ body {
   color: rgb(163, 52, 108) !important;
 } 
 
-.icon-about {
-    background-image: url("menu-icons/about.png");
-    background-position: center center;
+
+.about {
+
+  background: url(about-us.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+ 
+
 }
 
+.navbar-header > .nav-pills > li  {
+ width: 100px;  
+
+}
 .nav-pills > li > a {
   font-family: "Aracne Condensed Regular";
   color: rgb(163, 52, 108) !important;
   text-align: center;
+  width: 80px !important
 }
+
+a:hover {
+ background-color: transparent;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+ background-color: transparent;
+}
+.group >  a {
+  font-family: "Architects Daughter";
+  color: rgb(163, 52, 108) !important;
+  text-align: center;
+  margin: 5px;
+}
+
+.group >  a > div {
+  margin-top: 10px;
+}
+
+div.menu-item{
+  width: 53px;
+  height: 53px;
+
+
+} 
 
 img.menu-icon {
   display: block;
   margin: 0 auto;
-
 }
+
+.groups{
+ margin-top: 10%;
+}
+
 h4.list-group-item-heading {
   font-family: "Aracne Condensed Regular";
   font-size: 30px;

@@ -1,6 +1,10 @@
 class CreateGroups < ActiveRecord::Migration
   def up
     create_table :groups do |t|
+      t.integer :index
+      t.boolean :active
+      t.attachment :image
+
       t.timestamps
     end
     Group.create_translation_table! :name => :string

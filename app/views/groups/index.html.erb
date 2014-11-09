@@ -1,0 +1,18 @@
+<%= provide(:title, t(:groups) ) %>
+
+<div class="groups">
+<% @groups.each_with_index do |group, index| %>
+  <% if index%4 == 0 %>
+    <div class="row">
+  <% end %>
+    <div class="col-md-3 group">
+      <a href="<%=workshops_path(group_id: group.id) %>">
+        <%= image_tag(group.image, class: "menu-icon") %>
+        <div><%= group.name %> </div>
+      </a>
+    </div>
+   <% if index%4 == 3 || index == @groups.count %>
+    </div>
+  <% end %>
+<% end %>
+</div>

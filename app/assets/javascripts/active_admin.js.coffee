@@ -6,8 +6,8 @@ $(document).ready ->
   tinyMCE.init
     selector: 'textarea.tinymce'
     menubar : false    
-    plugins: "uploadimage link"
-    toolbar1: "styleselect | bold italic | undo redo | link uploadimage"
+    plugins: "uploadimage link code"
+    toolbar1: "styleselect | bold italic | undo redo | link uploadimage | code"
     style_formats: [
         {title: 'Bold text', inline: 'b'},
         {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},

@@ -1,0 +1,16 @@
+<%= provide(:title, t(:partners) ) %>
+
+<div class="groups">
+<% @partners.each_with_index do |partner, index| %>
+  <% if index%6 == 0 %>
+    <div class="row">
+  <% end %>
+    <div class="col-md-2 group">
+        <%= image_tag(partner.image, class: "menu-icon") %>
+        <div><%= partner.name %> </div>
+    </div>
+   <% if index%6 == 5 || index == @partners.count %>
+    </div>
+  <% end %>
+<% end %>
+</div>

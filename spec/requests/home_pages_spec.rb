@@ -21,7 +21,7 @@ describe "Home pages" do
           expect(page).not_to have_link "Home"
           expect(page).to have_content "Last news"
           expect(page).to have_link ( I18n.t(:who_are_we)), :href => article_path(:id => 1)
-          expect(page).to have_link I18n.t(:workshops), :href => workshops_path
+          expect(page).to have_link I18n.t(:workshops), :href => groups_path
           expect(page).to have_link I18n.t(:calendar)
           expect(page).to have_link I18n.t(:collaboration)
           expect(page).to have_link I18n.t(:your_place)

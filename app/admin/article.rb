@@ -2,6 +2,7 @@ ActiveAdmin.register Article do
 
   filter :translations_title, as: :string, label: "Title"
   filter :city
+  filter :alias, as: :select, collection: proc { Article.aliases }
   filter :published
 
   index do
@@ -9,8 +10,7 @@ ActiveAdmin.register Article do
     id_column
     column :title, sortable: 'article_translations.title'
     column :published
-    # sortable by city is not possible at the moment
-    # because we should do a double nested association with city_translation
+    column :alias
     column :city
     column :created_at
 
@@ -24,22 +24,24 @@ ActiveAdmin.register Article do
         row :content do
           raw article.content
         end 
+        row :alias
         row :published
         row :city
       end
   end
 
-  permit_params :title, :text, :content, :published, :city_id
+  permit_params :title, :content, :published, :city_id, :alias
 
   form do |f|
     f.inputs "Article Details" do
       f.input :title
       f.input :published, :as => :radio, :label => "Publish", :collection => [["Yes", true], ["No", false]]
+      f.input :alias, as: :select, collection:  Article.aliases.map{ |a| "#{a[0]}" }
       f.input :city
      end
      
     f.inputs "Content" do  
-      f.input :content, :label => false, :as => :text, :input_html => { class: "tinymce"}
+      f.input :content, :label => false, :as => :text 
     end
 
     f.actions

@@ -1,27 +1,9 @@
 <%= provide(:title, t(:workshops) ) %>
 
-
 <div>
-  <div class="btn-group">
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        <%= @current_group_name%>
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-          <li><%= link_to t("all_groups"),  workshops_path %></a></li>
-        <%  @groups.each do |group| %>
-          <li><%= link_to group.name,  workshops_path(group_id: group.id) %></a></li>
-      <% end %>
-      </ul>
-    </div>
   <%= will_paginate %>
-  </div>
-
   <div id="workshops">
-
     <%= render @workshops %>
-    </div>
+  </div>
   <%= will_paginate %>
 </div>

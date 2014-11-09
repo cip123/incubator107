@@ -3,6 +3,8 @@ class Group < ActiveRecord::Base
 
   default_scope -> { includes :translations }
 
+  has_attached_file :image
+  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   def add_to_mailchimp person
     
     return if person.city.mailchimp_key.blank?

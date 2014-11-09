@@ -39,11 +39,11 @@ describe "Workshops pages" do
           end
         end
 
-        visit url_for_subdomain :cluj, "/workshops" 
+        visit url_for_subdomain :cluj, "/groups" 
       end
 
       it "should have default the correct values" do
-        expect(page).to have_content I18n.t(:all_groups)
+        save_and_open_page
         Group.all.each do |group|
           expect(page).to have_content(group.name)
         end
@@ -51,7 +51,6 @@ describe "Workshops pages" do
 
       describe "when selecting a group" do
         before do
-          click_button I18n.t(:all_groups)
           click_link Group.first.name
         end
 

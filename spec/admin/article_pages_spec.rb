@@ -106,7 +106,7 @@ describe "Article" do
         fill_in "article_title", with: "test"
         select "Cluj", :from => "article_city_id"
         choose "article_published_true"
-        fill_in_tinymce :article_content, with: "test <b>important!</b>"
+        fill_in :article_content, with: "test <b>important!</b>"
 
         click_button "Create Article" 
 
@@ -115,7 +115,8 @@ describe "Article" do
         article = Article.find(3)
         expect(article.city_id).to eq(1)
         expect(article.title).to eq("test")
-        expect(article.content).to eq("<p>test &lt;b&gt;important!&lt;/b&gt;</p>")
+        #expect(article.content).to eq("<p>test &lt;b&gt;important!&lt;/b&gt;</p>")
+        expect(article.content).to eq("test <b>important!</b>")
         expect(article.published).to eq(true)
       end
     end
@@ -139,7 +140,7 @@ describe "Article" do
         fill_in "article_title", with: "test"
         select "Bucuresti", :from => "article_city_id"
         choose "article_published_false"
-        fill_in_tinymce :article_content, with:  "test <b>important!</b>"
+        fill_in :article_content, with:  "test <b>important!</b>"
 
         click_button "Update Article" 
          
@@ -148,7 +149,7 @@ describe "Article" do
         article = Article.find(1)
         expect(article.city_id).to eq(2)
         expect(article.title).to eq("test")
-        expect(article.content).to eq("<p>test &lt;b&gt;important!&lt;/b&gt;</p>")
+        expect(article.content).to eq("test <b>important!</b>")
         expect(article.published).to eq(false)
       end
     end

@@ -21,11 +21,10 @@ FactoryGirl.define do
     factory (:city_with_links) do
        after (:create) do |city, evaluator|
         create(:news, title: "Last news", city_id: city.id )
-        create(:article_link, alias: ArticleLink.aliases[:about], city_id: city.id )        
-        create(:article_link, alias: ArticleLink.aliases[:collaboration], city_id: city.id )
-        create(:article_link, alias: ArticleLink.aliases[:your_place], city_id: city.id )
-        create(:article_link, alias: ArticleLink.aliases[:friends], city_id: city.id )
-        create(:article_link, alias: ArticleLink.aliases[:two_percent], city_id: city.id )
+        create(:article, alias: Article.aliases[:about])        
+        create(:article, alias: Article.aliases[:collaboration])
+        create(:article, alias: Article.aliases[:your_place])
+        create(:article, alias: Article.aliases[:two_percent])
         create(:workshop, name: 'active workshop', city_id: city.id , published: 1)
         create(:workshop, name: 'inactive workshop', city_id: city.id )
         create(:workshop, name: 'old workshop', city_id: city.id, published: 1, release_date: 1.month.ago )
@@ -86,6 +85,7 @@ FactoryGirl.define do
 
   factory :group do
       sequence(:name) { |n| "group #{n}" }
+      active true
   end
 
   factory :contact_person do
@@ -107,11 +107,6 @@ FactoryGirl.define do
     start_date DateTime.now
     duration 120
     location
-  end
-
-  factory :article_link do
-    sequence(:alias)  { |n| "link_#{n}" }
-    article_id 1
   end
 
   factory :news do

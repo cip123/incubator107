@@ -1,49 +1,66 @@
 <div class="row">
-
-  <div class="col-md-8 col-md-offset-2" >
-  <div class="navbar-header">
-    <div class="navbar-inner">
-      <ul class="nav nav-pills" >
-        <li><a href="<%= @about_path %>"><%=image_tag("menu-icons/about.png", class: "menu-icon")  %> <%=I18n.t(:who_are_we)%></a></li>
-        <li><a href="<%= workshops_path%>"><%=image_tag("menu-icons/workshops.png", class: "menu-icon")  %> <%=I18n.t(:workshops)%></a></li>
-        <li>
-          <a href="<%= calendar_path%>">
-            <%=image_tag("menu-icons/calendar.png", class: "menu-icon")  %> 
-            <%=I18n.t(:calendar)%>
-          </a>
-        </li>
-        <li>
-          <a href="<%= @collaboration_path %>">
-            <%=image_tag("menu-icons/collaboration.png", class: "menu-icon")  %> 
-            <%=I18n.t(:collaboration)%>
-          </a>
-        </li>
-        <li>
-          <a href="<%= @your_place_path %>">
-            <%=image_tag("menu-icons/your-place.png", class: "menu-icon")  %> 
-            <%=I18n.t(:your_place)%>
-          </a>
-        </li>
-        <li>
-          <a href="<%= @friends_path %>">
-            <%=image_tag("menu-icons/friends.png", class: "menu-icon")  %> 
-            <%=I18n.t(:friends)%>
-          </a>
-        </li>
-        <li>
-          <a href="<%= @two_percent_path %>">
-            <%=image_tag("menu-icons/two-percent.png", class: "menu-icon")  %> 
-            <%=" " + I18n.t(:two_percent)%>
-          </a>
-        </li>
-        <li>
-          <a href="<%= contact_path%>">
-            <%=image_tag("menu-icons/contact.png", class: "menu-icon")  %> 
-            <%=I18n.t(:contact)%>
-          </a>
-        </li>
-      </ul>
+  <div class="col-md-9 col-md-offset-1" >
+    <div class="navbar-header">
+      <div class="navbar-inner">
+        <ul class="nav nav-pills" >
+          <li>
+            <a href="<%= @about_path %>">
+              <% icon = @page_handle == "about"?"selected/about.png":"about.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:who_are_we)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= groups_path%>">
+               <% icon = @page_handle == "workshops"?"selected/workshops.png":"workshops.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:workshops)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= calendar_path%>">
+              <% icon = @page_handle == "selected/calendar"?"calendar.png":"calendar.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:calendar)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= @collaboration_path %>">
+              <% icon = @page_handle == "collaboration"?"selected/collaboration.png":"collaboration.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:collaboration)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= @your_place_path %>">
+              <% icon = @page_handle == "your_place"?"selected/your-place.png":"your-place.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:your_place)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= partners_path %>">
+              <% icon = @page_handle == "friends"?"selected/friends.png":"friends.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:friends)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= @two_percent_path %>">
+              <% icon = @page_handle == "two_percent"?"selected/two-percent.png":"two-percent.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=" " + I18n.t(:two_percent)%>
+            </a>
+          </li>
+          <li>
+            <a href="<%= contact_path%>">
+              <% icon = @page_handle == "contact"?"selected/contact.png":"contact.png" %> 
+              <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
+              <%=I18n.t(:contact)%>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 </div>

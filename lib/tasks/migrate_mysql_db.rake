@@ -148,68 +148,63 @@ namespace :mysql do
     client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')
     results = client.query("select * from model_article")
 
-    results.each do |row|
+    Article.destroy_all
 
+    results.each do |row|
       Article.create(title: row["Title"], content: row["Text"], published: row["display"])
     end
 
-    ArticleLink.create( city: City.find_by_domain(:brasov), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:brasov), article: Article.find_by(title: "Colaborari Brasov"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:brasov), article: Article.find_by(title: "Locul tau Brasov"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:brasov), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:brasov), article: Article.find_by(title: "2% Brasov"), alias: ArticleLink.aliases[:two_percent])
+    article =  Article.find_by(title: "Locul tău Bucuresti") 
+    article.title = "Locul tau"
+    article.alias = Article.aliases[:your_place]
+    article.save!
 
-    ArticleLink.create( city: City.find_by_domain(:bucuresti), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:bucuresti), article: Article.find_by(title: "Colaborari Bucuresti"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:bucuresti), article: Article.find_by(title: "Locul tău Bucuresti"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:bucuresti), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:bucuresti), article: Article.find_by(title: "2% Bucuresti"), alias: ArticleLink.aliases[:two_percent])
+    article = Article.find_by(title:"Colaborari Bucuresti")
+    article.title = "Colaborari"
+    article.alias = Article.aliases[:collaboration]
+    article.save!
 
-    ArticleLink.create( city: City.find_by_domain(:cluj), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:cluj), article: Article.find_by(title: "Colaborari Cluj"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:cluj), article: Article.find_by(title: "Locul tau Cluj"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:cluj), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:cluj), article: Article.find_by(title: "2% Cluj"), alias: ArticleLink.aliases[:two_percent])
+    article = Article.find_by(title:"2% Bucuresti")
+    article.title = "2%"
+    article.alias = Article.aliases[:two_percent]
+    article.save!
+
+    update_article title: "Ce e incubator107?", alias: :about
+
+    update_article title: "Colaborari Brasov", alias: :collaboration, domain: :brasov
+    update_article title: "Locul tau Brasov", alias: :your_place, domain: :brasov
+    update_article title: "2% Brasov", alias: :two_percent, domain: :brasov
+
+    update_article title: "Colaborari Cluj", alias: :collaboration, domain: :cluj
+    update_article title: "Locul tau Cluj", alias: :your_place, domain: :cluj
+    update_article title: "2% Cluj", alias: :two_percent, domain: :cluj
+
+    update_article title: "2% Craiova", alias: :two_percent, domain: :craiova
+
+    update_article title: "Colaborari Iasi", alias: :collaboration, domain: :iasi
+    update_article title: "Locul tau Iasi", alias: :your_place, domain: :iasi
+    update_article title: "2% Iasi", alias: :two_percent, domain: :iasi
+
+    update_article title: "Locul tău în incubator107 Oradea", alias: :your_place, domain: :oradea
+    update_article title: "2% Oradea", alias: :two_percent, domain: :oradea
+
+    update_article title: "Colaborari Timisoara", alias: :collaboration, domain: :timisoara
+    update_article title: "Locul tau Timisoara", alias: :your_place, domain: :timisoara
+    update_article title: "2% Timisoara", alias: :two_percent, domain: :timisoara
       
-    ArticleLink.create( city: City.find_by_domain(:craiova), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:craiova), article: Article.find_by(title: "Colaborari Bucuresti"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:craiova), article: Article.find_by(title: "Locul tău Bucuresti"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:craiova), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:craiova), article: Article.find_by(title: "2% Craiova"), alias: ArticleLink.aliases[:two_percent])
-
-    ArticleLink.create( city: City.find_by_domain(:iasi), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:iasi), article: Article.find_by(title: "Colaborari Iasi"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:iasi), article: Article.find_by(title: "Locul tau Iasi"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:iasi), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:iasi), article: Article.find_by(title: "2% Iasi"), alias: ArticleLink.aliases[:two_percent])
-
-    ArticleLink.create( city: City.find_by_domain(:oradea), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:oradea), article: Article.find_by(title: "Colaborari Bucuresti"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:oradea), article: Article.find_by(title: "Locul tău în incubator107 Oradea"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:oradea), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:oradea), article: Article.find_by(title: "2% Oradea"), alias: ArticleLink.aliases[:two_percent])
-
-    ArticleLink.create( city: City.find_by_domain(:sibiu), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:sibiu), article: Article.find_by(title: "Colaborari Bucuresti"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:sibiu), article: Article.find_by(title: "Locul tău Bucuresti"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:sibiu), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:sibiu), article: Article.find_by(title: "2% Bucuresti"), alias: ArticleLink.aliases[:two_percent])
-    
-    ArticleLink.create( city: City.find_by_domain(:timisoara), article: Article.find_by(title: "Ce e incubator107?"), alias: ArticleLink.aliases[:about])
-    ArticleLink.create( city: City.find_by_domain(:timisoara), article: Article.find_by(title: "Colaborari Timisoara"), alias: ArticleLink.aliases[:collaboration])
-    ArticleLink.create( city: City.find_by_domain(:timisoara), article: Article.find_by(title: "Locul tau Timisoara"), alias: ArticleLink.aliases[:your_place])
-    ArticleLink.create( city: City.find_by_domain(:timisoara), article: Article.find_by(title: "Prieteni"), alias: ArticleLink.aliases[:friends])
-    ArticleLink.create( city: City.find_by_domain(:timisoara), article: Article.find_by(title: "2% Timisoara"), alias: ArticleLink.aliases[:two_percent])
-
   end
 
+  def update_article params
+    article = Article.find_by(title: params[:title])
+    article.city = City.find_by_domain(params[:domain])
+    article.alias = Article.aliases[params[:alias]]
+    article.save!
+  end
 
    task :migrate_workshops, [:workshop_id] => :environment do | t, args| 
 
-
     workshop_id = args["workshop_id"]
     puts workshop_id
-    create_groups
     locations_map = migrate_and_cache_locations    
 
 
@@ -360,17 +355,111 @@ namespace :mysql do
     end
   end
 
+   task :create_groups => :environment do | t, args| 
 
-  def create_groups
-    group_names = %w(Breasla\ Făuritorilor Breasla\ Călătorilor Breasla\ Hedoniștilor Breasla\ Vrăjitorilor 
-      Breasla\ Mișcătorilor Breasla\ Glăsuitorilor Breasla\ Descoperitorilor Mentor\ în\ incubator
-      Breasla\ Copiilor nocturna Breasla\ Virtualilor Breasla\ Culinarilor)
+    Group.destroy_all
 
-    group_names.each do |group_name|
-      Group.create name: group_name
-    end      
+    Group.create!(
+        name: "Breasla Călătorilor",
+        index: 1,
+        active: true,
+        image: File.open("tmp/breasla-calatorilor.png")
+     )
 
+    Group.create!(
+        name: "Breasla Descoperitorilor",
+        index: 2,
+        active: true,
+        image: File.open("tmp/breasla-descoperitorilor.png")
+     )
+
+   Group.create!(
+        name: "Breasla Glăsuitorilor",
+        index: 3,
+        active: true,
+        image: File.open("tmp/breasla-glasuitorilor.png")
+     )
+
+   Group.create!(
+        name: "Breasla Făuritorilor",
+        index: 4,
+        active: true,
+        image: File.open("tmp/breasla-fauritorilor.png")
+     )
+
+   Group.create(
+        name: "Breasla Hedoniștilor",
+        index: 5,
+        active: true,
+        image: File.open("tmp/breasla-hedonistilor.png")
+     )
+
+   Group.create(
+        name: "Breasla Mișcătorilor",
+        index: 6,
+        active: true,
+        image: File.open("tmp/breasla-miscatorilor.png")
+     )
+
+   Group.create(
+        name: "Breasla Vrăjitorilor",
+        index: 7,
+        active: true,
+        image: File.open("tmp/breasla-vrajitorilor.png")
+     )
+
+   Group.create(
+        name: "Da-ți Demisia",
+        index: 8,
+        active: true,
+        image: File.open("tmp/da-ti-demisia.png")
+     )
   end
+
+  task :migrate_partners, [:arg1] => :environment  do | t, args| 
+
+    Partner.destroy_all
+    client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')
+    partners = client.query("select * from model_parteneri")
+    
+    partners.each do |row|
+      domain = row["oras"].downcase
+      city = City.find_by_domain(domain)
+      image_path = row["Imagine"]
+      category = (row["Categorie"])== "Prieteni" ? 0 : 1 
+      begin
+
+        partner = Partner.create!(
+          name: row["Nume"], 
+          description: row["Text"], 
+          published: row["display"], 
+          city: city,
+          index: row["order"],
+          category: category 
+        )
+
+        unless image_path.nil? || image_path.empty?          
+          image_path = image_path.gsub( /\s/, "\ ")          
+          local_path = "/Users/cip/Projects/incubator/#{domain}/#{image_path}"
+          puts local_path
+          if File.exists?(local_path) && !File.directory?(local_path)
+            file = File.open(local_path)
+            partner.image = file
+            file.close
+            partner.save!
+            puts "Success"
+          else
+            puts "#{image_path} is invalid"
+          end
+        end
+
+      rescue ActiveRecord::RecordInvalid => invalid
+        puts invalid.record.errors.inspect
+      end
+      
+    end
+  end
+
 
   def migrate_and_cache_locations
 
