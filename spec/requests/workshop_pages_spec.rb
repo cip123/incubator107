@@ -43,7 +43,6 @@ describe "Workshops pages" do
       end
 
       it "should have default the correct values" do
-        save_and_open_page
         Group.all.each do |group|
           expect(page).to have_content(group.name)
         end

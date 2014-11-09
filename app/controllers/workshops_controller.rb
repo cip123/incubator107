@@ -40,11 +40,13 @@ class WorkshopsController < SubdomainController
       params[:event_ids].each do |event_id|
         
         Registration.find_or_initialize_by(person_id: person.id, event_id: event_id) do |registration|
-          registration.reason = registration_params[:reason]
-          succesfull_registration = true
-          registration.save!
-          # this scheduling is done here because the mailers do not support run_at: parameter at the moment
-          registration.delay(run_at: registration.event.start_date.at_midnight - 16.hours).send_reminder
+          if registration.new_record? 
+            registration.reason = registration_params[:reason]
+            succesfull_registration = true
+            registration.save!
+            # this scheduling is done here because the mailers do not support run_at: parameter at the moment
+            registration.delay(run_at: registration.event.start_date.at_midnight - 16.hours).send_reminder 
+          end
         end
       end
     

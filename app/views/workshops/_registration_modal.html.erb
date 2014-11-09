@@ -11,7 +11,7 @@
           <%= simple_form_for @registration, url: workshop_path(@workshop.id) +"/signup", :remote => true do |wr| %>
 
          <h5> <%=t(:meetings) %> </h5>
-          <% @workshop.events.each do |event| %>
+          <% @workshop.future_events.each do |event| %>
                   <%= check_box_tag("event_ids[]", event.id, :checked => true) %>
                   <%= event.description %>
                   <br/>
