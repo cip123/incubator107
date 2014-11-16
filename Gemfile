@@ -5,7 +5,7 @@ gem 'gibbon'
 gem 'delayed_job_active_record'
 
 gem "font-awesome-rails"
-gem 'timecop'
+
 gem 'htmlbeautifier'
 gem "koala", "~> 1.10.0rc"
 gem 'world-flags', '0.6.5'
@@ -53,6 +53,7 @@ end
 
 
 group :test do 
+  gem 'timecop'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara'
   gem 'factory_girl_rails', '4.2.1'
