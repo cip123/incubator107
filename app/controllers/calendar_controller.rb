@@ -1,7 +1,10 @@
 class CalendarController < SubdomainController
 
 	def show
-    #puts @city.workshops.first.events
+
+    @page_handle = "calendar"
+
+
 	end
 
   respond_to do |format|

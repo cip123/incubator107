@@ -1,7 +1,9 @@
 class WorkshopsController < SubdomainController
 
 
+
   def show
+    @page_handle = "workshops"
     @workshop =  Workshop.find(params[:id])
   
     if (@workshop.active?) 
@@ -13,6 +15,8 @@ class WorkshopsController < SubdomainController
 
     if (@workshop.facebook_album_id.present?)
       @graph = Koala::Facebook::API.new( ENV["FACEBOOK_APP_TOKEN"] )
+       # @albums = @graph.api("193875377299310/albums?limit=1000&fields=name,id")["data"]
+       #  puts @albums
       @photos = @graph.api("/#{@workshop.facebook_album_id}/photos?fields=source,picture")["data"]
     end
 
@@ -66,7 +70,11 @@ class WorkshopsController < SubdomainController
 
   def index
 
+    @page_handle = "workshops"
+
     @current_group_name = params[:group_id]? Group.find(params[:group_id]).name : I18n.t(:all_groups)  
+    
+    @current_page = params[:page]? 1 : params[:page]
 
     if params[:group_id] 
       @workshops = Workshop.where(published: true, group_id: params[:group_id], city_id: @city.id).paginate( page: params[:page])

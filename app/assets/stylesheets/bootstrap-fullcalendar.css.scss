@@ -1,0 +1,110 @@
+thead>tr.fc-first {
+  background: #109b97;    
+  border: 1px solid #109b97;    
+
+}
+
+th.fc-day-header{
+  background: url(calendar/day-header.png) center center no-repeat no-repeat;
+  background-position: center top;
+  background-size: 100% auto;  
+  color: white;
+
+}
+
+.fc-event-time {
+
+  font-weight: normal !important;
+
+}
+
+div.fc-content {
+    box-shadow: 10px 10px 5px #a3346c;
+}
+
+td.fc-header-center {
+   background: url(calendar/morsel.png) center center no-repeat no-repeat;
+   
+  // vertical-align: middle !important;
+  // text-align: center;
+
+   
+  height: 123px;
+  //   background-image: url('calendar/morsel.png');
+  //   background-repeat: no-repeat;
+  //   background-attachment: fixed;
+  background-position: 0px 0px; 
+  
+  
+}
+
+span.fc-header-title {
+  background: url(calendar/bubble.png) center center no-repeat no-repeat;
+  height: 100%;
+  width: 100%;
+  background-size: 220px 60px;  
+  background-position: 140px 5px; 
+  
+}
+
+ .fc-button-prev {
+     background: url(carousel-left.png) center center no-repeat no-repeat;
+     margin-top: 10%;
+ }
+
+ .fc-icon-left-single-arrow::after {
+    content: "";
+    
+ }
+
+  .fc-button-next {
+    margin-top: 10%;
+    background: url(carousel-right.png) center center no-repeat no-repeat;
+ }
+
+ .fc-icon-right-single-arrow::after {
+    content: "";
+
+ }
+
+
+
+.fc-header-title > h2 {  
+  font-size: 14px;
+  line-height: 80px;
+
+  vertical-align: bottom !important;
+  height: 100%;  
+}
+// .fc-day>div:first-child{
+//   position: relative;
+// }
+
+.fc-day {
+  background: white;
+  min-height: 60px;
+  padding: 0px;
+}
+
+.fc-day.fc-sat, .fc-day.fc-sun {
+  background:  rgba(242, 196, 17, 1);
+}
+
+
+
+div.fc-day-content {
+  min-height: 50px !important;
+  padding: 0;
+}
+
+#calendar .fc-day > div > .fc-day-number { 
+  
+  height: 30px !important;
+  width: 30px !important;
+  text-align: right;
+  color: white;
+  line-height: 40px;
+  vertical-align: bottom !important;
+  background: url(calendar/day-triangle.png) center center no-repeat no-repeat;
+  background-size: 100% auto;  
+}

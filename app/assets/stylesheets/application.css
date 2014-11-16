@@ -15,9 +15,11 @@
  *= require flags/flags16
  *= require flags/flags24
  *= require flags/flags32
+ *= require pwi
  *= require fullcalendar
  *= require workshop
  *= require fancybox
  *= require home
  *= require font-awesome
+ *= require bootstrap-fullcalendar
  */

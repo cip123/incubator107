@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: c26ae0b1393311180b5137c6b4a271de3385d069
+  revision: 51057e01b412de5ff889a8f4485820d21b899a9e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -138,14 +138,14 @@ GEM
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
     fullcalendar-rails (2.0.2.0)
-    geocoder (1.2.5)
-    gibbon (1.1.3)
+    geocoder (1.2.6)
+    gibbon (1.1.4)
       httparty
       multi_json (>= 1.3.4)
     globalize (4.0.2)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
-    guard (2.7.1)
+    guard (2.8.2)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -161,7 +161,7 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     htmlbeautifier (0.0.10)
-    httparty (0.13.1)
+    httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.11)
@@ -193,9 +193,9 @@ GEM
       addressable
       faraday
       multi_json
-    launchy (2.4.2)
+    launchy (2.4.3)
       addressable (~> 2.3)
-    listen (2.7.11)
+    listen (2.8.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -206,15 +206,15 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.4.2)
+    minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.16)
+    mysql2 (0.3.17)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    nokogiri (1.6.3.1)
+    nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     paperclip (4.2.0)
@@ -265,7 +265,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    responders (1.1.1)
+    responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -327,9 +327,10 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timecop (0.7.1)
     timers (4.0.1)
       hitimes
-    tinymce-rails (4.1.5)
+    tinymce-rails (4.1.6)
       railties (>= 3.1.1)
     tinymce-rails-imageupload (4.0.16.beta)
       railties (>= 3.2, < 5)
@@ -390,6 +391,7 @@ DEPENDENCIES
   koala (~> 1.10.0rc)
   launchy (~> 2.4.2)
   mysql2
+  nokogiri (= 1.6.2.1)
   paperclip (~> 4.1)
   pg (= 0.15.1)
   rails (= 4.1.0)
@@ -402,6 +404,7 @@ DEPENDENCIES
   spork-rails (= 4.0.0)
   sprockets (~> 2.11.0)
   sqlite3 (= 1.3.8)
+  timecop
   tinymce-rails
   tinymce-rails-imageupload (~> 4.0.0.beta)
   uglifier (= 2.1.1)

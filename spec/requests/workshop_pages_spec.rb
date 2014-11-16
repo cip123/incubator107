@@ -20,7 +20,7 @@ describe "Workshops pages" do
       end
 
       it "should list each workshop" do
-        expect(page).to have_selector('div.pagination') 
+       
         Workshop.paginate(page: 1).each do |workshop|
           # TODO expect a href to have content
           expect(page).to have_content(workshop.name)
@@ -55,7 +55,7 @@ describe "Workshops pages" do
 
         it "should list only the workshops for that group" do
 
-          within('div #workshops') do |ref|
+          within('div .workshops') do |ref|
             expect(page).to have_content(Workshop.first.name)
             expect(page).to have_content(Workshop.limit(1).offset(1).first.name)
             expect(page).not_to have_content(Workshop.limit(1).offset(2).first.name)

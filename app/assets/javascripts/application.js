@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.pwi-min
 //= require bootstrap
 //= require underscore
 //= require json2
@@ -23,5 +24,4 @@
 //= require fancybox
 //= require calendar
 //= require carousel
-
-
+//= require collaboration

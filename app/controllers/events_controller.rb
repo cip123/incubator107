@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
 
   def index
-    
+    puts params
     city = City.find_by_domain(request.subdomains.first.to_s)
-    events = city.events.current(Time.at(params[:start].to_i)..Time.at(params[:end].to_i))
-
+    puts Date.parse(params[:start])
+    events = city.events.current(Date.parse(params[:start])..Date.parse(params[:end]))
+    puts events.inspect
     respond_to do |format|
       format.html
       format.json do
@@ -17,6 +18,7 @@ class EventsController < ApplicationController
     list = entry.map do |entry|
       { :id => entry[0],
         :start => entry[2],
+        :end => entry[2].advance(:minutes => entry[3].to_i),
         :allDay => false,
         :title => entry[1]
       }

@@ -19,7 +19,7 @@
           </li>
           <li>
             <a href="<%= calendar_path%>">
-              <% icon = @page_handle == "selected/calendar"?"calendar.png":"calendar.png" %> 
+              <% icon = @page_handle == "calendar"?"selected/calendar.png":"calendar.png" %> 
               <%=image_tag("menu-icons/#{icon}", class: "menu-icon")  %> 
               <%=I18n.t(:calendar)%>
             </a>

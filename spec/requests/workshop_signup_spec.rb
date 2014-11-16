@@ -11,7 +11,10 @@ describe "Workshop Registration" do
   before do
     ActionMailer::Base.deliveries = []
     @city = FactoryGirl.create(:city_with_links, name: 'cluj')
+
     @workshop = FactoryGirl.create(:workshop_with_events) 
+  
+    Timecop.travel(Time.now.change(:day => 1))
 
     visit url_for_subdomain :cluj, "/workshops/" + @workshop.id.to_s
 
@@ -26,6 +29,9 @@ describe "Workshop Registration" do
     allow(@api).to receive(:subscribe).twice
   end
   
+  after do
+    Timecop.return
+  end
 
   describe "with invalid data", :js => true do
 
@@ -68,14 +74,14 @@ describe "Workshop Registration" do
       fill_in "registration_person_phone" , :with => '074834343'
       fill_in "registration_person_name" , :with => 'cip'
       fill_in "registration_reason" , :with => 'Decembrie'
-      fill_in "registration_person_email", :with => 'cip@incubator107.com'
-
-      find(:css, "#event_ids_[value='#{@workshop.events[0].id}']").set(false)
+      fill_in "registration_person_email", :with => 'cip@incubator107.com'      
+  find(:css, "#event_ids_[value='#{@workshop.events[0].id}']").set(false)
     end
 
     it "should increase registrations count" do
      
       registrations_before = Registration.all.count
+
 
       alert_text = page.accept_alert do
         signup  

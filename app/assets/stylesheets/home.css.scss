@@ -22,6 +22,7 @@ html, body, .container-fluid, .row {
         display: table-cell;
     }
 }
+
 .youtube-wrapper{
     background: url("video-background.png");
     height: 246px;
@@ -65,8 +66,49 @@ body {
 } 
 
 
-.about {
+.collaboration {
 
+  background: url(collaboration.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+ 
+
+}
+
+.incubator-button {
+  background: url(incubator-button.png) no-repeat ;
+  height: 100px !important; 
+  width: 220px !important;
+  color: white;
+}
+
+.incubator-play {
+  background: url(incubator-play.png) no-repeat;
+  background-position: 20px 10px; 
+  padding-left: 70px;
+  height: 50px; 
+  width: 200px;
+  line-height: 60px;
+  color: white;
+  font-weight: bold;
+}
+
+.incubator-read {
+  background: url(incubator-read.png) no-repeat;
+  background-position: 10px 15px; 
+  padding-left: 50px;
+  height: 50px; 
+  width: 200px;
+
+  line-height: 50px;
+  color: white;
+  font-weight: 14px;
+  font-weight: bold;
+}
+
+.about {
   background: url(about-us.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -96,6 +138,7 @@ a:hover {
 .nav > li > a:hover, .nav > li > a:focus {
  background-color: transparent;
 }
+
 .group >  a {
   font-family: "Architects Daughter";
   color: rgb(163, 52, 108) !important;
@@ -111,7 +154,6 @@ div.menu-item{
   width: 53px;
   height: 53px;
 
-
 } 
 
 img.menu-icon {
@@ -119,21 +161,38 @@ img.menu-icon {
   margin: 0 auto;
 }
 
+img.group-icon {
+  display: block;
+  margin: 0 auto;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
 .groups{
  margin-top: 10%;
 }
 
 h4.list-group-item-heading {
   font-family: "Aracne Condensed Regular";
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
   color: white !important;
+  margin: 2px !important;
+
 } 
 
 input[type="image"] {
     width: 26px !important; 
     height: 26px !important; 
     padding: 5px !important;
+}
+
+.content {
+
+  padding-left: 2%;
 }
 
 /* input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus { */
@@ -148,50 +207,72 @@ li.list-group-item {
   font-size: 16px;
   font-family: "Aracne Condensed Regular";
   line-height: 1.25;
+  background: white;
   text-align: left;
   overflow:hidden;  
   position: relative;
   display: block;
-  padding: 1px 10px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  background-color: #fff;
   border: 0px;
-  &:last-child {
+  padding:  5px 0;
 
-    border-bottom: 2px solid #109b97;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
   &>a{
     color: rgb(163, 52, 108) !important;
   }
+
+  &:nth-child(2){
+    margin-top: 15px;
+  }
+
+}
+
+
+.monthly-workshops {
+  
+  width: 90% ;
+  padding: 0px 0px 0px 0px;
+  background-color: #fff;
+  border: double transparent 1em;
+  -o-border-image:url(border-menu.png) 25 25  stretch stretch;
+  -icab-border-image:url(border-menu.png) 25 25  stretch stretch;
+  -moz-border-image:url(border-menu.png) 25 25  stretch stretch;
+  -webkit-border-image:url(border-menu.png) 25 25  stretch stretch;
+  border-image:url(border-menu.png) 25 25  stretch stretch;
+  -khtml-border-image: url(border-menu.png) 25 25  stretch stretch;
+
+  margin: 0 auto;
+  
+  
 }
 
 .monthly-workshops>ul.list-group {
-  width: 90%;
-  margin: 0 auto;
-  border-radius: 10px !important;
-  background: white;
-  box-shadow: 0 1px 3px #109b97, inset 0 -3px 3px rgba(0,0,0,0.1);
-  border-left: 2px solid #109b97;
-  border-right: 1px solid #109b97;
-  -webkit-border-filter: blur(5px);
-  -moz-border-filter: blur(5px); 
-  border-filt-webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff), color-stop(0.5, #fff), color-stop(0.5, #66cc00)) 21 30 30 21 repeat repeat;er: blur(5px);
+  
 
-  box-shadow: 1px 1px 5px #109b97;
+  background-color: #fff;
+
+
+  
+  
+  
+
  }
 
-a.list-group-item {
-  background: url(month-borders.png) #109b97 center center no-repeat;  
+a.list-group-item {    
+  background: #109b97; 
+  outline: 12px solid #109b97;  
+  background: url(this-month-borders.png) #109b97 center center no-repeat;  
+
+  
   text-align: center; 
   font-color: white;
-  box-shadow: 0 1px 3px #109b97, inset 0 1px 3px rgba(0,0,0,0.1);
-  border: 1px solid #109b97;
-  border-radius: 10px !important;
+  border: 0px;
   margin: 0px;
-  margin-bottom: 5px;
+  padding:  5px 0;
+
+  &:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }  
+
 }
 
 

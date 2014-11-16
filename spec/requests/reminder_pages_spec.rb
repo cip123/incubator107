@@ -10,7 +10,9 @@ describe "Reminders" do
 
   before do
     ActionMailer::Base.deliveries = []
-
+    
+    Timecop.return
+    
     visit url_for_subdomain :cluj, "/workshops/" + workshop.id.to_s
     click_link "aici"
     
@@ -37,14 +39,18 @@ describe "Reminders" do
       alert_text = page.accept_alert do
         signup  
       end
-    
-      allow(Time).to receive(:now).and_return( Date.today.at_midnight + 8.hours) 
+      
+      
+      Timecop.travel(Date.today.at_midnight + 8.hours)
+      
+      sleep(10)
 
       Delayed::Worker.new.work_off 
       reminder_mail = ActionMailer::Base.deliveries[0]
       assert_equal reminder_mail.subject, "Reminder - #{workshop.name} - #{event.name}"
       registration = Registration.first
       expect(registration.notification_sent).to eq(true)
+      Timecop.return
     end
 
   end

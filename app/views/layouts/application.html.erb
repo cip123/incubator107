@@ -16,9 +16,11 @@
         <%= render 'layouts/sidebar' %>
       </div>
 
-      <div class="col-md-9 col-md-offset-3 content"> 
+      <div class="col-md-9 col-md-offset-3 "> 
           <%= render 'layouts/header' %>
-          <%=yield %>
+          <div class="content">
+            <%=yield %>
+          </div>
       </div>
 
     </div>

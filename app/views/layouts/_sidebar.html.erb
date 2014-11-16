@@ -8,8 +8,6 @@
     <% @this_month_workshops.each do |id, name| %>
       <li class="list-group-item"> <%= link_to name, workshop_path(id)%> </li>
     <% end %>
-    <li class="list-group-item"> &nbsp; </li> 
-    <li class="list-group-item"> &nbsp; </li> 
     </ul>
   </div>
   <% if (@next_month_workshops.count > 0 ) %>

@@ -5,7 +5,7 @@ gem 'gibbon'
 gem 'delayed_job_active_record'
 
 gem "font-awesome-rails"
-
+gem 'timecop'
 gem 'htmlbeautifier'
 gem "koala", "~> 1.10.0rc"
 gem 'world-flags', '0.6.5'
@@ -69,7 +69,7 @@ gem 'jbuilder', '1.0.2'
 group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
-
+gem 'nokogiri', '1.6.2.1'
 gem 'pg', '0.15.1'
 group :production do
   gem 'rails_12factor', '0.0.2'

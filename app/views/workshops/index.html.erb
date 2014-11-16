@@ -1,9 +1,29 @@
 <%= provide(:title, t(:workshops) ) %>
 
-<div>
-  <%= will_paginate %>
-  <div id="workshops">
+
+
+
+<div class="col-md-11 col-md-offset-1">
+ 
+  <div class="workshops list">
     <%= render @workshops %>
   </div>
-  <%= will_paginate %>
+
+</div>
+
+ <div class="col-md-11 col-md-offset-1 bottom-bullets">
+
+  <% page_id = params[:page]? params[:page].to_i : 1 %>
+
+  <% (1..page_id-1).each do |n| %>
+    <%= link_to image_tag("inactive-bullet.png"), workshops_path(group_id: params[:group_id], page: n) %>
+  <% end %>
+  
+  <%= link_to image_tag("active-bullet.png"), workshops_path(group_id: params[:group_id], page: page_id)  %>
+
+
+  <% (page_id +1..(@workshops.count-1)/30 + 1).each do |n| %>
+    <%= link_to image_tag("inactive-bullet.png"), workshops_path(group_id: params[:group_id], page: n) %>
+  <% end %>
+
 </div>
