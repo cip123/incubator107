@@ -5,16 +5,5 @@
 
 
 $(document).ready ->
-  $('#small-calendar').fullCalendar
-    defaultView: 'basicWeek',
-    aspectRatio: 3,
-    firstDay: 1,
-    eventSources: [{
-      url: '/events',
-      allDay: false
-    }]
-
-$ ->
-  $('.flag').click ->
-    country = $(this).data('locale');    
-    WorldFlagsUrlHelper.reloadWithLocaleParam(country);
+  $(".sidebar").css("min-height", $(".content").height() + 100);
+  

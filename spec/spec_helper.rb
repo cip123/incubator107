@@ -77,7 +77,7 @@ Spork.prefork do
     config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
 
     Capybara.configure do |capybara_config|
-      capybara_config.javascript_driver = :webkit
+      capybara_config.javascript_driver = :webkit_debug
       capybara_config.server_port = 3001
       capybara_config.app_host = "lvh.me"
     end

@@ -23,6 +23,14 @@ html, body, .container-fluid, .row {
     }
 }
 
+
+.newsletter-subscriber > .popover, .popover-title {
+  color: #fff;
+  background: rgb(163, 52, 108);  
+
+}
+
+
 .youtube-wrapper{
     background: url("video-background.png");
     height: 246px;
@@ -79,7 +87,7 @@ body {
 
 .incubator-button {
   background: url(incubator-button.png) no-repeat ;
-  height: 100px !important; 
+  height: 70px !important; 
   width: 220px !important;
   color: white;
 }
@@ -92,6 +100,18 @@ body {
   width: 200px;
   line-height: 60px;
   color: white;
+  font-weight: bold;
+}
+
+.incubator-download {
+  background: url(incubator-download.png) no-repeat;
+  background-position: 10px 15px; 
+  padding-left: 40px;
+  height: 50px; 
+  width: 200px;
+  line-height: 50px;
+  color: white;
+  font-weight: 14px;
   font-weight: bold;
 }
 
@@ -315,21 +335,17 @@ img.center {
  margin: 10% auto;
 }
 
-.sidebar {
-  background-color : rgba(242, 196, 17, .7);
-}
-
 @media (min-width: 992px) {
   .sidebar {
-    position: fixed;
+    position: absolute;   
     top: 0;
     left: 0;
-    bottom: 0;
     z-index: 1000;
     display: block;
-  background-color : rgba(242, 196, 17, .7);
+    background: rgba(242, 196, 17, .7) repeat-y 50% 0;
   }
 }
+
 
 .cloud {
   margin: 0;

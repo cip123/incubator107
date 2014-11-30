@@ -12,18 +12,18 @@
 
     <div class="row">
 
-      <div class="col-md-3 sidebar">
-        <%= render 'layouts/sidebar' %>
-      </div>
+        <div class="col-md-3 sidebar">
+          <%= render 'layouts/sidebar' %>
+        </div>
 
-      <div class="col-md-9 col-md-offset-3 "> 
+        <div class="col-md-9 col-md-offset-3 content"> 
           <%= render 'layouts/header' %>
-          <div class="content">
+          <div>
             <%=yield %>
           </div>
-      </div>
+        </div>
+      </div>  
 
-    </div>
   </div>
 </body>
 </html>

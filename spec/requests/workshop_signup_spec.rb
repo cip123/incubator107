@@ -17,8 +17,10 @@ describe "Workshop Registration" do
     Timecop.travel(Time.now.change(:day => 1))
 
     visit url_for_subdomain :cluj, "/workshops/" + @workshop.id.to_s
-
     click_link "aici"
+
+    save_and_open_page
+    
     sleep 1
 
     

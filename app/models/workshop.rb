@@ -13,7 +13,7 @@ class Workshop < ActiveRecord::Base
 
   just_define_datetime_picker :release_date
 
-  def self.published time_range 
+  def self.active time_range 
     entries = retrieve_records(time_range, I18n.locale)
     # we are trying with the default locale, but this means that it is all of nothing situation
     # if a few entries are found only those will be displayed. If this is not acceptable we can change
@@ -24,9 +24,9 @@ class Workshop < ActiveRecord::Base
     this_month_workshops = ActiveSupport::OrderedHash.new 
     next_month_workshops = ActiveSupport::OrderedHash.new 
 
-    entries.each do |entry|
+    entries.each do |entry|      
       if ( Date.parse(entry[2].to_s) <= Date.today.end_of_month ) 
-        this_month_workshops[entry[0]] = entry[1] unless this_month_workshops[entry[0]].present?
+        this_month_workshops[entry[0]] = entry[1] unless this_month_workshops[entry[0]].present? 
       else
         next_month_workshops[entry[0]] = entry[1] unless next_month_workshops[entry[0]].present?
       end

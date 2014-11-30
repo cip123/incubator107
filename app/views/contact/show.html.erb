@@ -1,17 +1,56 @@
 <% unless @location.nil? %>
-  <div class="row">
-    <h3> <%= t(:where_can_you_find_us) %> </h3>
-    <div class="col-sm-5">
-      <h4>  <%= @location.name %> </h4>
-      <p> <%= @location.address %> </p>
+  
+  <h4> <%= t(:where_can_you_find_us) %> </h4>
+    
+    <div class="position">
+      <div class="row">
+        <div class="col-sm-4">      
+          <p><%== @location.description %> </p>
+        </div>
+        <div class="col-sm-6">
+          <iframe width="550" height="250" frameborder="10px" style="border:10px" src="<%= "https://www.google.com/maps/embed/v1/place?q=#{@location.address}&key=AIzaSyAV79obOj4uHoWH4V-PVr__2-1-wdd-xs8" %>">
+          </iframe>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-7">
-      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
-    </div>
-  <% end %>
-  <div class="row">
-    <div class="col-sm-3 col-sm-offset-2">  
-      <h3> <%= t(:team) %> </h3>
-    </div>
+
+
+<% end %>
+ 
+
+<div id="article-carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+
+    <% @contact_people.each_with_index do |person, n| %>
+      <% if (n%3 == 0) %>
+        <div class="item <%= (n==0) ? "active" : "" %>">
+          <h4><%= person.team.blank?? t(:the_team) : person.team %></h4>
+          <div class="row">
+      <% end %>      
+      <div class="col-md-4">
+        <div class="cropped-circle" style="background-image: url('<%= person.picture %>');">        
+        </div>
+        <div class="badge">
+            <%= "#{person.name.upcase}, #{person.title.upcase}" %>
+          </div>
+
+
+        <h5><%= person.about %></h5>
+        <h5><%= person.phone %></h5>
+        <h5><%= person.email %></h5>
+      </div>
+
+      <% if ( n%3 == 2 || n == (@contact_people.count-1) ) %>
+          </div>
+        </div>
+      <% end %>  
+    <% end %>    
   </div>
-  <%= render @contact_people %>
+     <a class="carousel-control left" href="#article-carousel" data-slide="prev">
+   <div class="carousel-left"></div>
+   </a>
+   <a class="carousel-control right" href="#article-carousel" data-slide="next">
+   <div class="carousel-right"></div>
+   </a>
+</div>
+

@@ -36,7 +36,7 @@
 <% if @workshop.active? %>
   <h4><%=t(:how?) %></h4>
   <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
-  <a href='' data-toggle="modal" data-target="#signup"><%=t(:here)%></a>
+  <a id='aici' href='' data-toggle="modal" data-target="#signup"><%=t(:here)%></a>
   <%= t(:signup_blah_blah) %></p>
   <%=render 'registration_modal' %>
 <% end %>

@@ -1,0 +1,32 @@
+.partner > a > img {
+  width: 100%;
+  height:100px;
+  overflow:hidden;
+}
+
+.partner {
+  background: white;
+  margin: 5px;
+}
+
+.partner-name {
+  text-align: center;
+}
+
+.popover-content {
+  min-width: 250px; 
+}
+
+.tooltip-inner a {
+  color: red ;
+  color:visited: red;
+}
+
+.friends-list {
+  margin-top: 5%;
+}
+
+
+.broadcasters {
+  margin-top: 10%;
+}

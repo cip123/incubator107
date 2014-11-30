@@ -1,16 +1,47 @@
 <%= provide(:title, t(:partners) ) %>
 
-<div class="groups">
-<% @partners.each_with_index do |partner, index| %>
+<div class="friends-list">
+  <h4>Prieteni</h4>
+<% @friends.each_with_index do |friend, index| %>
   <% if index%6 == 0 %>
     <div class="row">
   <% end %>
-    <div class="col-md-2 group">
-        <%= image_tag(partner.image, class: "menu-icon") %>
-        <div><%= partner.name %> </div>
+    <div class="col-md-2">
+        <div class="partner">
+        <a href="#" data-popover="true" data-html="true" data-content='<%= friend.description.html_safe %>'>
+          <%= image_tag(friend.image) %></a>
+        </div>
+        <div class="partner-name"><%= friend.name %> </div>
     </div>
-   <% if index%6 == 5 || index == @partners.count %>
+   <% if index%6 == 5 || index == @friends.count %>
     </div>
   <% end %>
 <% end %>
+
+
+
 </div>
+
+<div class="broadcasters">
+  <h4>Broadcasters</h4>
+<% @broadcasters.each_with_index do |broadcaster, index| %>
+  <% if index%6 == 0 %>
+    <div class="row">
+  <% end %>
+    <div class="col-md-2">
+      <div class="partner">
+         <a href="#" data-popover="true" data-html="true" data-content='<%= broadcaster.description.html_safe %>'>
+        <%= image_tag(broadcaster.image) %>
+        </a>
+      </div>
+        <div class="partner-name"><%= broadcaster.name %></div>
+    </div>
+   <% if index%6 == 5 || index == @broadcasters.count %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+</div>
+

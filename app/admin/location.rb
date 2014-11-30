@@ -20,6 +20,8 @@ ActiveAdmin.register Location do
         end
         row :city
         row :url
+        row :latitude
+        row :longitude
       end
   end
 
@@ -29,6 +31,8 @@ ActiveAdmin.register Location do
       f.input :address,:input_html => { rows: 2, cols: 40 }
       f.input :url
       f.input :city
+      f.input :latitude
+      f.input :longitude
      end
      
     f.inputs "description" do  
@@ -47,7 +51,7 @@ ActiveAdmin.register Location do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-   permit_params :name, :address, :description, :url, :city_id
+   permit_params :name, :address, :description, :url, :city_id, :latitude, :longitude
   #
   # or
   #

@@ -7,6 +7,7 @@ class SubscriberController < SubdomainController
     subscriber = NewsletterSubscriber.find_or_create_by(city: @city, email: email)
 
     if (subscriber.valid?)
+      @success = true
       @response = I18n.t(:thank_you_for_registering)
     else
       @response = subscriber.errors[:email].first

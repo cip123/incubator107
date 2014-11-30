@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require contact
  *= require custom
  *= require scaffolds
  *= require flags/basic
@@ -22,4 +23,6 @@
  *= require home
  *= require font-awesome
  *= require bootstrap-fullcalendar
+ *= require partner
+ *= require your-place
  */

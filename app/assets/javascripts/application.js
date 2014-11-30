@@ -22,6 +22,3 @@
 //= require workshop
 //= require workshop_request
 //= require fancybox
-//= require calendar
-//= require carousel
-//= require collaboration

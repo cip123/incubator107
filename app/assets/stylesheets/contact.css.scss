@@ -1,3 +1,64 @@
-// Place all the styles related to the contact controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.position{
+  background-color: #009E93;  
+  color: #fff;
+  width: 704px;
+  height: 290px;
+  overflow: hidden;
+  border: 20px solid #009E93;
+  border-radius: 10px;
+  margin-bottom: 20px;  
+  padding-left: 10px;
+}
+
+div.cropped-circle {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    position: relative;
+}
+
+   .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+div.badge {
+  position: absolute;
+  background: url('badge.png') no-repeat center;
+  text-align: center;
+  font-family: "Aracne Condensed Regular";
+
+  font-size: 20px;
+  height: 50px;
+  width: 100%;
+  top: 180px;
+  color: rgb(163, 52, 108);
+  line-height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  font-weight: normal !important;
+}
+
+.carousel-inner h5 {
+  text-align: center;
+  font-family: "Aracne Condensed Regular";
+  font-size: 20px !important;
+  
+  }

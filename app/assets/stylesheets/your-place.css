@@ -1,0 +1,9 @@
+.main > img {
+    float: right;    
+    padding: 5px;
+}
+
+.main .title{
+  font-size: 140%;
+}
+

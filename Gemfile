@@ -54,7 +54,7 @@ end
 
 group :test do 
   gem 'timecop'
-  gem 'selenium-webdriver', '2.35.1'
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'factory_girl_rails', '4.2.1'
   gem 'capybara-webkit'
