@@ -22,3 +22,5 @@
 //= require workshop
 //= require workshop_request
 //= require fancybox
+//= require home
+//= require partner
