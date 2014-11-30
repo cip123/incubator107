@@ -11,12 +11,12 @@ describe "contact page" do
     visit url_for_subdomain "cluj", "/contact"
   end
 
-  it "should have location information" do
-    expect(page).to have_content @location.name
+  it "should have location information" do    
+    expect(page).to have_content @location.description
     pattern = ""
     5.times do |n|
-      pattern += "contact #{n+1}.*" 
-      pattern += "title #{n+1}.*" 
+      pattern += "CONTACT #{n+1}.*" 
+      pattern += "TITLE #{n+1}.*" 
       pattern += "about #{n+1}.*"
     end
     expect(page.body).to match /#{pattern}/m

@@ -27,10 +27,7 @@ $(document).ready(function () {
 
   $('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: {show: 50, hide: 400}});
 
-  $('#subscribe-newsletter').popover();
-  $('#subscribe-newsletter').click(function (e) {
-    return false;
-  });
+
 
 
  });

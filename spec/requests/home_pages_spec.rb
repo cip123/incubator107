@@ -43,26 +43,23 @@ describe "Home pages" do
     describe "when beginning of the month" do
 
       before do
-
         I18n.locale = I18n.default_locale
         @city = FactoryGirl.create(:city_with_links)
-
         FactoryGirl.create(:workshop_with_events, name: "spanning_workshop", city_id: @city.id)
         FactoryGirl.create(:workshop_with_events, name: "inactive workshop", city_id: @city.id, published: false)
-
-        allow(Time).to receive(:now).and_return( Time.now.change(:day => 15) )
-        
+        Timecop.travel(Time.now.change(:day => 1))        
         visit url_for_subdomain :cluj, "/"
-
       end
 
       it "should have this month workshops" do
-        save_and_open_page
         expect(page).to have_content("Luna asta")
         expect(page).to have_link "spanning_workshop"
         expect(page).not_to have_content "Luna viitoare"
       end
 
+      after do
+        Timecop.return
+      end 
     end
 
     describe "when at end of the month" do

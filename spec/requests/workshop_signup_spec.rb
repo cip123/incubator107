@@ -18,11 +18,6 @@ describe "Workshop Registration" do
 
     visit url_for_subdomain :cluj, "/workshops/" + @workshop.id.to_s
     click_link "aici"
-
-    save_and_open_page
-    
-    sleep 1
-
     
     @gibbon = object_double("Gibbon::API").as_stubbed_const
     @api = double("api")

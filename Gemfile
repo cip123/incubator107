@@ -37,7 +37,7 @@ gem "paperclip", "~> 4.1"
 gem 'bootstrap-will_paginate'
 gem 'globalize', '~> 4.0.1 '
 gem 'foreigner'
-gem 'simple_form'
+gem 'simple_form', '3.0.2'
 gem 'launchy', '~> 2.4.2'
 gem 'fullcalendar-rails' 
 gem 'tinymce-rails'
