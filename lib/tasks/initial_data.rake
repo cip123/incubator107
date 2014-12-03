@@ -120,56 +120,56 @@ namespace :db do
         name: "Breasla Călătorilor",
         index: 1,
         active: true,
-        image: File.open("tmp/breasla-calatorilor.png")
+        image: File.open("lib/tasks/images/breasla-calatorilor.png")
      )
 
     Group.create!(
         name: "Breasla Descoperitorilor",
         index: 2,
         active: true,
-        image: File.open("tmp/breasla-descoperitorilor.png")
+        image: File.open("lib/tasks/images/breasla-descoperitorilor.png")
      )
 
    Group.create!(
         name: "Breasla Glăsuitorilor",
         index: 3,
         active: true,
-        image: File.open("tmp/breasla-glasuitorilor.png")
+        image: File.open("lib/tasks/images/breasla-glasuitorilor.png")
      )
 
    Group.create!(
         name: "Breasla Făuritorilor",
         index: 4,
         active: true,
-        image: File.open("tmp/breasla-fauritorilor.png")
+        image: File.open("lib/tasks/images/breasla-fauritorilor.png")
      )
 
    Group.create(
         name: "Breasla Hedoniștilor",
         index: 5,
         active: true,
-        image: File.open("tmp/breasla-hedonistilor.png")
+        image: File.open("lib/tasks/images/breasla-hedonistilor.png")
      )
 
    Group.create(
         name: "Breasla Mișcătorilor",
         index: 6,
         active: true,
-        image: File.open("tmp/breasla-miscatorilor.png")
+        image: File.open("lib/tasks/images/breasla-miscatorilor.png")
      )
 
    Group.create(
         name: "Breasla Vrăjitorilor",
         index: 7,
         active: true,
-        image: File.open("tmp/breasla-vrajitorilor.png")
+        image: File.open("lib/tasks/images/breasla-vrajitorilor.png")
      )
 
    Group.create(
         name: "Da-ți Demisia",
         index: 8,
         active: true,
-        image: File.open("tmp/da-ti-demisia.png")
+        image: File.open("lib/tasks/images/da-ti-demisia.png")
      )
 
   end
