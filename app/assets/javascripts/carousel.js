@@ -5,7 +5,7 @@ $( document ).ready(function() {
     interval: false
   }) 
   
-  $('.left').hide();
+  $('#article-carousel .left').hide();
 
   $('#article-carousel').on('slid.bs.carousel', function (ev) {
     var carouselData = $(this).data('bs.carousel');
@@ -18,7 +18,7 @@ $( document ).ready(function() {
     }
 
   if (currentIndex === (carouselData.$items.length-1)) {
-    $('.left').show();
+    $('#article-carousel .left').show();
   }
   })
 });

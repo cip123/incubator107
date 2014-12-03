@@ -36,11 +36,11 @@ ActiveAdmin.register Workshop do
     end
 
     f.inputs "Description" do        
-      f.input :description, :label => false, :as => :text, :input_html => { class: "tinymce-light" } 
+      f.input :description, :label => false, :as => :text, :input_html => { class: "tinymce" } 
     end
 
     f.inputs "With whom ?" do  
-      f.input :with_whom, :label => false, :as => :text, :input_html => { class: "tinymce-light" } 
+      f.input :with_whom, :label => false, :as => :text, :input_html => { class: "tinymce" } 
     end
 
     f.inputs "Bring along" do      

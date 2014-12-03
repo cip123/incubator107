@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .modal-dialog{
-    width: 600px !important;
+    width: 500px !important;
 }
 
 p>a {
@@ -54,6 +54,13 @@ thumbnail {
   text-align: center;
   text-shadow: none;
 }
+
+
+.well-none .carousel-inner {
+  margin-left: 3%;
+  width: auto;
+}
+
 .carousel-control.left {
   background-image: none;
 }
@@ -65,7 +72,7 @@ thumbnail {
 
 .carousel-control {
   padding-top: 4%;
-  width:5%;
+  width:2%;
 }
 
 a.carousel-control:hover {
@@ -84,8 +91,32 @@ a.fancybox-close:hover {
 	font-weight: bold;
 }
 
+.modal-content {
+  background: rgb(163, 52, 108);
+  color: #fff;
+  & input, textarea {
+    color: rgb(163, 52, 108);
+  }
+
+  & .btn-primary {
+    background-color: #109b97;
+    border: #109b97;
+    margin-left: 200px !important;
+  }
+
+    & .btn-default {
+    background-color: rgb(242, 196, 17);
+    border: rgb(242, 196, 17);
+    margin-left: 10px;
+  }
+}
+
+.modal-footer {
+  text-align: center;
+}
+
 .error_message {
-  color: red !important;
+  color: red !important ;
 } 
 
 
@@ -137,9 +168,6 @@ div.boolean {
   margin-left: 120px;
 }
 
-button[type="submit"] {
-  margin-left: 300px;
-}
 
 
 div.boolean label, label.collection_radio_buttons {

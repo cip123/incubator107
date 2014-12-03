@@ -12,138 +12,6 @@ namespace :mysql do
     AdminUser.create!(email: 'admin@incubator107.com', password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD']) if direction == :up
   end
 
-  task :migrate_workshops => :environment do | t, args| 
-
-    client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')
-    results = client.query("select * from model_atelier limit 1000")
-
-    facebook_albums = facebook_albums();
-
-    results.each do |row|
-    # conveniently, row is a hash
-    # the keys are the fields, as you'd expect
-    # the values are pre-built ruby primitives mapped from their corresponding field types in MySQL
-    # Here's an otter: http://farm1.static.flickr.com/130/398077070_b8795d0ef3_b.jpg
-      create_workshop row
-    end
-  end
-
-
-
-  task :create_cities => :environment do | t, args| 
-
-    City.create!(
-      name: "Braşov", 
-      active: true, 
-      domain: "brasov", 
-      email: "brasov@incubator107.com", 
-      facebook_page_id: "402491703139412", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-    )
-
-    City.create!(
-      name: "Bucureşti", 
-      active: true, 
-      domain: "bucuresti", 
-      email: "inscrieri@incubator107.com", 
-      facebook_page_id: "193875377299310", 
-      default_event_location_id: 1,
-      google_analytics_code: "UA-9862367-4",
-      default_whereabouts: %{Atelierul se ţine în mansarda noastră din <b>str. Traian 107 (Zona Hala Traian)</b>, sector 2, Bucure&#537;ti. Dacă nu ştii deja, află cum să ajungi: <a href="http://bucuresti.incubator107.com/contact.html">http://bucuresti.incubator107.com/contact.html</a>.
-                },
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 30 lei pentru fiecare întâlnire și 20 lei pentru studenți și liceeni.<br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor, să închiriem mansarda pentru alte traininguri sau evenimente, să atragem sponsorizări sau să umplem pur și simplu mansarda de bucurie - <a href="http://bucuresti.incubator107.com/contact.html">http://bucuresti.incubator107.com/colaborari.html</a>.
-                }
-
-    )
-    
-    City.create!(
-      name: "Cluj", 
-      active: true, 
-      domain: "cluj", 
-      email: "cluj@incubator107.com", 
-      facebook_page_id: "292528864155748", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-    )
-    
-    City.create!(
-      name: "Craiova", 
-      active: true, 
-      domain: "craiova", 
-      email: "craiova@incubator107.com", 
-      facebook_page_id: "179957508880461", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-
-    )
-    
-    City.create!(
-      active: true, 
-      name: "Iaşi", 
-      domain: "iasi", 
-      email: "iasi@incubator107.com", 
-      facebook_page_id: "289340687818461", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-
-    )
-    
-    City.create!(
-      active: true, 
-      name: "Oradea", 
-      domain: "oradea", 
-      email: "oradea@incubator107.com", 
-      facebook_page_id: "387632674676960", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-    )
-    
-    City.create!(
-      active: true, 
-      name: "Sibiu", 
-      domain: "sibiu", 
-      email: "sibiu@incubator107.com", 
-      facebook_page_id: "1438185616416563", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-    )
-    
-    City.create!(
-      active: true, 
-      name: "Timişoara", 
-      domain: "timisoara", 
-      email: "timisoara@incubator107.com", 
-      facebook_page_id: "381867868538349", 
-      google_analytics_code: "UA-9862367-4",
-      default_donation: %{
-                  Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 10 lei pentru întreg atelierul. <br/>
-                  Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor sau să atragem sponsorizări
-                }
-    )
-
-  end
-
   task :migrate_articles => :environment do | t, args| 
     client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')
     results = client.query("select * from model_article")
@@ -156,7 +24,6 @@ namespace :mysql do
 
     article =  Article.find_by(title: "Locul tău Bucuresti") 
     article.title = "Locul tau"
-    article.alias = Article.aliases[:your_place]
     article.save!
 
     article = Article.find_by(title:"Colaborari Bucuresti")
@@ -166,10 +33,13 @@ namespace :mysql do
 
     article = Article.find_by(title:"2% Bucuresti")
     article.title = "2%"
-    article.alias = Article.aliases[:two_percent]
     article.save!
 
-    update_article title: "Ce e incubator107?", alias: :about
+
+    update_article title: "Ce e incubator107?", alias: :about, content: "about-us.html"
+    update_article title: "Locul tau", alias: :your_place, content: "your-place.html"
+    update_article title: "Colaborari", alias: :collaboration, content: "collaboration.html"
+    update_article title: "2%", alias: :two_percent, content: "two-percent.html"
 
     update_article title: "Colaborari Brasov", alias: :collaboration, domain: :brasov
     update_article title: "Locul tau Brasov", alias: :your_place, domain: :brasov
@@ -198,6 +68,16 @@ namespace :mysql do
     article = Article.find_by(title: params[:title])
     article.city = City.find_by_domain(params[:domain])
     article.alias = Article.aliases[params[:alias]]
+
+   
+    
+    if params[:content] 
+      content_path = "lib/tasks/articles/#{params[:content]}"
+      file = File.open(content_path)
+      article.content = file.read
+      file.close    
+    end
+
     article.save!
   end
 
@@ -207,6 +87,7 @@ namespace :mysql do
     puts workshop_id
     locations_map = migrate_and_cache_locations    
 
+    Workshop.destroy_all
 
     client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')
     query = "select * from model_atelier"
@@ -215,10 +96,11 @@ namespace :mysql do
     results = client.query(query)
     
     fb_albums = facebook_albums()
-
+    
     results.each do |row|
       
       puts row["Nume"]
+      puts fb_albums[row["Album"]]
       group = Group.find_by(name: row["Breasla"])     
       city = City.find_by_domain(row["Oras"].downcase) unless row["Oras"].nil? 
       release_date = row["release date"].nil? ? DateTime.new(2010,1,1) : row["release date"]
@@ -355,66 +237,7 @@ namespace :mysql do
     end
   end
 
-   task :create_groups => :environment do | t, args| 
 
-    Group.destroy_all
-
-    Group.create!(
-        name: "Breasla Călătorilor",
-        index: 1,
-        active: true,
-        image: File.open("tmp/breasla-calatorilor.png")
-     )
-
-    Group.create!(
-        name: "Breasla Descoperitorilor",
-        index: 2,
-        active: true,
-        image: File.open("tmp/breasla-descoperitorilor.png")
-     )
-
-   Group.create!(
-        name: "Breasla Glăsuitorilor",
-        index: 3,
-        active: true,
-        image: File.open("tmp/breasla-glasuitorilor.png")
-     )
-
-   Group.create!(
-        name: "Breasla Făuritorilor",
-        index: 4,
-        active: true,
-        image: File.open("tmp/breasla-fauritorilor.png")
-     )
-
-   Group.create(
-        name: "Breasla Hedoniștilor",
-        index: 5,
-        active: true,
-        image: File.open("tmp/breasla-hedonistilor.png")
-     )
-
-   Group.create(
-        name: "Breasla Mișcătorilor",
-        index: 6,
-        active: true,
-        image: File.open("tmp/breasla-miscatorilor.png")
-     )
-
-   Group.create(
-        name: "Breasla Vrăjitorilor",
-        index: 7,
-        active: true,
-        image: File.open("tmp/breasla-vrajitorilor.png")
-     )
-
-   Group.create(
-        name: "Da-ți Demisia",
-        index: 8,
-        active: true,
-        image: File.open("tmp/da-ti-demisia.png")
-     )
-  end
 
   task :migrate_partners, [:arg1] => :environment  do | t, args| 
 
@@ -479,25 +302,19 @@ namespace :mysql do
   def facebook_albums
 
     result = {}
-    @graph = Koala::Facebook::API.new()    
-    @albums = @graph.api("193875377299310/albums?limit=1000&fields=name,id")["data"]
-    puts @albums
-    @albums.each do |album|
-      result[album["name"]] = album["id"]
-    end
-
+    url = "https://graph.facebook.com/v2.2/193875377299310/albums?fields=name,id&limit=50&access_token=#{ENV['FACEBOOK_APP_TOKEN']}"
+    begin  
+      response = JSON.parse(open(URI.encode(url)).read)
+      url = response["paging"]["next"]
+      @albums = response["data"]
+      @albums.each do |album|
+        result[album["name"]] = album["id"]
+      end
+    end until url.nil? 
+  
     return result
   end
 
-
-
-
-  def create_workshop( params ) 
-    workshop = Workshop.new
-    workshop.name = params["Nume"]
-
-    workshop.save
-  end
 
 
 end 

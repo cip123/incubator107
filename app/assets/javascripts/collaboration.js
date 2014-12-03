@@ -5,17 +5,16 @@
  // });
 
   $(document).ready(function () {
-
+$(".fancybox-pdf").fancybox({
+    openEffect  : 'none',
+    closeEffect : 'none',
+    iframe : {
+        preload: false
+    }
+});
 
 $(".open-fancybox").click(function() {
     
-    $.getJSON(json_Photo_URI,
-      function(data) {
-        $.each(data.feed.entry, function(i,item){
-          console.log(JSON.stringify(item));
-        });
-    });
-
     $.fancybox.open([
         {
             href : 'https://lh3.googleusercontent.com/-7dkpRQOh1MM/UKFxdzSmWaI/AAAAAAAARGo/Ndr6xe36rqA/IMG_0756.jpg',

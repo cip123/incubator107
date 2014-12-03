@@ -26,3 +26,4 @@
 //= require carousel
 //= require home
 //= require partner
+//= require collaboration

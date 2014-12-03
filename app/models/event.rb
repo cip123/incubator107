@@ -40,7 +40,7 @@ class Event < ActiveRecord::Base
 
   private
   def self.retrieve_records time_range, locale
-    return Event.joins(:workshop => :translations).where(workshops: {published: true}, events: { start_date: time_range }, 'workshop_translations.locale' => locale ).order("start_date").pluck(:id, :name, :start_date, :duration)
+    return Event.joins(:workshop => :translations).where(workshops: {published: true}, events: { start_date: time_range }, 'workshop_translations.locale' => locale ).order("start_date").pluck(:id, :name, :start_date, :duration, :workshop_id)
   end
 
 

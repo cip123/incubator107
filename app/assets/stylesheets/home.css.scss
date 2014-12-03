@@ -28,14 +28,17 @@ html, body, .container-fluid, .row {
   color: #fff;
   background: rgb(163, 52, 108);  
 
+
 }
 
+input#newsletter_subscriber_email {
+  color: rgb(163, 52, 108);  
+}
 
 .youtube-wrapper{
     background: url("video-background.png");
     height: 246px;
-    width: 420px;
-    margin-top: 5%;
+    width: 420px;    
     padding: 0px;
 }
 
@@ -43,11 +46,12 @@ html, body, .container-fluid, .row {
   opacity: 1
 }
 
+
 .carousel-right
 {
   height: 35px;
   width: 35px;
-  margin-top: 100px;
+  margin-top: 70%;
   background: url("carousel-right.png");
 }
 
@@ -55,7 +59,7 @@ html, body, .container-fluid, .row {
 {
   height: 35px;
   width: 35px;
-  margin-top: 100px;
+  margin-top: 70%;
   background: url("carousel-left.png");
 }
 iframe.youtube-player{
@@ -174,7 +178,83 @@ div.menu-item{
   width: 53px;
   height: 53px;
 
+  &.about {
+    background: url(menu-icons/about.png);
+  }
+
+  &.about:hover, &.about.active {
+    background: url(menu-icons/selected/about.png);
+  }
+
+  &.workshops {
+    background: url(menu-icons/workshops.png);
+  }
+
+  &.workshops:hover, &.workshops.active {
+    background: url(menu-icons/selected/workshops.png);
+  }
+
+  &.collaboration {
+    background: url(menu-icons/collaboration.png);
+  }
+
+  &.collaboration:hover, &.collaboration.active {
+    background: url(menu-icons/selected/collaboration.png);
+  }
+
+  &.calendar {
+    background: url(menu-icons/calendar.png);
+  }
+
+  &.calendar:hover, &.calendar.active {
+    background: url(menu-icons/selected/calendar.png);
+  }
+
+  &.your-place {
+    background: url(menu-icons/your-place.png);
+  }
+
+  &.your-place:hover, &.your-place.active {
+    background: url(menu-icons/selected/your-place.png);
+  }
+
+  &.friends {
+    background: url(menu-icons/friends.png);
+  }
+
+  &.friends:hover, &.friends.active {
+    background: url(menu-icons/selected/friends.png);
+  }
+
+  &.two-percent {
+    background: url(menu-icons/two-percent.png);
+  }
+
+  &.two-percent:hover, &.two-percent.active {
+    background: url(menu-icons/selected/two-percent.png);
+  }
+
+  &.contact {
+    background: url(menu-icons/contact.png);
+  }
+
+  &.contact:hover, &.contact.active {
+    background: url(menu-icons/selected/contact.png);
+  }
+
 } 
+
+
+
+.menu-about {
+  height: 53px;
+  width: 53px;
+  background: url(menu-icons/about.png);
+  &:hover {
+    background: url(menu-icons/selected/about.png);
+  }
+
+}
 
 img.menu-icon {
   display: block;
@@ -192,7 +272,7 @@ img.group-icon {
 
 
 .groups{
- margin-top: 10%;
+ margin-top: 5%;
 }
 
 h4.list-group-item-heading {
@@ -200,6 +280,7 @@ h4.list-group-item-heading {
   font-size: 35px;
   font-weight: bold;
   color: white !important;
+  border-radius: 0;
   margin: 2px !important;
 
 } 
@@ -258,30 +339,17 @@ li.list-group-item {
   -webkit-border-image:url(border-menu.png) 25 25  stretch stretch;
   border-image:url(border-menu.png) 25 25  stretch stretch;
   -khtml-border-image: url(border-menu.png) 25 25  stretch stretch;
-
   margin: 0 auto;
-  
-  
 }
 
 .monthly-workshops>ul.list-group {
-  
-
   background-color: #fff;
-
-
-  
-  
-  
-
  }
 
 a.list-group-item {    
   background: #109b97; 
   outline: 12px solid #109b97;  
   background: url(this-month-borders.png) #109b97 center center no-repeat;  
-
-  
   text-align: center; 
   font-color: white;
   border: 0px;
@@ -289,9 +357,13 @@ a.list-group-item {
   padding:  5px 0;
 
   &:first-child {
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
+    border-radius: 0px;
   }  
+
+  &:hover {
+    background-color: #109b97;
+  }  
+
 
 }
 
@@ -340,6 +412,7 @@ img.center {
     position: absolute;   
     top: 0;
     left: 0;
+    min-height: 100%;
     z-index: 1000;
     display: block;
     background: rgba(242, 196, 17, .7) repeat-y 50% 0;

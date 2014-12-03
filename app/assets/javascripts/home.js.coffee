@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $(".sidebar").css("min-height", "100%")
+  $(".sidebar").css("height", $(".right-main").height() + 200)
   $('#subscribe-newsletter').popover()
   $('#subscribe-newsletter').click ->
     return false;

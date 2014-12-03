@@ -14,10 +14,9 @@
       </div>
     </div>
 
-
 <% end %>
  
-
+<% unless @contact_people.empty? %>
 <div id="article-carousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
 
@@ -53,4 +52,4 @@
    <div class="carousel-right"></div>
    </a>
 </div>
-
+<% end %>
