@@ -27,7 +27,7 @@
   <% end %> 
   <% else %>
     <%= t(:workshop_expired) %> </p>
-    <a href='' data-toggle="modal" data-target="#request_workshop"><%=t(:request_workshop)%></a>
+    <a href='' data-toggle="modal" data-target="#request_workshop"><%= image_tag("button-reload.png") %><%=t(:request_workshop)%></a>
     <%=render 'request_modal' %>
   <% end  %>
 </div>

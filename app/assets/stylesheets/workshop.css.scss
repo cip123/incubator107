@@ -127,6 +127,11 @@ a.fancybox-close:hover {
 }
 
 .modal-content {
+
+  & h4, h5 {
+    color: #fff;
+  }
+
   background: rgb(163, 52, 108);
   color: #fff;
   & input, textarea {
