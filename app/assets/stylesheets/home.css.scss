@@ -204,10 +204,15 @@ a:hover {
 }
 
 .group >  a {
-  font-family: "Architects Daughter";
+  font-family: "StRyde";
+  font-size: 16px;
   color: rgb(163, 52, 108) !important;
   text-align: center;
   margin: 5px;
+}
+
+a:hover {
+  color: #a3346c;
 }
 
 .group >  a > div {
