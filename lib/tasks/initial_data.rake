@@ -30,7 +30,10 @@ namespace :db do
       default_donation: %{
                   Donaţia ta ajută incubator107 să supravieţuiască și ne încurajează meşterul. Sugerăm o donație de 30 lei pentru fiecare întâlnire și 20 lei pentru studenți și liceeni.<br/>
                   Dacă nu vă puteți permite, nu stați departe, ne puteți ajuta în alte feluri: să promovăm în companii Programul de descoperire a pasiunilor, să închiriem mansarda pentru alte traininguri sau evenimente, să atragem sponsorizări sau să umplem pur și simplu mansarda de bucurie - <a href="http://bucuresti.incubator107.com/contact.html">http://bucuresti.incubator107.com/colaborari.html</a>.
-                }
+                },
+      mailchimp_key_id: "480c415b2555d8a090bda572c966568e-us2",
+      mailchimp_newsletter_list_id: "142ac33cb1",
+      mailchimp_workshop_list_id: "eca81c7a2e"
 
     )
 

@@ -55,7 +55,7 @@ describe "Workshops pages" do
 
         it "should list only the workshops for that group" do
 
-          within('div .workshops') do |ref|
+          within('div .workshop-list') do |ref|
             expect(page).to have_content(Workshop.first.name)
             expect(page).to have_content(Workshop.limit(1).offset(1).first.name)
             expect(page).not_to have_content(Workshop.limit(1).offset(2).first.name)

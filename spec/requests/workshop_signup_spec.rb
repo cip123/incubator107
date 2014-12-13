@@ -72,13 +72,12 @@ describe "Workshop Registration" do
       fill_in "registration_person_name" , :with => 'cip'
       fill_in "registration_reason" , :with => 'Decembrie'
       fill_in "registration_person_email", :with => 'cip@incubator107.com'      
-  find(:css, "#event_ids_[value='#{@workshop.events[0].id}']").set(false)
+      find(:css, "#event_ids_[value='#{@workshop.events[0].id}']").set(false)
     end
 
     it "should increase registrations count" do
      
       registrations_before = Registration.all.count
-
 
       alert_text = page.accept_alert do
         signup  
@@ -138,10 +137,6 @@ describe "Workshop Registration" do
       reminder_mail = ActionMailer::Base.deliveries[2]
       assert_equal reminder_mail.subject, "Reminder - #{@workshop.name} - #{registration.event.name}"
 
-      welcome_mail = ActionMailer::Base.deliveries.last
-      assert_equal "#{@workshop.name} - înscriere online", welcome_mail.subject
-      assert_equal "cip@incubator107.com", welcome_mail.to[0]
-      assert_match( /atelier/, welcome_mail.body.to_s )
 
     end
 

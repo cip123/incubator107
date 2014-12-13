@@ -29,7 +29,7 @@ class City < ActiveRecord::Base
     return if mailchimp_key.blank?
     
     gibbon = Gibbon::API.new(mailchimp_key)    
-    puts gibbon.lists.subscribe({id: mailchimp_newsletter_list_id, email: { email: person.email }, merge_vars: {}, double_optin: false, replace_interests: false, update_existing: true })
+    gibbon.lists.subscribe({id: mailchimp_newsletter_list_id, email: { email: person.email }, merge_vars: {}, double_optin: false, replace_interests: false, update_existing: true })
   end
 
 

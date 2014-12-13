@@ -7,8 +7,10 @@ thead>tr.fc-first {
 th.fc-day-header{
   background: url(calendar/day-header.png) center center no-repeat no-repeat;
   background-position: center top;
+  height: 30px;
   background-size: 100% auto;  
   color: white;
+  vertical-align: middle;
 
 }
 
@@ -19,23 +21,21 @@ th.fc-day-header{
 }
 
 div.fc-content {
-    box-shadow: 10px 10px 5px #a3346c;
+    box-shadow: 10px 10px #a3346c;
 }
 
 td.fc-header-center {
    background: url(calendar/morsel.png) center center no-repeat no-repeat;
-   
-  // vertical-align: middle !important;
-  // text-align: center;
-
+   font-family: "StRyde";
    
   height: 123px;
-  //   background-image: url('calendar/morsel.png');
-  //   background-repeat: no-repeat;
-  //   background-attachment: fixed;
+  font-weight: bold;
+  color: #a3346c;
   background-position: 0px 0px; 
   
-  
+  & h2 {
+    font-weight: bold;
+  }
 }
 
 span.fc-header-title {
@@ -48,7 +48,9 @@ span.fc-header-title {
 }
 
  .fc-button-prev {
-     background: url(carousel-left.png) center center no-repeat no-repeat;
+     background: url(previous-month.png) center center no-repeat no-repeat;
+      width: 150px;
+      border: none;
      margin-top: 10%;
  }
 
@@ -59,7 +61,10 @@ span.fc-header-title {
 
   .fc-button-next {
     margin-top: 10%;
-    background: url(carousel-right.png) center center no-repeat no-repeat;
+    height: 25px;
+    width: 150px;
+    border: none;
+    background: url(next-month.png) center center no-repeat no-repeat;
  }
 
  .fc-icon-right-single-arrow::after {
@@ -67,6 +72,10 @@ span.fc-header-title {
 
  }
 
+ a.fc-event:hover {
+    font-weight: normal;
+
+   }
 
 
 .fc-header-title > h2 {  
@@ -89,8 +98,6 @@ span.fc-header-title {
 .fc-day.fc-sat, .fc-day.fc-sun {
   background:  rgba(242, 196, 17, 1);
 }
-
-
 
 div.fc-day-content {
   min-height: 50px !important;

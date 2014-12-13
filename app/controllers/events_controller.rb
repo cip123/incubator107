@@ -19,6 +19,7 @@ class EventsController < ApplicationController
         :start => entry[2],
         :end => entry[2].advance(:minutes => entry[3].to_i),
         :allDay => false,
+        :url => workshops_path(entry[4]),
         :title => entry[1]
       }
     end

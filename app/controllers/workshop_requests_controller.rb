@@ -39,8 +39,6 @@ class WorkshopRequestsController < ApplicationController
         
         WorkshopRequestMailer.delay.notify(:count => workshop_request_count, :workshop => workshop)
       end
-      #puts workshop.group.name
-
 
       workshop.group.delay.add_to_mailchimp person
 

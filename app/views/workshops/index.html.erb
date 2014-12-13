@@ -5,11 +5,13 @@
 
 <div class="col-md-11 col-md-offset-1">
  
-  <div class="workshops list">
+  <div class="workshop-list">
     <%= render @workshops %>
   </div>
 
 </div>
+
+<% unless @workshops.count <= 30 %>
 
  <div class="col-md-11 col-md-offset-1 bottom-bullets">
 
@@ -27,3 +29,4 @@
   <% end %>
 
 </div>
+<% end %>

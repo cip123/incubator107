@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141108135025) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -27,9 +24,9 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -47,8 +44,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "article_translations", force: true do |t|
     t.integer  "article_id", null: false
@@ -59,8 +56,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.text     "content"
   end
 
-  add_index "article_translations", ["article_id"], name: "index_article_translations_on_article_id", using: :btree
-  add_index "article_translations", ["locale"], name: "index_article_translations_on_locale", using: :btree
+  add_index "article_translations", ["article_id"], name: "index_article_translations_on_article_id"
+  add_index "article_translations", ["locale"], name: "index_article_translations_on_locale"
 
   create_table "articles", force: true do |t|
     t.boolean  "published"
@@ -70,9 +67,9 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "articles", ["alias"], name: "index_articles_on_alias", using: :btree
-  add_index "articles", ["city_id", "alias"], name: "index_articles_on_city_id_and_alias", unique: true, using: :btree
-  add_index "articles", ["city_id"], name: "index_articles_on_city_id", using: :btree
+  add_index "articles", ["alias"], name: "index_articles_on_alias"
+  add_index "articles", ["city_id", "alias"], name: "index_articles_on_city_id_and_alias", unique: true
+  add_index "articles", ["city_id"], name: "index_articles_on_city_id"
 
   create_table "assets", force: true do |t|
     t.string   "image_file_name"
@@ -99,8 +96,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "cities", ["domain"], name: "index_cities_on_domain", unique: true, using: :btree
-  add_index "cities", ["email"], name: "index_cities_on_email", unique: true, using: :btree
+  add_index "cities", ["domain"], name: "index_cities_on_domain", unique: true
+  add_index "cities", ["email"], name: "index_cities_on_email", unique: true
 
   create_table "city_groups", force: true do |t|
     t.integer  "group_id"
@@ -120,8 +117,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.text     "default_whereabouts"
   end
 
-  add_index "city_translations", ["city_id"], name: "index_city_translations_on_city_id", using: :btree
-  add_index "city_translations", ["locale"], name: "index_city_translations_on_locale", using: :btree
+  add_index "city_translations", ["city_id"], name: "index_city_translations_on_city_id"
+  add_index "city_translations", ["locale"], name: "index_city_translations_on_locale"
 
   create_table "contact_people", force: true do |t|
     t.string   "name"
@@ -147,8 +144,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.string   "team"
   end
 
-  add_index "contact_person_translations", ["contact_person_id"], name: "index_contact_person_translations_on_contact_person_id", using: :btree
-  add_index "contact_person_translations", ["locale"], name: "index_contact_person_translations_on_locale", using: :btree
+  add_index "contact_person_translations", ["contact_person_id"], name: "index_contact_person_translations_on_contact_person_id"
+  add_index "contact_person_translations", ["locale"], name: "index_contact_person_translations_on_locale"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -164,7 +161,7 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "events", force: true do |t|
     t.datetime "start_date"
@@ -183,8 +180,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.string   "name"
   end
 
-  add_index "group_translations", ["group_id"], name: "index_group_translations_on_group_id", using: :btree
-  add_index "group_translations", ["locale"], name: "index_group_translations_on_locale", using: :btree
+  add_index "group_translations", ["group_id"], name: "index_group_translations_on_group_id"
+  add_index "group_translations", ["locale"], name: "index_group_translations_on_locale"
 
   create_table "groups", force: true do |t|
     t.integer  "index"
@@ -207,8 +204,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.text     "description"
   end
 
-  add_index "location_translations", ["locale"], name: "index_location_translations_on_locale", using: :btree
-  add_index "location_translations", ["location_id"], name: "index_location_translations_on_location_id", using: :btree
+  add_index "location_translations", ["locale"], name: "index_location_translations_on_locale"
+  add_index "location_translations", ["location_id"], name: "index_location_translations_on_location_id"
 
   create_table "locations", force: true do |t|
     t.integer  "city_id"
@@ -240,8 +237,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.text     "content"
   end
 
-  add_index "news_translations", ["locale"], name: "index_news_translations_on_locale", using: :btree
-  add_index "news_translations", ["news_id"], name: "index_news_translations_on_news_id", using: :btree
+  add_index "news_translations", ["locale"], name: "index_news_translations_on_locale"
+  add_index "news_translations", ["news_id"], name: "index_news_translations_on_news_id"
 
   create_table "newsletter_subscribers", force: true do |t|
     t.string   "email"
@@ -250,9 +247,9 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "newsletter_subscribers", ["city_id", "email"], name: "index_newsletter_subscribers_on_city_id_and_email", unique: true, using: :btree
-  add_index "newsletter_subscribers", ["city_id"], name: "index_newsletter_subscribers_on_city_id", using: :btree
-  add_index "newsletter_subscribers", ["email"], name: "index_subscribers_on_email", using: :btree
+  add_index "newsletter_subscribers", ["city_id", "email"], name: "index_newsletter_subscribers_on_city_id_and_email", unique: true
+  add_index "newsletter_subscribers", ["city_id"], name: "index_newsletter_subscribers_on_city_id"
+  add_index "newsletter_subscribers", ["email"], name: "index_subscribers_on_email"
 
   create_table "partner_translations", force: true do |t|
     t.integer  "partner_id",  null: false
@@ -262,8 +259,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.text     "description"
   end
 
-  add_index "partner_translations", ["locale"], name: "index_partner_translations_on_locale", using: :btree
-  add_index "partner_translations", ["partner_id"], name: "index_partner_translations_on_partner_id", using: :btree
+  add_index "partner_translations", ["locale"], name: "index_partner_translations_on_locale"
+  add_index "partner_translations", ["partner_id"], name: "index_partner_translations_on_partner_id"
 
   create_table "partners", force: true do |t|
     t.string   "name"
@@ -289,7 +286,7 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.datetime "updated_at"
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["email"], name: "index_people_on_email", unique: true
 
   create_table "registrations", force: true do |t|
     t.integer  "event_id"
@@ -322,8 +319,8 @@ ActiveRecord::Schema.define(version: 20141108135025) do
     t.text     "notification"
   end
 
-  add_index "workshop_translations", ["locale"], name: "index_workshop_translations_on_locale", using: :btree
-  add_index "workshop_translations", ["workshop_id"], name: "index_workshop_translations_on_workshop_id", using: :btree
+  add_index "workshop_translations", ["locale"], name: "index_workshop_translations_on_locale"
+  add_index "workshop_translations", ["workshop_id"], name: "index_workshop_translations_on_workshop_id"
 
   create_table "workshops", force: true do |t|
     t.integer  "city_id"

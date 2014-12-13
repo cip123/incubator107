@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('#calendar').fullCalendar({
     header: {
-        left: 'prev',
+        left: 'prev, [Luna asta]',
         center: 'title',
         right: 'next'
     },
@@ -18,7 +18,7 @@ $(document).ready(function () {
       url: '/events',
       allDay: false
     }],
-
+    timeFormat: 'H(:mm)',
     eventBackgroundColor: "transparent",
     eventTextColor: "#a3346c",
     eventBorderColor: "transparent",
@@ -37,21 +37,17 @@ $(document).ready(function () {
       cell.find("> div:first-child").append('<div class="fc-day-number">' + day_number + '</div>');
     },
 
-  eventClick: function(calEvent, jsEvent, view) {
 
-      document.location ="workshops/" + calEvent.id;
-        
-    },
 
     eventRender: function(event, element, view) {
       event_time = element.find('span.fc-event-time').remove().html();
       element.find(".fc-event-inner").append(' <div class="fc-event-time">' + event_time + '</div>');
       
 
-      var limit = 20;
-      if (event.title.length > limit) {
-        element.find('.fc-event-title').text( event.title.substr(0,limit)+'...').parent().attr('title', event.title);
-      }
+      // var limit = 20;
+      // if (event.title.length > limit) {
+      //   element.find('.fc-event-title').text( event.title.substr(0,limit)+'...').parent().attr('title', event.title);
+      // }
 
 
     }

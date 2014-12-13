@@ -24,8 +24,25 @@ $(document).ready(function () {
     }
   };
 
+  var options = {
+      selector: '[data-popover]',
+      trigger: 'click hover',
+      delay: {show: 1000, hide: 400},
+      placement: function (context, source) {
+        var length = $(source).html().length;
+        
+        if (length > 70) {
+            return "left";
+        } else {
+            return "right";
+        }
 
-  $('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: {show: 50, hide: 400}});
+    }
+  };
+
+
+
+  $('body').popover(options);
 
 
 

@@ -8,9 +8,37 @@
     src: url(font-path('ArchitectsDaughter.ttf')) format('truetype');
 }
 
-p {
-  font-family: "Architects Daughter";
-  font-size: 12px;
+@font-face {
+    font-family: 'StRyde';
+    src: url(font-path('StRyde-Regular.otf')) format('opentype');
+}
+
+.flags img {
+  margin: 5px;
+
+}
+
+.flags{
+  margin-right: 5px;
+}
+
+h3 {
+
+  font-weight: bold;
+  color: #a2346c;
+
+}
+
+
+.cities-badge {
+  float: right;
+  background: url("other-cities-badge.png") no-repeat center;
+  width: 130px;
+  height:65px;
+  text-align: center;
+  line-height: 65px;
+  font-weight: bold;
+  color: #a2346c;
 }
 
 html, body, .container-fluid, .row {
@@ -23,12 +51,15 @@ html, body, .container-fluid, .row {
     }
 }
 
+.menu-placeholder {
+    display:block;
+    height:91px;
+    width:30px;
+}
 
 .newsletter-subscriber > .popover, .popover-title {
   color: #fff;
   background: rgb(163, 52, 108);  
-
-
 }
 
 input#newsletter_subscriber_email {
@@ -51,7 +82,7 @@ input#newsletter_subscriber_email {
 {
   height: 35px;
   width: 35px;
-  margin-top: 70%;
+  margin-top: 500%;
   background: url("carousel-right.png");
 }
 
@@ -59,9 +90,10 @@ input#newsletter_subscriber_email {
 {
   height: 35px;
   width: 35px;
-  margin-top: 70%;
+  margin-top: 500%;
   background: url("carousel-left.png");
 }
+
 iframe.youtube-player{
   margin: 15px;
 }
@@ -72,10 +104,18 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;  
-  font-family: "Architects Daughter";
-
-  color: rgb(163, 52, 108) !important;
+  font-family: "StRyde";
+  font-size: 12px !important;
+  line-height: 16px !important;
+  color: #4d4d4f !important;
 } 
+
+p {
+  font-family: "StRyde";
+  font-size: 12px ;
+  line-height: 16px ;
+
+}
 
 
 .collaboration {
@@ -172,6 +212,11 @@ a:hover {
 
 .group >  a > div {
   margin-top: 10px;
+}
+
+.pull-right {
+  float: right;
+
 }
 
 div.menu-item{
@@ -364,7 +409,6 @@ a.list-group-item {
     background-color: #109b97;
   }  
 
-
 }
 
 
@@ -378,7 +422,7 @@ a.list-group-item {
 
 
 #main-page { 
-  background: url(intro-baloon.jpg) no-repeat center center fixed; 
+  background: url(intro-baloon.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

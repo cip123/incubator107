@@ -28,7 +28,7 @@ class WorkshopsController < SubdomainController
     person_params = registration_params[:person]
     person_params[:city] = @city
 
-    (person, first_request) = Person.create_if_missing(person_params)
+    (person, first_registration) = Person.create_if_missing(person_params)
 
     workshop = Workshop.find(params[:id]);
 
@@ -37,7 +37,7 @@ class WorkshopsController < SubdomainController
       @city.delay.add_to_mailchimp_newsletter person
     end
 
-    if (first_request  || person.verified)
+    if (first_registration  || person.verified)
 
       succesfull_registration = false
 
@@ -54,7 +54,7 @@ class WorkshopsController < SubdomainController
         end
       end
     
-      RegistrationMailer.delay.confirm(:person => person, :workshop => workshop) if succesfull_registration
+      RegistrationMailer.delay.confirm(:person => person, :workshop => workshop) if succesfull_registration && person.verified
 
       workshop.group.delay.add_to_mailchimp person
 
@@ -77,9 +77,9 @@ class WorkshopsController < SubdomainController
     @current_page = params[:page]? 1 : params[:page]
 
     if params[:group_id] 
-      @workshops = Workshop.where(published: true, group_id: params[:group_id], city_id: @city.id).paginate( page: params[:page])
+      @workshops = Workshop.joins(:translations).where(published: true, group_id: params[:group_id], city_id: @city.id).order("name asc").paginate( page: params[:page])
     else
-      @workshops = Workshop.where(published: true, city_id: @city.id).paginate( page: params[:page])
+      @workshops = Workshop.joins(:translations).where(published: true, city_id: @city.id)..order("name asc").paginate( page: params[:page])
     end
     @groups = Group.all
   end

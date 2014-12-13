@@ -14,20 +14,55 @@ a.fancybox-nav:hover {
   background-color:  transparent  
 }
 
+.workshop-list  .popover, .popover-title {
+  color: #a3346c;
+  background: #fff;  
+  font-size: 12px;
+  line-height:  14px;
+}
+
+
+
 div.center-cropped {
     width: 80px;
     height: 80px;
     background-position: center center;
     background-repeat: no-repeat;
     display: inline-block;
-    
 }
+
 .bottom-bullets {
 
   margin-top: 5%;
+  margin-left: 10%;
   &  img {
-    margin: 10px !important;
+    margin: 5px !important;
   }
+}
+
+h4 {
+  font-weight: bold;
+  color: #a2346c;
+}
+
+h5, {
+  color: #a2346c;
+}
+hr {
+  border-top: #a2346c;
+  color: #a2346c;
+}
+
+h4.workshop-section {
+
+  font-weight: bold;
+  color: #a2346c;
+
+}
+
+h3.workshop-section {
+  font-weight: bold;
+  color: #a2346c;
 }
 
 thumbnail {
@@ -127,14 +162,20 @@ a.fancybox-close:hover {
   clear: both; /* Required for Webkit, but not for Gecko */
 }
 
-.workshops.list {
+.workshop-list {
   margin-top: 5%;
+
 }
 
-.workshops>li {
+.workshop-list>li {
   list-style-type:none;
   padding-left: 25px;
   height: 20px;
+  font-size: 14px;
+  line-height: 18px;
+
+
+
 
   &:hover { 
     padding-left: 25px;
@@ -147,6 +188,9 @@ a.fancybox-close:hover {
   &>a:hover {
     color: rgb(163, 52, 108) !important;
 
+  }
+  &>a:visited { 
+    color: #009a96;
   }
 
 }

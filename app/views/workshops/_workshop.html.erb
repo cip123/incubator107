@@ -1,3 +1,5 @@
 <li>
-<%= link_to workshop.name, workshop_path(workshop) %>
+  <a href="<%= workshop_path(workshop) %>" data-popover="true" data-html="true" data-content='<%= truncate(strip_tags(workshop.description), length: 150, :escape => true) %>'>
+<%= workshop.name %>
+</a>
 </li>

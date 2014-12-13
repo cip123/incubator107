@@ -18,7 +18,7 @@
 <% unless @last_news.nil? %>
   <div class="row">
     <div class="col-sm-8">
-      <h4><%= @last_news.title %></h4>
+      <h4 class="workshop-section"><%= @last_news.title %></h4>
       <% if @last_news.content.length > 1000 %>
         <%= truncate(@last_news.content, length: 1000, :escape => false) %>
         <%= link_to '...Read more', '#',  :onclick => "$(this).parent().html('#{escape_javascript @last_news.content}')" %>
