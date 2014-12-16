@@ -41,7 +41,7 @@
 <% if @workshop.active? %>
   <h4 class="workshop-section"><%=t(:how?) %></h4>
   <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
-  <a id='aici' href='' data-toggle="modal" data-target="#signup"><%= image_tag("ateliere/button-inscrieri.png", :alt => t(:here)) %><%=t(:here)%></a>
+  <a id='aici' href='' data-toggle="modal" data-target="#signup"><%= image_tag("signup-button.png", :alt => t(:here)) %><%=t(:here)%></a>
   <%= t(:signup_blah_blah) %></p>
   <%=render 'registration_modal' %>
 <% end %>

@@ -10,20 +10,21 @@
 
           <%= simple_form_for @registration, url: workshop_path(@workshop.id) +"/signup", :remote => true do |wr| %>
 
-         <h5> <%=t(:meetings) %> </h5>
+         <h4> <%=t(:meetings) %> </h4>
           <% @workshop.future_events.each do |event| %>
                   <%= check_box_tag("event_ids[]", event.id, :checked => true) %>
                   <%= event.description %>
                   <br/>
           <% end %>
-
-           <h5> <%=t(:about_you) %> </h5>
+          <br/>
+          <div class="footnote">Atelierul are continuitate si se vor discuta noi subiecte în fiecare întâlnire. Noi îți recomandăm să vii la cât mai multe întâlniri ca să fii cu adevărat inițiat.</div>
+           <h4> <%=t(:about_you) %> </h4>
 
           <%= wr.simple_fields_for @registration.person do |p| %>
 
-            <%= p.input :name, :validate => true %>
-            <%= p.input :email, :validate => true  %>
-            <%= p.input :phone, :validate => true  %>
+            <%= p.input :name, :validate => true, label: t(:name) %>
+            <%= p.input :email, :validate => true, label: t(:email)  %>
+            <%= p.input :phone, :validate => true, label: t(:phone)  %>
 
           <% end %>
 

@@ -45,6 +45,10 @@ h4 {
   color: #a2346c;
 }
 
+.workshop-section {
+    clear: both;
+}
+
 h5, {
   color: #a2346c;
 }
@@ -228,6 +232,11 @@ label.collection_radio_buttons {
   margin-right: 10px;
   vertical-align: -2px;
   margin-left: 2px;
+}
+
+div.footnote {
+  text-align: center;
+  font-size: 12px;
 }
 
 .simple_form .error {

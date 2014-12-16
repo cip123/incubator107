@@ -1,0 +1,16 @@
+Bluepill.application("incubator") do |app|
+  app.process("delayed_job") do |process|
+    process.working_dir = "/var/www/incubator107/current"
+
+    process.start_grace_time    = 10.seconds
+    process.stop_grace_time     = 10.seconds
+    process.restart_grace_time  = 10.seconds
+
+    process.start_command = "ruby bin/delayed_job start"
+    process.stop_command  = "ruby bin/delayed_job stop"
+
+    process.pid_file = "/var/www/incubator107/shared/delayed_job.pid"
+    process.uid = "incubator"
+    process.gid = "incubator"
+  end
+end

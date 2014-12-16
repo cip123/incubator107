@@ -21,12 +21,12 @@
 
 
   <% if @workshop.whereabouts %>  
-    <p>Unde? </p><p><%= @workshop.whereabouts %> </p>
+    <p>Unde? </p><p><%== @workshop.whereabouts %> </p>
   <% end %> 
 
     <% if @workshop.requires_donation? %>        
         <p>Cum? </p>
-        <p> <%= @workshop.donation %> <br/>
+        <p> <%== @workshop.donation %> <br/>
           Dacă nu vă puteți permite, nu stați deoparte; puteți contribui cu timpul sau priceperile voastre -          
     <% end %>
 

@@ -28,8 +28,13 @@ ro:
   from: de la
   to: la
 
+
+  about_you: Despre tine
+
   workshops: Ateliere  
   all_groups: Toate breslele
+  meetings: întâlniri
+
 
   groups: Bresle  
   the_team: Echipa 
@@ -42,6 +47,7 @@ ro:
   who_comes?: Cine vine?
 
   name_and_surname: Nume şi prenume
+  name: Nume
   email: Email
   phone: Telefon
   tell_us_why_you_want_to_come: Spune-ne sincer de ce vrei să vii 

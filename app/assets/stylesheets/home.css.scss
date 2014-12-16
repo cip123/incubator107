@@ -1,7 +1,8 @@
 @font-face {
     font-family: 'Aracne Condensed Regular';
-    src: url(font-path('ARACNE-CONDENSED_regular.ttf')) format('truetype');
+    src: url(font-path('AracneCondensedRegular.otf')) format('opentype');
 }
+
 
 @font-face {
     font-family: 'Architects Daughter';
@@ -105,16 +106,27 @@ body {
   -o-background-size: cover;
   background-size: cover;  
   font-family: "StRyde";
-  font-size: 12px !important;
-  line-height: 16px !important;
   color: #4d4d4f !important;
 } 
 
 p {
   font-family: "StRyde";
-  font-size: 12px ;
-  line-height: 16px ;
+  font-size: 14px ;
+  line-height: 16px;
+}
 
+h4,h3 {
+  font-family: "Aracne Condensed Regular";  
+  color: #a2346c;
+}
+
+h5, {
+  font-family: "Aracne Condensed Regular";
+  color: #a2346c;
+}
+hr {  
+  border-top: #a2346c;
+  color: #a2346c;
 }
 
 
@@ -400,6 +412,7 @@ a.list-group-item {
   background: #109b97; 
   outline: 12px solid #109b97;  
   background: url(this-month-borders.png) #109b97 center center no-repeat;  
+  background-position: center 10px;
   text-align: center; 
   font-color: white;
   border: 0px;

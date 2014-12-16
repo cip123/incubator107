@@ -12,9 +12,9 @@
 
           <%= wr.simple_fields_for @workshop_request.person do |p| %>
 
-            <%= p.input :name, :validate => true %>
-            <%= p.input :email, :validate => true  %>
-            <%= p.input :phone, :validate => true  %>
+            <%= p.input :name, :validate => true, label: t(:name) %>
+            <%= p.input :email, :validate => true, label: t(:email)  %>
+            <%= p.input :phone, :validate => true, label: t(:phone)  %>
 
           <% end %>
 
@@ -22,12 +22,13 @@
             <%= w.input :id, :as => :hidden, :input_html => { :value => @workshop_request.workshop.id } %>
           <% end %>
 
-          <%= wr.input :reason, as: :text, label: t(:tell_us_why_you_want_to_come) %>
+          <%= wr.input :reason, as: :text, label: "De ce vrei să reluăm acest atelier?" %>
 
+          
           <%= wr.input :subscribe_to_mailing_list, as: :boolean,  :label => false, :inline_label => t(:subscribe_to_newsletter) %>
   
         </div>
-        
+        <div class="footnote">De îndată ce vom strânge 10 doritori, reluăm atelierul și vei fi anunțat negreșit. </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><%= t(:cancel) %></button>
           <button type="submit" class="btn btn-primary"><%= t(:ready) %>
