@@ -30,6 +30,10 @@ class WorkshopsController < SubdomainController
 
     (person, first_registration) = Person.create_if_missing(person_params)
 
+    cookies[:name] = person_params[:name]
+    cookies[:email] = person_params[:email]
+    cookies[:phone] = person_params[:phone]
+
     workshop = Workshop.find(params[:id]);
 
     if registration_params[:subscribe_to_mailing_list] == "1"

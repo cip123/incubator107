@@ -12,9 +12,9 @@
 
           <%= wr.simple_fields_for @workshop_request.person do |p| %>
 
-            <%= p.input :name, :validate => true, label: t(:name) %>
-            <%= p.input :email, :validate => true, label: t(:email)  %>
-            <%= p.input :phone, :validate => true, label: t(:phone)  %>
+            <%= p.input :name, :validate => true, label: t(:name), input_html: {value: cookies[:name] } %>
+            <%= p.input :email, :validate => true, label: t(:email), input_html: {value: cookies[:email] }  %>
+            <%= p.input :phone, :validate => true, label: t(:phone),input_html: {value: cookies[:phone] }  %>
 
           <% end %>
 

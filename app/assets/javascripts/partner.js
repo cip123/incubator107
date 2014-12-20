@@ -40,12 +40,7 @@ $(document).ready(function () {
     }
   };
 
-
-
   $('body').popover(options);
-
-
-
 
  });
 

@@ -36,7 +36,7 @@ Incubator107::Application.routes.draw do
     match '/profile/:id', to: 'users#edit_profile', via: 'get', as: "profile"
     match '/profile/:id', to: 'users#update_profile', via: 'patch'
 
-    match '/workshops/:id/signup', to:	"workshops#signup", via: 'post'
+    match '/workshops/:id/signup', to:	"workshops#signup", via: 'post', as: "workshop_signup"
     match '/contact', to: "contact#show", via: 'get'
     root to: 'home#index'
     match '/calendar', to: 'calendar#show', via: 'get'

@@ -37,25 +37,9 @@ set :use_sudo, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-after "deploy:update", "bluepill:quit", "bluepill:start"
+# Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
+Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
 
-namespace :bluepill do
-  desc "Stop processes that bluepill is monitoring and quit bluepill"
-  task :quit, :roles => [:app] do
-    sudo "bluepill stop"
-    sudo "bluepill quit"
-  end
-
-  desc "Load bluepill configuration and start it"
-  task :start, :roles => [:app] do
-    sudo "bluepill load /var/www/incubator107/current/config/production.pill"
-  end
-
-  desc "Prints bluepills monitored processes statuses"
-  task :status, :roles => [:app] do
-    sudo "bluepill status"
-  end
-end
 
 namespace :deploy do
 
@@ -68,7 +52,6 @@ namespace :deploy do
       #     execute "bin/delayed_job restart 2>&1"
       #   end
       ## end
-
       execute "sudo service httpd restart"      
       #puts checkmark.gsub(/\\u[\da-f]{4}/i) { |m| [m[-4..-1].to_i(16)].pack('U') }.green
       # execute :touch, release_path.join('tmp/restart.txt')
@@ -83,20 +66,18 @@ namespace :deploy do
     end
   end
 
-
   after :publishing, :restart
   
   before :compile_assets, :copy_database_yml
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
+
      within release_path do
-#      execute :bundle, :exec, :'bin/delayed_job', :restart
+      execute "monit stop delayed_job"
+      execute "monit start delayed_job"
      end
-      #  endthing such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+
     end
   end
 

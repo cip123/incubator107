@@ -114,16 +114,15 @@ p {
   font-size: 14px ;
   line-height: 16px;
 }
-
-h4,h3 {
-  font-family: "Aracne Condensed Regular";  
-  color: #a2346c;
+h3.popover-title {
+  font-size: 18px;
 }
 
-h5, {
+h5,h4,h3 {
   font-family: "Aracne Condensed Regular";
   color: #a2346c;
 }
+
 hr {  
   border-top: #a2346c;
   color: #a2346c;
@@ -140,6 +139,11 @@ hr {
  
 
 }
+
+.partners {
+  background: rgb(250, 254, 255); 
+}
+
 
 .incubator-button {
   background: url(incubator-button.png) no-repeat ;

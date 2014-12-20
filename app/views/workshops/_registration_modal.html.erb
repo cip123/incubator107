@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
 
-          <%= simple_form_for @registration, url: workshop_path(@workshop.id) +"/signup", :remote => true do |wr| %>
+          <%= simple_form_for @registration, url: workshop_signup_path(@workshop.id), :remote => true do |wr| %>
 
          <h4> <%=t(:meetings) %> </h4>
           <% @workshop.future_events.each do |event| %>
@@ -22,9 +22,9 @@
 
           <%= wr.simple_fields_for @registration.person do |p| %>
 
-            <%= p.input :name, :validate => true, label: t(:name) %>
-            <%= p.input :email, :validate => true, label: t(:email)  %>
-            <%= p.input :phone, :validate => true, label: t(:phone)  %>
+            <%= p.input :name, :validate => true, label: t(:name), input_html: {value: cookies[:name] } %>
+            <%= p.input :email, :validate => true, label: t(:email), input_html: {value: cookies[:email] }  %>
+            <%= p.input :phone, :validate => true, label: t(:phone), input_html: {value: cookies[:phone] }  %>
 
           <% end %>
 

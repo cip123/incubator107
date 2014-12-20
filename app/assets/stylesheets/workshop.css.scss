@@ -183,9 +183,6 @@ a.fancybox-close:hover {
   font-size: 14px;
   line-height: 18px;
 
-
-
-
   &:hover { 
     padding-left: 25px;
 
@@ -264,6 +261,31 @@ input.check_boxes {
   margin-left: 3px;
   vertical-align: -3px;
 }
+
+.workshop-signup-button {
+  background: url(buttons/workshop-registration.png) no-repeat;
+  font-family: "Aracne Condensed Regular";
+  font-size: 20px;
+  padding-left: 80px;
+  width: 200px;
+  height: 60px;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+}
+
+.workshop-request-button {
+  background: url(buttons/workshop-request.png) no-repeat;
+  font-family: "Aracne Condensed Regular";
+  font-size: 20px;
+  padding-left: 80px;
+  width: 200px;
+  height: 60px;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+}
+
 
 label.collection_check_boxes {
   float: none;

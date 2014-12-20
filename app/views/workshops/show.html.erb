@@ -2,24 +2,24 @@
 
 <h3 class="workshop-section"><%= @workshop.name %></h3>
 
-<h4 class="workshop-section"><%=t(:what?) %></h4>
+<h3 class="workshop-section"><%=t(:what?) %></h3>
 <p><%= raw(@workshop.description) %></p>
 
 <div>
-  <h4 class="workshop-section"><%=t(:with_who?) %></h4>
+  <h3 class="workshop-section"><%=t(:with_who?) %></h3>
   <p><%= raw(@workshop.with_whom) %></p>
 </div>
 
 <div>
   <% unless @workshop.bring_along.nil? || @workshop.bring_along.empty? %>
-    <h4 class="workshop-section"><%=t(:bring_along?) %></h4>
+    <h3 class="workshop-section"><%=t(:bring_along?) %></h3>
     <p><%= raw(@workshop.bring_along) %> </p>
   <% end  %>
 </div>
  
 <% unless @workshop.events.nil? %> 
 <div> 
-  <h4 class="workshop-section"> <%= t(:when?) %> </h4>
+  <h3 class="workshop-section"> <%= t(:when?) %> </h3>
   <% if @workshop.active? %>
     <% @workshop.events.each do |event| %>
     <%= event.description %>
@@ -34,12 +34,12 @@
 <% end %>
 
 <% unless @workshop.whereabouts.nil? || @workshop.whereabouts.empty? %>
-<h4 class="workshop-section"><%=t(:where?) %></h4>
+<h3 class="workshop-section"><%=t(:where?) %></h3>
 <p><%= raw(@workshop.whereabouts) %> </p>
 <% end %>
 
 <% if @workshop.active? %>
-  <h4 class="workshop-section"><%=t(:how?) %></h4>
+  <h3 class="workshop-section"><%=t(:how?) %></h3>
   <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
   <a id='aici' href='' data-toggle="modal" data-target="#signup"><%= image_tag("signup-button.png", :alt => t(:here)) %><%=t(:here)%></a>
   <%= t(:signup_blah_blah) %></p>
@@ -53,35 +53,48 @@
 
 
 <% if @photos.present? %>
-       <h4 class="workshop-section"><%=t(:photos) %></h4>
-        <div class="well-none">
-          <div id="myCarousel" class="carousel slide">
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-              <% @photos.each_with_index do |photo, n| %>
-                <% if (n%10 == 0) %>
-                  <div class="item <%= (n==0) ? "active" : "" %>">
-                    <div class="row">
-                  <% end %>      
-                    
-                  <a class="fancybox" rel="gallery1" href="<%= photo["source"] %>">
-                    <div class="center-cropped thumbnail" alt="<%="#{n} out of #{@photos.count} "%>" style="background-image: url('<%= photo["picture"] %>');"></div>
-                  </a>
+ <h3 class="workshop-section"><%=t(:photos) %></h3>
+  <div class="well-none">
+    <div id="myCarousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% @photos.each_with_index do |photo, n| %>
+          <% if (n%10 == 0) %>
+            <div class="item <%= (n==0) ? "active" : "" %>">
+              <div class="row">
+            <% end %>      
+              
+            <a class="fancybox" rel="gallery1" href="<%= photo["source"] %>">
+              <div class="center-cropped thumbnail" alt="<%="#{n} out of #{@photos.count} "%>" style="background-image: url('<%= photo["picture"] %>');"></div>
+            </a>
 
-
-                  <% if ( n%10 == 9 || n == (@photos.count-1) ) %>
-                    </div>
-                  </div>
-                  <% end %>  
-
-              <% end %>    
+            <% if ( n%10 == 9 || n == (@photos.count-1) ) %>
               </div>
-                <!--/carousel-inner--> 
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
-
-              <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
             </div>
+            <% end %>  
+
+        <% end %>    
         </div>
+          <!--/carousel-inner--> 
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
+
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
+      </div>
+  </div>
+<% end %>
+
+<% if @workshop.active? %>
+  <a href='' data-toggle="modal" data-target="#signup">  
+    <div class="workshop-signup-button">
+      Vin la atelier
+    </div>    
+  </a>
+<% else %>
+  <a href='' data-toggle="modal" data-target="#request_workshop">
+    <div class="workshop-request-button">
+      Cer atelier
+   </div>
+  </a>
 <% end %>
 
 

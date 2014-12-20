@@ -13,6 +13,10 @@ class WorkshopRequestsController < ApplicationController
     person_params = request_params[:person]
     person_params[:city] = @city
 
+    cookies[:name] = person_params[:name]
+    cookies[:email] = person_params[:email]
+    cookies[:phone] = person_params[:phone]
+
 
     workshop_id = request_params[:workshop][:id]
     workshop = Workshop.find_by(id:  workshop_id)

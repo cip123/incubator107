@@ -1,19 +1,22 @@
-<%= provide(:title, t(:partners) ) %>
+<%= provide(:title, t(:friends) ) %>
 
 <div class="friends-list">
   <h4>Prieteni</h4>
 <% @friends.each_with_index do |friend, index| %>
-  <% if index%6 == 0 %>
+  <% if index%4 == 0 %>
     <div class="row">
   <% end %>
-    <div class="col-md-2">
+    <div class="col-md-3">
         <div class="partner">
-        <a href="#" data-popover="true" data-html="true" data-content='<%= friend.description.html_safe %>'>
-          <%= image_tag(friend.image) %></a>
-        </div>
-        <div class="partner-name"><%= friend.name %> </div>
+          <div class="dummy"></div>
+          <div class="img-container">
+            <a href="#" data-popover="true" data-html="true" data-content='<%= "<h4>#{friend.name}</h4> #{friend.description.html_safe}" %>'>
+              <%= image_tag(friend.image) %>
+            </a>
+          </div>
+        </div>        
     </div>
-   <% if index%6 == 5 || index == @friends.count %>
+   <% if index%4 == 3 || index == @friends.count %>
     </div>
   <% end %>
 <% end %>
@@ -25,18 +28,20 @@
 <div class="broadcasters">
   <h4>Broadcasters</h4>
 <% @broadcasters.each_with_index do |broadcaster, index| %>
-  <% if index%6 == 0 %>
+  <% if index%4 == 0 %>
     <div class="row">
   <% end %>
-    <div class="col-md-2">
-      <div class="partner">
-         <a href="#" data-popover="true" data-html="true" data-content='<%= broadcaster.description.html_safe %>'>
-        <%= image_tag(broadcaster.image) %>
-        </a>
-      </div>
-        <div class="partner-name"><%= broadcaster.name %></div>
+    <div class="col-md-3">
+        <div class="partner">
+          <div class="dummy"></div>
+            <div class="img-container">
+             <a href="#" data-popover="true" data-html="true" data-content='<%= broadcaster.description.html_safe %>'>
+                <%= image_tag(broadcaster.image) %>
+            </a>
+           </div>
+        </div>        
     </div>
-   <% if index%6 == 5 || index == @broadcasters.count %>
+   <% if index%4 == 3 || index == @broadcasters.count %>
     </div>
   <% end %>
 <% end %>
