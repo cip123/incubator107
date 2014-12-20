@@ -1,7 +1,7 @@
 <%= provide(:title, t(:friends) ) %>
 
 <div class="friends-list">
-  <h4>Prieteni</h4>
+  <h3>Prieteni</h3>
 <% @friends.each_with_index do |friend, index| %>
   <% if index%4 == 0 %>
     <div class="row">
@@ -26,7 +26,7 @@
 </div>
 
 <div class="broadcasters">
-  <h4>Broadcasters</h4>
+  <h3>Vestitori</h3>
 <% @broadcasters.each_with_index do |broadcaster, index| %>
   <% if index%4 == 0 %>
     <div class="row">

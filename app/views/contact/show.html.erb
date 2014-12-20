@@ -1,6 +1,6 @@
 <% unless @location.nil? %>
   
-  <h4> <%= t(:where_can_you_find_us) %> </h4>
+  <h3> <%= t(:where_can_you_find_us) %> </h3>
     
     <div class="position">
       <div class="row">
@@ -23,7 +23,7 @@
     <% @contact_people.each_with_index do |person, n| %>
       <% if (n%3 == 0) %>
         <div class="item <%= (n==0) ? "active" : "" %>">
-          <h4><%= person.team.blank?? t(:the_team) : person.team %></h4>
+          <h3><%= person.team.blank?? t(:the_team) : person.team %></h3>
           <div class="row">
       <% end %>      
       <div class="col-md-4">
