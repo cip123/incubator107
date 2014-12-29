@@ -73,10 +73,8 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 
-     within release_path do
-      execute "sudo monit stop delayed_job"
-      execute "sudo monit start delayed_job"
-     end
+    execute "sudo monit stop delayed_job"
+    execute "sudo monit start delayed_job"
 
     end
   end

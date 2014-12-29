@@ -40,7 +40,7 @@ class Workshop < ActiveRecord::Base
   end
 
   def active?
-    return events.count == 0 || events.last.start_date > Date.today
+    return events.count > 0 && events.last.start_date > Date.today
   end
 
   private

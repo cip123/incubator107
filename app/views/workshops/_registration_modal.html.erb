@@ -17,8 +17,12 @@
                   <br/>
           <% end %>
           <br/>
-          <div class="footnote">Atelierul are continuitate si se vor discuta noi subiecte în fiecare întâlnire. Noi îți recomandăm să vii la cât mai multe întâlniri ca să fii cu adevărat inițiat.</div>
-           <h4> <%=t(:about_you) %> </h4>
+
+          <% if @workshop.events.count > 1 %>
+            <div class="footnote">Atelierul are continuitate si se vor discuta noi subiecte în fiecare întâlnire. Noi îți recomandăm să vii la cât mai multe întâlniri ca să fii cu adevărat inițiat.</div>
+          <% end %>
+          
+          <h4> <%=t(:about_you) %> </h4>
 
           <%= wr.simple_fields_for @registration.person do |p| %>
 
