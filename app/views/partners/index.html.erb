@@ -35,7 +35,7 @@
         <div class="partner">
           <div class="dummy"></div>
             <div class="img-container">
-             <a href="#" data-popover="true" data-html="true" data-content='<%= broadcaster.description.html_safe %>'>
+             <a href="#" data-popover="true" data-html="true" data-content='<%= "<h4>#{broadcaster.name}</h4> #{broadcaster.description.html_safe}" %>'>
                 <%= image_tag(broadcaster.image) %>
             </a>
            </div>
