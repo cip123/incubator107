@@ -13,7 +13,7 @@ describe "Reminders" do
     
     Timecop.return
     
-    visit url_for_subdomain :cluj, "/workshops/" + workshop.id.to_s
+    visit url_for_subdomain :cluj, "/workshops/" + workshop.id.to_s 
     click_link "aici"
     
     @gibbon = object_double("Gibbon::API").as_stubbed_const
@@ -36,14 +36,12 @@ describe "Reminders" do
 
 
       Delayed::Worker.delay_jobs = true
+
       alert_text = page.accept_alert do
         signup  
       end
       
-      
       Timecop.travel(Date.today.at_midnight + 8.hours)
-      
-      sleep(10)
 
       Delayed::Worker.new.work_off 
       reminder_mail = ActionMailer::Base.deliveries[0]

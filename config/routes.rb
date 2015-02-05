@@ -22,6 +22,7 @@ Incubator107::Application.routes.draw do
   constraints(Subdomain) do
     resources :articles
     resources :groups
+    resources :news
     resources :partners
     resources :workshops
     resources :workshop_requests

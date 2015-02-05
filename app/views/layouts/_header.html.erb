@@ -68,8 +68,8 @@
   </div>
   <div class="navbar pull-right">
     <div class="flags">
-       <%= link_to image_tag("flags/flag-ro.png", :alt => "RO"), "http://#{@city.domain}.#{Rails.configuration.hosts[Rails.env]}?locale=ro" %>
-       <%= link_to image_tag("flags/flag-en.png", :alt => "RO"),"http://#{@city.domain}.#{Rails.configuration.hosts[Rails.env]}?locale=en" %>
+       <%= link_to image_tag("flags/flag-ro.png", :alt => "RO"), "http://#{@city.domain}.#{Rails.configuration.hosts[Rails.env]}" %>
+       <%= link_to image_tag("flags/flag-en.png", :alt => "EN"), "http://#{@city.domain}.#{Rails.configuration.hosts[Rails.env]}#{@about_path}?locale=en" %>
     </div>
     <a href="<%= "http://www.#{Rails.configuration.hosts[Rails.env]}?locale=ro" %>">
     <div class="cities-badge">

@@ -83,7 +83,7 @@ class WorkshopsController < SubdomainController
     if params[:group_id] 
       @workshops = Workshop.joins(:translations).where(published: true, group_id: params[:group_id], city_id: @city.id).order("name asc").paginate( page: params[:page])
     else
-      @workshops = Workshop.joins(:translations).where(published: true, city_id: @city.id)..order("name asc").paginate( page: params[:page])
+      @workshops = Workshop.joins(:translations).where(published: true, city_id: @city.id).order("name asc").paginate( page: params[:page])
     end
     @groups = Group.all
   end

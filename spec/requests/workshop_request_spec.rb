@@ -13,7 +13,9 @@ describe "request a workshop" do
     ActionMailer::Base.deliveries = []
     visit url_for_subdomain :cluj, "/workshops/" + @workshop.id.to_s
     
-    click_link "Cer atelier"; sleep 2
+
+    first(:link, 'Cer atelier').click
+
     @gibbon = object_double("Gibbon::API").as_stubbed_const
     @api = double("api")
     allow(@gibbon).to receive(:new).twice  { @api}

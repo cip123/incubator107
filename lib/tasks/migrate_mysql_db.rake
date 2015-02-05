@@ -22,7 +22,7 @@ namespace :mysql do
       Article.create(title: row["Title"], content: row["Text"], published: row["display"])
     end
 
-    article =  Article.find_by(title: "Locul tău Bucuresti") 
+    article =  Article.find_by(title: "Locul tău Bucuresti")
     article.title = "Locul tau"
     article.save!
 
@@ -37,6 +37,10 @@ namespace :mysql do
 
 
     update_article title: "Ce e incubator107?", alias: :about, content: "about-us.html"
+    I18n.locale = 'en'
+    update_article title: "Ce e incubator107?", alias: :about, content: "about-us.en.html"
+    I18n.locale = 'ro'
+
     update_article title: "Locul tau", alias: :your_place, content: "your-place.html"
     update_article title: "Colaborari", alias: :collaboration, content: "collaboration.html"
     update_article title: "2%", alias: :two_percent, content: "two-percent.html"
@@ -83,6 +87,7 @@ namespace :mysql do
 
    task :migrate_workshops, [:workshop_id] => :environment do | t, args| 
 
+    # TODO fix event time
     workshop_id = args["workshop_id"]
     puts workshop_id
     locations_map = migrate_and_cache_locations    
@@ -131,7 +136,7 @@ namespace :mysql do
                           WHERE type_list.list_id = #{meetings_id}")  unless meetings_id.nil?
 
         events.each do |event|
-          Event.create!(workshop_id: workshop.id, start_date: event["timestamp"], duration: event["duration"], location_id: locations_map[event["location"].to_i])
+          Event.create!(workshop_id: workshop.id, start_date: Time.zone.parse(event["timestamp"].to_s).utc, duration: event["duration"], location_id: locations_map[event["location"].to_i])
         end unless events.nil?
       rescue ActiveRecord::RecordInvalid => invalid
         puts row
@@ -195,13 +200,23 @@ namespace :mysql do
 
   task :migrate_news, [:arg1] => :environment  do | t, args| 
 
+
     News.destroy_all
     client = Mysql2::Client.new(:host => "127.0.0.1", :username => "root", :password => 'root', :database => 'incuba43_old')
     news = client.query("select * from model_stiri")
     
     news.each do |row|
-      release_date = row["release_date"]
-      release_date = DateTime.new(2010,1,1) if release_date.blank?
+      release_date = Time.zone.parse(row["release date"].to_s)
+
+      if release_date.blank?
+        release_date = DateTime.new(2010,1,1) if release_date.blank?
+      else
+        puts release_date
+        release_date = release_date.utc
+        puts release_date
+      end
+
+      
       domain = row["Oras"].downcase
       city = City.find_by_domain(domain)
       image_path = row["Imagine"]

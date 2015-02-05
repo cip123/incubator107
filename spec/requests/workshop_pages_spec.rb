@@ -8,6 +8,7 @@ describe "Workshops pages" do
   end
 
   describe "index" do
+    
     describe "pagination" do
       before do
         30.times do |n|
@@ -15,14 +16,14 @@ describe "Workshops pages" do
         end
         visit url_for_subdomain :cluj, "/workshops" 
       end
+    
       it "should have the correct title" do
         expect(page).to have_title(I18n.t(:workshops))
       end
 
       it "should list each workshop" do
-       
-        Workshop.paginate(page: 1).each do |workshop|
-          # TODO expect a href to have content
+    
+        Workshop.where(published: true).paginate(page: 1).each do |workshop|
           expect(page).to have_content(workshop.name)
         end
       end

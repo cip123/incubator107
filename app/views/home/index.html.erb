@@ -31,3 +31,13 @@
     </div>
   </div>
 <% end %>
+<h3> Stiri mai vechi </h3>
+<% @latest_news.each do |news| %>
+  <div class="row">
+    <div class="col-sm-8">
+       <%= link_to news.title, news_path(news.id)  %>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+<% end %>

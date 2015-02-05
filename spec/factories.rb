@@ -25,10 +25,10 @@ FactoryGirl.define do
         create(:article, alias: Article.aliases[:collaboration])
         create(:article, alias: Article.aliases[:your_place])
         create(:article, alias: Article.aliases[:two_percent])
-        create(:workshop, name: 'active workshop', city_id: city.id , published: 1)
-        create(:workshop, name: 'inactive workshop', city_id: city.id )
-        create(:workshop, name: 'old workshop', city_id: city.id, published: 1, release_date: 1.month.ago )
-        create(:workshop, name: 'next month workshop', city_id: city.id, published: 1, release_date: 1.month.from_now )
+        # create(:workshop, name: 'active workshop', city_id: city.id , published: 1)
+        # create(:workshop, name: 'inactive workshop', city_id: city.id, published: 0 )
+        # create(:workshop, name: 'old workshop', city_id: city.id, published: 1, release_date: 1.month.ago )
+        # create(:workshop, name: 'next month workshop', city_id: city.id, published: 1, release_date: 1.month.from_now )
       end
     end
 
