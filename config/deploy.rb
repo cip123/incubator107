@@ -73,8 +73,8 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 
-    execute "/etc/init.d/monit stop delayed_job"
-    execute "/etc/init.d/monit start delayed_job"
+    execute "sudo /etc/init.d/monit stop delayed_job"
+    execute "sudo /etc/init.d/monit start delayed_job"
 
     end
   end
