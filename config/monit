@@ -1,4 +1,4 @@
 check process delayed_job 
   with pidfile /var/www/incubator107/shared/pids/delayed_job.pid
-  start program = "/bin/su - incubator -c 'RAILS_ENV=production cd /var/www/incubator107/current; bin/delayed_job start'"
-  stop program = "/bin/su - incubator -c 'RAILS_ENV=production cd /var/www/incubator107/current; bin/delayed_job stop'"
+  start program = "/etc/init.d/delayed_job start"
+  stop program = "/etc/init.d/delayed_job stop"
