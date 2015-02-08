@@ -19,16 +19,12 @@
  
 <% unless @workshop.events.nil? %> 
 <div> 
-  <h3 class="workshop-section"> <%= t(:when?) %> </h3>
   <% if @workshop.active? %>
+    <h3 class="workshop-section"> <%= t(:when?) %> </h3>
     <% @workshop.events.each do |event| %>
-    <%= event.description %>
-    <br/>
-  <% end %> 
-  <% else %>
-    <%= t(:workshop_expired) %> </p>
-    <a href='' data-toggle="modal" data-target="#request_workshop"><%= image_tag("button-reload.png") %><%=t(:request_workshop)%></a>
-    <%=render 'request_modal' %>
+      <%= event.description %>
+      <br/>
+    <% end %> 
   <% end  %>
 </div>
 <% end %>
