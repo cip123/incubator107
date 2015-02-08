@@ -61,6 +61,7 @@ namespace :deploy do
   task :copy_database_yml do
     on roles :all do
       execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+      execute "ln -s #{shared_path}/public/system #{release_path}/public/system" #Create symlink for private files
       execute "ln -s #{shared_path}/.secret #{release_path}/.secret"
     end
   end

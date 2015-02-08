@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore paperclip iamges
+/public/system/*
+
 # Capistrano
 /config/deploy/*
 
