@@ -15,8 +15,6 @@ class SubdomainController < ApplicationController
     @your_place_path  = article_path(Article.find_with_alias(:your_place, @city).id)
     @two_percent_path  = article_path(Article.find_with_alias(:two_percent, @city).id)
 
-
-    puts @about_path
     if (Time.now.mday.to_i <= 20 ) 
       time_range = Date.today..Date.today.end_of_month  
     else
