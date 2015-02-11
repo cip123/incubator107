@@ -9,7 +9,8 @@ class Article < ActiveRecord::Base
 
   def self.find_with_alias article_alias, city
     at = Article.arel_table
-    articles = Article.where(at[:alias].eq(Article.aliases[article_alias]).and(at[:city_id].eq(city.id).or(at[:city_id].eq(nil))), published: true)
+    # todo only retrieve published articles
+    articles = Article.where(at[:alias].eq(Article.aliases[article_alias]).and(at[:city_id].eq(city.id).or(at[:city_id].eq(nil))))
     articles.each do |article|
       return article if article.city == city 
     end
