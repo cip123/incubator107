@@ -74,7 +74,7 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 
     execute "sudo monit stop delayed_job"
-    execute "sudo start delayed_job"
+    execute "sudo monit start delayed_job"
 
     end
   end
