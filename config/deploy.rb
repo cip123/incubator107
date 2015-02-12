@@ -10,7 +10,7 @@ set :repo_url, 'https://github.com/cip123/incubator107.git'
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
-
+set :ssh_options, :compression => false, :keepalive => true
 set :use_sudo, true
 
 # Default value for :scm is :git
@@ -73,8 +73,8 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 
-    execute "sudo /etc/init.d/monit stop delayed_job"
-    execute "sudo /etc/init.d/monit start delayed_job"
+    execute "sudo monit stop delayed_job"
+    execute "sudo start delayed_job"
 
     end
   end
