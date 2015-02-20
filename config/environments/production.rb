@@ -1,7 +1,7 @@
 Incubator107::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_controller.asset_host = "http://stage.incubator107.com"
+  config.action_controller.asset_host = "http://incubator107.com"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -80,5 +80,4 @@ Incubator107::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 end

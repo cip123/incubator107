@@ -38,7 +38,7 @@ module Incubator107
     config.hosts = {
       "development" => "lvh.me:3000",
       "test"        => "lvh.me:3001",
-      "production"  => "stage.incubator107.com"
+      "production"  => "incubator107.com"
     }
   end
 end
