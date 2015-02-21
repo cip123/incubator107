@@ -3,9 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $(".sidebar").css("min-height", $(".right-main").height() + 300)
+
+  body = document.body
+  html = document.documentElement;
+
+  height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+  if $(".sidebar").height() <= height
+    $(".sidebar").css("min-height", height + 200)
   
   $('#subscribe-newsletter').popover()
   $('#subscribe-newsletter').click ->
     return false;
-  
+
