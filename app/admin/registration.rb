@@ -16,9 +16,7 @@ ActiveAdmin.register Registration do
     column :workshop, :sortable => "workshops.id" do |registration|
         link_to(registration.event.workshop.name, admin_workshop_path(registration.event.workshop))
     end
-    # column :workshop do |registration|
-    #   registration.event.workshop.name
-    # end
+    column :created_at
 
     actions
   end
@@ -31,6 +29,7 @@ ActiveAdmin.register Registration do
           link_to(registration.event.workshop.name, admin_workshop_path(registration.event.workshop))
         end
         row :reason
+        row :created_at
       end
   end
 
