@@ -1,6 +1,6 @@
 class Workshop < ActiveRecord::Base
   translates :name, :description, :with_whom, :bring_along, :whereabouts, :notification, :donation
-  has_many :events
+  has_many :events, :dependent => :delete_all
   has_many :workshop_requests
   #has_many :registrations, :through => :events
 
