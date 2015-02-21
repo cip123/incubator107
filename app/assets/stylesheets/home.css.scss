@@ -1,18 +1,16 @@
 @font-face {
     font-family: 'Aracne Condensed Regular';
-    src: url(font-path('AracneCondensedRegular.otf')) format('opentype');
+      src:  url(font-path('AracneCondensedRegular.otf')) format('opentype'),
+            url(font-path('AracneCondensedRegular.woff')) format('woff');
 }
 
 
 @font-face {
     font-family: 'Architects Daughter';
-    src: url(font-path('ArchitectsDaughter.ttf')) format('truetype');
+    src:  url(font-path('ArchitectsDaughter.ttf')) format('truetype'),
+          url(font-path('ArchitectsDaughter.woff')) format('woff');
 }
 
-@font-face {
-    font-family: 'StRyde';
-    src: url(font-path('StRyde-Regular.otf')) format('opentype');
-}
 
 .flags img {
   margin: 5px;
@@ -42,7 +40,7 @@ h3 {
   color: #a2346c;
 }
 
-html, body, .container-fluid, .row {
+html, body, .container-fluid, .row, .sidebar {
     height: 100%;
 }
 
@@ -98,6 +96,7 @@ input#newsletter_subscriber_email {
 iframe.youtube-player{
   margin: 15px;
 }
+
 
 body {
   background: url(background.gif) no-repeat center center fixed;
@@ -474,14 +473,19 @@ img.center {
 }
 
 @media (min-width: 992px) {
-  .sidebar {
-    position: absolute;   
-    top: 0;
-    left: 0;
-    min-height: 100%;
+  body,html  {
     height: 100%;
+  }
+
+  .sidebar {
+    height: auto !important;  
+    position: absolute;
+    top: 0;
+    left: 0;    
+    min-height: 100%;
     z-index: 1000;
     display: block;
+    height: 100%;
     background: rgba(242, 196, 17, .7) repeat-y 50% 0;
   }
 }
