@@ -38,7 +38,6 @@ ActiveAdmin.register Partner do
       f.input :index
       f.input :image, :as => :file
       f.input :category, as: :select, collection:  Partner.categories.map{ |c| "#{c[0]}" }
-      f.input :category
       f.input :city
     end
     f.inputs "Description" do  
