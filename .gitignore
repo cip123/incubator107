@@ -19,7 +19,7 @@
 /public/system/*
 
 # Capistrano
-/config/deploy/*
+#/config/deploy/*
 
 # Ignore other unneeded files.
 database.yml
