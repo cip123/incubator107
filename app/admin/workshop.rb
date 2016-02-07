@@ -31,6 +31,7 @@ ActiveAdmin.register Workshop do
       f.input :city
       f.input :group
       f.input :published, :as => :radio, :label => "Publish", :collection => [["Yes", true], ["No", false]]
+      f.input :registrations_enabled, :as => :radio, :label => "Registrations enabled", :collection => [["Yes", true], ["No", false]]
       f.input :release_date, :as => :string, :input_html => { class: "datepicker", size: 12, max: 10, :value =>  workshop.release_date.nil? ? "" : workshop.release_date.strftime("%Y-%m-%d") } 
       f.input :should_send_notification, :as => :radio, :label => "Send notification", :collection => [["Yes", true], ["No", false]]      
     end
@@ -67,6 +68,7 @@ ActiveAdmin.register Workshop do
       row :facebook_album_id
       row :release_date
       row :published
+      row :registrations_enabled
       row :should_send_notification      
       row :created_at
       row :updated_at        
@@ -115,7 +117,7 @@ ActiveAdmin.register Workshop do
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
    permit_params :name, :facebook_album_id, :city_id, :group_id, :published, :release_date, :should_send_notification,
-      :description, :with_whom, :bring_along, :whereabouts, :requires_donation, :donation
+      :description, :with_whom, :bring_along, :whereabouts, :requires_donation, :donation, :registrations_enabled
   #
   # or
   #

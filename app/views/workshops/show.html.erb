@@ -36,14 +36,17 @@
 <p><%= raw(@workshop.whereabouts) %> </p>
 <% end %>
 
-<% if @workshop.active? %>
+ 
+<% if @workshop.active? && @workshop.registrations_enabled? %>
   <h3 class="workshop-section"><%=t(:how?) %></h3>
   <p><%="#{t(:signup_is_online)} #{t(:click_bravely)}" %>
   <a id='aici' href='' data-toggle="modal" data-target="#signup"><%= image_tag("signup-button.png", :alt => t(:here)) %><%=t(:here)%></a>
   <%= t(:signup_blah_blah) %></p>
   <%=render 'registration_modal' %>
-<% else %>   
+<% elsif not @workshop.active? %>   
     <%=render 'request_modal' %>
+<% elsif not @workshop.registrations_enabled? %>   
+  <h4 class="warning">Înscrieri închise</h4>
 <% end %>
 
 <br/>
@@ -83,19 +86,20 @@
   </div>
 <% end %>
 
-<% if @workshop.active? %>
+<% if @workshop.active? and @workshop.registrations_enabled? %>
   <a href='' data-toggle="modal" data-target="#signup">  
     <div class="workshop-signup-button">
       Vin la atelier
     </div>    
   </a>
-<% else %>
+<% elsif not @workshop.active? %>
   <a href='' data-toggle="modal" data-target="#request_workshop">
     <div class="workshop-request-button">
       Cer atelier
    </div>
   </a>
 <% end %>
+
 
 
 
