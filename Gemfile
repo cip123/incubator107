@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.2.2'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'active_link_to', '1.0.2'
