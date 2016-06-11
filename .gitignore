@@ -19,8 +19,6 @@ vendor
 # Ignore paperclip iamges
 /public/system/*
 
-Gemfile.lock
-
 public/assets
 
 # Capistrano
