@@ -12,11 +12,16 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+log
+vendor
 /tmp
 
 # Ignore paperclip iamges
 /public/system/*
+
+Gemfile.lock
+
+public/assets
 
 # Capistrano
 #/config/deploy/*

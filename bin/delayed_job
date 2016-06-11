@@ -2,8 +2,4 @@
 
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))
 require 'delayed/command'
-
-# Will always specify the pid directory
-ARGV << "--pid-dir=/var/www/incubator107/shared/pids"
-
 Delayed::Command.new(ARGV).daemonize

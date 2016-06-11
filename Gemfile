@@ -16,7 +16,8 @@ gem 'capistrano-rails', '1.1.2'
 gem 'coffee-rails', '4.0.1'
 
 gem 'daemons', '1.1.9'
-gem 'delayed_job_active_record', '4.0.2'
+gem 'delayed_job', '4.1.2'
+gem 'delayed_job_active_record'
 gem 'devise', '3.4.1'
 
 
@@ -49,7 +50,7 @@ gem 'pg', '0.15.1'
 gem 'rails', '4.1.0'
 
 gem 'sass-rails', '4.0.5'
-gem 'simple_form', '3.0.2'
+gem 'simple_form'#, '3.0.2'
 gem 'sprockets', '2.11.3'
 
 gem 'uglifier', '2.1.1'
