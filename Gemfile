@@ -26,8 +26,7 @@ gem 'fancybox2-rails'
 
 gem 'foreigner'
 gem 'font-awesome-rails'
-gem 'fullcalendar-rails'
-
+gem 'fullcalendar-rails', "2.0.2.0"
 gem 'geocoder'
 gem 'gibbon'
 gem 'globalize'
