@@ -53,8 +53,8 @@ gem 'simple_form'
 gem 'sprockets'
 
 gem 'uglifier'
-gem 'tinymce-rails'
-gem 'tinymce-rails-imageupload'
+gem 'tinymce-rails', "4.2.1"
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'world-flags'
 
 group :development, :test  do
