@@ -47,7 +47,7 @@ gem 'nokogiri', '1.6.2.1'
 gem 'paperclip', "4.2.0"
 gem 'pg', '0.15.1'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.6'
 
 gem 'sass-rails', '4.0.5'
 gem 'simple_form'#, '3.0.2'
