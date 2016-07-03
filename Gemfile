@@ -4,7 +4,7 @@ ruby '2.2.2'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'active_link_to'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
@@ -28,7 +28,7 @@ gem 'foreigner'
 gem 'font-awesome-rails'
 gem 'fullcalendar-rails', "2.0.2.0"
 gem 'geocoder'
-gem 'gibbon'
+gem 'gibbon', "1.1.3"
 gem 'globalize'
 
 gem 'htmlbeautifier'
