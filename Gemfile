@@ -39,7 +39,7 @@ gem 'judge-simple_form', '0.4.0'
 gem 'just-datetime-picker', '0.0.6'
 gem 'jquery-rails', '3.0.4'
 
-gem "koala", "1.10.1"
+gem "koala", "2.3.0"
 
 gem 'launchy', '2.4.3'
 gem 'nokogiri', '1.6.2.1'

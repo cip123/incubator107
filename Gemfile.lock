@@ -189,7 +189,7 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    koala (1.10.1)
+    koala (2.3.0)
       addressable
       faraday
       multi_json
@@ -392,7 +392,7 @@ DEPENDENCIES
   jquery-rails (= 3.0.4)
   judge-simple_form (= 0.4.0)
   just-datetime-picker (= 0.0.6)
-  koala (= 1.10.1)
+  koala (= 2.3.0)
   launchy (= 2.4.3)
   mysql2
   nokogiri (= 1.6.2.1)
