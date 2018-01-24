@@ -1,2 +1,2 @@
-app/assets/* linguist-vendored
-vendor/assets/* linguist-vendored
+* linguist-vendored
+*.rb linguist-vendored=false
